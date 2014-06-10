@@ -52,29 +52,4 @@ mode        : selfcontained # {standalone, draft}
 
 至少要記得的 read.table
 
-```r
-MD = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
-```
-
-```
-## Warning: cannot open file '檔案路徑': No such file or directory
-```
-
-```
-## Error: cannot open the connection
-```
-
---- 
-## Read-And-Delete
-
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
-
---- .class #id 
-
-## Slide 2
-
-
-
 
