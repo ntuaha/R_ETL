@@ -17,6 +17,8 @@ mode        : selfcontained # {standalone, draft}
 2.大熊被抓了
 3.房價真的太高了嗎?
 
+--- .class #id 
+
 ##資料在哪裡
 
 ### 你想知道什麼資料?
@@ -26,18 +28,22 @@ mode        : selfcontained # {standalone, draft}
 
 可是資料還是如同一盤散沙
 
+--- .class #id 
+
 ## ETL
 
 1. Extraction
 2. Transformation
 3. Loading
 
+--- .class #id 
 ## Extraction
 
 ### 讀入CSV
 
 至少要記得的 
 
+--- .class #id 
 ## Read-And-Delete
 
 1. Edit YAML front matter
