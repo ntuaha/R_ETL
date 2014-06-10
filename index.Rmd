@@ -7,6 +7,7 @@ license     : by-sa
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
+ext_widgets : {rCharts: libraries/nvd3}
 widgets     : [mathjax, quiz, bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
@@ -14,9 +15,9 @@ mode        : selfcontained # {standalone, draft}
 
 ## 故事的起源
 
-1. 房價節節高升
-2. 大熊被抓了
-3. 房價真的太高了嗎?
+> 1. 房價節節高升
+> 2. 大熊被抓了
+> 3. 房價真的太高了嗎?
 
 --- 
 
@@ -24,15 +25,15 @@ mode        : selfcontained # {standalone, draft}
 
 ### 你想知道什麼資料?
 
-1. GDP
-2. 房貸餘額
-3. 股價
-4. 新聞
+> 1. GDP
+> 2. 房貸餘額
+> 3. 股價
+> 4. 新聞
 
 ### 可能的來源?
-1. 政府公開資料
-2. 新聞
-3. 股市
+> 1. 政府公開資料
+> 2. 新聞
+> 3. 股市
 
 即便知道資料在哪，可是資料還是如同一盤散沙
 
@@ -40,9 +41,9 @@ mode        : selfcontained # {standalone, draft}
 
 ## ETL
 
-1. Extraction
-2. Transformation
-3. Loading
+> 1. Extraction
+> 2. Transformation
+> 3. Loading
 
 --- 
 
