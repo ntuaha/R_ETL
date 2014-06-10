@@ -127,8 +127,20 @@
 
 <p>至少要記得的 <code>read.table</code></p>
 
-<pre><code>MD = read.table(file=&#39;檔案路徑&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=T)
+<pre><code>DF = read.table(file=&#39;檔案路徑&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=T)
 </code></pre>
+
+<ul>
+<li>輸出形態為<code>Data Frame</code></li>
+<li>file 就是指讀入的檔案路徑</li>
+<li>sep 指的是欄位分割用的符號,通常csv檔案格式是透過<code>,</code>做分割</li>
+<li>stringsAsFactors 預設是<code>True</code>, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表</li>
+<li>header 預設是<code>False</code>，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames</li>
+</ul>
+
+<blockquote>
+<p><code>開始動手做吧!</code></p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->

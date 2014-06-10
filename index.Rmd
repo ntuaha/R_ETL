@@ -56,8 +56,15 @@ mode        : selfcontained # {standalone, draft}
 
 至少要記得的 `read.table`
 ```
-MD = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
+DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 ```
+- 輸出形態為`Data Frame`
+- file 就是指讀入的檔案路徑
+- sep 指的是欄位分割用的符號,通常csv檔案格式是透過`,`做分割
+- stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
+- header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
+
+> `開始動手做吧!`
 
 --- 
 ## Read-And-Delete
