@@ -38,7 +38,7 @@ mode        : selfcontained # {standalone, draft}
 
 --- .quote
 
-`即便知道資料在哪，可是資料還是如同一盤散沙`
+<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
 
 ---  
 
