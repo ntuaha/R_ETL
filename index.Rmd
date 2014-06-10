@@ -35,6 +35,9 @@ mode        : selfcontained # {standalone, draft}
 > 2. 新聞
 > 3. 股市
 
+
+--- .quote
+
 `即便知道資料在哪，可是資料還是如同一盤散沙`
 
 ---  
