@@ -35,7 +35,7 @@ mode        : selfcontained # {standalone, draft}
 > 2. 新聞
 > 3. 股市
 
-> *即便知道資料在哪，可是資料還是如同一盤散沙*
+`即便知道資料在哪，可是資料還是如同一盤散沙`
 
 ---  
 
@@ -51,8 +51,8 @@ mode        : selfcontained # {standalone, draft}
 
 ### 讀入CSV
 
-至少要記得的 **read.table**
-```{r, message=F}
+至少要記得的 `read.table`
+```{r echo=FALSE,comment=NA,results='hide'}
 MD = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 ```
 
