@@ -50,7 +50,7 @@ mode        : selfcontained # {standalone, draft}
 
 ### 讀入CSV
 
-至少要記得的 read.table
+至少要記得的 **read.table**
 
 ```r
 MD = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
