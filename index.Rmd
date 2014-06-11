@@ -66,12 +66,11 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 - stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
 - header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
 
----  .dark .quote
+---  .quote
 
-.dark q { color: white; }
 <q> 開始動手做吧!</q>
 
---- .quote .dark
+--- .quote 
 
 <q> 等等 先安裝幾個建議的套件</q>
 
