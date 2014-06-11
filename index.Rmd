@@ -116,7 +116,7 @@ install.packages("gdata")
 
 ### 房貸餘額,直接下載現成的csv檔案
 
-直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
+- 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
 
 ### 將資料讀入
 
@@ -129,4 +129,6 @@ Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
 View(Cl_info)
 ```
 
-> 到這裡已經完成第一次的資料`Extraction`與`Transformation`了！
+> - 到這裡已經完成第一次的資料`Extraction`與`Transformation`了！
+
+---

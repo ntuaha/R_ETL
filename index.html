@@ -231,7 +231,9 @@ install.packages(&quot;gdata&quot;)
   <article data-timings="">
     <h3>房貸餘額,直接下載現成的csv檔案</h3>
 
-<p>直接到<a href="https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv">https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv</a>下載檔案</p>
+<ul>
+<li>直接到<a href="https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv">https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv</a>下載檔案</li>
+</ul>
 
 <h3>將資料讀入</h3>
 
@@ -242,10 +244,18 @@ Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
 View(Cl_info)
 </code></pre>
 
-<blockquote>
-<p>到這裡已經完成第一次的資料<code>Extraction</code>與<code>Transformation</code>了！</p>
-</blockquote>
+<ul class = "build incremental">
+<li>到這裡已經完成第一次的資料<code>Extraction</code>與<code>Transformation</code>了！</li>
+</ul>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -324,6 +334,12 @@ View(Cl_info)
       <a href="#" target="_self" rel='tooltip' 
         data-slide=12 title='第一步:開始收集資料'>
          12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title=''>
+         13
       </a>
     </li>
   </ul>
