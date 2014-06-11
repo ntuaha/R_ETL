@@ -78,6 +78,15 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 > - `xts` 處理時間格式好用的套件
 > - `gdata` 可以處理Excel 2007以上的文件
 
+
+--- .quote 
+
+<q> 等等 先安裝幾個建議的套件</q>
+
+- `dplyr` 可用類似SQL語法操作data frome
+- `xts` 處理時間格式好用的套件
+- `gdata` 可以處理Excel 2007以上的文件
+
 ```
 install.packages("dplyr")
 install.packages("xts")
