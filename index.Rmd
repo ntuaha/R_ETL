@@ -64,18 +64,19 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 - stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
 - header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
 
-> `開始動手做吧!`
+--- .dark
 
---- 
-## Read-And-Delete
+ 開始動手做吧!
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+--- .quote .dark
 
---- .class #id 
+<q> 等等 先安裝幾個建議的套件</q>
 
-## Slide 2
+> - `dplyr` 可用類似SQL語法操作data frome
+> - `xts` 處理時間格式好用的套件
+> - `gdata` 可以處理Excel 2007以上的文件
+
+--- .quote 
 
 
 
