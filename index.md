@@ -122,9 +122,3 @@ install.packages("gdata")
 
 
 
-```r
-library(dplyr)
-Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
-Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
-View(Cl_info)
-```
