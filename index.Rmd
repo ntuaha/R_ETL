@@ -92,7 +92,8 @@ install.packages("dplyr")
 install.packages("xts")
 install.packages("gdata")
 ```
-
+--- .quote
+<q> 好! 開始動手做吧!</q>
 --- .quote 
 
 <q> 好! 開始動手做吧!</q>
@@ -101,7 +102,19 @@ install.packages("gdata")
 
 ---
 
-## 第一步:開始收集資料
+## 第一步:開始收集資料(房貸餘額)
 
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
 
+---
+## 第一步:開始收集資料
+
+### 房貸餘額,直接下載現成的csv檔案
+
+直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
+
+### 將資料讀入
+
+```
+Cl_info = read.table(file='檔案路徑/cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
+```

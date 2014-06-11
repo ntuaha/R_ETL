@@ -187,16 +187,25 @@ install.packages(&quot;xts&quot;)
 install.packages(&quot;gdata&quot;)
 </code></pre>
 
+<p>--- .quote
+<q> 好! 開始動手做吧!</q>
+--- .quote </p>
+
+<p><q> 好! 開始動手做吧!</q></p>
+
+<p><q> <code>資料勒？！</code></q></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>第一步:開始收集資料(房貸餘額)</h2>
+  </hgroup>
   <article data-timings="">
-    <p><q> 好! 開始動手做吧!</q></p>
-
-<p><q> <code>資料勒？！</code></q></p>
+    <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
 
   </article>
   <!-- Presenter Notes -->
@@ -208,7 +217,14 @@ install.packages(&quot;gdata&quot;)
     <h2>第一步:開始收集資料</h2>
   </hgroup>
   <article data-timings="">
-    <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
+    <h3>房貸餘額,直接下載現成的csv檔案</h3>
+
+<p>直接到<a href="https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv">https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv</a>下載檔案</p>
+
+<h3>將資料讀入</h3>
+
+<pre><code>Cl_info = read.table(file=&#39;檔案路徑/cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -268,7 +284,7 @@ install.packages(&quot;gdata&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title=''>
+        data-slide=9 title='第一步:開始收集資料(房貸餘額)'>
          9
       </a>
     </li>
