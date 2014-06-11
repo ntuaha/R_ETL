@@ -66,7 +66,7 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 
 --- .nobackground .dark
 
- 開始動手做吧!
+<q> 開始動手做吧!</q>
 
 --- .quote .dark
 
