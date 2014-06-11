@@ -148,7 +148,7 @@ View(Cl_info)
 
 ## dplyr 介紹 - select
 
-### `select` 函式，用來挑選欄位
+### `select` 函式，用來__挑選__`欄位`
 ```
 Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 ```
@@ -160,7 +160,7 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 
 ## dplyr 介紹 - filter
 
-### `filter` 函式，用來保留要留下的資料列
+### `filter` 函式，用來__保留__要留下的`資料列`
 
 ```
 Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
@@ -168,7 +168,7 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 
 - 輸出data frame
 - 第一個參數為輸入的data frame
-- 第二個參數為邏輯運算式，可用data frame裡的欄位，當結為`True`時，該筆資料列保留
+- 第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
 ---
 

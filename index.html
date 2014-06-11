@@ -278,7 +278,7 @@ View(Cl_info)
     <h2>dplyr 介紹 - select</h2>
   </hgroup>
   <article data-timings="">
-    <h3><code>select</code> 函式，用來挑選欄位</h3>
+    <h3><code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
 
 <pre><code>Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 </code></pre>
@@ -299,7 +299,7 @@ View(Cl_info)
     <h2>dplyr 介紹 - filter</h2>
   </hgroup>
   <article data-timings="">
-    <h3><code>filter</code> 函式，用來保留要留下的資料列</h3>
+    <h3><code>filter</code> 函式，用來<strong>保留</strong>要留下的<code>資料列</code></h3>
 
 <pre><code>Cl_info_part2 = filter(Cl_info,mortgage_bal&gt;1000000)
 </code></pre>
@@ -307,7 +307,7 @@ View(Cl_info)
 <ul>
 <li>輸出data frame</li>
 <li>第一個參數為輸入的data frame</li>
-<li>第二個參數為邏輯運算式，可用data frame裡的欄位，當結為<code>True</code>時，該筆資料列保留</li>
+<li>第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為<code>True</code>時，該筆資料列保留</li>
 </ul>
 
   </article>
