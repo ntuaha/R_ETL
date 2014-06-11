@@ -125,6 +125,6 @@ Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactor
 ```
 
 ```{r}
-Cl_info = read.table(file='/Volumes/AhaStorage/Project/R_ETL/cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
+Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
 str(Cl_info)
 ```
