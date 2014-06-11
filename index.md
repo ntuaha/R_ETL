@@ -92,9 +92,12 @@ install.packages("dplyr")
 install.packages("xts")
 install.packages("gdata")
 ```
+
+
 --- .quote
 
 <q> 好! 開始動手做吧!</q>
+
 
 --- .quote 
 
@@ -123,23 +126,6 @@ Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactor
 
 
 ```r
-library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 Cl_info = read.table(file='/Volumes/AhaStorage/Project/R_ETL/cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
 ```
 
@@ -154,25 +140,9 @@ Cl_info = read.table(file='/Volumes/AhaStorage/Project/R_ETL/cl_info_other.csv',
 ```
 
 ```r
-Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
-```
-
-```
-## Error: object 'Cl_info' not found
-```
-
-```r
 str(Cl_info)
 ```
 
 ```
 ## Error: object 'Cl_info' not found
-```
-
-```r
-view(Cl_info)
-```
-
-```
-## Error: could not find function "view"
 ```

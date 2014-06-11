@@ -187,15 +187,20 @@ install.packages(&quot;xts&quot;)
 install.packages(&quot;gdata&quot;)
 </code></pre>
 
-<p>--- .quote</p>
-
-<p><q> 好! 開始動手做吧!</q></p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="quote" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q> 好! 開始動手做吧!</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
     <p><q> 好! 開始動手做吧!</q></p>
@@ -206,7 +211,7 @@ install.packages(&quot;gdata&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>第一步:開始收集資料(房貸餘額)</h2>
@@ -218,7 +223,7 @@ install.packages(&quot;gdata&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>第一步:開始收集資料</h2>
@@ -233,21 +238,6 @@ install.packages(&quot;gdata&quot;)
 <pre><code>Cl_info = read.table(file=&#39;./cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
 </code></pre>
 
-<pre><code class="r">library(dplyr)
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;
-## 
-## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-## 
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
 <pre><code class="r">Cl_info = read.table(file=&#39;/Volumes/AhaStorage/Project/R_ETL/cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
 </code></pre>
 
@@ -259,22 +249,10 @@ install.packages(&quot;gdata&quot;)
 <pre><code>## Error: cannot open the connection
 </code></pre>
 
-<pre><code class="r">Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
-</code></pre>
-
-<pre><code>## Error: object &#39;Cl_info&#39; not found
-</code></pre>
-
 <pre><code class="r">str(Cl_info)
 </code></pre>
 
 <pre><code>## Error: object &#39;Cl_info&#39; not found
-</code></pre>
-
-<pre><code class="r">view(Cl_info)
-</code></pre>
-
-<pre><code>## Error: could not find function &quot;view&quot;
 </code></pre>
 
   </article>
@@ -341,14 +319,20 @@ install.packages(&quot;gdata&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='第一步:開始收集資料(房貸餘額)'>
+        data-slide=10 title=''>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='第一步:開始收集資料'>
+        data-slide=11 title='第一步:開始收集資料(房貸餘額)'>
          11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='第一步:開始收集資料'>
+         12
       </a>
     </li>
   </ul>
