@@ -128,7 +128,7 @@
     <h2>Extraction</h2>
   </hgroup>
   <article data-timings="">
-    <h3>讀入CSV</h3>
+    <h3>讀入資料</h3>
 
 <p>至少要記得的 <code>read.table</code></p>
 
@@ -226,7 +226,7 @@ install.packages(&quot;gdata&quot;)
 <slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>第一步:開始收集資料</h2>
+    <h2>開始收集資料</h2>
   </hgroup>
   <article data-timings="">
     <h3>房貸餘額,直接下載現成的csv檔案</h3>
@@ -252,8 +252,73 @@ View(Cl_info)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="quote" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>看見資料了!但是剛剛處理過程中的<code>mutate</code>是什麼?</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>看見資料了!但是剛剛處理過程中的<code>mutate</code>是什麼?</q></p>
+
+<p><q> 在<code>R</code>中用來做<strong>資料清理</strong>與<strong>資料處理</strong>好用的套件<code>dplyr</code>其中之一的函式<q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - select</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><code>select</code> 函式，用來挑選欄位</h3>
+
+<pre><code>Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li>第一個參數為輸入的data frame</li>
+<li>後續參數為選取的欄位名稱</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - filter</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><code>filter</code> 函式，用來保留要留下的資料列</h3>
+
+<pre><code>Cl_info_part2 = filter(Cl_info,mortgage_bal&gt;1000000)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li>第一個參數為輸入的data frame</li>
+<li>第二個參數為邏輯運算式，可用data frame裡的欄位，當結為<code>True</code>時，該筆資料列保留</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - mutate</h2>
+  </hgroup>
   <article data-timings="">
     
   </article>
@@ -332,7 +397,7 @@ View(Cl_info)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='第一步:開始收集資料'>
+        data-slide=12 title='開始收集資料'>
          12
       </a>
     </li>
@@ -340,6 +405,30 @@ View(Cl_info)
       <a href="#" target="_self" rel='tooltip' 
         data-slide=13 title=''>
          13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title=''>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='dplyr 介紹 - select'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='dplyr 介紹 - filter'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='dplyr 介紹 - mutate'>
+         17
       </a>
     </li>
   </ul>
