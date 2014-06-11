@@ -214,7 +214,7 @@ install.packages(&quot;gdata&quot;)
 <slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>第一步:開始收集資料(房貸餘額)</h2>
+    <h2>開始收集資料(房貸餘額)</h2>
   </hgroup>
   <article data-timings="">
     <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
@@ -241,6 +241,10 @@ Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
 </code></pre>
+
+<blockquote>
+<p>到這裡已經完成第一次的資料<code>Extraction</code>與<code>Transformation</code>了！</p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
@@ -312,7 +316,7 @@ View(Cl_info)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='第一步:開始收集資料(房貸餘額)'>
+        data-slide=11 title='開始收集資料(房貸餘額)'>
          11
       </a>
     </li>

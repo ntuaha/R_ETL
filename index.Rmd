@@ -107,7 +107,7 @@ install.packages("gdata")
 
 ---
 
-## 第一步:開始收集資料(房貸餘額)
+## 開始收集資料(房貸餘額)
 
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
 
@@ -128,3 +128,5 @@ Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
 ```
+
+> 到這裡已經完成第一次的資料`Extraction`與`Transformation`了！
