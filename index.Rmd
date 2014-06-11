@@ -19,10 +19,11 @@ mode        : selfcontained # {standalone, draft}
 > 2. 大熊被抓了
 > 3. 房價真的太高了嗎?
 
---- 
+--- &twocol
 
 ## 資料在哪裡
 
+*** =left
 ### 你想知道什麼資料?
 
 > 1. GDP
@@ -30,6 +31,7 @@ mode        : selfcontained # {standalone, draft}
 > 3. 股價
 > 4. 新聞
 
+*** =right
 ### 可能的來源?
 > 1. 政府公開資料
 > 2. 新聞
