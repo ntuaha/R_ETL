@@ -158,7 +158,7 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 - 後續參數為選取的欄位名稱
 
 <br/>
-##  給熟悉`SQL`的使用者
+###  給熟悉`SQL`的使用者
 
 ```
 select data_dt,bank_nm,mortgage_bal from Cl_info;
@@ -250,7 +250,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 ## 開始收集資料(GDP)
 
-1. GDP就直接下載`國民生產毛額之處分`
+1. GDP從直接下載`國民生產毛額之處分`
 2. 季(1980之後）
 3. 選**全部的日期**
 4. 選**全部的計價方式**
@@ -260,11 +260,31 @@ select * from Cl_info order by mortage,data_dt desc ;
 8. 開啟後，**另存新檔成csv檔**
 9. 開回`RStudio` 開始處理資料
 
-```
-GDP = read.table(file='/Volumes/AhaStorage/Project/R_ETL/GDP.txt',sep=",",stringsAsFactors=F,header=F)
-```
+
+--- .quote
+
+<q>練習讀入與創建一個變數`GDP`</q>
+
+--- .quote
 
 
+<q>答案</q>
+
+```
+GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
+```
+
+--- .quote
+
+
+<q>答案</q>
+
+```
+GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
+```
+<br>
+
+<q>打入`str(GDP)`會發現怎麼前後有很多列的資料是不要的</q>
 
 
 

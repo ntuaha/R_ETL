@@ -293,7 +293,7 @@ View(Cl_info)
 
 <p><br/></p>
 
-<h2>給熟悉<code>SQL</code>的使用者</h2>
+<h3>給熟悉<code>SQL</code>的使用者</h3>
 
 <pre><code>select data_dt,bank_nm,mortgage_bal from Cl_info;
 </code></pre>
@@ -425,7 +425,7 @@ View(Cl_info)
   </hgroup>
   <article data-timings="">
     <ol>
-<li>GDP就直接下載<code>國民生產毛額之處分</code></li>
+<li>GDP從直接下載<code>國民生產毛額之處分</code></li>
 <li>季(1980之後）</li>
 <li>選<strong>全部的日期</strong></li>
 <li>選<strong>全部的計價方式</strong></li>
@@ -436,14 +436,48 @@ View(Cl_info)
 <li>開回<code>RStudio</code> 開始處理資料</li>
 </ol>
 
-<pre><code>GDP = read.table(file=&#39;/Volumes/AhaStorage/Project/R_ETL/GDP.txt&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=F)
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>練習讀入與創建一個變數<code>GDP</code></q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>答案</q></p>
+
+<pre><code>GDP = read.table(file=&#39;檔案位置&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=F)
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="quote" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>答案</q></p>
+
+<pre><code>GDP = read.table(file=&#39;檔案位置&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=F)
+</code></pre>
+
+<p><br></p>
+
+<p><q>打入<code>str(GDP)</code>會發現怎麼前後有很多列的資料是不要的</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -596,8 +630,26 @@ View(Cl_info)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Reference'>
+        data-slide=23 title=''>
          23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title=''>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title=''>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Reference'>
+         26
       </a>
     </li>
   </ul>
