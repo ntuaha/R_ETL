@@ -157,8 +157,11 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 - 後續參數為選取的欄位名稱
 
 
-> 給熟悉`SQL`的使用者
-> select data_dt,bank_nm,mortgage_bal from Cl_info;
+##  給熟悉`SQL`的使用者
+
+```
+select data_dt,bank_nm,mortgage_bal from Cl_info;
+```
 
 
 
@@ -177,8 +180,10 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 - 第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
 
-> 給熟悉`SQL`的使用者
-> select * from Cl_info where mortgage>1000000;
+## 給熟悉`SQL`的使用者
+```
+select * from Cl_info where mortgage>1000000;
+```
 
 
 
@@ -196,6 +201,35 @@ Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
 - 第一個參數為輸入的 data frame
 - 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位***稱使用
 
-> 給熟悉`SQL`的使用者
-> select mmortgage/1000000 as mortage from Cl_info;
+## 給熟悉`SQL`的使用者
 
+```
+select mmortgage/1000000 as mortage from Cl_info;
+```
+
+---
+
+## dplyr 介紹 - arrange
+
+### `arrange` 用來重新排序
+
+```
+Cl_info_part4 = arrange(Cl_info,mortage,desc(data_dt))
+```
+- 輸出data frame
+- 第一個參數為輸入的 data frame
+- 後續參數為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
+
+## 給熟悉`SQL`的使用者
+
+```
+select * from Cl_info order by mortage,data_dt desc ;
+```
+
+
+---
+
+## Reference
+
+1. [http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+2. 
