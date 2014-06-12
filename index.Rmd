@@ -130,6 +130,7 @@ Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
 View(Cl_info)
 ```
 
+<br/>
 > - 到這裡已經完成第一次的資料`Extraction`與`Transformation`了！
 
 --- .quote
@@ -198,7 +199,7 @@ Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
 ```
 - 輸出data frame
 - 第一個參數為輸入的 data frame
-- 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位***稱使用
+- 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
 
 <br/>
 ### 給熟悉`SQL`的使用者
@@ -239,6 +240,28 @@ select * from Cl_info order by mortage,data_dt desc ;
 <q>別急，讓我們來練習抓下一個檔案，用剛剛講的指令讀入</q>
 
 --- 
+
+## 開始收集資料(GDP)
+
+<iframe src = 'http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp' height='600px'></iframe>
+
+---
+
+## 開始收集資料(GDP)
+
+1. GDP就直接下載`國民生產毛額之處分`
+2. 季(1980之後）
+3. 選**全部的日期**
+4. 選**全部的計價方式**
+5. 項目選**GDP**
+6. 總類選**原始值**
+7. 按繼續後，選**從螢幕顯示Excel檔**
+8. 開啟後，**另存新檔成csv檔**
+9. 開回`RStudio` 開始處理資料
+
+```
+GDP = read.table(file='/Volumes/AhaStorage/Project/R_ETL/GDP.txt',sep=",",stringsAsFactors=F,header=F)
+```
 
 
 
