@@ -128,7 +128,7 @@
     <h2>Extraction</h2>
   </hgroup>
   <article data-timings="">
-    <h3>讀入資料</h3>
+    <h3>讀入資料 - read.table</h3>
 
 <p>至少要記得的 <code>read.table</code></p>
 
@@ -289,6 +289,11 @@ View(Cl_info)
 <li>後續參數為選取的欄位名稱</li>
 </ul>
 
+<blockquote>
+<p>給熟悉<code>SQL</code>的使用者
+select data_dt,bank_nm,mortgage_bal from Cl_info;</p>
+</blockquote>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -310,6 +315,11 @@ View(Cl_info)
 <li>第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為<code>True</code>時，該筆資料列保留</li>
 </ul>
 
+<blockquote>
+<p>給熟悉<code>SQL</code>的使用者
+select * from Cl_info where mortgage&gt;1000000;</p>
+</blockquote>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -320,7 +330,22 @@ View(Cl_info)
     <h2>dplyr 介紹 - mutate</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3><code>mutate</code> 用來增加<strong>非彙總</strong>計算<code>欄位</code></h3>
+
+<pre><code>Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li>第一個參數為輸入的 data frame</li>
+<li>第二參數為計算式，也可以用來當做<strong>轉換資料形態</strong>，<strong>變更欄位</strong>*稱使用</li>
+</ul>
+
+<blockquote>
+<p>給熟悉<code>SQL</code>的使用者
+select mmortgage/1000000 as mortage from Cl_info;</p>
+</blockquote>
+
   </article>
   <!-- Presenter Notes -->
 </slide>

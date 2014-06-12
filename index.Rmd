@@ -54,7 +54,7 @@ mode        : selfcontained # {standalone, draft}
 
 ## Extraction
 
-### 讀入資料
+### 讀入資料 - read.table
 
 至少要記得的 `read.table`
 ```
@@ -155,6 +155,12 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 - 第一個參數為輸入的data frame
 - 後續參數為選取的欄位名稱
 
+
+> 給熟悉`SQL`的使用者
+> select data_dt,bank_nm,mortgage_bal from Cl_info;
+
+
+
 ---
 
 ## dplyr 介紹 - filter
@@ -169,7 +175,26 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 - 第一個參數為輸入的data frame
 - 第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
+
+> 給熟悉`SQL`的使用者
+> select * from Cl_info where mortgage>1000000;
+
+
+
 ---
 
 
 ## dplyr 介紹 - mutate
+
+### `mutate` 用來增加**非彙總**計算`欄位`
+
+```
+Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
+```
+- 輸出data frame
+- 第一個參數為輸入的 data frame
+- 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位***稱使用
+
+> 給熟悉`SQL`的使用者
+> select mmortgage/1000000 as mortage from Cl_info;
+
