@@ -156,7 +156,7 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 - 第一個參數為輸入的data frame
 - 後續參數為選取的欄位名稱
 
-
+<br/>
 ##  給熟悉`SQL`的使用者
 
 ```
@@ -179,8 +179,8 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 - 第一個參數為輸入的data frame
 - 第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
-
-## 給熟悉`SQL`的使用者
+<br/>
+### 給熟悉`SQL`的使用者
 ```
 select * from Cl_info where mortgage>1000000;
 ```
@@ -201,7 +201,8 @@ Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
 - 第一個參數為輸入的 data frame
 - 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位***稱使用
 
-## 給熟悉`SQL`的使用者
+<br/>
+### 給熟悉`SQL`的使用者
 
 ```
 select mmortgage/1000000 as mortage from Cl_info;
@@ -220,11 +221,28 @@ Cl_info_part4 = arrange(Cl_info,mortage,desc(data_dt))
 - 第一個參數為輸入的 data frame
 - 後續參數為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
 
-## 給熟悉`SQL`的使用者
+<br/>
+### 給熟悉`SQL`的使用者
 
 ```
 select * from Cl_info order by mortage,data_dt desc ;
 ```
+
+--- .quote
+
+<q>下一個?</q>
+
+
+--- .quote
+
+<q>下一個?</q>
+
+<q>別急，讓我們來練習抓下一個檔案，用剛剛講的指令讀入</q>
+
+--- 
+
+
+
 
 
 ---
