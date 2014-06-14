@@ -578,18 +578,22 @@ semi_join(y,x,by="c1")
 
 ---  &radio2
 
-### 請問，這兩張表該怎麼結合比較好?
+### 請問，這兩張表該怎麼結合比較好?用誰當第一參數?
 
 
-1. left_join Cl_Info_part7 擺左邊
-2. semi_join Cl_Info_part7 擺左邊
-3. _left_join GDP_part5 擺左邊_
-4. _semi_join GDP_part5 擺左邊_
+1. _left_join Cl_Info_part7_
+2. _semi_join Cl_Info_part7_
+3. left_join GDP_part5
+4. semi_join GDP_part5
 5. 其他
 
 *** =image
 
 <img src="./resources/figures/R_ETL_TWOTABLES.svg" style="height:400px" ></img>
+
+*** .explanation
+
+因為Cl_info_part7所俱有的年份比較少，用這個當作主鍵是比較好的.
 
 
 

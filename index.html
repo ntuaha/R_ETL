@@ -943,7 +943,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-46" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h3>請問，這兩張表該怎麼結合比較好?</h3>
+    <h3>請問，這兩張表該怎麼結合比較好?用誰當第一參數?</h3>
   </hgroup>
   <article data-timings="">
     
@@ -955,10 +955,10 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <div class='span6'>
     <div class="quiz quiz-single well new">
       <ol>
-<li>left_join Cl_Info_part7 擺左邊</li>
-<li>semi_join Cl_Info_part7 擺左邊</li>
-<li><em>left_join GDP_part5 擺左邊</em></li>
-<li><em>semi_join GDP_part5 擺左邊</em></li>
+<li><em>left_join Cl_Info_part7</em></li>
+<li><em>semi_join Cl_Info_part7</em></li>
+<li>left_join GDP_part5</li>
+<li>semi_join GDP_part5</li>
 <li>其他</li>
 </ol>
 
@@ -967,7 +967,11 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
       <button class="quiz-show-answer btn btn-success">Show Answer</button>
       <button class="quiz-clear btn btn-danger">Clear</button>
       
-          </div>
+      <div class="quiz-explanation">
+  <p>因為Cl_info_part7所俱有的年份比較少，用這個當作主鍵是比較好的.</p>
+
+</div>
+    </div>
   </div>
 </div>
   </article>
@@ -1363,7 +1367,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='請問，這兩張表該怎麼結合比較好?'>
+        data-slide=46 title='請問，這兩張表該怎麼結合比較好?用誰當第一參數?'>
          46
       </a>
     </li>
