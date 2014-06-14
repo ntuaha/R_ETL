@@ -286,10 +286,20 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 <q>輸入`View(GDP)`觀察`GDP`會發現怎麼前後有很多列的資料是不要的</q>
 
+
 --- .quote
 
-<q>好亂，我想整理好這個data frome</q>
 
+<iframe src = './resources/figures/R_ETL_1.svg' height='400px'></iframe>
+
+
+
+--- .quote
+
+
+<iframe src = './resources/figures/R_ETL_1.svg' height='400px'></iframe>
+
+<q>好亂，我想整理好這個data frome</q>
 
 --- &twocol w1:40% w2:60%
 
