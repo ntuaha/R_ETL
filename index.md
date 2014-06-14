@@ -465,9 +465,9 @@ left_join(x,y,by=NULL,copy=FALSE)
 select x.* from x full join y ;
 ````
 
---- .quote &twocol
+--- &twocol
 
-<q>接下來先從各類join開始說明</q>
+###接下來先從各類join開始說明
 
 先`建立資料集`
 
