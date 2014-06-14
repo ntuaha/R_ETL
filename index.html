@@ -495,7 +495,7 @@ View(Cl_info)
 
 <h3><code>summarise</code>則用來做後續的各類彙總操作</h3>
 
-<pre><code>Cl_info_part5 = mutate(Cl_info,time=data_dt) ;Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+<pre><code>Cl_info_part6 = group_by(Cl_info_part5,data_dt) #先匯總
 Cl_info_part7 = summarise(Cl_info_part6,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
 </code></pre>
@@ -511,7 +511,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
 
 <h3>給熟悉<code>SQL</code>的使用者</h3>
 
-<pre><code>select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_total_cnt from Cl_info group by time ;
+<pre><code>select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 </code></pre>
 
   </article>
@@ -521,7 +521,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
 <slide class="quote" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
-    <p><q>group by 可加先下也可不下，不下的情況是直接對<strong>全部</strong>資料做集匯總運算 </q></p>
+    <p><q>group by 可加先下也可不下，不下的情況是直對接<code>全部</code>資料做集匯總運算 </q></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -540,9 +540,9 @@ Cl_info_part7 = summarise(Cl_info_part6,
 <li>sum   加總 </li>
 <li>n     計算個數  例如: A B B C   輸出4 </li>
 <li>n_distinct 計算不同物件的個數 例: A B B C 輸出3</li>
-<li>first 該群體第一個，可配合group by 使用</li>
-<li>last  該群體最後一個，可配合group by 使用</li>
-<li>nth   該群體的第n個，可配合group by 使用</li>
+<li>first 該群體第一個，可配合<code>order_by</code> 使用 first(x,order_by(y))</li>
+<li>last  該群體最後一個，可配合<code>order_by</code> 使用</li>
+<li>nth   該群體的第n個，可配合order_by 使用</li>
 <li>min, max 最大最小值</li>
 <li>median 中位數</li>
 <li>IQR   就是IQR  ＃待驗證</li>

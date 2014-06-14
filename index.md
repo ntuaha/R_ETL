@@ -297,7 +297,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 ### `summarise`則用來做後續的各類彙總操作
 
 ```
-Cl_info_part5 = mutate(Cl_info,time=data_dt) ;Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+Cl_info_part6 = group_by(Cl_info_part5,data_dt) #先匯總
 Cl_info_part7 = summarise(Cl_info_part6,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
 ```
@@ -310,12 +310,12 @@ Cl_info_part7 = summarise(Cl_info_part6,
 ### 給熟悉`SQL`的使用者
 
 ```
-select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_total_cnt from Cl_info group by time ;
+select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 ```
 
 --- .quote
 
-<q>group by 可加先下也可不下，不下的情況是直接對**全部**資料做集匯總運算 </q>
+<q>group by 可加先下也可不下，不下的情況是直對接`全部`資料做集匯總運算 </q>
 
 
 ---
@@ -328,9 +328,9 @@ select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_tota
  - sum   加總 
  - n     計算個數  例如: A B B C   輸出4 
  - n_distinct 計算不同物件的個數 例: A B B C 輸出3
- - first 該群體第一個，可配合group by 使用
- - last  該群體最後一個，可配合group by 使用
- - nth   該群體的第n個，可配合group by 使用
+ - first 該群體第一個，可配合`order_by` 使用 first(x,order_by(y))
+ - last  該群體最後一個，可配合`order_by` 使用
+ - nth   該群體的第n個，可配合order_by 使用
  - min, max 最大最小值
  - median 中位數
  - IQR   就是IQR  ＃待驗證
