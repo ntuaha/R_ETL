@@ -473,19 +473,57 @@ View(Cl_info)
 
 <p><q>輸入<code>View(GDP)</code>觀察<code>GDP</code>會發現怎麼前後有很多列的資料是不要的</q></p>
 
+<p><q>好亂，我想整理好這個data frome</q></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料清理</h2>
+  </hgroup>
   <article data-timings="">
     
+<div style='float:left;width:48%;'>
+<h3>要處理的標的物有</h3>
+
+<ol>
+<li>去除前後不相干的資料列</li>
+<li>轉換某些欄味的格式</li>
+<li>將單位轉換，從<strong>百萬元變成元</strong></li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+<h3>可能的來源?</h3>
+
+<ol class = "build incremental">
+<li>政府公開資料</li>
+<li>新聞</li>
+<li>股市</li>
+</ol>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料清理</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>要處理的標的物有
+//TODO</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - group_by, summarise</h2>
@@ -507,8 +545,6 @@ Cl_info_part7 = summarise(Cl_info_part6,
 <li>後續函數用來處理匯總運算</li>
 </ul>
 
-<p><br/></p>
-
 <h3>給熟悉<code>SQL</code>的使用者</h3>
 
 <pre><code>select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
@@ -518,7 +554,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="quote" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
     <p><q>group by 可加先下也可不下，不下的情況是直對接<code>全部</code>資料做集匯總運算 </q></p>
@@ -527,7 +563,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>彙總函數 summarise</h2>
@@ -538,12 +574,12 @@ Cl_info_part7 = summarise(Cl_info_part6,
 <ul>
 <li>mean  平均值</li>
 <li>sum   加總 </li>
-<li>n     計算個數  例如: A B B C   輸出4 </li>
-<li>n_distinct 計算不同物件的個數 例: A B B C 輸出3</li>
-<li>first 該群體第一個，可配合<code>order_by</code> 使用 first(x,order_by(y))</li>
-<li>last  該群體最後一個，可配合<code>order_by</code> 使用</li>
-<li>nth   該群體的第n個，可配合order_by 使用</li>
-<li>min, max 最大最小值</li>
+<li>n     計算個數  例如: A B B C   輸出<code>4</code> </li>
+<li>n_distinct 計算不同物件的個數 例: A B B C 輸出<code>3</code></li>
+<li>first 該群體第一個，可配合<code>order_by</code> 使用;  first(x,order_by(y))</li>
+<li>last  該群體最後一個，可配合<code>order_by</code> 使用;  last(x,order_by(y))</li>
+<li>nth   該群體的第n個，可配合<code>order_by</code> 使用;  nth(x,10,order_by(y))</li>
+<li>max, min 最大或最小值</li>
 <li>median 中位數</li>
 <li>IQR   就是IQR  ＃待驗證</li>
 </ul>
@@ -552,7 +588,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
     
@@ -560,7 +596,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -731,38 +767,44 @@ Cl_info_part7 = summarise(Cl_info_part6,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title=''>
+        data-slide=26 title='資料清理'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='dplyr 介紹 - group_by, summarise'>
+        data-slide=27 title='資料清理'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title=''>
+        data-slide=28 title='dplyr 介紹 - group_by, summarise'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='彙總函數 summarise'>
+        data-slide=29 title=''>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title=''>
+        data-slide=30 title='彙總函數 summarise'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Reference'>
+        data-slide=31 title=''>
          31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Reference'>
+         32
       </a>
     </li>
   </ul>

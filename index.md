@@ -286,7 +286,39 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 <q>輸入`View(GDP)`觀察`GDP`會發現怎麼前後有很多列的資料是不要的</q>
 
+<q>好亂，我想整理好這個data frome</q>
+
+
+--- &twocol
+
+## 資料清理
+
+*** =left
+### 要處理的標的物有
+
+ 1. 去除前後不相干的資料列
+ 2. 轉換某些欄味的格式
+ 3. 將單位轉換，從**百萬元變成元**
+
+*** =right
+### 可能的來源?
+> 1. 政府公開資料
+> 2. 新聞
+> 3. 股市
+
+
+
+
+
+
+
+
 ---
+
+## 資料清理
+
+要處理的標的物有
+//TODO
 
 
 ---
@@ -306,7 +338,6 @@ Cl_info_part7 = summarise(Cl_info_part6,
 - 第二個欄位之後都是用來group by/summarise 的欄位
 - 後續函數用來處理匯總運算
 
-<br/>
 ### 給熟悉`SQL`的使用者
 
 ```
@@ -326,12 +357,12 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 
  - mean  平均值
  - sum   加總 
- - n     計算個數  例如: A B B C   輸出4 
- - n_distinct 計算不同物件的個數 例: A B B C 輸出3
- - first 該群體第一個，可配合`order_by` 使用 first(x,order_by(y))
- - last  該群體最後一個，可配合`order_by` 使用
- - nth   該群體的第n個，可配合order_by 使用
- - min, max 最大最小值
+ - n     計算個數  例如: A B B C   輸出`4` 
+ - n_distinct 計算不同物件的個數 例: A B B C 輸出`3`
+ - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by(y))
+ - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by(y))
+ - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10,order_by(y))
+ - max, min 最大或最小值
  - median 中位數
  - IQR   就是IQR  ＃待驗證
 
