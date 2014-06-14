@@ -421,7 +421,7 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 
 1. 自動化排程
 2. 與資料庫溝通
-3. 
+3. 其他的資料源
 
 ---
 
