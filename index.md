@@ -569,12 +569,53 @@ anti_join(y,x,by="c1")
 ## 2  6  G
 ```
 
-*** =pnotes &twocol
+*** =pnotes
+回憶:
+<img src="./resources/figures/R_ETL_x.svg" ></img>
+
+
+## dplyr 介紹 - semi_join, full_join
+
 
 *** =left
+### semi_join 取出共有的鍵值
 
 ```r
-x
+semi_join(x,y,by="c1")
+```
+
+```
+##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+```
+
+```r
+semi_join(y,x,by="c1")
+```
+
+```
+##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+```
+
+*** =right
+
+### full_join 取出非共有的鍵值
+
+```r
+left_join(x,y,by=NULL)
+```
+
+```
+## Joining by: c("c1", "c2")
 ```
 
 ```
@@ -588,24 +629,9 @@ x
 ## 7  5  G
 ```
 
-*** =right
-
-
-```r
-y
-```
-
-```
-##   c1 c2
-## 1  1  A
-## 2  2  B
-## 3  2  C
-## 4  3  D
-## 5  4  E
-## 6  6  F
-## 7  6  G
-```
-
+*** =pnotes
+回憶:
+<img src="./resources/figures/R_ETL_x.svg" ></img>
 
 
 
