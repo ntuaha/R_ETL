@@ -365,6 +365,7 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 ```
 GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
                             season=as.numeric(substr(time,6,6)))
+GDP_part5 = select(GDP_part4,year,season,GDP)
 ```
 
 1. 我們利用了 `substr`, 取出特定位置的資料
@@ -372,14 +373,19 @@ GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
 
 
 
+--- .quote
 
+<q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處理變成後續可以使用的資料呢？</a>
 
 ---
 
-## 資料清理
+## 資料整併
 
-要處理的標的物有
-//TODO
+### 要處理的標的物有
+
+1. 將**房貸餘額**匯總到`每個月`的資料
+2. 將**GDP**匯總到`每年`的資料
+3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
 ---
@@ -393,6 +399,7 @@ GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
 Cl_info_part6 = group_by(Cl_info_part5,data_dt) #先匯總
 Cl_info_part7 = summarise(Cl_info_part6,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
+GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))        
 ```
 - 輸出data frame
 - 第一個參數為輸入的 data frame
@@ -427,8 +434,16 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
  - median 中位數
  - IQR   就是IQR  ＃待驗證
 
+---
 
---- .segue bg:yellow
+## 匯總處理
+
+
+
+
+
+
+--- .segue bg:orange
 
 ## Review
 
