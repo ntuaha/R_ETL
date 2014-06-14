@@ -595,7 +595,14 @@ semi_join(y,x,by="c1")
 
 因為Cl_info_part7所俱有的年份比較少，用這個當作主鍵是比較好的.
 
+--- 
 
+## 資料整理完成!
+
+```
+mutate(Cl_info_part7,as)
+GDP_part7 = select(mutate(GDP_part6 , data_dt = as.POSIXct(paste(year,'1','1',sep='-'))),data_dt,GDP)
+INFO =left_join(Cl_info_part7,GDP_part7,by="data_dt",copy=TRUE)
 
 --- .segue bg:orange
 

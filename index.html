@@ -978,7 +978,22 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-47" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-47" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料整理完成!</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>mutate(Cl_info_part7,as)
+GDP_part7 = select(mutate(GDP_part6 , data_dt = as.POSIXct(paste(year,&#39;1&#39;,&#39;1&#39;,sep=&#39;-&#39;))),data_dt,GDP)
+INFO =left_join(Cl_info_part7,GDP_part7,by=&quot;data_dt&quot;,copy=TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-48" style="background:orange; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Review</h2>
@@ -989,7 +1004,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>我們做了什麼?</h2>
@@ -1007,7 +1022,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-49" style="background:green; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-50" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Excerises</h2>
@@ -1018,7 +1033,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料處理練習</h2>
@@ -1034,7 +1049,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-52" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>函式運用練習</h2>
@@ -1049,7 +1064,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-52" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-53" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -1060,7 +1075,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-53" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-54" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -1076,7 +1091,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-54" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-55" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -1373,50 +1388,56 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Review'>
+        data-slide=47 title='資料整理完成!'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='我們做了什麼?'>
+        data-slide=48 title='Review'>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Excerises'>
+        data-slide=49 title='我們做了什麼?'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='資料處理練習'>
+        data-slide=50 title='Excerises'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='函式運用練習'>
+        data-slide=51 title='資料處理練習'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Speical'>
+        data-slide=52 title='函式運用練習'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Topics'>
+        data-slide=53 title='Speical'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Reference'>
+        data-slide=54 title='Topics'>
          54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='Reference'>
+         55
       </a>
     </li>
   </ul>
