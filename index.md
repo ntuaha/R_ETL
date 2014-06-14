@@ -1,5 +1,5 @@
 ---
-title       : R的ETL流程
+title       : ETL on R
 subtitle    : 
 author      : Cheng Yu Lin (aha)
 job         : 
@@ -286,10 +286,12 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 <q>輸入`View(GDP)`觀察`GDP`會發現怎麼前後有很多列的資料是不要的</q>
 
+--- .quote
+
 <q>好亂，我想整理好這個data frome</q>
 
 
---- &twocol
+--- &twocol w1:40% w2:60%
 
 ## 資料清理
 
@@ -301,10 +303,10 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
  3. 將單位轉換，從**百萬元變成元**
 
 *** =right
-### 可能的來源?
-> 1. 政府公開資料
-> 2. 新聞
-> 3. 股市
+
+<iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
+
+
 
 
 
@@ -336,7 +338,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
 - 輸出data frame
 - 第一個參數為輸入的 data frame
 - 第二個欄位之後都是用來group by/summarise 的欄位
-- 後續函數用來處理匯總運算
+- 後續參數用來處理匯總運算
 
 ### 給熟悉`SQL`的使用者
 
