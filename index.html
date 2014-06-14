@@ -748,10 +748,35 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="quote" id="slide-40" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>接下來先從各類join開始說明</q></p>
+
+<p>先<code>建立資料集</code></p>
+
+<pre><code>x=data.frame(c1 = c(1,1,2,3,4,5,5),c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+</code></pre>
+
+<div style='float:left;width:48%;'>
+<p>x
+<img src="./sources/figures/x.svg"></svg></p>
+
+</div>
+  <div style='float:right;width:48%;'>
+<p>y
+<img src="./sources/figures/y.svg"></svg></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>匯總處理</h2>
+    <h2>left join</h2>
   </hgroup>
   <article data-timings="">
     
@@ -759,7 +784,19 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-41" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-42" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - left_join</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>#</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-43" style="background:orange; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Review</h2>
@@ -770,7 +807,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-42" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-44" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>我們做了什麼?</h2>
@@ -788,7 +825,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-43" style="background:green; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-45" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Excerises</h2>
@@ -799,7 +836,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-44" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-46" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料處理練習</h2>
@@ -815,7 +852,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-45" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-47" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>函式運用練習</h2>
@@ -830,7 +867,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-46" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-48" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -841,7 +878,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-47" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -857,7 +894,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -865,7 +902,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <article data-timings="">
     <ol>
 <li><a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></li>
-<li></li>
+<li><a href="http://cran.r-project.org/web/packages/dplyr/dplyr.pdf">http://cran.r-project.org/web/packages/dplyr/dplyr.pdf</a></li>
 </ol>
 
   </article>
@@ -1112,56 +1149,68 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='匯總處理'>
+        data-slide=40 title=''>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Review'>
+        data-slide=41 title='left join'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='我們做了什麼?'>
+        data-slide=42 title='dplyr 介紹 - left_join'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Excerises'>
+        data-slide=43 title='Review'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='資料處理練習'>
+        data-slide=44 title='我們做了什麼?'>
          44
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='函式運用練習'>
+        data-slide=45 title='Excerises'>
          45
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Speical'>
+        data-slide=46 title='資料處理練習'>
          46
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Topics'>
+        data-slide=47 title='函式運用練習'>
          47
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Reference'>
+        data-slide=48 title='Speical'>
          48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Topics'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Reference'>
+         50
       </a>
     </li>
   </ul>

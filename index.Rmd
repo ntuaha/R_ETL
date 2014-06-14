@@ -464,9 +464,39 @@ left_join(x,y,by=NULL,copy=FALSE)
 select x.* from x full join y ;
 ````
 
+--- .quote &twocol
+
+<q>接下來先從各類join開始說明</q>
+
+先`建立資料集`
+
+```
+x=data.frame(c1 = c(1,1,2,3,4,5,5),c2 = c('A','B','C','D','E','F','G'))
+y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c('A','B','C','D','E','F','G'))
+```
+
+*** =left
+x
+<img src="./sources/figures/x.svg"></svg>
+
+*** =right
+y
+<img src="./sources/figures/y.svg"></svg>
+
+
 ---
 
-## 匯總處理
+## left join
+
+
+
+
+
+---
+
+## dplyr 介紹 - left_join 
+
+#
 
 
 
@@ -524,4 +554,4 @@ select x.* from x full join y ;
 ## Reference
 
 1. [http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
-2. 
+2. [http://cran.r-project.org/web/packages/dplyr/dplyr.pdf](http://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
