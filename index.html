@@ -525,10 +525,14 @@ GDP_part2 = filter(GDP_part1,y&gt;4&amp;y&lt;137)
 
 <h3>別忘了改上欄位名稱</h3>
 
-<pre><code>colnames(GDP_part2) = c(&quot;time&quot;,&quot;GDP&quot;,&quot;GDP_yoy&quot;
-                        ,&quot;GDP_2006&quot;,&quot;GDP_2006_yoy&quot;,
+<pre><code>colnames(GDP_part2) = c(&quot;time&quot;,&quot;GDP&quot;,&quot;GDP_yoy&quot;,&quot;GDP_2006&quot;,&quot;GDP_2006_yoy&quot;,
                         &quot;GDP_minus&quot;,&quot;GDP_minus_yoy&quot;,&quot;row_no&quot;)
 </code></pre>
+
+<ol>
+<li>利用<code>cbind</code>，作columns合併</li>
+<li>利用<code>colnames</code>，改變欄位名稱</li>
+</ol>
 
 <div style='float:left;width:48%;'>
 

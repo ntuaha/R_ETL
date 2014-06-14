@@ -321,10 +321,12 @@ GDP_part2 = filter(GDP_part1,y>4&y<137)
 ### 別忘了改上欄位名稱
 
 ```
-colnames(GDP_part2) = c("time","GDP","GDP_yoy"
-                        ,"GDP_2006","GDP_2006_yoy",
+colnames(GDP_part2) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
                         "GDP_minus","GDP_minus_yoy","row_no")
 ```
+
+1. 利用`cbind`，作columns合併
+2. 利用`colnames`，改變欄位名稱
 
 
 
