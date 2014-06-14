@@ -479,7 +479,8 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 ```
 
 打入 `View(x)`與`View(y)`應該會看見
-<img src="./resources/figures/R_ETL_x.svg"></img>
+
+<img src="./resources/figures/R_ETL_x.svg" height="10%"></img>
 
 
 
