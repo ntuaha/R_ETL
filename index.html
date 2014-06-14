@@ -811,7 +811,16 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
     <h2>left join</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3>參數<code>by</code> 指出以何欄位作為對照鍵值</h3>
+
+<p>透過先前創建的<code>x</code>與<code>y</code>，以及交集的鍵值<code>c1</code></p>
+
+<pre><code>ljxy = left_join(x,y,by=&quot;c1&quot;) #以X為主
+ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
+</code></pre>
+
+<p><img src="./resources/figures/R_ETL_LJXY.svg" ></img></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>

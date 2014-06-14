@@ -510,14 +510,18 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 <img src="./resources/figures/R_ETL_x.svg" ></img>
 
-
-
 ---
 
 ## left join
 
+### 參數`by` 指出以何欄位作為對照鍵值
+透過先前創建的`x`與`y`，以及交集的鍵值`c1`
+```
+ljxy = left_join(x,y,by="c1") #以X為主
+ljyx = left_join(y,x,by="c1") #以Y為主
+```
 
-
+<img src="./resources/figures/R_ETL_LJXY.svg" ></img>
 
 
 ---
