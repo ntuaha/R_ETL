@@ -748,19 +748,21 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-40" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-40" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>join講解前資料準備</h2>
+  </hgroup>
   <article data-timings="">
-    <p><q>接下來先從各類join開始說明</q></p>
-
-<p>先<code>建立資料集</code></p>
+    <p>###接下來先從各類join開始說明
+先<code>建立資料集</code></p>
 
 <pre><code>x=data.frame(c1 = c(1,1,2,3,4,5,5),c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
 y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
 </code></pre>
 
 <p>打入 <code>View(x)</code>與<code>View(y)</code>應該會看見
-<img src="./sources/figures/R_ETL_X.svg"></img></p>
+<img src="./resources/figures/R_ETL_X.svg"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1142,7 +1144,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title=''>
+        data-slide=40 title='join講解前資料準備'>
          40
       </a>
     </li>
