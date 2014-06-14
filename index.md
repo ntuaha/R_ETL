@@ -593,7 +593,6 @@ semi_join(x,y,by="c1")
 ## 5  4  E
 ```
 
-
 *** =right
 
 ### `semi_join` 取出共有的鍵值,`y` 為主
@@ -614,6 +613,25 @@ semi_join(y,x,by="c1")
 *** =pnotes
 
 <img src="./resources/figures/R_ETL_x.svg" style="height:400px" ></img>
+
+
+---
+
+## 實際問題 - 練習題
+
+### 請問，這兩張表該怎麼結合比較好?
+<img src="./resources/figures/R_ETL_TWOTABLES.svg" style="height:400px" ></img>
+
+---  &radio2
+
+### 請問，這兩張表該怎麼結合比較好?
+
+1. left_join(Cl_Info_part7,GDP_part5,by=data_dt)
+2. semi_join(Cl_Info_part7,GDP_part5,by=data_dt)
+3. left_join(GDP_part5,Cl_Info_part7,by=data_dt)
+4. semi_join(GDP_part5,Cl_Info_part7,by=data_dt)
+5. 其他
+
 
 
 
