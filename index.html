@@ -808,7 +808,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 <slide class="" id="slide-42" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>left join</h2>
+    <h2>dplyr 介紹 - left_join</h2>
   </hgroup>
   <article data-timings="">
     <h3>參數<code>by</code> 指出以何欄位作為對照鍵值</h3>
@@ -828,10 +828,18 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-43" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - left_join</h2>
+    <h2>dplyr 介紹 - inner_join, anti_join</h2>
   </hgroup>
   <article data-timings="">
-    <p>#</p>
+    <h3>inner_join 取出共有的鍵值</h3>
+
+<pre><code class="r">ij_xy = inner_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<h3>anti_join 取出非共有的鍵值</h3>
+
+<pre><code class="r">aj_xy = anti_join(x,y,by=&quot;c1&quot;)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -1202,13 +1210,13 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='left join'>
+        data-slide=42 title='dplyr 介紹 - left_join'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='dplyr 介紹 - left_join'>
+        data-slide=43 title='dplyr 介紹 - inner_join, anti_join'>
          43
       </a>
     </li>
