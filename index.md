@@ -465,9 +465,9 @@ left_join(x,y,by=NULL,copy=FALSE)
 select x.* from x full join y ;
 ````
 
---- &twocol
+--- .quote
 
-###接下來先從各類join開始說明
+<q>接下來先從各類join開始說明</q>
 
 先`建立資料集`
 
@@ -476,13 +476,9 @@ x=data.frame(c1 = c(1,1,2,3,4,5,5),c2 = c('A','B','C','D','E','F','G'))
 y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c('A','B','C','D','E','F','G'))
 ```
 
-*** =left
-x
-<img src="./sources/figures/x.svg"></svg>
+打入 `View(x)`與`View(y)`應該會看見
+<img src="./sources/figures/R_ETL_X.svg"></img>
 
-*** =right
-y
-<img src="./sources/figures/y.svg"></svg>
 
 
 ---
