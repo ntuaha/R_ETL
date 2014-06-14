@@ -440,16 +440,19 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 //TODO 練習題目
 
 
---- .quote bg:red
+--- .segue bg:red
 
-<h2>接下來比較難，真的!!!!</h2>
+## 接下來比較難，真的!!!!
 
 --- 
 
 ## 結合表格
 
-1. cbind 用來做 `1-1`列結合
-
+1. cbind 用來做 `1-1` **水平**結合
+2. rbind 用來做 **垂直**結合
+3. left_join 
+4. inner_join
+5. right_join
 
 
 

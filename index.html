@@ -708,7 +708,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-38" style="background:red; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-38" style="background:red; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來比較難，真的!!!!</h2>
@@ -726,7 +726,11 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
   </hgroup>
   <article data-timings="">
     <ol>
-<li>cbind 用來做 <code>1-1</code>列結合</li>
+<li>cbind 用來做 <code>1-1</code> <strong>水平</strong>結合</li>
+<li>rbind 用來做 <strong>垂直</strong>結合</li>
+<li>left_join </li>
+<li>inner_join</li>
+<li>right_join</li>
 </ol>
 
 <h2>匯總處理</h2>
