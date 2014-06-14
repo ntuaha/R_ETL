@@ -69,10 +69,6 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 - stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
 - header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
 
----  .quote
-
-<q> 開始動手做吧!</q>
-
 --- .quote 
 
 <q> 等等 先安裝幾個建議的套件</q>
@@ -265,7 +261,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 --- .quote
 
-<q>練習讀入與創建一個變數`GDP`</q>
+<q>練習讀入與創建一個data frame`GDP`</q>
 
 --- .quote
 
@@ -431,7 +427,42 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
  - median 中位數
  - IQR   就是IQR  ＃待驗證
 
+
+--- .segue bg:yellow
+
+## Review
+
+---
+
+## 我們做了什麼?
+
+- 設定問題
+- 下載與讀入與整理房貸資料
+- 下載與讀入與整理GDP
+- 整合資料
+- 畫圖
+
+
 --- .segue bg:green
+
+## Excerises
+
+---
+
+## 資料處理練習
+
+- 下載M1b M2 資料
+- 整合之前的資料
+- 比較房貸餘額與M1b的變化
+
+---
+
+## 函式運用練習
+
+- 找**2014.02**房貸放款`數量最少`的銀行
+- 將GDP改用`億新台幣`呈現
+
+--- .segue bg:blue
 
 ## Speical
 
