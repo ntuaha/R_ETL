@@ -522,7 +522,7 @@ ljxy = left_join(x,y,by="c1") #以X為主
 ljyx = left_join(y,x,by="c1") #以Y為主
 ```
 
-<img src="./resources/figures/R_ETL_LJXY.svg" ></img>
+<img src="./resources/figures/R_ETL_LJXY.svg" style="height:200px"></img>
 
 
 ---
