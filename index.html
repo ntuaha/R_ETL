@@ -491,13 +491,13 @@ View(Cl_info)
     <h2>dplyr 介紹 - group_by, summarise</h2>
   </hgroup>
   <article data-timings="">
-    <h3><code>group_by</code> 用來將資料包裝成一組，做後續的<code>彙總</code>處;<code>summarise</code>則用來做後續的各類彙總操作</h3>
+    <h3><code>group_by</code> 用來將資料包裝成一組，做後續的`彙總</h3>
 
-<pre><code>Cl_info_part5 = mutate(Cl_info,time=data_dt) #已看過
-Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+<h3><code>summarise</code>則用來做後續的各類彙總操作</h3>
+
+<pre><code>Cl_info_part5 = mutate(Cl_info,time=data_dt) ;Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
 Cl_info_part7 = summarise(Cl_info_part6,
-        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE),
-        mortage_total_cnt = sum(mortgage_cnt,na.rm=TRUE))
+        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
 </code></pre>
 
 <ul>
@@ -529,10 +529,11 @@ Cl_info_part7 = summarise(Cl_info_part6,
 
 <slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>彙總函數 summarise</h2>
+  </hgroup>
   <article data-timings="">
-    <p>##彙總函數 summarise</p>
-
-<p>可以使用的函數如下所列</p>
+    <p>可以使用的函數如下所列</p>
 
 <ul>
 <li>mean  平均值</li>
@@ -748,7 +749,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title=''>
+        data-slide=29 title='彙總函數 summarise'>
          29
       </a>
     </li>

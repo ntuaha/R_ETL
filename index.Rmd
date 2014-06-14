@@ -292,14 +292,13 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 ## dplyr 介紹 - group_by, summarise
 
-### `group_by` 用來將資料包裝成一組，做後續的`彙總`處;`summarise`則用來做後續的各類彙總操作
+### `group_by` 用來將資料包裝成一組，做後續的`彙總
+### `summarise`則用來做後續的各類彙總操作
 
 ```
-Cl_info_part5 = mutate(Cl_info,time=data_dt) #已看過
-Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+Cl_info_part5 = mutate(Cl_info,time=data_dt) ;Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
 Cl_info_part7 = summarise(Cl_info_part6,
-        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE),
-        mortage_total_cnt = sum(mortgage_cnt,na.rm=TRUE))
+        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
 ```
 - 輸出data frame
 - 第一個參數為輸入的 data frame
@@ -320,7 +319,7 @@ select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_tota
 
 ---
 
-##彙總函數 summarise
+## 彙總函數 summarise
 
 可以使用的函數如下所列
 
