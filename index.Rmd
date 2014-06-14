@@ -543,10 +543,15 @@ anti_join(x,y,by="c1")
 anti_join(y,x,by="c1")
 ```
 
-*** =pnotes
+*** =pnotes &twocol
+
+*** =left
 ```{r}
 x
 ```
+
+*** =right
+
 ```{r}
 y
 ```

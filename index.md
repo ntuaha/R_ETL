@@ -569,7 +569,9 @@ anti_join(y,x,by="c1")
 ## 2  6  G
 ```
 
-*** =pnotes
+*** =pnotes &twocol
+
+*** =left
 
 ```r
 x
@@ -585,6 +587,9 @@ x
 ## 6  5  F
 ## 7  5  G
 ```
+
+*** =right
+
 
 ```r
 y
