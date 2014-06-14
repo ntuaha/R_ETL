@@ -881,12 +881,13 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-44" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - semi_join, full_join</h2>
+    <h2>dplyr 介紹 - semi_join</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>與<code>left_join</code>的差別在，只要對應不到的鍵值就不出現</p>
+
 <div style='float:left;width:48%;'>
-<h3><code>semi_join</code> 取出共有的鍵值</h3>
+<h3><code>semi_join</code> 取出共有的鍵值,<code>x</code> 為主</h3>
 
 <pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
 </code></pre>
@@ -899,6 +900,10 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 ## 5  4  E
 </code></pre>
 
+</div>
+  <div style='float:right;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值,<code>y</code> 為主</h3>
+
 <pre><code class="r">semi_join(y,x,by=&quot;c1&quot;)
 </code></pre>
 
@@ -908,26 +913,6 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 ## 3  2  C
 ## 4  3  D
 ## 5  4  E
-</code></pre>
-
-</div>
-  <div style='float:right;width:48%;'>
-<h3><code>full_join</code> 取出非共有的鍵值</h3>
-
-<pre><code class="r">left_join(x,y,by=NULL)
-</code></pre>
-
-<pre><code>## Joining by: c(&quot;c1&quot;, &quot;c2&quot;)
-</code></pre>
-
-<pre><code>##   c1 c2
-## 1  1  A
-## 2  1  B
-## 3  2  C
-## 4  3  D
-## 5  4  E
-## 6  5  F
-## 7  5  G
 </code></pre>
 
 </div>
@@ -1318,7 +1303,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='dplyr 介紹 - semi_join, full_join'>
+        data-slide=44 title='dplyr 介紹 - semi_join'>
          44
       </a>
     </li>

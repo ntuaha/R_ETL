@@ -574,11 +574,11 @@ anti_join(y,x,by="c1")
 
 --- &twocol
 
-## dplyr 介紹 - semi_join, full_join
+## dplyr 介紹 - semi_join
 
-
+與`left_join`的差別在，只要對應不到的鍵值就不出現
 *** =left
-### `semi_join` 取出共有的鍵值
+### `semi_join` 取出共有的鍵值,`x` 為主
 
 ```r
 semi_join(x,y,by="c1")
@@ -593,6 +593,11 @@ semi_join(x,y,by="c1")
 ## 5  4  E
 ```
 
+
+*** =right
+
+### `semi_join` 取出共有的鍵值,`y` 為主
+
 ```r
 semi_join(y,x,by="c1")
 ```
@@ -604,29 +609,6 @@ semi_join(y,x,by="c1")
 ## 3  2  C
 ## 4  3  D
 ## 5  4  E
-```
-
-*** =right
-
-### `full_join` 取出非共有的鍵值
-
-```r
-left_join(x,y,by=NULL)
-```
-
-```
-## Joining by: c("c1", "c2")
-```
-
-```
-##   c1 c2
-## 1  1  A
-## 2  1  B
-## 3  2  C
-## 4  3  D
-## 5  4  E
-## 6  5  F
-## 7  5  G
 ```
 
 *** =pnotes
