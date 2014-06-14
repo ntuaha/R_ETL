@@ -490,7 +490,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 
 
---- &twocol
+--- &twocol w1:65% w2:35%
 
 ## join講解前資料準備
 
