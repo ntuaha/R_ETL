@@ -465,24 +465,6 @@ left_join(x,y,by=NULL,copy=FALSE)
 select x.* from x full join y ;
 ````
 
---- 
-
-## join講解前資料準備
-
-### 接下來先從各類join開始說明
-先`建立資料集`
-
-```
-
-x=data.frame(c1 = c(1,1,2,3,4,5,5),c2 = c('A','B','C','D','E','F','G'))
-y=data.frame(c1 = c(1,2,2,3,4,6,6),c2 = c('A','B','C','D','E','F','G'))
-
-```
-
-打入 `View(x)`與`View(y)`應該會看見
-<img src="./resources/figures/R_ETL_X.svg"></img>
-
-
 
 ---
 
