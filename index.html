@@ -833,7 +833,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <article data-timings="">
     
 <div style='float:left;width:48%;'>
-<h3>inner_join 取出共有的鍵值</h3>
+<h3><code>inner_join</code> 取出共有的鍵值</h3>
 
 <pre><code class="r">inner_join(x,y,by=&quot;c1&quot;)
 </code></pre>
@@ -849,7 +849,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 
 </div>
   <div style='float:right;width:48%;'>
-<h3>anti_join 取出非共有的鍵值</h3>
+<h3><code>anti_join</code> 取出非共有的鍵值</h3>
 
 <pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
 </code></pre>
@@ -885,6 +885,52 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   </hgroup>
   <article data-timings="">
     
+<div style='float:left;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值</h3>
+
+<pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+</code></pre>
+
+<pre><code class="r">semi_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<h3><code>full_join</code> 取出非共有的鍵值</h3>
+
+<pre><code class="r">left_join(x,y,by=NULL)
+</code></pre>
+
+<pre><code>## Joining by: c(&quot;c1&quot;, &quot;c2&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+## 6  5  F
+## 7  5  G
+</code></pre>
+
+</div>
   </article>
   <!-- Presenter Notes -->
   <aside class="note" id="">
