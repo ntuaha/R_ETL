@@ -50,11 +50,14 @@ mode        : selfcontained # {standalone, draft}
 > 2. Transformation
 > 3. Loading
 
+--- .dark
+
+## 學習，實作，觀察
+
+
 --- 
 
-## Extraction
-
-### 讀入資料 - read.table
+## 讀入資料 - read.table
 
 至少要記得的 `read.table`
 ```
@@ -418,7 +421,7 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 
 ---
 
-##Topics
+## Topics
 
 1. 自動化排程
 2. 與資料庫溝通
