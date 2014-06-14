@@ -368,12 +368,12 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 ### 抽離年份與季
 
 ```
-GDP_part4 = mutate(GDP_part3,
-year=as.numeric(substr(time,0,4)),
-season=as.numeric(substr(time,6,6)))
+GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
+                            season=as.numeric(substr(time,6,6)))
 ```
 
 1. 我們利用了 `substr`, 取出特定位置的資料
+2. 再次利用`as.numeric`, 將文字轉成數字
 
 
 

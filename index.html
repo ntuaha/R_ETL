@@ -601,13 +601,13 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(&quot;,&quot;, &quot;&quot;,GD
   <article data-timings="">
     <h3>抽離年份與季</h3>
 
-<pre><code>GDP_part4 = mutate(GDP_part3,
-year=as.numeric(substr(time,0,4)),
-season=as.numeric(substr(time,6,6)))
+<pre><code>GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
+                            season=as.numeric(substr(time,6,6)))
 </code></pre>
 
 <ol>
 <li>我們利用了 <code>substr</code>, 取出特定位置的資料</li>
+<li>再次利用<code>as.numeric</code>, 將文字轉成數字</li>
 </ol>
 
   </article>
