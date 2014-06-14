@@ -298,13 +298,30 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 ### 要處理的標的物有
 
  1. 去除前後不相干的資料列
- 2. 轉換某些欄味的格式
+ 2. 轉換某些欄位的格式
  3. 將單位轉換，從**百萬元變成元**
 
 *** =right
 
 <iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
 
+
+--- &twocol w1:40% w2:60%
+
+##一步一步來 - 去除雜訊資料列
+
+*** =left
+### 去除前後不相干的資料列
+
+```
+GDP_part1 = cbind(GDP,y=1:154)
+GDP_part2 = filter(GDP_part2,y>4&y<137)
+```
+
+
+*** =right
+
+<iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
 
 
 
