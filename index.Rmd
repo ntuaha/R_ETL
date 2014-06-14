@@ -451,7 +451,18 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 2. rbind 用來做 **垂直**結合
 3. left_join 用來做`多對多` **水平**結合
 4. inner_join 用來做`多對多` **水平**結合
-5. right_join 用來做`多對多` **水平**結合
+5. anti_join 用來做`多對多` **水平**結合
+5. semi_join 用來做`多對多` **水平**結合
+
+前兩個很簡單,後面四個是如同`SQL`的join處理
+
+```
+left_join(x,y,by=NULL,copy=FALSE)
+```
+對應
+```
+select x.* from x full join y ;
+````
 
 ---
 

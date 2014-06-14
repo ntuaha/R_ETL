@@ -730,8 +730,19 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
 <li>rbind 用來做 <strong>垂直</strong>結合</li>
 <li>left_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
 <li>inner_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
-<li>right_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
+<li>anti_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
+<li>semi_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
 </ol>
+
+<p>前兩個很簡單,後面四個是如同<code>SQL</code>的join處理</p>
+
+<pre><code>left_join(x,y,by=NULL,copy=FALSE)
+</code></pre>
+
+<p>對應</p>
+
+<pre><code>select x.* from x full join y ;
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
