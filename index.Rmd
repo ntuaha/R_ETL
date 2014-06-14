@@ -312,9 +312,9 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
  1. 去除前後不相干的資料列
  2. 轉換某些欄位的格式
-   - 將單位轉換，從**百萬元變成元**
-   - 將不應該出現的,去除
- 3. 將需要的時間資料抽離出來
+   - 將單位轉換，從`百萬元變成元`
+   - 將不應該出現的`,`去除
+ 3. 抽離年份與季
 
 *** =right
 
@@ -344,7 +344,7 @@ colnames(GDP_part2) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
 
 
 
---- &twocol 
+--- 
 
 ## 一步一步來(2/3)
 
@@ -358,6 +358,21 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 
 1. 我們利用了 `gsub`, 替換字元，將原先有問題的`,`去除
 2. 而後利用了`as.numeric` 將原來的`文字`形態改成`數字`
+
+
+--- 
+
+## 一步一步來(3/3)
+
+### 抽離年份與季
+
+```
+GDP_part4 = mutate(GDP_part3,
+year=as.numeric(substr(time,0,4)),
+season=as.numeric(substr(time,6,6)))
+```
+
+1. 我們利用了 `substr`, 取出特定位置的資料
 
 
 

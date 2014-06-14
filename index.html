@@ -523,10 +523,10 @@ View(Cl_info)
 <li>轉換某些欄位的格式
 
 <ul>
-<li>將單位轉換，從<strong>百萬元變成元</strong></li>
-<li>將不應該出現的,去除</li>
+<li>將單位轉換，從<code>百萬元變成元</code></li>
+<li>將不應該出現的<code>,</code>去除</li>
 </ul></li>
-<li>將需要的時間資料抽離出來</li>
+<li>抽離年份與季</li>
 </ol>
 
 </div>
@@ -589,17 +589,32 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(&quot;,&quot;, &quot;&quot;,GD
 <li>而後利用了<code>as.numeric</code> 將原來的<code>文字</code>形態改成<code>數字</code></li>
 </ol>
 
-<div style='float:left;width:48%;'>
-
-</div>
-  <div style='float:right;width:48%;'>
-
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>一步一步來(3/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>抽離年份與季</h3>
+
+<pre><code>GDP_part4 = mutate(GDP_part3,
+year=as.numeric(substr(time,0,4)),
+season=as.numeric(substr(time,6,6)))
+</code></pre>
+
+<ol>
+<li>我們利用了 <code>substr</code>, 取出特定位置的資料</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料清理</h2>
@@ -612,7 +627,7 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(&quot;,&quot;, &quot;&quot;,GD
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - group_by, summarise</h2>
@@ -643,7 +658,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="quote" id="slide-35" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
     <p><q>group by 可加先下也可不下，不下的情況是直對接<code>全部</code>資料做集匯總運算 </q></p>
@@ -652,7 +667,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-36" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>彙總函數 summarise</h2>
@@ -677,7 +692,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-36" style="background:green; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-37" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -688,7 +703,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-38" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -704,7 +719,7 @@ Cl_info_part7 = summarise(Cl_info_part6,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-39" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -911,44 +926,50 @@ Cl_info_part7 = summarise(Cl_info_part6,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='資料清理'>
+        data-slide=32 title='一步一步來(3/3)'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='dplyr 介紹 - group_by, summarise'>
+        data-slide=33 title='資料清理'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title=''>
+        data-slide=34 title='dplyr 介紹 - group_by, summarise'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='彙總函數 summarise'>
+        data-slide=35 title=''>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Speical'>
+        data-slide=36 title='彙總函數 summarise'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Topics'>
+        data-slide=37 title='Speical'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Reference'>
+        data-slide=38 title='Topics'>
          38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Reference'>
+         39
       </a>
     </li>
   </ul>
