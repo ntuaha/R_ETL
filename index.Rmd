@@ -308,14 +308,22 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 --- &twocol w1:40% w2:60%
 
-##一步一步來 - 去除雜訊資料列
+## 一步一步來(1/3) - 去除雜訊資料列
 
 *** =left
 ### 去除前後不相干的資料列
 
 ```
 GDP_part1 = cbind(GDP,y=1:154)
-GDP_part2 = filter(GDP_part2,y>4&y<137)
+GDP_part2 = filter(GDP_part1,y>4&y<137)
+```
+
+### 別忘了改上欄位名稱
+
+```
+colnames(GDP_part2) = c("time","GDP","GDP_yoy"
+                        ,"GDP_2006","GDP_2006_yoy",
+                        "GDP_minus","GDP_minus_yoy","row_no")
 ```
 
 
@@ -324,7 +332,22 @@ GDP_part2 = filter(GDP_part2,y>4&y<137)
 <iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
 
 
+--- &twocol w1:40% w2:60%
 
+## 一步一步來(2/3) - 轉換資料格式
+
+*** =left
+### 轉移文字格式
+
+```
+#去除中間不合理的,在數字欄位上與補上百萬
+GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
+
+```
+
+*** =right
+
+<iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
 
 
 
