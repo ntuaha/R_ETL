@@ -831,16 +831,26 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     <h2>dplyr 介紹 - inner_join, anti_join</h2>
   </hgroup>
   <article data-timings="">
-    <h3>inner_join 取出共有的鍵值</h3>
+    
+<div style='float:left;width:48%;'>
+<h3>inner_join 取出共有的鍵值</h3>
 
-<pre><code class="r">ij_xy = inner_join(x,y,by=&quot;c1&quot;)
+<pre><code class="r">inner_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
-<h3>anti_join 取出非共有的鍵值</h3>
-
-<pre><code class="r">aj_xy = anti_join(x,y,by=&quot;c1&quot;)
+<pre><code>##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
 </code></pre>
 
+</div>
+  <div style='float:right;width:48%;'>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>

@@ -524,19 +524,39 @@ ljyx = left_join(y,x,by="c1") #以Y為主
 <img src="./resources/figures/R_ETL_LJXY.svg" style="height:400px"></img>
 
 
----
+--- &twocol
 
 ## dplyr 介紹 - inner_join, anti_join
 
+*** =left
 ### inner_join 取出共有的鍵值
 
 ```r
-ij_xy = inner_join(x,y,by="c1")
+inner_join(x,y,by="c1")
 ```
+
+```
+##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
+```
+
+*** = right
+
 ### anti_join 取出非共有的鍵值
 
 ```r
-aj_xy = anti_join(x,y,by="c1")
+anti_join(x,y,by="c1")
+```
+
+```
+##   c1 c2
+## 1  5  F
+## 2  5  G
 ```
 
 
