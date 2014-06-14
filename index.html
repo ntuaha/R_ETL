@@ -471,13 +471,95 @@ View(Cl_info)
 
 <p><br></p>
 
-<p><q>打入<code>str(GDP)</code>會發現怎麼前後有很多列的資料是不要的</q></p>
+<p><q>輸入<code>View(GDP)</code>觀察<code>GDP</code>會發現怎麼前後有很多列的資料是不要的</q></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - group_by, summarise</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><code>group_by</code> 用來將資料包裝成一組，做後續的<code>彙總</code>處;<code>summarise</code>則用來做後續的各類彙總操作</h3>
+
+<pre><code>Cl_info_part5 = mutate(Cl_info,time=data_dt) #已看過
+Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+Cl_info_part7 = summarise(Cl_info_part6,
+        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE),
+        mortage_total_cnt = sum(mortgage_cnt,na.rm=TRUE))
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li>第一個參數為輸入的 data frame</li>
+<li>第二個欄位之後都是用來group by/summarise 的欄位</li>
+<li>後續函數用來處理匯總運算</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_total_cnt from Cl_info group by time ;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>group by 可加先下也可不下，不下的情況是直接對<strong>全部</strong>資料做集匯總運算 </q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>##彙總函數 summarise</p>
+
+<p>可以使用的函數如下所列</p>
+
+<ul>
+<li>mean  平均值</li>
+<li>sum   加總 </li>
+<li>n     計算個數  例如: A B B C   輸出4 </li>
+<li>n_distinct 計算不同物件的個數 例: A B B C 輸出3</li>
+<li>first 該群體第一個，可配合group by 使用</li>
+<li>last  該群體最後一個，可配合group by 使用</li>
+<li>nth   該群體的第n個，可配合group by 使用</li>
+<li>min, max 最大最小值</li>
+<li>median 中位數</li>
+<li>IQR   就是IQR  ＃待驗證</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -648,8 +730,38 @@ View(Cl_info)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Reference'>
+        data-slide=26 title=''>
          26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='dplyr 介紹 - group_by, summarise'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title=''>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title=''>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title=''>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Reference'>
+         31
       </a>
     </li>
   </ul>

@@ -284,9 +284,59 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 ```
 <br>
 
-<q>打入`str(GDP)`會發現怎麼前後有很多列的資料是不要的</q>
+<q>輸入`View(GDP)`觀察`GDP`會發現怎麼前後有很多列的資料是不要的</q>
+
+---
 
 
+---
+
+## dplyr 介紹 - group_by, summarise
+
+### `group_by` 用來將資料包裝成一組，做後續的`彙總`處;`summarise`則用來做後續的各類彙總操作
+
+```
+Cl_info_part5 = mutate(Cl_info,time=data_dt) #已看過
+Cl_info_part6 = group_by(Cl_info_part5,time) #先匯總
+Cl_info_part7 = summarise(Cl_info_part6,
+        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE),
+        mortage_total_cnt = sum(mortgage_cnt,na.rm=TRUE))
+```
+- 輸出data frame
+- 第一個參數為輸入的 data frame
+- 第二個欄位之後都是用來group by/summarise 的欄位
+- 後續函數用來處理匯總運算
+
+<br/>
+### 給熟悉`SQL`的使用者
+
+```
+select sum(mortgage_bal) as mortage_total_bal, sum(mortgage_cnt) as mortage_total_cnt from Cl_info group by time ;
+```
+
+--- .quote
+
+<q>group by 可加先下也可不下，不下的情況是直接對**全部**資料做集匯總運算 </q>
+
+
+---
+
+##彙總函數 summarise
+
+可以使用的函數如下所列
+
+ - mean  平均值
+ - sum   加總 
+ - n     計算個數  例如: A B B C   輸出4 
+ - n_distinct 計算不同物件的個數 例: A B B C 輸出3
+ - first 該群體第一個，可配合group by 使用
+ - last  該群體最後一個，可配合group by 使用
+ - nth   該群體的第n個，可配合group by 使用
+ - min, max 最大最小值
+ - median 中位數
+ - IQR   就是IQR  ＃待驗證
+
+---
 
 ---
 
