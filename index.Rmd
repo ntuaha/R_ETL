@@ -539,6 +539,19 @@ inner_join(x,y,by="c1")
 ```{r}
 anti_join(x,y,by="c1")
 ```
+```{r}
+anti_join(y,x,by="c1")
+```
+
+*** =pnotes
+```{r}
+x
+```
+```{r}
+y
+```
+
+
 
 
 

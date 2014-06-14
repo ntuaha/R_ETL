@@ -859,9 +859,47 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 ## 2  5  G
 </code></pre>
 
+<pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  6  F
+## 2  6  G
+</code></pre>
+
 </div>
   </article>
   <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <pre><code class="r">x
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+## 6  5  F
+## 7  5  G
+</code></pre>
+
+<pre><code class="r">y
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+## 6  6  F
+## 7  6  G
+</code></pre>
+
+    </section>
+  </aside>
 </slide>
 
 <slide class="segue" id="slide-44" style="background:orange; background-repeat:no-repeat; background-position:center; ">
