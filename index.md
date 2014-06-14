@@ -50,7 +50,7 @@ mode        : selfcontained # {standalone, draft}
 > 2. Transformation
 > 3. Loading
 
---- .dark
+--- .dark .segue
 
 ## 學習，實作，觀察
 
