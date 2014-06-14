@@ -533,7 +533,7 @@ ljyx = left_join(y,x,by="c1") #以Y為主
 inner_join(x,y,by="c1")
 ```
 
-*** = right
+*** =right
 
 ### anti_join 取出非共有的鍵值
 ```{r}

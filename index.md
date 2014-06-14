@@ -545,7 +545,7 @@ inner_join(x,y,by="c1")
 ## 6  4    E    E
 ```
 
-*** = right
+*** =right
 
 ### anti_join 取出非共有的鍵值
 
