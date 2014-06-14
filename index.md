@@ -412,7 +412,17 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
  - median 中位數
  - IQR   就是IQR  ＃待驗證
 
+--- .segue bg:green
+
+## Speical
+
 ---
+
+##Topics
+
+1. 自動化排程
+2. 與資料庫溝通
+3. 
 
 ---
 
