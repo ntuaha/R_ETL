@@ -450,11 +450,11 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 
 1. cbind 用來做 `1-1` **水平**結合
 2. rbind 用來做 **垂直**結合
-3. left_join 
-4. inner_join
-5. right_join
+3. left_join 用來做`多對多` **水平**結合
+4. inner_join 用來做`多對多` **水平**結合
+5. right_join 用來做`多對多` **水平**結合
 
-
+---
 
 ## 匯總處理
 
