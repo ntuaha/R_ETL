@@ -469,7 +469,7 @@ select x.* from x full join y ;
 
 ## join講解前資料準備
 
-###接下來先從各類join開始說明
+### 接下來先從各類join開始說明
 先`建立資料集`
 
 ```
