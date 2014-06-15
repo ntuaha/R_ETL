@@ -578,7 +578,7 @@ anti_join(y,x,by="c1")
 
 與`left_join`的差別在，只要對應不到的鍵值就不出現
 *** =left
-### `semi_join` 取出共有的鍵值,`x` 為主
+### `semi_join` 取出共有的鍵值,只留`x` 的欄位
 
 ```r
 semi_join(x,y,by="c1")
@@ -595,7 +595,7 @@ semi_join(x,y,by="c1")
 
 *** =right
 
-### `semi_join` 取出共有的鍵值,`y` 為主
+### `semi_join` 取出共有的鍵值,只留`y`的欄位
 
 ```r
 semi_join(y,x,by="c1")
@@ -627,10 +627,10 @@ semi_join(y,x,by="c1")
 ### 請問，這兩張表該怎麼結合比較好?用誰當第一參數?
 
 
-1. _left_join Cl_Info_part7_
-2. _semi_join Cl_Info_part7_
-3. left_join GDP_part5
-4. semi_join GDP_part5
+1. left_join Cl_Info_part7
+2. semi_join Cl_Info_part7
+3. _left_join GDP_part5_
+4. _semi_join GDP_part5_
 5. 其他
 
 *** =image
@@ -639,16 +639,31 @@ semi_join(y,x,by="c1")
 
 *** .explanation
 
-因為Cl_info_part7所俱有的年份比較少，用這個當作主鍵是比較好的.
+因為GDP_part5_所俱有的`時間點`較少，用這個當作主鍵是比較好的.
 
 --- 
 
 ## 資料整理完成!
 
 ```
-mutate(Cl_info_part7,as)
-GDP_part7 = select(mutate(GDP_part6 , data_dt = as.POSIXct(paste(year,'1','1',sep='-'))),data_dt,GDP)
-INFO =left_join(Cl_info_part7,GDP_part7,by="data_dt",copy=TRUE)
+GDP_part7 = select(mutate(GDP_part6 , 
+                   time = as.POSIXct(paste(year,'1','1',sep='-'))),time,GDP)
+t1 = left_join(GDP_part7,Cl_info_part7,by="time")
+t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
+```
+看一下資料 `View(t2)`
+
+<img src="./resources/figures/R_ETL_t2.svg" style="height:200px" ></img>
+
+
+-- &twocol w1:20% w2:80%
+##接下來我們應該做
+
+1. 畫圖
+2. 解釋
+3. 做報告!
+
+
 
 --- .segue bg:orange
 
