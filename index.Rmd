@@ -314,7 +314,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 *** =right
 
-<iframe src = './resources/figures/R_ETL_1.png' height='600px'></iframe>
+<iframe src = './resources/figures/R_ETL_1.png' height='500px'></iframe>
 
 
 --- 
@@ -508,7 +508,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 *** =right
 
-<img src="./resources/figures/R_ETL_x.png" ></img>
+<img src="./resources/figures/R_ETL_X.png" ></img>
 
 ---
 
@@ -520,7 +520,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 ljxy = left_join(x,y,by="c1") #以X為主
 ljyx = left_join(y,x,by="c1") #以Y為主
 ```
-<img src="./resources/figures/R_ETL_LJXY.png" style="height:400px"></img>
+<img src="./resources/figures/R_ETL_LJXY.png" style="height:300px"></img>
 
 
 --- &twocol
