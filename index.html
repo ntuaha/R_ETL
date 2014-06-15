@@ -998,21 +998,19 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>接下來我們應該做 - 畫圖</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-<ol>
+---
+layout: slide
+replace: slide.content
+---
+  
+<div class='left' style='float:left;width:20%'>
+ <ol>
 <li>畫圖</li>
 </ol>
 
-</div>
-  <div style='float:right;width:48%;'>
-<pre><code class="r">library(ggplot2)
+</div>    
+<div class='right' style='float:right;width:80%'>
+ <pre><code class="r">library(ggplot2)
 ggplot(see1, aes(time, ratio)) +
   geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
   geom_smooth(method=&quot;loess&quot;) +
@@ -1022,26 +1020,20 @@ ggplot(see1, aes(time, ratio)) +
 <p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>接下來我們應該做 - 解釋</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-<ol>
+---
+layout: slide
+replace: slide.content
+---
+  
+<div class='left' style='float:left;width:20%'>
+ <ol>
 <li>畫圖</li>
 <li>解釋</li>
 </ol>
 
-</div>
-  <div style='float:right;width:48%;'>
-<ol>
+</div>    
+<div class='right' style='float:right;width:80%'>
+ <ol>
 <li>09達到高峰，但之後房貸與GDP的比值平穩維持在37.5%</li>
 <li>GDP成長比率與房貸餘額幾乎成正比</li>
 <li>從新聞顯示
@@ -1054,32 +1046,22 @@ ggplot(see1, aes(time, ratio)) +
 </ol>
 
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>接下來我們應該做 - 報告</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-<ol>
+---
+layout: slide
+replace: slide.content
+---
+  
+<div class='left' style='float:left;width:20%'>
+ <ol>
 <li>畫圖</li>
 <li>解釋</li>
 <li>報告</li>
 </ol>
 
+</div>    
+<div class='right' style='float:right;width:80%'>
+ 
 </div>
-  <div style='float:right;width:48%;'>
-
-</div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="segue" id="slide-51" style="background:orange; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
