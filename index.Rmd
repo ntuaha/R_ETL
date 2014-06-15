@@ -615,12 +615,6 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 ## 接下來我們應該做 - 畫圖
 
 
-*** =pnotes
-```
-see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
-```
-
-
 
 *** =left
 
