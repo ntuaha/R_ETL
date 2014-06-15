@@ -38,7 +38,7 @@ mode        : selfcontained # {standalone, draft}
 > 3. 股市
 
 
---- .vcenter
+--- &vcenter
 
 <q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
 
@@ -374,7 +374,7 @@ GDP_part5 = select(GDP_part4,year,season,GDP)
 
 
 
---- .vcenter
+--- &vcenter
 
 <q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處理變成後續可以使用的資料呢？</a>
 
@@ -413,7 +413,7 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
 select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 ```
 
---- .vcenter
+--- &vcenter
 
 <q>group by 可加先下也可不下，不下的情況是直對接`全部`資料做集匯總運算 </q>
 
@@ -440,7 +440,7 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 //TODO 練習題目
 
 
---- .vcenter bg:red
+--- &vcenter bg:red
 
 ## 接下來比較難，真的!!!!
 
