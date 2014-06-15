@@ -1013,29 +1013,12 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 </div>    
 <div style='float:right;width:78%'>
  <pre><code class="r">library(ggplot2)
-ggplot(see1, aes(time, ratio))
+ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
+  scale_size_area()  +
+  geom_point(aes(size = 20), alpha = 1/2) 
 </code></pre>
 
-<pre><code>## Error: No layers in plot
-</code></pre>
-
-<pre><code class="r">  +geom_point(aes(size = 20), alpha = 1/2) 
-</code></pre>
-
-<pre><code>## Error: invalid argument to unary operator
-</code></pre>
-
-<pre><code class="r">  +geom_smooth(method=&quot;loess&quot;) 
-</code></pre>
-
-<pre><code>## Error: invalid argument to unary operator
-</code></pre>
-
-<pre><code class="r">  +scale_size_area()  
-</code></pre>
-
-<pre><code>## Error: invalid argument to unary operator
-</code></pre>
+<p><img src="assets/fig/plotChunk.png" alt="plot of chunk plotChunk"> </p>
 
 </div>
   </article>
