@@ -682,7 +682,7 @@ ggplot(see1, aes(time, ratio)) +
 
 
 
---- &twocol w1:20% w2:80%
+--- .twocol w1:20% w2:80%
 
 ## 接下來我們應該做 - 解釋
 
@@ -700,7 +700,7 @@ ggplot(see1, aes(time, ratio)) +
   - 10年開始打房政策
   - 如果加上`房價所得比`，還可以說什麼呢?
 
---- .twocol w1:20% w2:80%
+--- &twocol w1:20% w2:80%
 
 ## 接下來我們應該做 - 報告
 
