@@ -1013,13 +1013,16 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 </div>    
 <div style='float:right;width:78%'>
  <pre><code class="r">library(ggplot2)
-ggplot(see1, aes(time, ratio)) +
-  geom_point(aes(size = 20), alpha = 1/2) +
-  geom_smooth(method=&quot;loess&quot;) +
-  scale_size_area()
+ggplot(see1, aes(time, ratio)) +geom_smooth(method=&quot;loess&quot;) +scale_size_area()
 </code></pre>
 
 <p><img src="assets/fig/plotChunk.png" alt="plot of chunk plotChunk"> </p>
+
+<pre><code class="r">  +geom_point(aes(size = 20), alpha = 1/2) 
+</code></pre>
+
+<pre><code>## Error: invalid argument to unary operator
+</code></pre>
 
 </div>
   </article>
