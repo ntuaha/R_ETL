@@ -659,7 +659,9 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 ## 接下來我們應該做 - 畫圖
 
-
+```
+see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+```
 
 *** =left
 
@@ -676,18 +678,17 @@ ggplot(see1, aes(time, ratio)) +
   scale_size_area()
 ```
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
+```
+## Error: object 'mortage_total_cnt' not found
+```
 
-*** =pnotes w:82%
-```
-see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
-```
 
 
 --- &twocol_dynamic w1:18% w2:78%
 
 ## 接下來我們應該做 - 解釋
 
+利用解釋將圖想要表達的意思更清楚地傳達給觀眾
 
 *** =left
 

@@ -613,7 +613,9 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 ## 接下來我們應該做 - 畫圖
 
-
+```
+see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+```
 
 *** =left
 
@@ -621,7 +623,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 *** =right
 
-```{r}
+```{r plotChunk, message=FALSE, fig.height=5, fig.width=5}
 library(ggplot2)
 ggplot(see1, aes(time, ratio)) +
   geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
@@ -630,16 +632,13 @@ ggplot(see1, aes(time, ratio)) +
 
 ```
 
-*** =pnotes w:82%
-```
-see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
-```
 
 
 --- &twocol_dynamic w1:18% w2:78%
 
 ## 接下來我們應該做 - 解釋
 
+利用解釋將圖想要表達的意思更清楚地傳達給觀眾
 
 *** =left
 

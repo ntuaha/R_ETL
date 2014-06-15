@@ -1002,7 +1002,9 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
     <h2>接下來我們應該做 - 畫圖</h2>
   </hgroup>
   <article data-timings="">
-      
+    <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+</code></pre>
+  
 <div style='float:left;width:18%' >
  <ol>
 <li><code>畫圖</code></li>
@@ -1017,25 +1019,12 @@ ggplot(see1, aes(time, ratio)) +
   scale_size_area()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+<pre><code>## Error: object &#39;mortage_total_cnt&#39; not found
+</code></pre>
 
 </div>
-  <aside class="note" id="">
-    <section style='width:'>
-      <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
-</code></pre>
-
-    </section >
-  </aside>
   </article>
   <!-- Presenter Notes -->
-  <aside class="note" id="">
-    <section>
-      <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
-</code></pre>
-
-    </section>
-  </aside>
 </slide>
 
 <slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
@@ -1044,7 +1033,8 @@ ggplot(see1, aes(time, ratio)) +
     <h2>接下來我們應該做 - 解釋</h2>
   </hgroup>
   <article data-timings="">
-      
+    <p>利用解釋將圖想要表達的意思更清楚地傳達給觀眾</p>
+  
 <div style='float:left;width:18%' >
  <ol>
 <li>畫圖</li>
