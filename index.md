@@ -657,7 +657,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 
 --- &twocol w1:20% w2:80%
-##接下來我們應該做
+## 接下來我們應該做
 
 
 *** =left
@@ -685,7 +685,7 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 
 
 --- &twocol w1:20% w2:80%
-##接下來我們應該做
+## 接下來我們應該做
 
 
 *** =left
@@ -694,11 +694,16 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 2. 解釋
 
 *** =right
-
+1. 09達到高峰，但之後房貸與GDP的比值平穩維持在37.5%
+2. GDP成長比率與房貸餘額幾乎成正比
+3. 從新聞顯示
+  - 09年遺產稅調降, 許多人回來`投資`?`炒房`?
+  - 10年開始打房政策
+  - 如果加上`房價所得比`，還可以說什麼呢?
 
 
 --- &twocol w1:20% w2:80%
-##接下來我們應該做
+## 接下來我們應該做
 
 
 *** =left
