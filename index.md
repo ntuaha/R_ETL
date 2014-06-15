@@ -682,7 +682,7 @@ ggplot(see1, aes(time, ratio)) +
 
 
 
---- .twocol w1:20% w2:80%
+--- &twocol w1:20% w2:80%
 
 ## 接下來我們應該做 - 解釋
 
