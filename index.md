@@ -672,13 +672,15 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 
 ```r
 library(ggplot2)
-ggplot(see1, aes(time, ratio)) +geom_smooth(method="loess") 
+ggplot(see1, aes(time, ratio))
 ```
 
-![plot of chunk plotChunk](assets/fig/plotChunk.png) 
+```
+## Error: No layers in plot
+```
 
 ```r
-  +scale_size_area()
+  +geom_point(aes(size = 20), alpha = 1/2) 
 ```
 
 ```
@@ -686,7 +688,15 @@ ggplot(see1, aes(time, ratio)) +geom_smooth(method="loess")
 ```
 
 ```r
-  +geom_point(aes(size = 20), alpha = 1/2) 
+  +geom_smooth(method="loess") 
+```
+
+```
+## Error: invalid argument to unary operator
+```
+
+```r
+  +scale_size_area()  
 ```
 
 ```
