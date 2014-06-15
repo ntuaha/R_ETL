@@ -656,7 +656,8 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <img src="./resources/figures/R_ETL_t2.svg" style="height:200px" ></img>
 
 
---- &twocol w1:20% w2:80%
+--- &twocol w1:30% w2:70%
+
 ## 接下來我們應該做
 
 
@@ -684,7 +685,8 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 
 
 
---- &twocol w1:20% w2:80%
+--- &twocol w1:30% w2:70%
+
 ## 接下來我們應該做
 
 
@@ -701,8 +703,8 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
   - 10年開始打房政策
   - 如果加上`房價所得比`，還可以說什麼呢?
 
+--- &twocol w1:30% w2:70%
 
---- &twocol w1:20% w2:80%
 ## 接下來我們應該做
 
 
