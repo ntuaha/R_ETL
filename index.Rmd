@@ -306,15 +306,15 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 *** =left
 ### 要處理的標的物有
 
- 1. 去除前後不相干的資料列
- 2. 轉換某些欄位的格式
+ 1. 去除前後`不相干`的資料列
+ 2. 轉換欄位的格式
    - 將單位轉換，從`百萬元變成元`
    - 將不應該出現的`,`去除
- 3. 抽離年份與季
+ 3. 抽離`年份`與`季`
 
 *** =right
 
-<iframe src = './resources/figures/R_ETL_1.png' ></iframe>
+<iframe src = './resources/figures/R_ETL_1.png' style="height:400px"></iframe>
 
 
 --- 
