@@ -623,7 +623,7 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 
 *** =right
 
-```{r plotChunk, message=FALSE, fig.height=4, fig.width=12}
+```{r plotChunk, message=FALSE, fig.height=5, fig.width=8}
 library(ggplot2)
 ggplot(see1, aes(time, ratio)) +
   geom_point(aes(size = 20), alpha = 1/2) +
