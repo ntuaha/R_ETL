@@ -678,7 +678,10 @@ ggplot(see1, aes(time, ratio)) +
 
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
-
+*** =pnotes
+```
+see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+```
 
 
 --- &twocol_dynamic w1:18% w2:78%

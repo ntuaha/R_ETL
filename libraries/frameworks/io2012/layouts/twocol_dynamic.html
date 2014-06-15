@@ -8,3 +8,10 @@ layout: slide
 <div style='float:right;width:{{{ slide.w2 }}}'>
  {{{ slide.right.html }}}
 </div>
+ {{# slide.pnotes }}
+  <aside class="note" id="{{ id }}">
+    <section>
+      {{{ html }}}
+    </section>
+  </aside>
+  {{/ slide.pnotes }}

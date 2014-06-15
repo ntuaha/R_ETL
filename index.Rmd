@@ -630,7 +630,10 @@ ggplot(see1, aes(time, ratio)) +
 
 ```
 
-
+*** =pnotes
+```
+see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+```
 
 
 --- &twocol_dynamic w1:18% w2:78%
