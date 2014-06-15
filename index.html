@@ -402,7 +402,7 @@ View(Cl_info)
   <article data-timings="">
     <p><q>下一個?</q></p>
 
-<p><q>別急，讓我們來練習抓下一個檔案，用剛剛講的指令讀入</q></p>
+<p><q>別急，讓我們來練習抓下一個資料<code>GDP</code></q></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -442,15 +442,17 @@ View(Cl_info)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="quote" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <article data-timings="">
-    <p><q>練習讀入與創建一個data frame<code>GDP</code></q></p>
+<slide class="" id="slide-23">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>練習讀入與創建一個<code>GDP</code>的 data frame</q></p>
 
-  </article>
-  <!-- Presenter Notes -->
+</article>
+<!-- Presenter Notes -->
 </slide>
-
 <slide class="quote" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <article data-timings="">
@@ -736,12 +738,12 @@ GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))
 
 <p>前兩個很簡單,後面四個是如同<code>SQL</code>的join處理</p>
 
-<pre><code>left_join(x,y,by=NULL,copy=FALSE)
+<pre><code>left_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
 <p>對應</p>
 
-<pre><code>select x.* from x full join y ;
+<pre><code>select x.*,y.*(扣除c1) from x left join y on x.c1=y.c1;
 </code></pre>
 
   </article>
@@ -999,7 +1001,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>接下來我們應該做 - 畫圖</h2>
+    <h2>接下來我們應該做(1/3) - 畫圖</h2>
   </hgroup>
   <article data-timings="">
     <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
@@ -1027,10 +1029,10 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
 <slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>接下來我們應該做 - 解釋</h2>
+    <h2>接下來我們應該做(2/3) - 解釋</h2>
   </hgroup>
   <article data-timings="">
-    <p>利用解釋將圖想要表達的意思更清楚地傳達給觀眾</p>
+    <p>利用<code>解釋</code>將圖想要表達的意思更清楚地傳達給觀眾</p>
   
 <div style='float:left;width:18%' >
  <ol>
@@ -1060,10 +1062,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
 <slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>接下來我們應該做 - 報告</h2>
+    <h2>接下來我們應該做(3/3) - 報告</h2>
   </hgroup>
   <article data-timings="">
-      
+    <p>將所有的解釋與圖表<code>包裝成一個故事</code>，展現出來</p>
+  
 <div style='float:left;width:18%' >
  <ol>
 <li>畫圖</li>
@@ -1073,7 +1076,8 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
 
 </div>    
 <div style='float:right;width:78%'>
- 
+ <p><img src="./resources/figures/R_ETL_Presentation.png" style="height:400px" ></img></p>
+
 </div>
   </article>
   <!-- Presenter Notes -->
@@ -1480,19 +1484,19 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='接下來我們應該做 - 畫圖'>
+        data-slide=48 title='接下來我們應該做(1/3) - 畫圖'>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='接下來我們應該做 - 解釋'>
+        data-slide=49 title='接下來我們應該做(2/3) - 解釋'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='接下來我們應該做 - 報告'>
+        data-slide=50 title='接下來我們應該做(3/3) - 報告'>
          50
       </a>
     </li>

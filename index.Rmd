@@ -236,7 +236,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 <q>下一個?</q>
 
-<q>別急，讓我們來練習抓下一個檔案，用剛剛講的指令讀入</q>
+<q>別急，讓我們來練習抓下一個資料`GDP`</q>
 
 --- 
 
@@ -259,9 +259,9 @@ select * from Cl_info order by mortage,data_dt desc ;
 9. 開回`RStudio` 開始處理資料
 
 
---- .quote
+--- &vcenter
 
-<q>練習讀入與創建一個data frame`GDP`</q>
+<q>練習讀入與創建一個`GDP`的 data frame</q>
 
 --- .quote
 
@@ -457,11 +457,11 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 前兩個很簡單,後面四個是如同`SQL`的join處理
 
 ```
-left_join(x,y,by=NULL,copy=FALSE)
+left_join(x,y,by="c1")
 ```
 對應
 ```
-select x.* from x full join y ;
+select x.*,y.*(扣除c1) from x left join y on x.c1=y.c1;
 ````
 
 
@@ -611,7 +611,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 --- &twocol_dynamic w1:18% w2:78%
 
-## 接下來我們應該做 - 畫圖
+## 接下來我們應該做(1/3) - 畫圖
 
 ```
 see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
@@ -633,9 +633,9 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 --- &twocol_dynamic w1:18% w2:78%
 
-## 接下來我們應該做 - 解釋
+## 接下來我們應該做(2/3) - 解釋
 
-利用解釋將圖想要表達的意思更清楚地傳達給觀眾
+利用`解釋`將圖想要表達的意思更清楚地傳達給觀眾
 
 *** =left
 
@@ -652,8 +652,9 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 --- &twocol_dynamic w1:18% w2:78%
 
-## 接下來我們應該做 - 報告
+## 接下來我們應該做(3/3) - 報告
 
+將所有的解釋與圖表`包裝成一個故事`，展現出來
 
 *** =left
 
@@ -663,7 +664,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 *** =right
 
-
+<img src="./resources/figures/R_ETL_Presentation.png" style="height:400px" ></img>
 
 
 
