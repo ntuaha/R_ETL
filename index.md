@@ -440,7 +440,7 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 //TODO 練習題目
 
 
---- &vcenter bg:red
+--- .segue bg:red
 
 ## 接下來比較難，真的!!!!
 
@@ -700,7 +700,7 @@ ggplot(see1, aes(time, ratio)) +
   - 10年開始打房政策
   - 如果加上`房價所得比`，還可以說什麼呢?
 
---- &twocol w1:20% w2:80%
+--- .twocol w1:20% w2:80%
 
 ## 接下來我們應該做 - 報告
 
