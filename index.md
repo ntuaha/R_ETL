@@ -655,6 +655,11 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <img src="./resources/figures/R_ETL_t2.png" style="height:200px" ></img>
 
 
+--- .segue bg:indigo
+
+## 最後一里路
+
+
 --- &twocol_dynamic w1:18% w2:78%
 
 ## 接下來我們應該做(1/3) - 畫圖
@@ -716,11 +721,6 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 <img src="./resources/figures/R_ETL_Presentation.png" style="height:400px" ></img>
 
 
-
-
-
-
-
 --- .segue bg:orange
 
 ## Review
@@ -734,6 +734,8 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 - 下載與讀入與整理GDP
 - 整合資料
 - 畫圖
+- 解釋
+- 報告
 
 
 --- .segue bg:green
@@ -746,7 +748,8 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 - 下載M1b M2 資料
 - 整合之前的資料
-- 比較房貸餘額與M1b的變化
+- 比較房貸餘額與M1b的年增率相關性
+- 房價餘額與存款總額的比值變化
 
 ---
 
@@ -766,6 +769,9 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 1. 自動化排程
 2. 與資料庫溝通
 3. 其他的資料源
+   - 結構化資料
+   - 非結構化資料
+4. 培養對資料的品味
 
 ---
 
