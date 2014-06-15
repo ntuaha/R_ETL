@@ -299,7 +299,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 ### 好亂，我想`整理`好這個data frome
 
---- &twocol_dynamic w1:40% w2:60%
+--- &twocol_dynamic w1:38% w2:58%
 
 ## 資料清理
 
