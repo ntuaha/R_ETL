@@ -658,7 +658,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 --- &twocol w1:20% w2:80%
 
-## 接下來我們應該做-畫圖
+## 接下來我們應該做 - 畫圖
 
 
 *** =pnotes
@@ -690,7 +690,7 @@ ggplot(see1, aes(time, ratio)) +
 
 --- &twocol w1:20% w2:80%
 
-## 接下來我們應該做- 解釋
+## 接下來我們應該做 - 解釋
 
 
 *** =left
@@ -708,7 +708,7 @@ ggplot(see1, aes(time, ratio)) +
 
 --- &twocol w1:20% w2:80%
 
-## 接下來我們應該做- 報告
+## 接下來我們應該做 - 報告
 
 
 *** =left
