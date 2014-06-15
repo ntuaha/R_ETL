@@ -289,14 +289,14 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 --- .quote
 
 <q></q>
-<img src = './resources/figures/R_ETL_2.svg' ></img>
+<img src = './resources/figures/R_ETL_2.png' ></img>
 
 
 
 --- .quote
 
 <q></q>
-<img src = './resources/figures/R_ETL_2.svg' ></img>
+<img src = './resources/figures/R_ETL_2.png' ></img>
 
 ### 好亂，我想`整理`好這個data frome
 
@@ -315,7 +315,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 *** =right
 
-<iframe src = './resources/figures/R_ETL_1.svg' height='600px'></iframe>
+<iframe src = './resources/figures/R_ETL_1.png' height='600px'></iframe>
 
 
 --- 
@@ -509,7 +509,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 *** =right
 
-<img src="./resources/figures/R_ETL_x.svg" ></img>
+<img src="./resources/figures/R_ETL_x.png" ></img>
 
 ---
 
@@ -521,7 +521,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 ljxy = left_join(x,y,by="c1") #以X為主
 ljyx = left_join(y,x,by="c1") #以Y為主
 ```
-<img src="./resources/figures/R_ETL_LJXY.svg" style="height:400px"></img>
+<img src="./resources/figures/R_ETL_LJXY.png" style="height:400px"></img>
 
 
 --- &twocol
@@ -570,7 +570,7 @@ anti_join(y,x,by="c1")
 ```
 
 *** =pnotes
-<img src="./resources/figures/R_ETL_x.svg" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
 
 --- &twocol
 
@@ -612,7 +612,7 @@ semi_join(y,x,by="c1")
 
 *** =pnotes
 
-<img src="./resources/figures/R_ETL_x.svg" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
 
 
 ---
@@ -620,7 +620,7 @@ semi_join(y,x,by="c1")
 ## 實際問題 - 練習題
 
 ### 請問，這兩張表該怎麼結合比較好?
-<img src="./resources/figures/R_ETL_TWOTABLES.svg" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_TWOTABLES.png" style="height:400px" ></img>
 
 ---  &radio2
 
@@ -635,7 +635,7 @@ semi_join(y,x,by="c1")
 
 *** =image
 
-<img src="./resources/figures/R_ETL_TWOTABLES.svg" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_TWOTABLES.png" style="height:400px" ></img>
 
 *** .explanation
 
@@ -653,7 +653,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 ```
 看一下資料 `View(t2)`
 
-<img src="./resources/figures/R_ETL_t2.svg" style="height:200px" ></img>
+<img src="./resources/figures/R_ETL_t2.png" style="height:200px" ></img>
 
 
 --- &twocol_dynamic w1:18% w2:78%
@@ -664,7 +664,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 *** =left
 
-1. 畫圖
+1. `畫圖`
 
 *** =right
 
@@ -690,7 +690,7 @@ ggplot(see1, aes(time, ratio)) +
 *** =left
 
 1. 畫圖
-2. 解釋
+2. `解釋`
 
 *** =right
 1. 09達到高峰，但之後房貸與GDP的比值平穩維持在37.5%
@@ -709,7 +709,7 @@ ggplot(see1, aes(time, ratio)) +
 
 1. 畫圖
 2. 解釋
-3. 報告
+3. `報告`
 
 *** =right
 
