@@ -1014,13 +1014,12 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <div style='float:right;width:78%'>
  <pre><code class="r">library(ggplot2)
 ggplot(see1, aes(time, ratio)) +
-  geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
+  geom_point(aes(size = 20), alpha = 1/2) +
   geom_smooth(method=&quot;loess&quot;) +
   scale_size_area()
 </code></pre>
 
-<pre><code>## Error: object &#39;mortage_total_cnt&#39; not found
-</code></pre>
+<p><img src="assets/fig/plotChunk.png" alt="plot of chunk plotChunk"> </p>
 
 </div>
   </article>

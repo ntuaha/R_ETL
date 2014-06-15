@@ -673,14 +673,12 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 ```r
 library(ggplot2)
 ggplot(see1, aes(time, ratio)) +
-  geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
+  geom_point(aes(size = 20), alpha = 1/2) +
   geom_smooth(method="loess") +
   scale_size_area()
 ```
 
-```
-## Error: object 'mortage_total_cnt' not found
-```
+![plot of chunk plotChunk](assets/fig/plotChunk.png) 
 
 
 
