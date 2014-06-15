@@ -315,7 +315,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 *** =right
 
-<iframe src = './resources/figures/R_ETL_1.png' style="height:400px"></iframe>
+<iframe src = './resources/figures/R_ETL_1.png' style="height:600px"></iframe>
 
 
 --- 
