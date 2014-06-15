@@ -630,7 +630,7 @@ ggplot(see1, aes(time, ratio)) +
 
 ```
 
-*** =pnotes
+*** =pnotes w:80%
 ```
 see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 ```
