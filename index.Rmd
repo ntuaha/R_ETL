@@ -610,12 +610,62 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <img src="./resources/figures/R_ETL_t2.svg" style="height:200px" ></img>
 
 
--- &twocol w1:20% w2:80%
+--- &twocol w1:20% w2:80%
 ##接下來我們應該做
+
+
+*** =left
+
+1. 畫圖
+
+*** =right
+
+```{r}
+library(ggplot2)
+ggplot(see1, aes(time, ratio)) +
+  geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
+  geom_smooth(method="loess") +
+  scale_size_area()
+
+```
+
+*** =pnotes
+```
+see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+```
+
+
+
+--- &twocol w1:20% w2:80%
+##接下來我們應該做
+
+
+*** =left
 
 1. 畫圖
 2. 解釋
-3. 做報告!
+
+*** =right
+
+
+
+--- &twocol w1:20% w2:80%
+##接下來我們應該做
+
+
+*** =left
+
+1. 畫圖
+2. 解釋
+3. 報告
+
+*** =right
+
+
+
+
+
+
 
 
 

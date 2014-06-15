@@ -994,20 +994,83 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 
 <p><img src="./resources/figures/R_ETL_t2.svg" style="height:200px" ></img></p>
 
-<p>-- &amp;twocol w1:20% w2:80%
-##接下來我們應該做</p>
-
-<ol>
-<li>畫圖</li>
-<li>解釋</li>
-<li>做報告!</li>
-</ol>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-48" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>##接下來我們應該做</p>
+
+<div style='float:left;width:48%;'>
+<ol>
+<li>畫圖</li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+<pre><code class="r">library(ggplot2)
+ggplot(see1, aes(time, ratio)) +
+  geom_point(aes(size = mortage_total_cnt), alpha = 1/2) +
+  geom_smooth(method=&quot;loess&quot;) +
+  scale_size_area()
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+</code></pre>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>##接下來我們應該做</p>
+
+<div style='float:left;width:48%;'>
+<ol>
+<li>畫圖</li>
+<li>解釋</li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>##接下來我們應該做</p>
+
+<div style='float:left;width:48%;'>
+<ol>
+<li>畫圖</li>
+<li>解釋</li>
+<li>報告</li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-51" style="background:orange; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Review</h2>
@@ -1018,7 +1081,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-52" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>我們做了什麼?</h2>
@@ -1036,7 +1099,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-50" style="background:green; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-53" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Excerises</h2>
@@ -1047,7 +1110,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-54" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料處理練習</h2>
@@ -1063,7 +1126,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-52" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-55" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>函式運用練習</h2>
@@ -1078,7 +1141,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-53" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-56" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -1089,7 +1152,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-54" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-57" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -1105,7 +1168,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-55" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-58" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -1408,50 +1471,68 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Review'>
+        data-slide=48 title=''>
          48
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='我們做了什麼?'>
+        data-slide=49 title=''>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Excerises'>
+        data-slide=50 title=''>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='資料處理練習'>
+        data-slide=51 title='Review'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='函式運用練習'>
+        data-slide=52 title='我們做了什麼?'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Speical'>
+        data-slide=53 title='Excerises'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Topics'>
+        data-slide=54 title='資料處理練習'>
          54
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Reference'>
+        data-slide=55 title='函式運用練習'>
          55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Speical'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Topics'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='Reference'>
+         58
       </a>
     </li>
   </ul>
