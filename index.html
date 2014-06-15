@@ -1014,8 +1014,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 <div style='float:right;width:78%'>
  <pre><code class="r">library(ggplot2)
 ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
-  scale_size_area()  +
-  geom_point(aes(size = 20), alpha = 1/2) 
+  scale_size_area() +geom_point(aes(size = 20), alpha = 1/2) 
 </code></pre>
 
 <p><img src="assets/fig/plotChunk.png" alt="plot of chunk plotChunk"> </p>

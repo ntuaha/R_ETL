@@ -673,8 +673,7 @@ see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
 ```r
 library(ggplot2)
 ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
-  scale_size_area()  +
-  geom_point(aes(size = 20), alpha = 1/2) 
+  scale_size_area() +geom_point(aes(size = 20), alpha = 1/2) 
 ```
 
 ![plot of chunk plotChunk](assets/fig/plotChunk.png) 
