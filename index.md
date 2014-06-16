@@ -26,10 +26,10 @@ mode        : selfcontained # {standalone, draft}
 
 --- &twocol
 
-## `資料在哪裡`
+## 資料在哪裡
 
 *** =left
-### 你想知道什麼資料?
+### `你想知道什麼資料?`
 
  1. GDP
  2. 房貸餘額
