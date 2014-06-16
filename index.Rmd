@@ -10,14 +10,19 @@ hitheme     : tomorrow      #
 ext_widgets : {rCharts: libraries/nvd3}
 widgets     : [mathjax, quiz, bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
----
+--- &twocol_dynamic w1:20% w2:80%
 
 
 ## 故事的起源
 
-> 1. 房價節節高升
-> 2. 大熊被抓了
-> 3. 房價真的太高了嗎?
+*** =left
+
+ 1. 房價節節高升
+ 2. 大熊被抓了
+ 3. 房價真的太高了嗎?
+ 
+*** =right
+<img src = './resources/figures/R_ETL_NEWS.png' width="100%"></img>
 
 --- &twocol
 
