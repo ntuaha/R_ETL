@@ -10,7 +10,7 @@ hitheme     : tomorrow      #
 ext_widgets : {rCharts: libraries/nvd3}
 widgets     : [mathjax, quiz, bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
---- &twocol_dynamic w1:20% w2:80%
+--- &twocol_dynamic w1:30% w2:66%
 
 
 ## 故事的起源
