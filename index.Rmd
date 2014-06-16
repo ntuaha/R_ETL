@@ -22,7 +22,7 @@ mode        : selfcontained # {standalone, draft}
  3. 房價真的太高了嗎?
  
 *** =right
-<img src = './resources/figures/R_ETL_NEWS.png' height="600px"></img>
+<img src = './resources/figures/R_ETL_NEWS.png' height="400px"></img>
 
 --- &twocol
 
