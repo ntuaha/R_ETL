@@ -54,7 +54,8 @@ mode        : selfcontained # {standalone, draft}
 還記得這個`新聞`吧？ 就從這裡開始
 <img src = './resources/figures/R_ETL_NEWS_1.png' height="400px"></img>
 
---- &twocol
+
+--- 
 
 ## 資料在哪裡
 從上面`新聞`所述，所以我們想要:
