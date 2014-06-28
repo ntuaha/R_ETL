@@ -115,33 +115,37 @@ mode        : selfcontained # {standalone, draft}
 
 --- 
 
-# 解決資料散亂的方法 - `ETL`
+## 解決資料散亂的方法 - `ETL`
 
 <img src = './resources/figures/R_ETL_ETL.png' height="350px"></img>
 
 
 --- 
 
-#  ETL 的主要內容
+##  ETL 的主要內容
 
-<img src = './resources/figures/R_ETL_ETL.png' height="350px"></img>
+<img src = './resources/figures/R_ETL_ETL_3.png' height="350px"></img>
 
 
 --- 
 
-# 今日解決的問題流程 - `ETL`
+## 今日解決的問題流程 - `ETL`
 
 <img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
 
 ---
-# 今日課程的目標
 
-## 用R整理`結構`化資料 STEP1,2
+## 今日課程的目標
+
+### 用R整理`結構`化資料 STEP1,2
   - 整理好 GDP, 房貸餘額
-## 用R整理非結構化資料 STEP3
+  
+### 用R整理非結構化資料 STEP3
   - 新聞分析  
-## 整併全部的資料 STEP4
-## 其他補充
+  
+### 整併全部的資料 STEP4
+
+### 其他補充
 
 
 
@@ -170,7 +174,7 @@ install.packages("gdata")
 
 <q> 好! 開始動手做吧!</q>
 
-
+---
 
 ## 開始收集資料(房貸餘額)
 
@@ -179,7 +183,8 @@ install.packages("gdata")
 
 
 ---
-# 開始收集資料
+
+## 開始收集資料
 
 ### 房貸餘額,直接下載現成的csv檔案
 
@@ -212,7 +217,8 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 
 
 ---
-# Transformation - 資料處理
+
+## Transformation - 資料處理
 
 
 ### 將資料讀入
@@ -478,6 +484,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 ## 學習，實作，觀察 STEP4
 
 
+---
 
 ## 資料整併
 
