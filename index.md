@@ -101,16 +101,16 @@ mode        : selfcontained # {standalone, draft}
    
    
 
---- .quote
-
-<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
-
-
-
 --- &vcenter
 
 <q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
-<img src = './resources/figures/R_ETL_RAWDATA.png' height="400px"></img>
+
+
+
+--- .quote
+
+<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
+<img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
 
 
 
