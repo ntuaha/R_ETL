@@ -5,19 +5,19 @@
 3. 安裝`slidify` package
 4. include package
 
-```R
-library(slidify)
-```
+	```r
+	library(slidify)
+	```
 
 5. 指定工作目錄
 
-```R
-author(deckdir="工作目錄",use_git="要不要開新的Repository,預設要",open_rmd="要不要幫開Rmd檔案")
-```
+	```r
+	author(deckdir="工作目錄",use_git="要不要開新的Repository,預設要",open_rmd="要不要幫開Rmd檔案")
+	```
 
 
 6. 編譯Rmd
-```R
-slidify("index.Rmd")
-publish(user="你的Github帳號",repo="Github上的專案名稱",host="github")
-```
+	```r
+	slidify("index.Rmd")
+	publish(user="你的Github帳號",repo="Github上的專案名稱",host="github")
+	```
