@@ -15,7 +15,7 @@ mode        : selfcontained # {standalone, draft}
 *** =left
 1. `房價真的太高了嗎?`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS3.png' height="60%"></img>
+<img src = './resources/figures/R_ETL_NEWS3.png' height="400px"></img>
 
 
 
@@ -25,7 +25,7 @@ mode        : selfcontained # {standalone, draft}
 1. 房價真的太高了嗎?
 2. `大熊被抓了`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS_2.png' height="60%"></img>
+<img src = './resources/figures/R_ETL_NEWS_2.png' height="400px"></img>
 
 --- &twocol_dynamic w1:30% w2:66%
 ## 故事的起源
@@ -34,15 +34,30 @@ mode        : selfcontained # {standalone, draft}
 2. 大熊被抓了
 3. `台灣房市真的要崩盤了嗎？`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS_1.png' height="60%"></img>
+<img src = './resources/figures/R_ETL_NEWS_1.png' height="400px"></img>
 
+
+
+
+--- &vcenter
+
+<q>在論述台灣房市之前，身為一個`資料科學家`，第一步是了解問題</q>
+
+
+--- &vcenter
+
+<q>本次，我們的問題是`房價真的太高了嗎?`</q>
+
+
+--- 
+
+還記得這個`新聞`吧？ 就從這裡開始
+<img src = './resources/figures/R_ETL_NEWS_1.png' height="400px"></img>
 
 --- &twocol
 
 ## 資料在哪裡
 從上面`新聞`所述，所以我們想要:
-
-
 
 --- &twocol
 
@@ -83,11 +98,16 @@ mode        : selfcontained # {standalone, draft}
  3. 股市
   - Yahoo Stock API
    
-
-
 --- &vcenter
 
 <q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
+
+
+
+
+
+
+
 
 ---  
 
