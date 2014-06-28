@@ -138,14 +138,14 @@ mode        : selfcontained # {standalone, draft}
 ## 今日課程的目標
 
 ### 學會**extraction**, **cleaning**, **transformation**
-  - 用R整理`結構`化資料** STEP1 房貸餘額1** , **STEP2 GDP**
-  - 用R整理`非結構化`資料** STEP3新聞分析**
+  - 用R整理`結構`化資料 **STEP1 房貸餘額1** , **STEP2 GDP**
+  - 用R整理`非結構化`資料 **STEP3新聞分析**
   
 ### 學會 **load**
   - 整併全部的資料 STEP4
 
-邁向 **其他有意思的主題**
-### 其他補充
+### 邁向 **其他有意思的主題**
+
 
 
 
