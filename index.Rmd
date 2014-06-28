@@ -15,7 +15,7 @@ mode        : selfcontained # {standalone, draft}
 *** =left
 1. `房價真的太高了嗎?`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS3.png' height="70%"></img>
+<img src = './resources/figures/R_ETL_NEWS3.png' height="60%"></img>
 
 
 
@@ -25,7 +25,7 @@ mode        : selfcontained # {standalone, draft}
 1. 房價真的太高了嗎?
 2. `大熊被抓了`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS_2.png' height="70%"></img>
+<img src = './resources/figures/R_ETL_NEWS_2.png' height="60%"></img>
 
 --- &twocol_dynamic w1:30% w2:66%
 ## 故事的起源
@@ -34,7 +34,29 @@ mode        : selfcontained # {standalone, draft}
 2. 大熊被抓了
 3. `台灣房市真的要崩盤了嗎？`
 *** =right
-<img src = './resources/figures/R_ETL_NEWS_1.png' height="70%"></img>
+<img src = './resources/figures/R_ETL_NEWS_1.png' height="60%"></img>
+
+
+--- &twocol
+
+## 資料在哪裡
+從上面`新聞`所述，所以我們想要:
+
+
+
+--- &twocol
+
+## 資料在哪裡
+從上面`新聞`所述，所以我們想要:
+
+*** =left
+### `你想知道什麼資料?`
+ 1. GDP
+ 2. 房貸餘額
+ 3. 股價
+ 4. 新聞
+ 5. 地價資訊
+
 
 --- &twocol
 
