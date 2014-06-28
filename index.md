@@ -113,46 +113,43 @@ mode        : selfcontained # {standalone, draft}
 <img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
 
 
+--- 
 
+# 解決資料散亂的方法 - `ETL`
 
-
-
-
----  
-
-## ETL
-
-> 1. Extraction
-> 2. Transformation
-> 3. Loading
-
---- .dark .segue
-
-## 學習，實作，觀察
+<img src = './resources/figures/R_ETL_ETL.png' height="350px"></img>
 
 
 --- 
 
-## 讀入資料 - read.table
+#  ETL 的主要內容
 
-至少要記得的 `read.table`
-```
-DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
-```
-- 輸出形態為`Data Frame`
-- file 就是指讀入的檔案路徑
-- sep 指的是欄位分割用的符號,通常csv檔案格式是透過`,`做分割
-- stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
-- header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
+<img src = './resources/figures/R_ETL_ETL.png' height="350px"></img>
 
---- .quote 
 
-<q> 等等 先安裝幾個建議的套件</q>
+--- 
 
-> - `dplyr` 可用類似SQL語法操作data frome
-> - `xts` 處理時間格式好用的套件
-> - `gdata` 可以處理Excel 2007以上的文件
+# 今日解決的問題流程 - `ETL`
 
+<img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
+
+---
+# 今日課程的目標
+
+## 用R整理`結構`化資料 STEP1,2
+  - 整理好 GDP, 房貸餘額
+## 用R整理非結構化資料 STEP3
+  - 新聞分析  
+## 整併全部的資料 STEP4
+## 其他補充
+
+
+
+
+
+--- .dark .segue
+
+## 學習，實作，觀察 STEP1
 
 --- .quote 
 
@@ -174,24 +171,48 @@ install.packages("gdata")
 <q> 好! 開始動手做吧!</q>
 
 
---- .quote 
-
-<q> 好! 開始動手做吧!</q>
-
-<q> `資料勒？！`</q>
-
----
 
 ## 開始收集資料(房貸餘額)
 
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
 
+
+
 ---
-## 開始收集資料
+# 開始收集資料
 
 ### 房貸餘額,直接下載現成的csv檔案
 
-- 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
+> - 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
+> - 你應該會看見`cl_info_other.csv`
+> - 讀入它!
+
+--- 
+
+## 讀入資料 - read.table
+
+至少要記得的 `read.table`
+```
+DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
+```
+- 輸出形態為`Data Frame`
+- file 就是指讀入的檔案路徑
+- sep 指的是欄位分割用的符號,通常csv檔案格式是透過`,`做分割
+- stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
+- header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
+
+--- .quote
+
+<q>直接讀入是否覺得怪怪的?</q>
+
+--- .quote
+
+<q>直接讀入是否覺得怪怪的?</q>
+<img src = './resources/figures/R_ETL_READTABLE.png' height="350px"></img>
+
+
+---
+# Transformation - 資料處理
 
 
 ### 將資料讀入
@@ -261,8 +282,6 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 select * from Cl_info where mortgage>1000000;
 ```
 
-
-
 ---
 
 
@@ -304,16 +323,13 @@ Cl_info_part4 = arrange(Cl_info,mortage,desc(data_dt))
 select * from Cl_info order by mortage,data_dt desc ;
 ```
 
+--- .dark .segue
+
+## 學習，實作，觀察 STEP2
+
 --- .quote
 
-<q>下一個?</q>
-
-
---- .quote
-
-<q>下一個?</q>
-
-<q>別急，讓我們來練習抓下一個資料`GDP`</q>
+<q>讓我們來練習抓下一個資料`GDP`</q>
 
 --- 
 
@@ -401,19 +417,15 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 ### 去除前後不相干的資料列
 
 ```
-GDP_part1 = cbind(GDP,y=1:154)
-GDP_part2 = filter(GDP_part1,y>4&y<137)
+GDP_part = GDP[5:137,]
 ```
 
 ### 別忘了改上欄位名稱
 
 ```
-colnames(GDP_part2) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
-                        "GDP_minus","GDP_minus_yoy","row_no")
+colnames(GDP_part) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
+                        "GDP_minus","GDP_minus_yoy")
 ```
-
-1. 利用`cbind`，作columns合併
-2. 利用`colnames`，改變欄位名稱
 
 
 
@@ -425,7 +437,7 @@ colnames(GDP_part2) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
 
 ```
 #去除中間不合理的,在數字欄位上與補上百萬
-GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
+GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 
 ```
 
@@ -440,9 +452,9 @@ GDP_part3= mutate(GDP_part2,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 ### 抽離年份與季
 
 ```
-GDP_part4 = mutate(GDP_part3,year=as.numeric(substr(time,0,4)),
+GDP_part3 = mutate(GDP_part2,year=as.numeric(substr(time,0,4)),
                             season=as.numeric(substr(time,6,6)))
-GDP_part5 = select(GDP_part4,year,season,GDP)
+GDP_part4 = select(GDP_part3,year,season,GDP)
 ```
 
 1. 我們利用了 `substr`, 取出特定位置的資料
@@ -452,9 +464,21 @@ GDP_part5 = select(GDP_part4,year,season,GDP)
 
 --- &vcenter
 
-<q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處理變成後續可以使用的資料呢？</a>
+<q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處`非結構化`的新聞資料呢?</a>
 
 ---
+
+--- .dark .segue
+
+## 學習，實作，觀察 STEP3
+
+
+
+--- .dark .segue
+
+## 學習，實作，觀察 STEP4
+
+
 
 ## 資料整併
 
@@ -473,10 +497,10 @@ GDP_part5 = select(GDP_part4,year,season,GDP)
 ### `summarise`則用來做後續的各類`彙總操作`
 
 ```
-Cl_info_part6 = group_by(Cl_info_part5,data_dt) #先匯總
-Cl_info_part7 = summarise(Cl_info_part6,
+Cl_info_part5 = group_by(Cl_info_part4,data_dt) #先匯總
+Cl_info_part6 = summarise(Cl_info_part5,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
-GDP_part6 = summarise(group_by(GDP_part5,year),GDP=sum(GDP))        
+GDP_part7 = summarise(group_by(GDP_part6,year),GDP=sum(GDP))        
 ```
 - 輸出data frame
 - 第一個參數為輸入的 data frame
@@ -514,6 +538,8 @@ select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 ---
 
 //TODO 練習題目
+
+
 
 
 --- .segue bg:red
@@ -723,7 +749,7 @@ semi_join(y,x,by="c1")
 ```
 GDP_part7 = select(mutate(GDP_part6 , 
                    time = as.POSIXct(paste(year,'1','1',sep='-'))),time,GDP)
-t1 = left_join(GDP_part7,Cl_info_part7,by="time")
+t1 = left_join(GDP_part6,Cl_info_part7,by="time")
 t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 ```
 看一下資料 `View(t2)`
