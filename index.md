@@ -206,12 +206,12 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 - stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
 - header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
 
---- .quote
-
-<q>直接讀入是否覺得怪怪的?</q>
 
 
---- .quote
+
+--- 
+
+## 看看讀入結果
 
 ```
 View(Cl_info)
@@ -220,11 +220,16 @@ str(Cl_info)
 <img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
 
 
-
 --- .quote
 
 <q>直接讀入是否覺得怪怪的?</q>
-<img src = './resources/figures/R_ETL_READTABLE.png' height="350px"></img>
+
+
+--- 
+
+## 再看一次
+
+<img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
 
 
 ---
@@ -258,13 +263,16 @@ View(Cl_info)
 
 <q> 在`R`中用來做__資料清理__與__資料處理__好用的套件`dplyr`其中之一的函式<q>
 
---- 
+--- &twocol_dynamic w1:78% w2:18%
 
 ## dplyr 介紹 - select
 
 ### `select` 函式，用來__挑選__`欄位`
+
+*** =left
+
 ```
-Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
+Cl_demo1 = select(Cl_info,data_dt,bank_nm,mortgage_bal)
 ```
 - 輸出data frame
 - 第一個參數為輸入的data frame
@@ -276,6 +284,17 @@ Cl_info_part = select(Cl_info,date_dt,bank_nm,mortgage_bal)
 ```
 select data_dt,bank_nm,mortgage_bal from Cl_info;
 ```
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_SELECT.png' height="350px"></img>
+
+
+
+---
+
+## 看看成果
+
 
 
 
