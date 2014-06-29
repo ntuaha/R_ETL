@@ -179,7 +179,9 @@ install.packages("gdata")
 ## 開始收集資料(房貸餘額)
 
 請連線到 `https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100`
-<iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
+
+
+<iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='400px'></iframe>
 
 
 
@@ -397,7 +399,8 @@ select * from Cl_info order by mortage,data_dt desc ;
 ## 開始收集資料(GDP)
 
 請連線到 `http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp`
-<iframe src = 'http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp' height='600px'></iframe>
+
+<iframe src = 'http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp' height='400px'></iframe>
 
 ---
 
