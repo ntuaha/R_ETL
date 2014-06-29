@@ -558,14 +558,15 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
---- &twocol_dynamic w1:68% w2:28%
+--- &twocol_dynamic w1:78% w2:18%
 
 ## dplyr 介紹 - group_by, summarise
+
+*** =left
 
 ### `group_by` 用來將資料`包裝成一組`，做後續的彙總
 ### `summarise`則用來做後續的各類`彙總操作`
 
-*** =left
 ```
 Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
 Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
@@ -574,14 +575,15 @@ Cl_info_part4 = summarise(Cl_info_part3,
 GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 ```
 - 輸出data frame
-- 第一個參數為輸入的 data frame
-- 第二個欄位之後都是用來group by/summarise 的欄位
-- 後續參數用來處理匯總運算
+- `第一個參數`為輸入的 data frame
+- `第二個欄位`之後都是用來group by/summarise 的欄位
+- `後續參數`用來處理匯總運算
 
 ### 給熟悉`SQL`的使用者
 
 ```
-select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
+select sum(mortgage_bal) as mortage_total_bal 
+                        from Cl_info group by time ;
 ```
 
 *** =right
