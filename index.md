@@ -210,6 +210,17 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 
 <q>直接讀入是否覺得怪怪的?</q>
 
+
+--- .quote
+
+```
+View(Cl_info)
+str(Cl_info)
+```
+<img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
+
+
+
 --- .quote
 
 <q>直接讀入是否覺得怪怪的?</q>

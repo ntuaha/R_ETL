@@ -26,6 +26,8 @@ slidify("index.Rmd");publish(user = "ntuaha", repo = "R_ETL_LAB", host = 'github
 slidify("index.Rmd")
 #更新
 publish(user = "ntuaha", repo = "R_ETL_LAB", host = 'github')
+
+#Commands
 library(dplyr)
 Cl_info_part = select(Cl_info,data_dt,bank_nm,mortgage_bal)
 Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
