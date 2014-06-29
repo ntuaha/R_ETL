@@ -178,6 +178,7 @@ install.packages("gdata")
 
 ## 開始收集資料(房貸餘額)
 
+請連線到 `https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100`
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='600px'></iframe>
 
 
@@ -363,7 +364,7 @@ select mmortgage_bal/1000000 as mortage from Cl_info;
 
 
 ```
-Cl_demo4 = arrange(Cl_info,mortage,desc(data_dt))
+Cl_demo4 = arrange(Cl_info,mortgage_bal,desc(data_dt))
 ```
 - 輸出data frame
 - `第一個參數`為輸入的 data frame
@@ -395,6 +396,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 ## 開始收集資料(GDP)
 
+請連線到 `http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp`
 <iframe src = 'http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp' height='600px'></iframe>
 
 ---
@@ -487,7 +489,7 @@ colnames(GDP_part) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
                         "GDP_minus","GDP_minus_yoy")
 ```
 
-
+<img src = './resources/figures/R_ETL_GDP_1.png' ></img>
 
 --- 
 
@@ -504,6 +506,7 @@ GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 1. 我們利用了 `gsub`, 替換字元，將原先有問題的`,`去除
 2. 而後利用了`as.numeric` 將原來的`文字`形態改成`數字`
 
+<img src = './resources/figures/R_ETL_GDP2.png' ></img>
 
 --- 
 
@@ -520,6 +523,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 1. 我們利用了 `substr`, 取出特定位置的資料
 2. 再次利用`as.numeric`, 將文字轉成數字
 
+<img src = './resources/figures/R_ETL_GDP3.png' ></img>
 
 
 --- &vcenter
