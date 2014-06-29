@@ -363,7 +363,8 @@ install.packages(&quot;gdata&quot;)
     <h2>開始收集資料(房貸餘額)</h2>
   </hgroup>
   <article data-timings="">
-    <p>請連線到 <code>https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&amp;funid=r100</code></p>
+    <p>請連線到 
+<code>https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&amp;funid=r100</code></p>
 
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='400px'></iframe>
 
@@ -459,7 +460,7 @@ str(Cl_info)
 
 <pre><code class="r">library(dplyr)
 Cl_info = read.table(file=&#39;./cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
-Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
+Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
 </code></pre>
@@ -916,11 +917,13 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
     <h3><code>group_by</code> 用來將資料<code>包裝成一組</code>，做後續的彙總</h3>
 
 <h3><code>summarise</code>則用來做後續的各類<code>彙總操作</code></h3>
-
-<pre><code>Cl_info_part5 = group_by(Cl_info_part4,data_dt) #先匯總
-Cl_info_part6 = summarise(Cl_info_part5,
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
+Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
+Cl_info_part4 = summarise(Cl_info_part3,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
-GDP_part7 = summarise(group_by(GDP_part6,year),GDP=sum(GDP))        
+GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 </code></pre>
 
 <ul>
@@ -935,6 +938,11 @@ GDP_part7 = summarise(group_by(GDP_part6,year),GDP=sum(GDP))
 <pre><code>select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 </code></pre>
 
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_SUMMARIZE.png'></img></p>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -1385,16 +1393,22 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     <h2>我們做了什麼?</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
+      
+<div style='float:left;width:18%' >
+ <ul class = "build incremental">
 <li>設定問題</li>
-<li>下載與讀入與整理房貸資料</li>
-<li>下載與讀入與整理GDP</li>
+<li>下載與讀入與整理</li>
 <li>整合資料</li>
 <li>畫圖</li>
 <li>解釋</li>
 <li>報告</li>
 </ul>
 
+</div>    
+<div style='float:right;width:78%'>
+ <p><img src = './resources/figures/R_ETL_ETL_3.png' height="350px"></img></p>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>

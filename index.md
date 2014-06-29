@@ -178,7 +178,8 @@ install.packages("gdata")
 
 ## 開始收集資料(房貸餘額)
 
-請連線到 `https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100`
+請連線到 
+`https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100`
 
 
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='400px'></iframe>
@@ -247,7 +248,7 @@ str(Cl_info)
 ```r
 library(dplyr)
 Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
-Cl_info = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
+Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
 ```
@@ -557,18 +558,20 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
----
+--- &twocol_dynamic w1:68% w2:28%
 
 ## dplyr 介紹 - group_by, summarise
 
 ### `group_by` 用來將資料`包裝成一組`，做後續的彙總
 ### `summarise`則用來做後續的各類`彙總操作`
 
+*** =left
 ```
-Cl_info_part5 = group_by(Cl_info_part4,data_dt) #先匯總
-Cl_info_part6 = summarise(Cl_info_part5,
+Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
+Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
+Cl_info_part4 = summarise(Cl_info_part3,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
-GDP_part7 = summarise(group_by(GDP_part6,year),GDP=sum(GDP))        
+GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 ```
 - 輸出data frame
 - 第一個參數為輸入的 data frame
@@ -580,6 +583,9 @@ GDP_part7 = summarise(group_by(GDP_part6,year),GDP=sum(GDP))
 ```
 select sum(mortgage_bal) as mortage_total_bal from Cl_info group by time ;
 ```
+
+*** =right
+<img src = './resources/figures/R_ETL_DPLYR_SUMMARIZE.png'></img>
 
 --- &vcenter
 
@@ -895,18 +901,23 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 ## Review
 
----
+--- &twocol_dynamic w1:18% w2:78%
 
 ## 我們做了什麼?
 
-- 設定問題
-- 下載與讀入與整理房貸資料
-- 下載與讀入與整理GDP
-- 整合資料
-- 畫圖
-- 解釋
-- 報告
+*** =left
 
+> - 設定問題
+> - 下載與讀入與整理
+> - 整合資料
+> - 畫圖
+> - 解釋
+> - 報告
+
+
+*** =right
+
+<img src = './resources/figures/R_ETL_ETL_3.png' height="350px"></img>
 
 --- .segue bg:green
 
