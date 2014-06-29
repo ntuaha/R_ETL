@@ -290,26 +290,22 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 
 
----
 
-## 看看成果
-
-
-
-
----
+--- &twocol_dynamic w1:68% w2:28%
 
 ## dplyr 介紹 - filter
 
 ### `filter` 函式，用來__保留__要留下的`資料列`
 
+*** =left
+
 ```
-Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
+Cl_demo2 = filter(Cl_info,mortgage_bal>1000000)
 ```
 
 - 輸出data frame
-- 第一個參數為輸入的data frame
-- 第二個參數為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
+- `第一個參數`為輸入的data frame
+- `第二個參數`為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
 <br/>
 ### 給熟悉`SQL`的使用者
@@ -317,39 +313,60 @@ Cl_info_part2 = filter(Cl_info,mortgage_bal>1000000)
 select * from Cl_info where mortgage>1000000;
 ```
 
----
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_FILTER.png'></img>
+
+
+
+
+--- &twocol_dynamic w1:68% w2:28%
 
 
 ## dplyr 介紹 - mutate
 
 ### `mutate` 用來增加**非彙總**計算`欄位`
 
+*** =left
+
 ```
-Cl_info_part3 = filter(Cl_info,mortage = mortgage/1000000)
+Cl_demo3 = mutate(Cl_info,mortage = mortgage_bal/1000000)
 ```
 - 輸出data frame
-- 第一個參數為輸入的 data frame
-- 第二參數為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
+- `第一個參數`為輸入的 data frame
+- `第二參數`為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
 
 <br/>
 ### 給熟悉`SQL`的使用者
 
 ```
-select mmortgage/1000000 as mortage from Cl_info;
+select mmortgage_bal/1000000 as mortage from Cl_info;
 ```
 
----
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img>
+
+
+
+
+
+--- &twocol_dynamic w1:68% w2:28%
 
 ## dplyr 介紹 - arrange
 
 ### `arrange` 用來重新排序
 
+*** =left
+
+
 ```
-Cl_info_part4 = arrange(Cl_info,mortage,desc(data_dt))
+Cl_demo4 = arrange(Cl_info,mortage,desc(data_dt))
 ```
 - 輸出data frame
-- 第一個參數為輸入的 data frame
-- 後續參數為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
+- `第一個參數`為輸入的 data frame
+- `後續參數`為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
 
 <br/>
 ### 給熟悉`SQL`的使用者
@@ -357,6 +374,13 @@ Cl_info_part4 = arrange(Cl_info,mortage,desc(data_dt))
 ```
 select * from Cl_info order by mortage,data_dt desc ;
 ```
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_ARRANGE.png'></img>
+
+
+
 
 --- .dark .segue
 
