@@ -859,7 +859,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 *** =left
 
-- 設定問題
+> - 設定問題
 > - 下載與讀入與整理
 > - 整合資料
 > - 畫圖
