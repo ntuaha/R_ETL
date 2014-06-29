@@ -909,17 +909,17 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 *** =left
 
-> - 設定問題
-> - 下載與讀入與整理
-> - 整合資料
-> - 畫圖
-> - 解釋
-> - 報告
+- 設定問題
+- 下載與讀入與整理
+- 整合資料
+- 畫圖
+- 解釋
+- 報告
 
 
 *** =right
 
-<img src = './resources/figures/R_ETL_ETL_3.png' height="350px"></img>
+<img src = './resources/figures/R_ETL_ETL_MAP.png' height="350px"></img>
 
 --- .segue bg:green
 
