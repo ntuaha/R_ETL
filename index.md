@@ -574,7 +574,6 @@ Cl_info_part4 = summarise(Cl_info_part3,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
 GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 ```
-- 輸出data frame
 - `第一個參數`為輸入的 data frame
 - `第二個欄位`之後都是用來group by/summarise 的欄位
 - `後續參數`用來處理匯總運算
@@ -910,11 +909,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 *** =left
 
 - 設定問題
-- 下載與讀入與整理
-- 整合資料
-- 畫圖
-- 解釋
-- 報告
+> - 下載與讀入與整理
+> - 整合資料
+> - 畫圖
+> - 解釋
+> - 報告
 
 
 *** =right
