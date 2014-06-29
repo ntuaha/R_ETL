@@ -262,7 +262,7 @@ View(Cl_info)
 
 <q> 在`R`中用來做__資料清理__與__資料處理__好用的套件`dplyr`其中之一的函式<q>
 
---- &twocol_dynamic w1:78% w2:18%
+--- &twocol_dynamic w1:68% w2:28%
 
 ## dplyr 介紹 - select
 
@@ -274,8 +274,8 @@ View(Cl_info)
 Cl_demo1 = select(Cl_info,data_dt,bank_nm,mortgage_bal)
 ```
 - 輸出data frame
-- 第一個參數為輸入的data frame
-- 後續參數為選取的欄位名稱
+- `第一個參數`為輸入的data frame
+- `後續參數`為選取的欄位名稱
 
 <br/>
 ###  給熟悉`SQL`的使用者
@@ -286,7 +286,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 *** =right
 
-<img src = './resources/figures/R_ETL_DPLYR_SELECT.png' height="350px"></img>
+<img src = './resources/figures/R_ETL_DPLYR_SELECT.png'></img>
 
 
 
