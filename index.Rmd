@@ -293,7 +293,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 <img src = './resources/figures/R_ETL_DPLYR_SELECT.png'></img>
 
-
+--- &twocol_dynamic w1:68% w2:28%
 
 ## dplyr 介紹 - select
 
