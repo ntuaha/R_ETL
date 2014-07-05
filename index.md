@@ -376,14 +376,40 @@ select * from Cl_info where mortgage>1000000;
 <img src = './resources/figures/R_ETL_DPLYR_FILTER.png'></img>
 
 
+--- &twocol_dynamic w1:68% w2:28%
 
+
+## 練習-增加`特徵`欄位(1/2)
+
+### dplyr `mutate` 用來增加**非彙總**計算`欄位`
+
+*** =left
+
+```
+Cl_demo3 = mutate(資料表,新欄位名 = 運算式)
+```
+- `第一個參數`為輸入的 data frame
+- `第二參數`為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
+> - 例如: bank_code = as.numeric(bank_code)
+
+<br/>
+### 給熟悉`SQL`的使用者
+
+```
+select mortgage_bal/1000000 as mortage from Cl_info;
+```
+
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img>
 
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## dplyr 介紹 - mutate
+## 練習-增加`特徵`欄位(2/2)
 
-### `mutate` 用來增加**非彙總**計算`欄位`
+### dplyr `mutate` 用來增加**非彙總**計算`欄位`
 
 *** =left
 
