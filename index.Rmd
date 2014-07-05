@@ -793,8 +793,6 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 2. rbind 用來做 **垂直**結合
 3. left_join 用來做`多對多` **水平**結合
 4. inner_join 用來做`多對多` **水平**結合
-5. anti_join 用來做`多對多` **水平**結合
-5. semi_join 用來做`多對多` **水平**結合
 
 前兩個很簡單,後面四個是如同`SQL`的join處理
 
@@ -866,7 +864,7 @@ ljyx = left_join(y,x,by="c1") #以Y為主
 
 --- &twocol
 
-## dplyr 介紹 - inner_join, anti_join
+## dplyr 介紹 - inner_join
 
 *** =left
 ### `inner_join` 取出共有的鍵值
@@ -876,7 +874,7 @@ inner_join(x,y,by="c1")
 
 *** =right
 
-### `anti_join` 取出非共有的鍵值
+### `anti_join` 取出非共有的鍵值 (補充)
 ```{r}
 anti_join(x,y,by="c1")
 ```
@@ -889,7 +887,7 @@ anti_join(y,x,by="c1")
 
 --- &twocol
 
-## dplyr 介紹 - semi_join
+## dplyr 介紹 - semi_join (補充)
 
 與`left_join`的差別在，只要對應不到的鍵值就不出現
 *** =left

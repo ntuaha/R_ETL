@@ -1249,8 +1249,6 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <li>rbind 用來做 <strong>垂直</strong>結合</li>
 <li>left_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
 <li>inner_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
-<li>anti_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
-<li>semi_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
 </ol>
 
 <p>前兩個很簡單,後面四個是如同<code>SQL</code>的join處理</p>
@@ -1345,7 +1343,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-73" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - inner_join, anti_join</h2>
+    <h2>dplyr 介紹 - inner_join</h2>
   </hgroup>
   <article data-timings="">
     
@@ -1366,7 +1364,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 
 </div>
   <div style='float:right;width:48%;'>
-<h3><code>anti_join</code> 取出非共有的鍵值</h3>
+<h3><code>anti_join</code> 取出非共有的鍵值 (補充)</h3>
 
 <pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
 </code></pre>
@@ -1398,7 +1396,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - semi_join</h2>
+    <h2>dplyr 介紹 - semi_join (補充)</h2>
   </hgroup>
   <article data-timings="">
     <p>與<code>left_join</code>的差別在，只要對應不到的鍵值就不出現</p>
@@ -2177,13 +2175,13 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='dplyr 介紹 - inner_join, anti_join'>
+        data-slide=73 title='dplyr 介紹 - inner_join'>
          73
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='dplyr 介紹 - semi_join'>
+        data-slide=74 title='dplyr 介紹 - semi_join (補充)'>
          74
       </a>
     </li>
