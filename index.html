@@ -1364,44 +1364,22 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 
 </div>
   <div style='float:right;width:48%;'>
+<p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
 
 </div>
   </article>
   <!-- Presenter Notes -->
-  <aside class="note" id="">
-    <section>
-      <p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
-
-    </section>
-  </aside>
 </slide>
 
 <slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - inner_join</h2>
+    <h2>dplyr 介紹 - anti_join (<code>補充</code>)</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3><code>anti_join</code> 取出<code>非共有</code>的鍵值</h3>
+
 <div style='float:left;width:48%;'>
-<h3><code>inner_join</code> 取出共有的鍵值</h3>
-
-<pre><code class="r">inner_join(x,y,by=&quot;c1&quot;)
-</code></pre>
-
-<pre><code>##   c1 c2.x c2.y
-## 1  1    A    A
-## 2  1    B    A
-## 3  2    C    B
-## 4  2    C    C
-## 5  3    D    D
-## 6  4    E    E
-</code></pre>
-
-</div>
-  <div style='float:right;width:48%;'>
-<h3><code>anti_join</code> 取出非共有的鍵值 (<code>補充</code>)</h3>
-
 <pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
@@ -1410,6 +1388,8 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 ## 2  5  G
 </code></pre>
 
+</div>
+  <div style='float:right;width:48%;'>
 <pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
 </code></pre>
 
@@ -1426,7 +1406,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>dplyr 介紹 - semi_join (補充)</h2>
+    <h2>dplyr 介紹 - semi_join (<code>補充</code>)</h2>
   </hgroup>
   <article data-timings="">
     <p>與<code>left_join</code>的差別在，只要對應不到的鍵值就不出現</p>
@@ -2211,13 +2191,13 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='dplyr 介紹 - inner_join'>
+        data-slide=74 title='dplyr 介紹 - anti_join (<code>補充</code>)'>
          74
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='dplyr 介紹 - semi_join (補充)'>
+        data-slide=75 title='dplyr 介紹 - semi_join (<code>補充</code>)'>
          75
       </a>
     </li>

@@ -863,30 +863,6 @@ ljyx = left_join(y,x,by="c1") #以Y為主
 <img src="./resources/figures/R_ETL_LJXY.png" style="height:300px"></img>
 
 
---- &twocol
-
-## dplyr 介紹 - inner_join
-
-*** =left
-### `inner_join` 取出共有的鍵值
-
-```r
-inner_join(x,y,by="c1")
-```
-
-```
-##   c1 c2.x c2.y
-## 1  1    A    A
-## 2  1    B    A
-## 3  2    C    B
-## 4  2    C    C
-## 5  3    D    D
-## 6  4    E    E
-```
-
-*** =pnotes
-<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
-
 
 --- &twocol
 
@@ -911,7 +887,16 @@ inner_join(x,y,by="c1")
 
 *** =right
 
-### `anti_join` 取出非共有的鍵值 (`補充`)
+<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
+
+--- &twocol
+
+## dplyr 介紹 - anti_join (`補充`)
+
+### `anti_join` 取出`非共有`的鍵值
+
+*** =left
+
 
 ```r
 anti_join(x,y,by="c1")
@@ -922,6 +907,9 @@ anti_join(x,y,by="c1")
 ## 1  5  F
 ## 2  5  G
 ```
+
+*** =right
+
 
 ```r
 anti_join(y,x,by="c1")
@@ -936,7 +924,7 @@ anti_join(y,x,by="c1")
 
 --- &twocol
 
-## dplyr 介紹 - semi_join (補充)
+## dplyr 介紹 - semi_join (`補充`)
 
 與`left_join`的差別在，只要對應不到的鍵值就不出現
 *** =left
