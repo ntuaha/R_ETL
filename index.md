@@ -325,33 +325,10 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選資料(1/2)
-
-### dplyr `filter` 函式，用來__保留__要留下的`資料列`
-
-*** =left
-
-```
-Cl_demo2 = filter(資料表,邏輯判斷)
-```
-
-- 輸出data frame
-- `第一個參數`為輸入的data frame
-- `第二個參數`為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
-
-<br/>
-### 給熟悉`SQL`的使用者
-```
-select * from Cl_info where mortgage>1000000;
-```
-
-*** =right
-
-<img src = './resources/figures/R_ETL_DPLYR_FILTER.png'></img>
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選資料(2/2)
+## 練習-挑選資料
 
 ### dplyr `filter` 函式，用來__保留__要留下的`資料列`
 
