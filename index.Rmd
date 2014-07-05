@@ -640,9 +640,13 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
+// 每個月的資料GDP  房貸
+// 連結 兩張表的圖
+
+
 --- &twocol_dynamic w1:78% w2:18%
 
-## dplyr 介紹 - group_by, summarise
+## 練習-資料`彙總`
 
 *** =left
 
