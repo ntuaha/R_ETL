@@ -1,0 +1,188 @@
+
+
+
+---
+
+## 讀入資料
+
+### 避免`BIG5`呈現`亂碼`
+```{r}
+
+f <- file("~/Desktop/news.txt", encoding="utf-8")
+news <- readLines(f)
+```
+
+
+---
+
+## 抽出新聞內的時間與標題
+
+### 時間
+
+```{r}
+dates <- str_extract(news, "\\d{4}-\\d{2}-\\d{2}")
+```
+### 標題
+
+```{r}
+docs <- str_replace(news, "\\d{4}-\\d{2}-\\d{2}", "")
+```
+
+---
+
+## 合併表格
+
+```{r}
+tbl <- cbind(dates, docs)
+```
+
+---
+
+## 尋找`關鍵`資訊(1/2)
+
+```{r}
+up_word <- "漲|升|高|熱|增|飆"
+down_word <- "跌|降|低|冷|減|縮"
+```
+
+---
+
+## 尋找`關鍵`資訊(2/2)
+
+```
+near_u_w <- str_extract(news, ".[漲|升|高|熱|增|飆].")
+near_u_w <- near_u_w[!is.na(near_u_w)]
+```
+
+```
+near_d_w <- str_extract(news, ".[跌|降|低|冷|減|縮].")
+near_d_w <- near_d_w[!is.na(near_d_w)]
+```
+
+--- 
+
+## 對新聞`評分`
+
+```
+u_index <- str_count(docs, up_word)
+up <- sum(u_index)
+```
+
+```
+d_index <- str_count(docs, down_word)
+down_index <- sum(d_index)
+```
+
+
+---
+
+## 找有價值的新聞
+
+```
+up_news <- docs[u_index != 0]
+down_news <- docs[d_index != 0]
+```
+
+
+---
+
+## 收尾(1/2) - 資料整理
+
+```
+t <- format(as.POSIXct(dates), "%Y-%m")
+u_news <- xts(u_index , as.POSIXct(dates))
+d_news <- xts(d_index , as.POSIXct(dates))
+news <- xts(cbind(u_index, d_index), as.POSIXct(dates))
+```
+
+---
+
+## 收尾(2/2) - 資料整併
+
+```
+ep.months <- endpoints(news, "months", k=1)
+news.month <- period.apply(news, ep.months, FUN=colSums)
+index(news.month) <- as.POSIXct(format(index(news.month), "%Y-%m-01"))
+#indexFormat(news.month) <- "%Y-%m"
+```
+
+--- .quote
+
+股市資料
+
+
+營建股清單
+http://www.wantgoo.com/stock/classcont.aspx?id=32
+
+---
+
+## quantmod
+
+---
+
+## 資料下載
+
+```
+f = file('~/Downloads/stock.csv', encoding='utf-8')
+```
+
+---
+
+##  讀取資料
+```
+stock <- read.csv(f, stringsAsFactors=FALSE)
+stock_no <- stock[,1]
+stock_name <- stock[,2]
+stock_code <- paste(stock_no, '.TW', sep='')
+```
+
+---
+
+## 下載
+
+```
+getSymbols(stock_code, env=mystocks, from="2014-01-01", to="2014-07-02")
+```
+
+---
+
+## 合併
+```
+mystocks <- do.call(cbind,eapply(mystocks, Cl))
+
+```
+指定欄位名稱
+```
+names(mystocks) <- stock_name
+```
+
+
+---
+
+## 資料整理
+
+```
+stock_mean <- apply(mystocks, 1, mean)
+mystocks.return <- diff(mystocks, 1) / mystocks
+mystocks.return <- mystocks.return[-1,]
+
+ep.months <- endpoints(mystocks.return, "months", k=1)
+stock.month <- period.apply(mystocks.return, ep.months, FUN=colMeans)
+indexFormat(stock.month) <- "%Y-%m"
+
+stock.final <- xts(rowMeans(stock.month), order.by=index(stock.month))
+index(stock.final) <- as.POSIXct(format(index(stock.final), "%Y-%m-01"))
+#indexFormat(stock.final) <- "%Y-%m"
+```
+
+
+---
+
+## 資料整併
+
+
+```{r}
+final_tbl <- merge.xts(stock.final, news.month)
+final_tbl_diff <- merge.xts(stock.final, news.month_diff)
+
+```
