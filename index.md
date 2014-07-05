@@ -390,6 +390,7 @@ Cl_demo3 = mutate(資料表,新欄位名 = 運算式)
 ```
 - `第一個參數`為輸入的 data frame
 - `第二參數`為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
+
 > - 例如: bank_code = as.numeric(bank_code)
 
 <br/>
