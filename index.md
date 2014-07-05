@@ -355,7 +355,7 @@ select * from Cl_info where mortgage>1000000;
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-增加`特徵`欄位(1/2)
+## 練習-增加`特徵`欄位(1/3)
 
 ### dplyr `mutate` 用來增加**非彙總**計算`欄位`
 
@@ -384,7 +384,7 @@ select mortgage_bal/1000000 as mortage from Cl_info;
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-增加`特徵`欄位(2/2)
+## 練習-增加`特徵`欄位(2/3)
 
 ### dplyr `mutate` 用來增加**非彙總**計算`欄位`
 
@@ -408,6 +408,14 @@ select mmortgage_bal/1000000 as mortage from Cl_info;
 *** =right
 
 <img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img>
+
+---
+
+## 練習- 增加`特徵`欄位(3/3)
+
+```
+Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
+```
 
 
 --- &twocol_dynamic w1:68% w2:28%
@@ -655,7 +663,6 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 ### `summarise`則用來做後續的各類`彙總操作`
 
 ```
-Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
 Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
 Cl_info_part4 = summarise(Cl_info_part3,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
