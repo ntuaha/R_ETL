@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ETL on R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="ETL on R">
+  <meta name="author" content="Cheng Yu Lin (aha)">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/custom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>ETL on R</h1>
+    <h2></h2>
+    <p>Cheng Yu Lin (aha)<br/></p>
+  </hgroup>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>故事的起源</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:30%' >
+ <ol>
+<li><code>房價真的太高了嗎?</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:66%'>
+ <p><img src = './resources/figures/R_ETL_NEWS3.png' height="400px"></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>故事的起源</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:30%' >
+ <ol>
+<li>房價真的太高了嗎?</li>
+<li><code>大熊被抓了</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:66%'>
+ <p><img src = './resources/figures/R_ETL_NEWS_2.png' height="400px"></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>故事的起源</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:30%' >
+ <ol>
+<li>房價真的太高了嗎?</li>
+<li>大熊被抓了</li>
+<li><code>台灣房市真的要崩盤了嗎？</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:66%'>
+ <p><img src = './resources/figures/R_ETL_NEWS_1.png' height="400px"></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>在論述台灣房市之前，身為一個<code>資料科學家</code>，第一步是了解問題</q></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-5">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>本次，我們的問題是<code>房價真的太高了嗎?</code></q></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>還記得這個<code>新聞</code>吧？ 就從這裡開始
+<img src = './resources/figures/R_ETL_NEWS_1.png' height="400px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料在哪裡</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>從上面<code>新聞</code>所述，所以我們想要:</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料在哪裡</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>從上面<code>新聞</code>所述，所以我們想要:</p>
+
+<div style='float:left;width:48%;'>
+<h3><code>你想知道什麼資料?</code></h3>
+
+<ol>
+<li>GDP</li>
+<li>房貸餘額</li>
+<li>股價</li>
+<li>新聞</li>
+<li>地價資訊</li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料在哪裡</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>從上面<code>新聞</code>所述，所以我們想要:</p>
+
+<div style='float:left;width:48%;'>
+<h3><code>你想知道什麼資料?</code></h3>
+
+<ol>
+<li>GDP</li>
+<li>房貸餘額</li>
+<li>股價</li>
+<li>新聞</li>
+<li>地價資訊</li>
+</ol>
+
+</div>
+  <div style='float:right;width:48%;'>
+<h3><code>可能的來源?</code></h3>
+
+<ol>
+<li>政府公開資料
+
+<ul>
+<li>主計處</li>
+<li>央行</li>
+</ul></li>
+<li>新聞
+
+<ul>
+<li>紙本報紙</li>
+<li>電視新聞</li>
+<li>電子新聞</li>
+</ul></li>
+<li>股市
+
+<ul>
+<li>Yahoo Stock API</li>
+</ul></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>即便知道資料在哪，可是資料還是如同<code>一盤散沙</code></q></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="quote" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>即便知道資料在哪，可是資料還是如同<code>一盤散沙</code></q>
+<img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>解決資料散亂的方法 - <code>ETL</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src = './resources/figures/R_ETL_ETL.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>ETL 的主要內容</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src = './resources/figures/R_ETL_ETL_3.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>今日解決的問題流程 - <code>ETL</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>今日課程的目標</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>學會<strong>extraction</strong>, <strong>cleaning</strong>, <strong>transformation</strong></h3>
+
+<ul>
+<li>用R整理<code>結構</code>化資料 <strong>STEP1 房貸餘額1</strong> , <strong>STEP2 GDP</strong></li>
+<li>用R整理<code>非結構化</code>資料 <strong>STEP3新聞分析</strong></li>
+</ul>
+
+<h3>學會 <strong>load</strong></h3>
+
+<ul>
+<li>整併全部的資料 STEP4</li>
+</ul>
+
+<h3>邁向 <strong>其他有意思的主題</strong></h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="dark segue" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>學習，實作，觀察 STEP1</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q> 等等 先安裝幾個建議的套件</q></p>
+
+<ul>
+<li><code>dplyr</code> 可用類似SQL語法操作data frome</li>
+<li><code>xts</code> 處理時間格式好用的套件</li>
+<li><code>gdata</code> 可以處理Excel 2007以上的文件</li>
+</ul>
+
+<pre><code>install.packages(&quot;dplyr&quot;)
+install.packages(&quot;xts&quot;)
+install.packages(&quot;gdata&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q> 好! 開始動手做吧!</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>開始收集資料(房貸餘額)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>請連線到 
+<code>https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&amp;funid=r100</code></p>
+
+<iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='400px'></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>開始收集資料</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>房貸餘額,直接下載現成的csv檔案</h3>
+
+<ul class = "build incremental">
+<li>直接到<a href="https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv">https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv</a>下載檔案</li>
+<li>你應該會看見<code>cl_info_other.csv</code></li>
+<li>讀入它!</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>讀入資料 - read.table</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>至少要記得的 <code>read.table</code></p>
+
+<pre><code>DF = read.table(file=&#39;檔案路徑&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=T)
+</code></pre>
+
+<ul>
+<li>輸出形態為<code>Data Frame</code></li>
+<li>file 就是指讀入的檔案路徑</li>
+<li>sep 指的是欄位分割用的符號,通常csv檔案格式是透過<code>,</code>做分割</li>
+<li>stringsAsFactors 預設是<code>True</code>, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表</li>
+<li>header 預設是<code>False</code>，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>看看讀入結果</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>View(Cl_info)
+str(Cl_info)
+</code></pre>
+
+<p><img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>直接讀入是否覺得怪怪的?</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>再看一次</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Transformation - 資料處理</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>將資料讀入</h3>
+
+<pre><code class="r">library(dplyr)
+Cl_info = read.table(file=&#39;./cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
+Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
+                 bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
+View(Cl_info)
+</code></pre>
+
+<p><br/></p>
+
+<ul class = "build incremental">
+<li>到這裡已經完成第一次的資料<code>Extraction</code>與<code>Transformation</code>了！</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>看見資料了!但是剛剛處理過程中的<code>mutate</code>是什麼?</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>看見資料了!但是剛剛處理過程中的<code>mutate</code>是什麼?</q></p>
+
+<p><q> 在<code>R</code>中用來做<strong>資料清理</strong>與<strong>資料處理</strong>好用的套件<code>dplyr</code>其中之一的函式<q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-挑選欄位(1/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo1 = select(資料表,欄位1,欄位2,欄位3)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的data frame</li>
+<li><code>後續參數</code>為選取的欄位名稱</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select data_dt,bank_nm,mortgage_bal from Cl_info;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_SELECT.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-挑選欄位(2/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo1 = select(Cl_info,data_dt,bank_nm,mortgage_bal)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的data frame</li>
+<li><code>後續參數</code>為選取的欄位名稱</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select data_dt,bank_nm,mortgage_bal from Cl_info;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_SELECT.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-挑選資料</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>filter</code> 函式，用來<strong>保留</strong>要留下的<code>資料列</code></h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo2 = filter(Cl_info,mortgage_bal&gt;1000000)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的data frame</li>
+<li><code>第二個參數</code>為邏輯運算式，可用data frame裡的欄位，當結果為<code>True</code>時，該筆資料列保留</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select * from Cl_info where mortgage&gt;1000000;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_FILTER.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-增加<code>特徵</code>欄位(1/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>mutate</code> 用來增加<strong>非彙總</strong>計算<code>欄位</code></h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo3 = mutate(資料表,新欄位名 = 運算式)
+</code></pre>
+
+<ul>
+<li><code>第一個參數</code>為輸入的 data frame</li>
+<li><code>第二參數</code>為計算式，也可以用來當做<strong>轉換資料形態</strong>，<strong>變更欄位為名稱</strong>使用</li>
+</ul>
+
+<ul class = "build incremental">
+<li>例如: bank_code = as.numeric(bank_code)</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select mortgage_bal/1000000 as mortage from Cl_info;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-增加<code>特徵</code>欄位(2/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>mutate</code> 用來增加<strong>非彙總</strong>計算<code>欄位</code></h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo3 = mutate(Cl_info,mortage = mortgage_bal/1000000)
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的 data frame</li>
+<li><code>第二參數</code>為計算式，也可以用來當做<strong>轉換資料形態</strong>，<strong>變更欄位為名稱</strong>使用</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select mmortgage_bal/1000000 as mortage from Cl_info;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習- 增加<code>特徵</code>欄位(3/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-<code>排序</code>資料(1/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>arrange</code> 用來重新排序</h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo4 = arrange(資料表,欄位1,desc(欄位2)))
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的 data frame</li>
+<li><code>後續參數</code>為排序用欄位，預設遞增，可以透過<code>desc()</code>變成遞減排序</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select * from Cl_info order by mortage,data_dt desc ;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_ARRANGE.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-<code>排序</code>資料(2/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>dplyr <code>arrange</code> 用來重新排序</h3>
+  
+<div style='float:left;width:68%' >
+ <pre><code>Cl_demo4 = arrange(Cl_info,mortgage_bal,desc(data_dt))
+</code></pre>
+
+<ul>
+<li>輸出data frame</li>
+<li><code>第一個參數</code>為輸入的 data frame</li>
+<li><code>後續參數</code>為排序用欄位，預設遞增，可以透過<code>desc()</code>變成遞減排序</li>
+</ul>
+
+<p><br/></p>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select * from Cl_info order by mortage,data_dt desc ;
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_ARRANGE.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="dark segue" id="slide-36" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>學習，實作，觀察 STEP2</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-37" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>讓我們來練習抓下一個資料<code>GDP</code></q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>開始收集資料(GDP)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>請連線到 <code>http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp</code></p>
+
+<iframe src = 'http://ebas1.ebas.gov.tw/pxweb/Dialog/NI.asp' height='400px'></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>開始收集資料(GDP)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>GDP從直接下載<code>國民生產毛額之處分</code></li>
+<li>季(1980之後）</li>
+<li>選<strong>全部的日期</strong></li>
+<li>選<strong>全部的計價方式</strong></li>
+<li>項目選<strong>GDP</strong></li>
+<li>總類選<strong>原始值</strong></li>
+<li>按繼續後，選<strong>從螢幕顯示Excel檔</strong></li>
+<li>開啟後，<strong>另存新檔成csv檔</strong></li>
+<li>開回<code>RStudio</code> 開始處理資料</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>練習讀入與創建一個<code>GDP</code>的 data frame</q></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="quote" id="slide-41" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>答案</q></p>
+
+<pre><code>GDP = read.table(file=&#39;檔案位置&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=F)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-42" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>答案</q></p>
+
+<pre><code>GDP = read.table(file=&#39;檔案位置&#39;,sep=&quot;,&quot;,stringsAsFactors=F,header=F)
+</code></pre>
+
+<p><br></p>
+
+<p><q>輸入<code>View(GDP)</code>觀察<code>GDP</code>會發現怎麼前後有很多列的資料是不要的</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-43" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q></q>
+<img src = './resources/figures/R_ETL_2.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="quote" id="slide-44" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q></q>
+<img src = './resources/figures/R_ETL_2.png' ></img></p>
+
+<h3>好亂，我想<code>整理</code>好這個data frome</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料清理</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:38%' >
+ <h3>要處理的標的物有</h3>
+
+<ol>
+<li>去除前後<code>不相干</code>的資料列</li>
+<li>轉換欄位的格式
+
+<ul>
+<li>將單位轉換，從<code>百萬元變成元</code></li>
+<li>將不應該出現的<code>,</code>去除</li>
+</ul></li>
+<li>抽離<code>年份</code>與<code>季</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:58%'>
+ <p><img src = './resources/figures/R_ETL_1.png' ></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>去除前後不相干的資料列</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>GDP_part = GDP[5:137,]
+</code></pre>
+
+<h3>別忘了改上欄位名稱</h3>
+
+<pre><code>colnames(GDP_part) = c(&quot;time&quot;,&quot;GDP&quot;,&quot;GDP_yoy&quot;,&quot;GDP_2006&quot;,&quot;GDP_2006_yoy&quot;,
+                        &quot;GDP_minus&quot;,&quot;GDP_minus_yoy&quot;)
+</code></pre>
+
+<p><img src = './resources/figures/R_ETL_GDP_1.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>轉移文字格式</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code># 去除中間不合理的,在數字欄位上與補上百萬
+GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(&quot;,&quot;, &quot;&quot;,GDP))*1000000)
+
+</code></pre>
+
+<ol>
+<li>我們利用了 <code>gsub</code>, 替換字元，將原先有問題的<code>,</code>去除</li>
+<li>而後利用了<code>as.numeric</code> 將原來的<code>文字</code>形態改成<code>數字</code></li>
+</ol>
+
+<p><img src = './resources/figures/R_ETL_GDP2.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>抽離年份與季</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>GDP_part3 = mutate(GDP_part2,year=as.numeric(substr(time,0,4)),
+                            season=as.numeric(substr(time,6,6)))
+GDP_part4 = select(GDP_part3,year,season,GDP)
+</code></pre>
+
+<ol>
+<li>我們利用了 <code>substr</code>, 取出特定位置的資料</li>
+<li>再次利用<code>as.numeric</code>, 將文字轉成數字</li>
+</ol>
+
+<p><img src = './resources/figures/R_ETL_GDP3.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>擁有了<code>GDP</code>和<code>房貸餘額</code>，那接下來我們該怎麼處<code>非結構化</code>的新聞資料呢?</a></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="dark segue" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>學習，實作，觀察 STEP3</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="dark segue" id="slide-52" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>學習，實作，觀察 STEP4</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-53" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料整併</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>要處理的標的物有</h3>
+
+<ol>
+<li>將<strong>房貸餘額</strong>匯總到<code>每個月</code>的資料</li>
+<li>將<strong>GDP</strong>匯總到<code>每年</code>的資料</li>
+<li>透過<code>年份</code>將<strong>房貸餘額</strong>與<strong>GDP</strong>的表<code>結合</code>起來</li>
+</ol>
+
+<p>// 每個月的資料GDP  房貸
+// 連結 兩張表的圖</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-54" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習-資料<code>彙總</code>(1/2)</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:78%' >
+ <h3><code>group_by</code> 用來將資料<code>包裝成一組</code>，做後續的彙總</h3>
+
+<h3><code>summarise</code>則用來做後續的各類<code>彙總操作</code></h3>
+
+<pre><code>Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
+Cl_info_part4 = summarise(Cl_info_part3,
+        mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
+
+</code></pre>
+
+<ul>
+<li><code>第一個參數</code>為輸入的 data frame</li>
+<li><code>第二個欄位</code>之後都是用來group by/summarise 的欄位</li>
+</ul>
+
+<h3>給熟悉<code>SQL</code>的使用者</h3>
+
+<pre><code>select sum(mortgage_bal) as mortage_total_bal 
+                        from Cl_info group by time ;
+</code></pre>
+
+</div>    
+<div style='float:right;width:18%'>
+ <p><img src = './resources/figures/R_ETL_DPLYR_SUMMARIZE.png'></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-55">
+<img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><q>group by 可加先下也可不下，不下的情況是直對接<code>全部</code>資料做集匯總運算 </q></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-56" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>## 練習-資料<code>彙總</code>(2/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-57" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>彙總函數 summarise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>可以使用的函數如下所列</p>
+
+<ul>
+<li>mean  平均值</li>
+<li>sum   加總 </li>
+<li>n     計算個數  例如: A B B C   輸出<code>4</code> </li>
+<li>n_distinct 計算不同物件的個數 例: A B B C 輸出<code>3</code></li>
+<li>max, min 最大或最小值</li>
+<li>median 中位數</li>
+<li>IQR   就是IQR  ＃待驗證</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-58" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>mean</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年全體銀行餘額平均值</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-59" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>sum</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年全體銀行餘額匯總</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>n</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每個月有多少家銀行有房貸餘額</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>n_distinct</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年有多少家銀行有房貸餘額</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-62" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>max</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年單一銀行擁有的最多房貸餘額</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-63" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>first</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年房貸餘額排名第ㄧ的銀行</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-64" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h1>nth</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>請計算每年房貸餘額排名第2的銀行</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-65" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-66" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <ul>
+<li>first 該群體第一個，可配合<code>order_by</code> 使用;  first(x,order_by(y))</li>
+<li>last  該群體最後一個，可配合<code>order_by</code> 使用;  last(x,order_by(y))</li>
+<li>nth   該群體的第n個，可配合<code>order_by</code> 使用;  nth(x,10,order_by(y))</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-67" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p>//TODO 練習題目</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-68" style="background:red; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>接下來比較難，真的!!!!</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-69" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>結合表格</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>cbind 用來做 <code>1-1</code> <strong>水平</strong>結合</li>
+<li>rbind 用來做 <strong>垂直</strong>結合</li>
+<li>left_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
+<li>inner_join 用來做<code>多對多</code> <strong>水平</strong>結合</li>
+</ol>
+
+<p>前兩個很簡單,後面四個是如同<code>SQL</code>的join處理</p>
+
+<pre><code>left_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<p>對應</p>
+
+<pre><code>select x.*,y.*(扣除c1) from x left join y on x.c1=y.c1;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-70" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>join講解前資料準備</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:68%' >
+ <h3>接下來先從各類join開始說明</h3>
+
+<p>先<code>建立資料集</code></p>
+
+<pre><code>x=data.frame(c1 = c(1,1,2,3,4,5,5),
+             c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+y=data.frame(c1 = c(1,2,2,3,4,6,6),
+             c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+</code></pre>
+
+</div>    
+<div style='float:right;width:28%'>
+ 
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-71" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>join講解前資料準備</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:68%' >
+ <h3>接下來先從各類join開始說明</h3>
+
+<p>先<code>建立資料集</code></p>
+
+<pre><code>x=data.frame(c1 = c(1,1,2,3,4,5,5),
+             c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+y=data.frame(c1 = c(1,2,2,3,4,6,6),
+             c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
+</code></pre>
+
+<p>打入 <code>View(x)</code>與<code>View(y)</code>應該會看見</p>
+
+</div>    
+<div style='float:right;width:28%'>
+ <p><img src="./resources/figures/R_ETL_X.png" width="100%"></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-72" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - left_join</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>參數<code>by</code> 指出以何欄位作為對照鍵值</h3>
+
+<p>透過先前創建的<code>x</code>與<code>y</code>，以及交集的鍵值<code>c1</code></p>
+
+<pre><code>ljxy = left_join(x,y,by=&quot;c1&quot;) #以X為主
+ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
+</code></pre>
+
+<p><img src="./resources/figures/R_ETL_LJXY.png" style="height:300px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-73" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - inner_join</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+<h3><code>inner_join</code> 取出共有的鍵值</h3>
+
+<pre><code class="r">inner_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - anti_join (<code>補充</code>)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><code>anti_join</code> 取出<code>非共有</code>的鍵值</h3>
+
+<div style='float:left;width:48%;'>
+<pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  5  F
+## 2  5  G
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  6  F
+## 2  6  G
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - semi_join (<code>補充</code>)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>與<code>left_join</code>的差別在，只要對應不到的鍵值就不出現</p>
+
+<div style='float:left;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值,只留<code>x</code> 的欄位</h3>
+
+<pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值,只留<code>y</code>的欄位</h3>
+
+<pre><code class="r">semi_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="" id="slide-76" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>實際問題 - 練習題</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>請問，這兩張表該怎麼結合比較好?</h3>
+
+<p><img src="./resources/figures/R_ETL_TWOTABLES.png" style="height:400px" ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-77" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h3>請問，這兩張表該怎麼結合比較好?用誰當第一參數?</h3>
+  </hgroup>
+  <article data-timings="">
+    
+<div class='row-fluid'>
+  <div class='span6'>
+    <p><img src="./resources/figures/R_ETL_TWOTABLES.png" style="height:400px" ></img></p>
+
+  </div>
+  <div class='span6'>
+    <div class="quiz quiz-single well new">
+      <ol>
+<li>left_join Cl_Info_part7</li>
+<li>semi_join Cl_Info_part7</li>
+<li><em>left_join GDP_part5</em></li>
+<li><em>semi_join GDP_part5</em></li>
+<li>其他</li>
+</ol>
+
+      <button class="quiz-submit btn btn-primary">Submit</button>
+      <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+      <button class="quiz-show-answer btn btn-success">Show Answer</button>
+      <button class="quiz-clear btn btn-danger">Clear</button>
+      
+      <div class="quiz-explanation">
+  <p>因為GDP_part5_所俱有的<code>時間點</code>較少，用這個當作主鍵是比較好的.</p>
+
+</div>
+    </div>
+  </div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-78" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料整理完成!</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>GDP_part7 = select(mutate(GDP_part6 , 
+                   time = as.POSIXct(paste(year,&#39;1&#39;,&#39;1&#39;,sep=&#39;-&#39;))),time,GDP)
+t1 = left_join(GDP_part6,Cl_info_part7,by=&quot;time&quot;)
+t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
+</code></pre>
+
+<p>看一下資料 <code>View(t2)</code></p>
+
+<p><img src="./resources/figures/R_ETL_t2.png" style="height:200px" ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-79" style="background:indigo; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>最後一里路</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-80" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>接下來我們應該做(1/3) - 畫圖</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>see1 = filter(mutate(t2,ratio =mortage_total_bal/GDP),is.na(ratio)==FALSE)
+</code></pre>
+  
+<div style='float:left;width:18%' >
+ <ol>
+<li><code>畫圖</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:78%'>
+ <pre><code class="r">library(ggplot2)
+ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
+  scale_size_area() +geom_point(aes(size = 20), alpha = 1/2) 
+</code></pre>
+
+<p><img src="assets/fig/plotChunk.png" alt="plot of chunk plotChunk"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-81" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>接下來我們應該做(2/3) - 解釋</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>利用<code>解釋</code>將圖想要表達的意思更清楚地傳達給觀眾</p>
+  
+<div style='float:left;width:18%' >
+ <ol>
+<li>畫圖</li>
+<li><code>解釋</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:78%'>
+ <ol>
+<li>09達到高峰，但之後房貸與GDP的比值平穩維持在37.5%</li>
+<li>GDP成長比率與房貸餘額幾乎成正比</li>
+<li>從新聞顯示
+
+<ul>
+<li>09年遺產稅調降, 許多人回來<code>投資</code>?<code>炒房</code>?</li>
+<li>10年開始打房政策</li>
+<li>如果加上<code>房價所得比</code>，還可以說什麼呢?</li>
+</ul></li>
+</ol>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-82" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>接下來我們應該做(3/3) - 報告</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>將所有的解釋與圖表<code>包裝成一個故事</code>，展現出來</p>
+  
+<div style='float:left;width:18%' >
+ <ol>
+<li>畫圖</li>
+<li>解釋</li>
+<li><code>報告</code></li>
+</ol>
+
+</div>    
+<div style='float:right;width:78%'>
+ <p><img src="./resources/figures/R_ETL_Presentation.png" style="height:400px" ></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-83" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Review</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-84" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>我們做了什麼?</h2>
+  </hgroup>
+  <article data-timings="">
+      
+<div style='float:left;width:18%' >
+ <ul class = "build incremental">
+<li>設定問題</li>
+<li>下載與讀入與整理</li>
+<li>整合資料</li>
+<li>畫圖</li>
+<li>解釋</li>
+<li>報告</li>
+</ul>
+
+</div>    
+<div style='float:right;width:78%'>
+ <p><img src = './resources/figures/R_ETL_ETL_MAP.png' height="350px"></img></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-85" style="background:green; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Excerises</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-86" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料處理練習</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>下載M1b M2 資料</li>
+<li>整合之前的資料</li>
+<li>比較房貸餘額與M1b的年增率相關性</li>
+<li>房價餘額與存款總額的比值變化</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-87" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>函式運用練習</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>找<strong>2014.02</strong>房貸放款<code>數量最少</code>的銀行</li>
+<li>將GDP改用<code>億新台幣</code>呈現</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-88" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Speical</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-89" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Topics</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>自動化排程</li>
+<li>與資料庫溝通</li>
+<li>其他的資料源
+
+<ul>
+<li>結構化資料</li>
+<li>非結構化資料</li>
+</ul></li>
+<li>培養對資料的品味</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-90" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>Reference</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></li>
+<li><a href="http://cran.r-project.org/web/packages/dplyr/dplyr.pdf">http://cran.r-project.org/web/packages/dplyr/dplyr.pdf</a></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='故事的起源'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='故事的起源'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='故事的起源'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title=''>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title=''>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title=''>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='資料在哪裡'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='資料在哪裡'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='資料在哪裡'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title=''>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title=''>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='解決資料散亂的方法 - <code>ETL</code>'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='ETL 的主要內容'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='今日解決的問題流程 - <code>ETL</code>'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='今日課程的目標'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='學習，實作，觀察 STEP1'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title=''>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title=''>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='開始收集資料(房貸餘額)'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='開始收集資料'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='讀入資料 - read.table'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='看看讀入結果'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title=''>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='再看一次'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Transformation - 資料處理'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title=''>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title=''>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='練習-挑選欄位(1/2)'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='練習-挑選欄位(2/2)'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='練習-挑選資料'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='練習-增加<code>特徵</code>欄位(1/3)'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='練習-增加<code>特徵</code>欄位(2/3)'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='練習- 增加<code>特徵</code>欄位(3/3)'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='練習-<code>排序</code>資料(1/2)'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='練習-<code>排序</code>資料(2/2)'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='學習，實作，觀察 STEP2'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title=''>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='開始收集資料(GDP)'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='開始收集資料(GDP)'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title=''>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title=''>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title=''>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title=''>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title=''>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='資料清理'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='去除前後不相干的資料列'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='轉移文字格式'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='抽離年份與季'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title=''>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title=''>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='學習，實作，觀察 STEP3'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='學習，實作，觀察 STEP4'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='資料整併'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='練習-資料<code>彙總</code>(1/2)'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title=''>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='## 練習-資料<code>彙總</code>(2/2)'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='彙總函數 summarise'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='mean'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='sum'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='n'>
+         60
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=61 title='n_distinct'>
+         61
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=62 title='max'>
+         62
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=63 title='first'>
+         63
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=64 title='nth'>
+         64
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=65 title=''>
+         65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title=''>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title=''>
+         67
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=68 title='接下來比較難，真的!!!!'>
+         68
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=69 title='結合表格'>
+         69
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=70 title='join講解前資料準備'>
+         70
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=71 title='join講解前資料準備'>
+         71
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=72 title='dplyr 介紹 - left_join'>
+         72
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=73 title='dplyr 介紹 - inner_join'>
+         73
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=74 title='dplyr 介紹 - anti_join (<code>補充</code>)'>
+         74
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=75 title='dplyr 介紹 - semi_join (<code>補充</code>)'>
+         75
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=76 title='實際問題 - 練習題'>
+         76
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=77 title='請問，這兩張表該怎麼結合比較好?用誰當第一參數?'>
+         77
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=78 title='資料整理完成!'>
+         78
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=79 title='最後一里路'>
+         79
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=80 title='接下來我們應該做(1/3) - 畫圖'>
+         80
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=81 title='接下來我們應該做(2/3) - 解釋'>
+         81
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=82 title='接下來我們應該做(3/3) - 報告'>
+         82
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=83 title='Review'>
+         83
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=84 title='我們做了什麼?'>
+         84
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=85 title='Excerises'>
+         85
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=86 title='資料處理練習'>
+         86
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=87 title='函式運用練習'>
+         87
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=88 title='Speical'>
+         88
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=89 title='Topics'>
+         89
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=90 title='Reference'>
+         90
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
