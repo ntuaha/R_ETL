@@ -688,12 +688,74 @@ select sum(mortgage_bal) as mortage_total_bal
  - sum   加總 
  - n     計算個數  例如: A B B C   輸出`4` 
  - n_distinct 計算不同物件的個數 例: A B B C 輸出`3`
- - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by(y))
- - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by(y))
- - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10,order_by(y))
  - max, min 最大或最小值
  - median 中位數
  - IQR   就是IQR  ＃待驗證
+
+---
+
+# mean
+
+## 請計算每年全體銀行餘額平均值
+
+
+
+---
+
+# sum
+
+## 請計算每年全體銀行餘額匯總
+
+
+
+---
+
+# n
+
+## 請計算每個月有多少家銀行有房貸餘額
+
+---
+
+# n_distinct
+
+## 請計算每年有多少家銀行有房貸餘額
+
+---
+
+# max
+
+## 請計算每年單一銀行擁有的最多房貸餘額
+
+
+
+
+
+
+---
+
+# first
+
+## 請計算每年房貸餘額排名第ㄧ的銀行
+
+
+
+---
+
+# nth
+
+## 請計算每年房貸餘額排名第2的銀行
+
+
+---
+
+
+
+---
+
+ - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by(y))
+ - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by(y))
+ - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10,order_by(y))
+
 
 ---
 
