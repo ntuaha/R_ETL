@@ -323,7 +323,6 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 
 
---- &twocol_dynamic w1:68% w2:28%
 
 
 --- &twocol_dynamic w1:68% w2:28%
