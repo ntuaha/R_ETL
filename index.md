@@ -591,7 +591,7 @@ colnames(GDP_part) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
 
 
 ```
-#去除中間不合理的,在數字欄位上與補上百萬
+# 去除中間不合理的,在數字欄位上與補上百萬
 GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 
 ```

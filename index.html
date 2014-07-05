@@ -923,7 +923,7 @@ View(Cl_info)
     <h2>轉移文字格式</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>#去除中間不合理的,在數字欄位上與補上百萬
+    <pre><code># 去除中間不合理的,在數字欄位上與補上百萬
 GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(&quot;,&quot;, &quot;&quot;,GDP))*1000000)
 
 </code></pre>
