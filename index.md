@@ -884,9 +884,34 @@ inner_join(x,y,by="c1")
 ## 6  4    E    E
 ```
 
+*** =pnotes
+<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
+
+
+--- &twocol
+
+## dplyr 介紹 - inner_join
+
+*** =left
+### `inner_join` 取出共有的鍵值
+
+```r
+inner_join(x,y,by="c1")
+```
+
+```
+##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
+```
+
 *** =right
 
-### `anti_join` 取出非共有的鍵值 (補充)
+### `anti_join` 取出非共有的鍵值 (`補充`)
 
 ```r
 anti_join(x,y,by="c1")
@@ -908,8 +933,6 @@ anti_join(y,x,by="c1")
 ## 2  6  G
 ```
 
-*** =pnotes
-<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
 
 --- &twocol
 
