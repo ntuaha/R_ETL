@@ -269,6 +269,33 @@ View(Cl_info)
 
 --- &twocol_dynamic w1:68% w2:28%
 
+
+## dplyr 介紹 - select
+
+### `select` 函式，用來__挑選__`欄位`
+
+*** =left
+
+```
+Cl_demo1 = select(資料表,欄位1,欄位2,欄位3)
+```
+- 輸出data frame
+- `第一個參數`為輸入的data frame
+- `後續參數`為選取的欄位名稱
+
+<br/>
+###  給熟悉`SQL`的使用者
+
+```
+select data_dt,bank_nm,mortgage_bal from Cl_info;
+```
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_SELECT.png'></img>
+
+
+
 ## dplyr 介紹 - select
 
 ### `select` 函式，用來__挑選__`欄位`
