@@ -654,7 +654,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 
 --- &twocol_dynamic w1:78% w2:18%
 
-## 練習-資料`彙總`
+## 練習-資料`彙總`(1/2)
 
 *** =left
 
@@ -665,7 +665,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 Cl_info_part3 = group_by(Cl_info_part2,time)  #先匯總
 Cl_info_part4 = summarise(Cl_info_part3,
         mortage_total_bal = sum(mortgage_bal, na.rm = TRUE))
-GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
+
 ```
 - `第一個參數`為輸入的 data frame
 - `第二個欄位`之後都是用來group by/summarise 的欄位
@@ -683,6 +683,16 @@ select sum(mortgage_bal) as mortage_total_bal
 --- &vcenter
 
 <q>group by 可加先下也可不下，不下的情況是直對接`全部`資料做集匯總運算 </q>
+
+
+---
+
+## ## 練習-資料`彙總`(2/2)
+
+```
+GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
+```
+
 
 
 ---
