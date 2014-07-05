@@ -434,14 +434,41 @@ select mmortgage_bal/1000000 as mortage from Cl_info;
 <img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img>
 
 
+--- &twocol_dynamic w1:68% w2:28%
+
+## 練習-排序資料(2/2)
+
+### dplyr `arrange` 用來重新排序
+
+*** =left
+
+
+```
+Cl_demo4 = arrange(資料表,欄位1,desc(欄位2)))
+```
+- 輸出data frame
+- `第一個參數`為輸入的 data frame
+- `後續參數`為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
+
+<br/>
+### 給熟悉`SQL`的使用者
+
+```
+select * from Cl_info order by mortage,data_dt desc ;
+```
+
+*** =right
+
+<img src = './resources/figures/R_ETL_DPLYR_ARRANGE.png'></img>
+
 
 
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## dplyr 介紹 - arrange
+## 練習-排序資料(2/2)
 
-### `arrange` 用來重新排序
+### dplyr `arrange` 用來重新排序
 
 *** =left
 
