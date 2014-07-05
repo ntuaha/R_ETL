@@ -436,7 +436,7 @@ select mmortgage_bal/1000000 as mortage from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-排序資料(2/2)
+## 練習-`排序`資料(1/2)
 
 ### dplyr `arrange` 用來重新排序
 
@@ -466,7 +466,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-排序資料(2/2)
+## 練習-`排序`資料(2/2)
 
 ### dplyr `arrange` 用來重新排序
 
