@@ -568,9 +568,8 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 
 --- 
 
-## 一步一步來(1/3) 
+## 去除前後不相干的資料列
 
-### 去除前後不相干的資料列
 
 ```
 GDP_part = GDP[5:137,]
@@ -587,9 +586,8 @@ colnames(GDP_part) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
 
 --- 
 
-## 一步一步來(2/3)
+## 轉移文字格式
 
-### 轉移文字格式
 
 ```
 #去除中間不合理的,在數字欄位上與補上百萬
@@ -604,9 +602,8 @@ GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 
 --- 
 
-## 一步一步來(3/3)
+## 抽離年份與季
 
-### 抽離年份與季
 
 ```
 GDP_part3 = mutate(GDP_part2,year=as.numeric(substr(time,0,4)),
