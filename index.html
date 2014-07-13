@@ -498,7 +498,7 @@ View(Cl_info)
 <slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選欄位(1/2)</h2>
+    <h2>練習-挑選<code>欄位</code>(1/2)</h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
@@ -508,7 +508,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>後續參數</code>為選取的欄位名稱</li>
 </ul>
@@ -532,7 +531,7 @@ View(Cl_info)
 <slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選欄位(2/2)</h2>
+    <h2>練習-挑選<code>欄位</code>(2/2)</h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
@@ -542,7 +541,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>後續參數</code>為選取的欄位名稱</li>
 </ul>
@@ -566,7 +564,7 @@ View(Cl_info)
 <slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選資料</h2>
+    <h2>練習-挑選<code>資料</code></h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>filter</code> 函式，用來<strong>保留</strong>要留下的<code>資料列</code></h3>
@@ -576,7 +574,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>第二個參數</code>為邏輯運算式，可用data frame裡的欄位，當結果為<code>True</code>時，該筆資料列保留</li>
 </ul>
@@ -647,7 +644,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的 data frame</li>
 <li><code>第二參數</code>為計算式，也可以用來當做<strong>轉換資料形態</strong>，<strong>變更欄位為名稱</strong>使用</li>
 </ul>
@@ -694,7 +690,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的 data frame</li>
 <li><code>後續參數</code>為排序用欄位，預設遞增，可以透過<code>desc()</code>變成遞減排序</li>
 </ul>
@@ -961,25 +956,27 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-49">
+<slide class="quote" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>擁有了<code>GDP</code>和<code>房貸餘額</code>，那接下來呢?</a>
+<img src = './resources/figures/R_ETL_PART2.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50">
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   
 </hgroup>
 <article class = 'flexbox vcenter'>
-<p><q>擁有了<code>GDP</code>和<code>房貸餘額</code>，那接下來我們該怎麼處<code>非結構化</code>的新聞資料呢?</a></p>
+<p><q><code>非結構化</code>的新聞與股市資料!</q></p>
 
 </article>
 <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="dark segue" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1162,10 +1159,11 @@ index(news.month) &lt;- as.POSIXct(format(index(news.month), &quot;%Y-%m-01&quot
 
 <slide class="quote" id="slide-62" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>股市資料</h2>
+  </hgroup>
   <article data-timings="">
-    <p>股市資料</p>
-
-<p>營建股清單
+    <p>營建股清單
 <a href="http://www.wantgoo.com/stock/classcont.aspx?id=32">http://www.wantgoo.com/stock/classcont.aspx?id=32</a></p>
 
   </article>
@@ -1314,14 +1312,23 @@ index(stock.final) &lt;- as.POSIXct(format(index(stock.final), &quot;%Y-%m-01&qu
 <li>透過<code>年份</code>將<strong>房貸餘額</strong>與<strong>GDP</strong>的表<code>結合</code>起來</li>
 </ol>
 
-<p>// 每個月的資料GDP  房貸
-// 連結 兩張表的圖</p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-72" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>資料整併</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="./resources/figures/R_ETL_PART4.png"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-73" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習-資料<code>彙總</code>(1/2)</h2>
@@ -1359,7 +1366,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-73">
+<slide class="" id="slide-74">
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   
@@ -1370,20 +1377,22 @@ Cl_info_part4 = summarise(Cl_info_part3,
 </article>
 <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>## 練習-資料<code>彙總</code>(2/2)</h2>
+    <h2>練習-資料<code>彙總</code>(2/2)</h2>
   </hgroup>
   <article data-timings="">
     <pre><code>GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 </code></pre>
 
+<p><img src="./resources/figures/R_ETL_SUMMARIZE.png"></img></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-76" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>彙總函數 summarise</h2>
@@ -1398,20 +1407,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <li>n_distinct 計算不同物件的個數 例: A B B C 輸出<code>3</code></li>
 <li>max, min 最大或最小值</li>
 <li>median 中位數</li>
-<li>IQR   就是IQR  ＃待驗證</li>
 </ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-76" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h1>mean</h1>
-  </hgroup>
-  <article data-timings="">
-    <h2>請計算每年全體銀行餘額平均值</h2>
 
   </article>
   <!-- Presenter Notes -->
@@ -1420,10 +1416,12 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-77" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>sum</h1>
+    <h2>mean</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年全體銀行餘額匯總</h2>
+    <h3>請計算每月全體銀行餘額平均值</h3>
+
+<p><img src="./resources/figures/R_ETL_MEAN.png"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1432,10 +1430,12 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-78" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>n</h1>
+    <h2>n</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每個月有多少家銀行有房貸餘額</h2>
+    <h3>請計算每個月有多少家銀行有房貸餘額</h3>
+
+<p><img src="./resources/figures/R_ETL_N.png"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1444,10 +1444,12 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-79" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>n_distinct</h1>
+    <h2>n_distinct</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年有多少家銀行有房貸餘額</h2>
+    <h3>請計算每年有多少家銀行有房貸餘額</h3>
+
+<p><img src="./resources/figures/R_ETL_NDISTINCT.png"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1456,10 +1458,12 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-80" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>max</h1>
+    <h2>max</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年單一銀行擁有的最多房貸餘額</h2>
+    <h3>請計算每月單一銀行擁有的最多房貸餘額</h3>
+
+<p><img src="./resources/figures/R_ETL_MAX.png"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1468,10 +1472,12 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-81" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>first</h1>
+    <h2>first, last</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年房貸餘額排名第ㄧ的銀行</h2>
+    <h3>請計算每月房貸餘額排名第ㄧ的銀行</h3>
+
+<p><img src="./resources/figures/R_ETL_FIRST.png"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1480,10 +1486,14 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-82" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>nth</h1>
+    <h2>複雜一點的函數</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年房貸餘額排名第2的銀行</h2>
+    <ul>
+<li>first 該群體第一個，可配合<code>order_by</code> 使用;  first(x,order_by=y)</li>
+<li>last  該群體最後一個，可配合<code>order_by</code> 使用;  last(x,order_by=y)</li>
+<li>nth   該群體的第n個，可配合<code>order_by</code> 使用;  nth(x,10))</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -1491,20 +1501,36 @@ Cl_info_part4 = summarise(Cl_info_part3,
 
 <slide class="" id="slide-83" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>nth</h2>
+  </hgroup>
   <article data-timings="">
-    
+    <h3>請計算每月房貸餘額排名第2的銀行</h3>
+
+<p><img src="./resources/figures/R_ETL_NTH.png"></img></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-84" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習題目- 解答(1/2)</h2>
+  </hgroup>
   <article data-timings="">
-    <ul>
-<li>first 該群體第一個，可配合<code>order_by</code> 使用;  first(x,order_by(y))</li>
-<li>last  該群體最後一個，可配合<code>order_by</code> 使用;  last(x,order_by(y))</li>
-<li>nth   該群體的第n個，可配合<code>order_by</code> 使用;  nth(x,10,order_by(y))</li>
-</ul>
+    <pre><code>
+eg0 = mutate(Cl_info_part2,year = format(time,&quot;%Y&quot;))
+eg1 =  summarise(group_by(Cl_info_part2,time) , 
+         mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
+
+eg2_1 = filter(Cl_info_part2,mortgage_bal &gt;0)
+eg2_2 = summarise(group_by(eg2_1,time),count = n())
+
+eg3_1 = filter(Cl_info_part2,mortgage_bal &gt;0)
+eg3_2 = mutate(eg3_1,year = format(time,&quot;%Y&quot;))
+eg3_3 = summarise(group_by(eg3_2,year),count = n_distinct(bank_nm))
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -1512,8 +1538,21 @@ Cl_info_part4 = summarise(Cl_info_part3,
 
 <slide class="" id="slide-85" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習題目- 解答(2/2)</h2>
+  </hgroup>
   <article data-timings="">
-    <p>//TODO 練習題目</p>
+    <pre><code>eg4 = summarise(group_by(Cl_info_part2,time),
+       val = max(mortgage_bal))
+
+eg5 = summarise(group_by(Cl_info_part2,time),
+         val = last(bank_nm,order_by=mortgage_bal))
+
+
+eg6_1 = arrange(Cl_info_part2,time,desc(mortgage_bal))
+eg6_2 = summarise(group_by(eg6_1,time),
+          val = nth(bank_nm,2))
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -1656,7 +1695,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 
 </div>
   <div style='float:right;width:48%;'>
-<p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
+<p><img src="./resources/figures/R_ETL_INNERJOIN.png" style="height:400px" ></img></p>
 
 </div>
   </article>
@@ -2207,19 +2246,19 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='練習-挑選欄位(1/2)'>
+        data-slide=28 title='練習-挑選<code>欄位</code>(1/2)'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='練習-挑選欄位(2/2)'>
+        data-slide=29 title='練習-挑選<code>欄位</code>(2/2)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='練習-挑選資料'>
+        data-slide=30 title='練習-挑選<code>資料</code>'>
          30
       </a>
     </li>
@@ -2411,7 +2450,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title=''>
+        data-slide=62 title='股市資料'>
          62
       </a>
     </li>
@@ -2471,37 +2510,37 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='練習-資料<code>彙總</code>(1/2)'>
+        data-slide=72 title='資料整併'>
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title=''>
+        data-slide=73 title='練習-資料<code>彙總</code>(1/2)'>
          73
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='## 練習-資料<code>彙總</code>(2/2)'>
+        data-slide=74 title=''>
          74
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='彙總函數 summarise'>
+        data-slide=75 title='練習-資料<code>彙總</code>(2/2)'>
          75
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=76 title='mean'>
+        data-slide=76 title='彙總函數 summarise'>
          76
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='sum'>
+        data-slide=77 title='mean'>
          77
       </a>
     </li>
@@ -2525,31 +2564,31 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='first'>
+        data-slide=81 title='first, last'>
          81
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=82 title='nth'>
+        data-slide=82 title='複雜一點的函數'>
          82
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=83 title=''>
+        data-slide=83 title='nth'>
          83
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title=''>
+        data-slide=84 title='練習題目- 解答(1/2)'>
          84
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title=''>
+        data-slide=85 title='練習題目- 解答(2/2)'>
          85
       </a>
     </li>

@@ -269,7 +269,7 @@ View(Cl_info)
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-挑選欄位(1/2)
+## 練習-挑選`欄位`(1/2)
 
 ### dplyr `select` 函式，用來__挑選__`欄位`
 
@@ -278,7 +278,7 @@ View(Cl_info)
 ```
 Cl_demo1 = select(資料表,欄位1,欄位2,欄位3)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的data frame
 - `後續參數`為選取的欄位名稱
 
@@ -295,7 +295,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選欄位(2/2)
+## 練習-挑選`欄位`(2/2)
 
 ### dplyr `select` 函式，用來__挑選__`欄位`
 
@@ -304,7 +304,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 ```
 Cl_demo1 = select(Cl_info,data_dt,bank_nm,mortgage_bal)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的data frame
 - `後續參數`為選取的欄位名稱
 
@@ -326,7 +326,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選資料
+## 練習-挑選`資料`
 
 ### dplyr `filter` 函式，用來__保留__要留下的`資料列`
 
@@ -336,7 +336,6 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 Cl_demo2 = filter(Cl_info,mortgage_bal>1000000)
 ```
 
-- 輸出data frame
 - `第一個參數`為輸入的data frame
 - `第二個參數`為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
@@ -392,7 +391,7 @@ select mortgage_bal/1000000 as mortage from Cl_info;
 ```
 Cl_demo3 = mutate(Cl_info,mortage = mortgage_bal/1000000)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的 data frame
 - `第二參數`為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
 
@@ -429,7 +428,7 @@ Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
 ```
 Cl_demo4 = arrange(資料表,欄位1,desc(欄位2)))
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的 data frame
 - `後續參數`為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
 
@@ -617,11 +616,17 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 <img src = './resources/figures/R_ETL_GDP3.png' ></img>
 
 
+--- .quote 
+
+<q>擁有了`GDP`和`房貸餘額`，那接下來呢?</a>
+<img src = './resources/figures/R_ETL_PART2.png' ></img>
+
 --- &vcenter
 
-<q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處`非結構化`的新聞資料呢?</a>
+<q>`非結構化`的新聞與股市資料!</q>
 
----
+
+
 
 --- .dark .segue
 
@@ -738,7 +743,7 @@ index(news.month) <- as.POSIXct(format(index(news.month), "%Y-%m-01"))
 
 --- .quote
 
-股市資料
+## 股市資料
 
 
 營建股清單
@@ -834,8 +839,11 @@ final_tbl_diff <- merge.xts(stock.final, news.month_diff)
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
-// 每個月的資料GDP  房貸
-// 連結 兩張表的圖
+---
+
+## 資料整併
+
+<img src="./resources/figures/R_ETL_PART4.png"></img>
 
 
 --- &twocol_dynamic w1:78% w2:18%
@@ -873,12 +881,13 @@ select sum(mortgage_bal) as mortage_total_bal
 
 ---
 
-## ## 練習-資料`彙總`(2/2)
+## 練習-資料`彙總`(2/2)
 
 ```
 GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 ```
 
+<img src="./resources/figures/R_ETL_SUMMARIZE.png"></img>
 
 
 ---
@@ -893,76 +902,110 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
  - n_distinct 計算不同物件的個數 例: A B B C 輸出`3`
  - max, min 最大或最小值
  - median 中位數
- - IQR   就是IQR  ＃待驗證
 
 ---
 
-# mean
+## mean
 
-## 請計算每年全體銀行餘額平均值
+### 請計算每月全體銀行餘額平均值
 
-
-
----
-
-# sum
-
-## 請計算每年全體銀行餘額匯總
-
+<img src="./resources/figures/R_ETL_MEAN.png"></img>
 
 
 ---
 
-# n
+## n
 
-## 請計算每個月有多少家銀行有房貸餘額
+### 請計算每個月有多少家銀行有房貸餘額
 
----
-
-# n_distinct
-
-## 請計算每年有多少家銀行有房貸餘額
-
----
-
-# max
-
-## 請計算每年單一銀行擁有的最多房貸餘額
-
-
-
+<img src="./resources/figures/R_ETL_N.png"></img>
 
 
 
 ---
 
-# first
+## n_distinct
 
-## 請計算每年房貸餘額排名第ㄧ的銀行
+### 請計算每年有多少家銀行有房貸餘額
+
+
+<img src="./resources/figures/R_ETL_NDISTINCT.png"></img>
+
+---
+
+## max
+
+### 請計算每月單一銀行擁有的最多房貸餘額
+
+
+<img src="./resources/figures/R_ETL_MAX.png"></img>
 
 
 
 ---
 
-# nth
+## first, last
 
-## 請計算每年房貸餘額排名第2的銀行
+### 請計算每月房貸餘額排名第ㄧ的銀行
 
-
----
-
+<img src="./resources/figures/R_ETL_FIRST.png"></img>
 
 
----
 
- - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by(y))
- - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by(y))
- - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10,order_by(y))
 
 
 ---
 
-//TODO 練習題目
+## 複雜一點的函數
+
+ - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by=y)
+ - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by=y)
+ - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10))
+
+---
+
+## nth
+
+### 請計算每月房貸餘額排名第2的銀行
+
+<img src="./resources/figures/R_ETL_NTH.png"></img>
+
+
+
+---
+
+## 練習題目- 解答(1/2)
+
+```
+
+eg0 = mutate(Cl_info_part2,year = format(time,"%Y"))
+eg1 =  summarise(group_by(Cl_info_part2,time) , 
+         mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
+
+eg2_1 = filter(Cl_info_part2,mortgage_bal >0)
+eg2_2 = summarise(group_by(eg2_1,time),count = n())
+
+eg3_1 = filter(Cl_info_part2,mortgage_bal >0)
+eg3_2 = mutate(eg3_1,year = format(time,"%Y"))
+eg3_3 = summarise(group_by(eg3_2,year),count = n_distinct(bank_nm))
+```
+
+---
+
+## 練習題目- 解答(2/2)
+
+```
+eg4 = summarise(group_by(Cl_info_part2,time),
+       val = max(mortgage_bal))
+
+eg5 = summarise(group_by(Cl_info_part2,time),
+         val = last(bank_nm,order_by=mortgage_bal))
+
+
+eg6_1 = arrange(Cl_info_part2,time,desc(mortgage_bal))
+eg6_2 = summarise(group_by(eg6_1,time),
+          val = nth(bank_nm,2))
+```
 
 
 
@@ -1061,7 +1104,7 @@ inner_join(x,y,by="c1")
 
 *** =right
 
-<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_INNERJOIN.png" style="height:400px" ></img>
 
 --- &twocol
 
