@@ -1152,7 +1152,7 @@ inner_join(x,y,by="c1")
 
 *** =right
 
-<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_X.png" style="height:400px" ></img>
 
 --- &twocol
 
