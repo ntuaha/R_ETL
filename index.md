@@ -875,6 +875,11 @@ final_tbl_diff <- merge.xts(stock.final, news.month_diff)
 2. 將**GDP**匯總到`每年`的資料
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
+
+---
+
+## 資料整併
+
 <img src="./resources/figures/R_ETL_PART4.png"></img>
 
 
