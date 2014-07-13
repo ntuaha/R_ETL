@@ -1430,10 +1430,10 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-78" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>n</h1>
+    <h2>n</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每個月有多少家銀行有房貸餘額</h2>
+    <h3>請計算每個月有多少家銀行有房貸餘額</h3>
 
 <p><img src="./resources/figures/R_ETL_N.png"></img></p>
 
@@ -1444,10 +1444,10 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-79" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>n_distinct</h1>
+    <h2>n_distinct</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每年有多少家銀行有房貸餘額</h2>
+    <h3>請計算每年有多少家銀行有房貸餘額</h3>
 
 <p><img src="./resources/figures/R_ETL_NDISTINCT.png"></img></p>
 
@@ -1458,10 +1458,10 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-80" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>max</h1>
+    <h2>max</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每月單一銀行擁有的最多房貸餘額</h2>
+    <h3>請計算每月單一銀行擁有的最多房貸餘額</h3>
 
 <p><img src="./resources/figures/R_ETL_MAX.png"></img></p>
 
@@ -1472,10 +1472,10 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-81" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>first, last</h1>
+    <h2>first, last</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每月房貸餘額排名第ㄧ的銀行</h2>
+    <h3>請計算每月房貸餘額排名第ㄧ的銀行</h3>
 
 <p><img src="./resources/figures/R_ETL_FIRST.png"></img></p>
 
@@ -1486,7 +1486,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-82" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>複雜一點的函數</h1>
+    <h2>複雜一點的函數</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -1502,10 +1502,10 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-83" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h1>nth</h1>
+    <h2>nth</h2>
   </hgroup>
   <article data-timings="">
-    <h2>請計算每月房貸餘額排名第2的銀行</h2>
+    <h3>請計算每月房貸餘額排名第2的銀行</h3>
 
 <p><img src="./resources/figures/R_ETL_NTH.png"></img></p>
 
@@ -1516,7 +1516,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <slide class="" id="slide-84" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習題目- 解答</h2>
+    <h2>練習題目- 解答(1/2)</h2>
   </hgroup>
   <article data-timings="">
     <pre><code>
@@ -1524,17 +1524,25 @@ eg0 = mutate(Cl_info_part2,year = format(time,&quot;%Y&quot;))
 eg1 =  summarise(group_by(Cl_info_part2,time) , 
          mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
 
-
 eg2_1 = filter(Cl_info_part2,mortgage_bal &gt;0)
 eg2_2 = summarise(group_by(eg2_1,time),count = n())
-
 
 eg3_1 = filter(Cl_info_part2,mortgage_bal &gt;0)
 eg3_2 = mutate(eg3_1,year = format(time,&quot;%Y&quot;))
 eg3_3 = summarise(group_by(eg3_2,year),count = n_distinct(bank_nm))
+</code></pre>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-eg4 = summarise(group_by(Cl_info_part2,time),
+<slide class="" id="slide-85" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>練習題目- 解答(2/2)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>eg4 = summarise(group_by(Cl_info_part2,time),
        val = max(mortgage_bal))
 
 eg5 = summarise(group_by(Cl_info_part2,time),
@@ -1550,7 +1558,7 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-85" style="background:red; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-86" style="background:red; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來比較難，真的!!!!</h2>
@@ -1561,7 +1569,7 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-86" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-87" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>結合表格</h2>
@@ -1588,7 +1596,7 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-87" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-88" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>join講解前資料準備</h2>
@@ -1614,7 +1622,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-88" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-89" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>join講解前資料準備</h2>
@@ -1643,7 +1651,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-89" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-90" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - left_join</h2>
@@ -1663,7 +1671,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-90" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-91" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - inner_join</h2>
@@ -1694,7 +1702,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-91" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-92" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - anti_join (<code>補充</code>)</h2>
@@ -1726,7 +1734,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-92" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-93" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - semi_join (<code>補充</code>)</h2>
@@ -1774,7 +1782,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   </aside>
 </slide>
 
-<slide class="" id="slide-93" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-94" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>實際問題 - 練習題</h2>
@@ -1788,7 +1796,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-94" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-95" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h3>請問，這兩張表該怎麼結合比較好?用誰當第一參數?</h3>
@@ -1826,7 +1834,7 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-95" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-96" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料整理完成!</h2>
@@ -1846,7 +1854,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-96" style="background:indigo; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-97" style="background:indigo; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>最後一里路</h2>
@@ -1857,7 +1865,7 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-97" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-98" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(1/3) - 畫圖</h2>
@@ -1885,7 +1893,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-98" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-99" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(2/3) - 解釋</h2>
@@ -1918,7 +1926,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-99" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-100" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(3/3) - 報告</h2>
@@ -1942,7 +1950,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-100" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-101" style="background:orange; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Review</h2>
@@ -1953,7 +1961,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-101" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-102" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>我們做了什麼?</h2>
@@ -1979,7 +1987,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-102" style="background:green; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-103" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Excerises</h2>
@@ -1990,7 +1998,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-103" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-104" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料處理練習</h2>
@@ -2007,7 +2015,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-104" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-105" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>函式運用練習</h2>
@@ -2022,7 +2030,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-105" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-106" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -2033,7 +2041,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-106" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-107" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -2055,7 +2063,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-107" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-108" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -2574,25 +2582,25 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title='練習題目- 解答'>
+        data-slide=84 title='練習題目- 解答(1/2)'>
          84
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title='接下來比較難，真的!!!!'>
+        data-slide=85 title='練習題目- 解答(2/2)'>
          85
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=86 title='結合表格'>
+        data-slide=86 title='接下來比較難，真的!!!!'>
          86
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=87 title='join講解前資料準備'>
+        data-slide=87 title='結合表格'>
          87
       </a>
     </li>
@@ -2604,116 +2612,122 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=89 title='dplyr 介紹 - left_join'>
+        data-slide=89 title='join講解前資料準備'>
          89
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=90 title='dplyr 介紹 - inner_join'>
+        data-slide=90 title='dplyr 介紹 - left_join'>
          90
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='dplyr 介紹 - anti_join (<code>補充</code>)'>
+        data-slide=91 title='dplyr 介紹 - inner_join'>
          91
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=92 title='dplyr 介紹 - semi_join (<code>補充</code>)'>
+        data-slide=92 title='dplyr 介紹 - anti_join (<code>補充</code>)'>
          92
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=93 title='實際問題 - 練習題'>
+        data-slide=93 title='dplyr 介紹 - semi_join (<code>補充</code>)'>
          93
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title='請問，這兩張表該怎麼結合比較好?用誰當第一參數?'>
+        data-slide=94 title='實際問題 - 練習題'>
          94
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=95 title='資料整理完成!'>
+        data-slide=95 title='請問，這兩張表該怎麼結合比較好?用誰當第一參數?'>
          95
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='最後一里路'>
+        data-slide=96 title='資料整理完成!'>
          96
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=97 title='接下來我們應該做(1/3) - 畫圖'>
+        data-slide=97 title='最後一里路'>
          97
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=98 title='接下來我們應該做(2/3) - 解釋'>
+        data-slide=98 title='接下來我們應該做(1/3) - 畫圖'>
          98
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=99 title='接下來我們應該做(3/3) - 報告'>
+        data-slide=99 title='接下來我們應該做(2/3) - 解釋'>
          99
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=100 title='Review'>
+        data-slide=100 title='接下來我們應該做(3/3) - 報告'>
          100
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=101 title='我們做了什麼?'>
+        data-slide=101 title='Review'>
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=102 title='Excerises'>
+        data-slide=102 title='我們做了什麼?'>
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='資料處理練習'>
+        data-slide=103 title='Excerises'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='函式運用練習'>
+        data-slide=104 title='資料處理練習'>
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=105 title='Speical'>
+        data-slide=105 title='函式運用練習'>
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='Topics'>
+        data-slide=106 title='Speical'>
          106
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=107 title='Reference'>
+        data-slide=107 title='Topics'>
          107
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=108 title='Reference'>
+         108
       </a>
     </li>
   </ul>
