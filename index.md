@@ -769,7 +769,7 @@ index(news.month) <- as.POSIXct(format(index(news.month), "%Y-%m-01"))
 
 --- .quote
 
-股市資料
+## 股市資料
 
 
 營建股清單
@@ -875,9 +875,7 @@ final_tbl_diff <- merge.xts(stock.final, news.month_diff)
 2. 將**GDP**匯總到`每年`的資料
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
-
-// 每個月的資料GDP  房貸
-// 連結 兩張表的圖
+<img src="./resources/figures/R_ETL_PART4.png"></img>
 
 
 --- &twocol_dynamic w1:78% w2:18%
