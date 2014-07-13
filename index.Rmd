@@ -269,7 +269,7 @@ View(Cl_info)
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-挑選欄位(1/2)
+## 練習-挑選`欄位`(1/2)
 
 ### dplyr `select` 函式，用來__挑選__`欄位`
 
@@ -278,7 +278,7 @@ View(Cl_info)
 ```
 Cl_demo1 = select(資料表,欄位1,欄位2,欄位3)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的data frame
 - `後續參數`為選取的欄位名稱
 
@@ -295,7 +295,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選欄位(2/2)
+## 練習-挑選`欄位`(2/2)
 
 ### dplyr `select` 函式，用來__挑選__`欄位`
 
@@ -304,7 +304,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 ```
 Cl_demo1 = select(Cl_info,data_dt,bank_nm,mortgage_bal)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的data frame
 - `後續參數`為選取的欄位名稱
 
@@ -326,7 +326,7 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 
 --- &twocol_dynamic w1:68% w2:28%
 
-## 練習-挑選資料
+## 練習-挑選`資料`
 
 ### dplyr `filter` 函式，用來__保留__要留下的`資料列`
 
@@ -336,7 +336,6 @@ select data_dt,bank_nm,mortgage_bal from Cl_info;
 Cl_demo2 = filter(Cl_info,mortgage_bal>1000000)
 ```
 
-- 輸出data frame
 - `第一個參數`為輸入的data frame
 - `第二個參數`為邏輯運算式，可用data frame裡的欄位，當結果為`True`時，該筆資料列保留
 
@@ -392,7 +391,7 @@ select mortgage_bal/1000000 as mortage from Cl_info;
 ```
 Cl_demo3 = mutate(Cl_info,mortage = mortgage_bal/1000000)
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的 data frame
 - `第二參數`為計算式，也可以用來當做**轉換資料形態**，**變更欄位為名稱**使用
 
@@ -429,7 +428,7 @@ Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
 ```
 Cl_demo4 = arrange(資料表,欄位1,desc(欄位2)))
 ```
-- 輸出data frame
+
 - `第一個參數`為輸入的 data frame
 - `後續參數`為排序用欄位，預設遞增，可以透過`desc()`變成遞減排序
 
@@ -617,11 +616,17 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 <img src = './resources/figures/R_ETL_GDP3.png' ></img>
 
 
+--- .quote 
+
+<q>擁有了`GDP`和`房貸餘額`，那接下來呢?</a>
+<img src = './resources/figures/R_ETL_PART2.png' ></img>
+
 --- &vcenter
 
-<q>擁有了`GDP`和`房貸餘額`，那接下來我們該怎麼處`非結構化`的新聞資料呢?</a>
+<q>`非結構化`的新聞與股市資料!</q>
 
----
+
+
 
 --- .dark .segue
 

@@ -498,7 +498,7 @@ View(Cl_info)
 <slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選欄位(1/2)</h2>
+    <h2>練習-挑選<code>欄位</code>(1/2)</h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
@@ -508,7 +508,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>後續參數</code>為選取的欄位名稱</li>
 </ul>
@@ -532,7 +531,7 @@ View(Cl_info)
 <slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選欄位(2/2)</h2>
+    <h2>練習-挑選<code>欄位</code>(2/2)</h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>select</code> 函式，用來<strong>挑選</strong><code>欄位</code></h3>
@@ -542,7 +541,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>後續參數</code>為選取的欄位名稱</li>
 </ul>
@@ -566,7 +564,7 @@ View(Cl_info)
 <slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>練習-挑選資料</h2>
+    <h2>練習-挑選<code>資料</code></h2>
   </hgroup>
   <article data-timings="">
     <h3>dplyr <code>filter</code> 函式，用來<strong>保留</strong>要留下的<code>資料列</code></h3>
@@ -576,7 +574,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的data frame</li>
 <li><code>第二個參數</code>為邏輯運算式，可用data frame裡的欄位，當結果為<code>True</code>時，該筆資料列保留</li>
 </ul>
@@ -647,7 +644,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的 data frame</li>
 <li><code>第二參數</code>為計算式，也可以用來當做<strong>轉換資料形態</strong>，<strong>變更欄位為名稱</strong>使用</li>
 </ul>
@@ -694,7 +690,6 @@ View(Cl_info)
 </code></pre>
 
 <ul>
-<li>輸出data frame</li>
 <li><code>第一個參數</code>為輸入的 data frame</li>
 <li><code>後續參數</code>為排序用欄位，預設遞增，可以透過<code>desc()</code>變成遞減排序</li>
 </ul>
@@ -961,25 +956,27 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-49">
+<slide class="quote" id="slide-49" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    <p><q>擁有了<code>GDP</code>和<code>房貸餘額</code>，那接下來呢?</a>
+<img src = './resources/figures/R_ETL_PART2.png' ></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50">
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   
 </hgroup>
 <article class = 'flexbox vcenter'>
-<p><q>擁有了<code>GDP</code>和<code>房貸餘額</code>，那接下來我們該怎麼處<code>非結構化</code>的新聞資料呢?</a></p>
+<p><q><code>非結構化</code>的新聞與股市資料!</q></p>
 
 </article>
 <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-50" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="dark segue" id="slide-51" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -2207,19 +2204,19 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='練習-挑選欄位(1/2)'>
+        data-slide=28 title='練習-挑選<code>欄位</code>(1/2)'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='練習-挑選欄位(2/2)'>
+        data-slide=29 title='練習-挑選<code>欄位</code>(2/2)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='練習-挑選資料'>
+        data-slide=30 title='練習-挑選<code>資料</code>'>
          30
       </a>
     </li>
