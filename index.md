@@ -918,12 +918,13 @@ select sum(mortgage_bal) as mortage_total_bal
 
 ---
 
-## ## 練習-資料`彙總`(2/2)
+## 練習-資料`彙總`(2/2)
 
 ```
 GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
 ```
 
+<img src="./resources/figures/R_ETL_SUMMARIZE.png"></img>
 
 
 ---
@@ -938,22 +939,14 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
  - n_distinct 計算不同物件的個數 例: A B B C 輸出`3`
  - max, min 最大或最小值
  - median 中位數
- - IQR   就是IQR  ＃待驗證
 
 ---
 
-# mean
+## mean
 
-## 請計算每年全體銀行餘額平均值
+### 請計算每月全體銀行餘額平均值
 
-
-
----
-
-# sum
-
-## 請計算每年全體銀行餘額匯總
-
+<img src="./resources/figures/R_ETL_MEAN.png"></img>
 
 
 ---
@@ -962,18 +955,37 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## 請計算每個月有多少家銀行有房貸餘額
 
+<img src="./resources/figures/R_ETL_N.png"></img>
+
+
+
 ---
 
 # n_distinct
 
 ## 請計算每年有多少家銀行有房貸餘額
 
+
+<img src="./resources/figures/R_ETL_NDISTINCT.png"></img>
+
 ---
 
 # max
 
-## 請計算每年單一銀行擁有的最多房貸餘額
+## 請計算每月單一銀行擁有的最多房貸餘額
 
+
+<img src="./resources/figures/R_ETL_MAX.png"></img>
+
+
+
+---
+
+# first, last
+
+## 請計算每月房貸餘額排名第ㄧ的銀行
+
+<img src="./resources/figures/R_ETL_FIRST.png"></img>
 
 
 
@@ -981,33 +993,53 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ---
 
-# first
+# 複雜一點的函數
 
-## 請計算每年房貸餘額排名第ㄧ的銀行
-
-
+ - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by=y)
+ - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by=y)
+ - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10))
 
 ---
 
 # nth
 
-## 請計算每年房貸餘額排名第2的銀行
+## 請計算每月房貸餘額排名第2的銀行
 
+<img src="./resources/figures/R_ETL_NTH.png"></img>
 
----
-
-
-
----
-
- - first 該群體第一個，可配合`order_by` 使用;  first(x,order_by(y))
- - last  該群體最後一個，可配合`order_by` 使用;  last(x,order_by(y))
- - nth   該群體的第n個，可配合`order_by` 使用;  nth(x,10,order_by(y))
 
 
 ---
 
-//TODO 練習題目
+## 練習題目- 解答
+
+```
+
+eg0 = mutate(Cl_info_part2,year = format(time,"%Y"))
+eg1 =  summarise(group_by(Cl_info_part2,time) , 
+         mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
+
+
+eg2_1 = filter(Cl_info_part2,mortgage_bal >0)
+eg2_2 = summarise(group_by(eg2_1,time),count = n())
+
+
+eg3_1 = filter(Cl_info_part2,mortgage_bal >0)
+eg3_2 = mutate(eg3_1,year = format(time,"%Y"))
+eg3_3 = summarise(group_by(eg3_2,year),count = n_distinct(bank_nm))
+
+
+eg4 = summarise(group_by(Cl_info_part2,time),
+       val = max(mortgage_bal))
+
+eg5 = summarise(group_by(Cl_info_part2,time),
+         val = last(bank_nm,order_by=mortgage_bal))
+
+
+eg6_1 = arrange(Cl_info_part2,time,desc(mortgage_bal))
+eg6_2 = summarise(group_by(eg6_1,time),
+          val = nth(bank_nm,2))
+```
 
 
 
