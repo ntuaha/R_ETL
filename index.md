@@ -1113,7 +1113,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 *** =right
 
-<img src="./resources/figures/R_ETL_X.png" width="100%"></img>
+<img src="./resources/figures/R_ETL_INNERJOIN.png" width="100%"></img>
 
 ---
 
