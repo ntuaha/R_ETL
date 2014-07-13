@@ -1076,7 +1076,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 *** =right
 
-<img src="./resources/figures/R_ETL_INNERJOIN.png" width="100%"></img>
+<img src="./resources/figures/R_ETL_X.png" width="100%"></img>
 
 ---
 
@@ -1104,7 +1104,7 @@ inner_join(x,y,by="c1")
 
 *** =right
 
-<img src="./resources/figures/R_ETL_X.png" style="height:400px" ></img>
+<img src="./resources/figures/R_ETL_INNERJOIN.png" style="height:400px" ></img>
 
 --- &twocol
 
