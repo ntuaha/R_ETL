@@ -1,6 +1,3 @@
-Title
-========================================================
-
 
 ```{r}
 library(stringr)
@@ -9,7 +6,7 @@ library(stringr)
 ```{r}
 
 f <- file("~/Desktop/news.txt", encoding="utf-8")
-#增加用 BIG5呈現亂碼的例子
+
 news <- readLines(f)
 
 dates <- str_extract(news, "\\d{4}-\\d{2}-\\d{2}")
