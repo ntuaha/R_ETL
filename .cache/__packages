@@ -1,4 +1,14 @@
 base
+bitops
+devtools
 dplyr
 ggplot2
+RCurl
+reshape2
+RJSONIO
+RSelenium
 slidify
+stringr
+XML
+xts
+zoo
