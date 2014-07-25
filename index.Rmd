@@ -1,7 +1,7 @@
 ---
 title       : ETL on R
 subtitle    : 
-author      : Cheng Yu Lin (aha) Jia Wei Chen (jiawei)
+author      : Cheng Yu Lin (aha) and Jia Wei Chen (jiawei)
 job         : 
 license     : by-sa
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
