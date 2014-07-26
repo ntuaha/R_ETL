@@ -113,6 +113,21 @@ mode        : selfcontained # {standalone, draft}
    
    
 
+
+
+--- 
+
+## 我們ETL會用到的有 
+
+- `dplyr` 可用類似SQL語法操作data frome
+- `xts` 處理時間格式好用的套件
+- `gdata` 可以處理Excel 2007以上的文件
+- `quantmod` 可以處理股市資料
+- `stringr` 字串相關處理
+
+
+
+
 --- 
 
 ## DSC的One Piece
@@ -133,17 +148,6 @@ install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'sour
 ```
 slides("ETL")
 ```
-
-
---- 
-
-## 我們ETL會用到的有 
-
-- `dplyr` 可用類似SQL語法操作data frome
-- `xts` 處理時間格式好用的套件
-- `gdata` 可以處理Excel 2007以上的文件
-- `quantmod` 可以處理股市資料
-- `stringr` 字串相關處理
 
 
 
