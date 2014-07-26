@@ -485,14 +485,9 @@ str(Cl_info)
   <article data-timings="">
     <h3>將資料讀入</h3>
 
-<pre><code class="r">library(DSC2014Tutorial)
+<pre><code>library(DSC2014Tutorial)
 Cl_info = read.table(file=ETL_file(&#39;cl_info_other.csv&#39;),header=T,sep=&quot;,&quot;,stringsAsFactors=F)
-</code></pre>
-
-<pre><code>## Error: could not find function &quot;ETL_file&quot;
-</code></pre>
-
-<pre><code class="r">Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
+Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
 </code></pre>
@@ -1100,7 +1095,12 @@ news_yahoo &lt;- readLines(&#39;news_yahoo.txt&#39;)
     <h3><a href="http://house.cnyes.com/News/tw_housenews/List.htm">鉅亨網　房地產新聞</a></h3>
 
 <pre><code class="r">setwd(&#39;~/R_ETL&#39;)
-hourse_news &lt;- readLines(&#39;jiawei/news.txt&#39;) 
+</code></pre>
+
+<pre><code>## Error: cannot change working directory
+</code></pre>
+
+<pre><code class="r">hourse_news &lt;- readLines(&#39;jiawei/news.txt&#39;) 
 </code></pre>
 
 <pre><code>## Warning: incomplete final line found on &#39;jiawei/news.txt&#39;
@@ -1312,7 +1312,7 @@ list(
 tail(words_length[[&quot;2&quot;]])
 </code></pre>
 
-<pre><code>## [1] &quot;鼎建&quot; &quot;鼓勵&quot; &quot;齊揚&quot; &quot;、龍&quot; &quot;龍岡&quot; &quot;龍江&quot;
+<pre><code>## [1] &quot;點閱&quot; &quot;鼎建&quot; &quot;鼓勵&quot; &quot;齊揚&quot; &quot;龍岡&quot; &quot;龍江&quot;
 </code></pre>
 
   </article>
@@ -1379,9 +1379,9 @@ words_weight &lt;- word_freq / N
 </code></pre>
 
 <pre><code>##   2381   2347   2534   2590   2469   2405   2503   2887   2772   2548 
-## &quot;下旬&quot; &quot;三季&quot;  &quot; 住&quot; &quot;候因&quot; &quot;享減&quot; &quot;不起&quot; &quot;以商&quot; &quot;區地&quot;  &quot;制 &quot; &quot;住輻&quot; 
+##  &quot;1戶&quot;   &quot;07&quot;  &quot;7億&quot;   &quot;IF&quot;  &quot;4月&quot;  &quot;2億&quot;  &quot;5萬&quot; &quot;價更&quot; &quot;以文&quot;   &quot;8.&quot; 
 ##   2970   2192   2138   2670   2592 
-## &quot;只租&quot;   &quot;55&quot;  &quot;3年&quot; &quot;億得&quot; &quot;值利&quot;
+## &quot;兩廠&quot; &quot;、大&quot;  &quot; 簽&quot; &quot;不吃&quot;   &quot;IT&quot;
 </code></pre>
 
   </article>
@@ -1394,7 +1394,7 @@ words_weight &lt;- word_freq / N
   <h2>單字 出現次數分佈</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
-<p><img src="assets/fig/unnamed-chunk-19.png" alt="plot of chunk unnamed-chunk-19"> </p>
+<p><img src="assets/fig/unnamed-chunk-18.png" alt="plot of chunk unnamed-chunk-18"> </p>
 
 </article>
 <!-- Presenter Notes -->
@@ -1416,7 +1416,7 @@ words_weight &lt;- word_freq / N
 names(disorder_val) &lt;- words
 </code></pre>
 
-<pre><code>##  [1] &quot; 每坪&quot;    &quot;每坪衝&quot;   &quot; 豪宅&quot;    &quot;豪宅 &quot;    &quot;2013&quot;     &quot;6.6萬&quot;   
+<pre><code>##  [1] &quot;房價高&quot;   &quot;房地產&quot;   &quot;每坪衝&quot;   &quot;豪宅 &quot;    &quot;2013&quot;     &quot;6.6萬&quot;   
 ##  [7] &quot;北市去年&quot; &quot;北市房價&quot; &quot;合宜住宅&quot; &quot;地上權案&quot; &quot;實價揭露&quot; &quot;房市交易&quot;
 ## [13] &quot;新隆國宅&quot; &quot;臨沂帝國&quot; &quot;高房價 &quot;
 </code></pre>
@@ -1431,7 +1431,7 @@ names(disorder_val) &lt;- words
   <h2>單字的 混亂程度分佈</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
-<p><img src="assets/fig/unnamed-chunk-23.png" alt="plot of chunk unnamed-chunk-23"> </p>
+<p><img src="assets/fig/unnamed-chunk-22.png" alt="plot of chunk unnamed-chunk-22"> </p>
 
 </article>
 <!-- Presenter Notes -->
@@ -1444,7 +1444,7 @@ names(disorder_val) &lt;- words
   <article data-timings="">
     <h3>兩側混亂程度高的字</h3>
 
-<pre><code>##  [1] &quot; 每坪&quot;    &quot;每坪衝&quot;   &quot; 豪宅&quot;    &quot;豪宅 &quot;    &quot;2013&quot;     &quot;6.6萬&quot;   
+<pre><code>##  [1] &quot;房價高&quot;   &quot;房地產&quot;   &quot;每坪衝&quot;   &quot;豪宅 &quot;    &quot;2013&quot;     &quot;6.6萬&quot;   
 ##  [7] &quot;北市去年&quot; &quot;北市房價&quot; &quot;合宜住宅&quot; &quot;地上權案&quot; &quot;實價揭露&quot; &quot;房市交易&quot;
 ## [13] &quot;新隆國宅&quot; &quot;臨沂帝國&quot; &quot;高房價 &quot;
 </code></pre>
@@ -1471,10 +1471,10 @@ names(disorder_val) &lt;- words
 <pre><code class="r">test_words &lt;- names(which(disorder_val &gt; 12))
 </code></pre>
 
-<pre><code>##  [1] &quot;年漲15&quot;     &quot;店面交易&quot;   &quot;房價年漲&quot;   &quot;房價漲幅&quot;   &quot;房市交易&quot;  
-##  [6] &quot;房市量縮&quot;   &quot; 新北市&quot;    &quot;新隆國宅&quot;   &quot;每坪12&quot;     &quot;社會住宅&quot;  
-## [11] &quot;臨沂帝國&quot;   &quot;陸客效應&quot;   &quot;高房價 &quot;    &quot;25日前提&quot;   &quot; 張盛和：&quot; 
-## [16] &quot;捷運松山線&quot; &quot;月實價登錄&quot; &quot;桃園房價漲&quot; &quot;：豪宅交易&quot; &quot;逾3.5%&quot;
+<pre><code>##  [1] &quot;實價登錄&quot;   &quot;年漲15&quot;     &quot;店面交易&quot;   &quot;房價年漲&quot;   &quot;房價漲幅&quot;  
+##  [6] &quot;房市交易&quot;   &quot;房市量縮&quot;   &quot;新隆國宅&quot;   &quot;每坪12&quot;     &quot;社會住宅&quot;  
+## [11] &quot;臨沂帝國&quot;   &quot;陸客效應&quot;   &quot;高房價 &quot;    &quot; 張盛和：&quot;  &quot;：豪宅交易&quot;
+## [16] &quot;25日前提&quot;   &quot;捷運松山線&quot; &quot;月實價登錄&quot; &quot;桃園房價漲&quot; &quot;逾3.5%&quot;
 </code></pre>
 
   </article>
@@ -1575,13 +1575,13 @@ colnames(words_tbl) &lt;- test_words_2
 rownames(words_tbl) &lt;- dates
 </code></pre>
 
-<pre><code>##            成　 最熱  文山 不動產 汐止 信義之星 9% 5都
-## 2014-06-24    0    0     0      0    0        0  0   0
-## 2014-06-24    0    0     0      0    0        0  0   0
-## 2014-06-23    0    0     0      0    0        0  0   0
-## 2014-06-20    0    0     0      0    0        1  0   0
-## 2014-06-20    0    0     0      0    0        0  0   0
-## 2014-06-19    0    0     0      0    0        0  0   0
+<pre><code>##            5年 共識 關  9. 11月 北市房 29 -1
+## 2014-06-24   0    0   0  0    0      0  0  0
+## 2014-06-24   0    0   0  0    0      0  0  0
+## 2014-06-23   0    0   0  0    0      0  0  0
+## 2014-06-20   0    0   0  0    0      0  0  0
+## 2014-06-20   0    0   0  0    0      0  0  0
+## 2014-06-19   0    0   0  1    0      0  0  0
 </code></pre>
 
   </article>
@@ -1602,14 +1602,14 @@ rownames(words_tbl) &lt;- dates
 <pre><code class="r">words_tbl_xts[&quot;2014-01-18/2014-01-20&quot;, 100:110]
 </code></pre>
 
-<pre><code>##            士林 大同 大安 大樓 夯　 套房 好宅 子」  將 小坪 居住
-## 2014-01-19    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+<pre><code>##            土地 均價 坪數 增2 增加 增近 士林 大同 大安 大樓 夯　
+## 2014-01-19    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
 </code></pre>
 
   </article>
@@ -1629,15 +1629,15 @@ count.weeks &lt;- period.apply(words_tbl_xts, ep.weeks, FUN=colSums)
 count.weeks[&quot;2014-01/2014-02&quot;, 100:110]
 </code></pre>
 
-<pre><code>##            士林 大同 大安 大樓 夯　 套房 好宅 子」  將 小坪 居住
-## 2014-01-06    0    1    0    0    0    0    0    0   0    0    0
-## 2014-01-10    0    0    0    0    0    0    0    0   0    0    0
-## 2014-01-20    0    0    0    0    0    0    0    0   0    1    0
-## 2014-01-27    0    0    0    0    2    0    0    0   0    0    0
-## 2014-01-28    0    0    1    0    0    0    0    0   0    0    1
-## 2014-02-07    0    0    1    0    0    0    0    0   0    0    0
-## 2014-02-17    1    0    0    0    0    0    0    1   0    0    0
-## 2014-02-24    1    0    1    0    0    2    0    1   0    1    0
+<pre><code>##            土地 均價 坪數 增2 增加 增近 士林 大同 大安 大樓 夯　
+## 2014-01-06    1    0    0   0    0    0    0    1    0    0    0
+## 2014-01-10    0    0    0   0    0    0    0    0    0    0    0
+## 2014-01-20    0    0    1   1    0    0    0    0    0    0    0
+## 2014-01-27    0    0    0   0    0    1    0    0    0    0    2
+## 2014-01-28    0    0    0   0    0    0    0    0    1    0    0
+## 2014-02-07    0    0    0   2    0    0    0    0    1    0    0
+## 2014-02-17    1    0    1   0    1    0    1    0    0    0    0
+## 2014-02-24    0    2    0   0    1    0    1    0    1    0    0
 </code></pre>
 
   </article>
@@ -1690,12 +1690,7 @@ saveRDS(mystocks, &quot;mystocks.rds&quot;)
   </hgroup>
   <article data-timings="">
     <pre><code class="r">mystocks &lt;- readRDS(ETL_file(&quot;mystocks.rds&quot;))#readRDS(&#39;jiawei/mystocks.rds&#39;)
-</code></pre>
-
-<pre><code>## Error: could not find function &quot;ETL_file&quot;
-</code></pre>
-
-<pre><code class="r">mystocks.return &lt;- diff(mystocks, 1) / mystocks
+mystocks.return &lt;- diff(mystocks, 1) / mystocks
 </code></pre>
 
 <pre><code>##               華友聯      名軒      寶徠      潤隆      國建
@@ -1720,7 +1715,7 @@ saveRDS(mystocks, &quot;mystocks.rds&quot;)
     <pre><code class="r">mystocks.return_all &lt;- apply(mystocks.return[-1,], 1, mean)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-40.png" alt="plot of chunk unnamed-chunk-40"> </p>
+<p><img src="assets/fig/unnamed-chunk-39.png" alt="plot of chunk unnamed-chunk-39"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1741,12 +1736,12 @@ return.status &lt;- data.frame(cl$cluster)
 </code></pre>
 
 <pre><code>##            cl.cluster
-## 2014-01-02          1
-## 2014-01-03          3
+## 2014-01-02          4
+## 2014-01-03          1
 ## 2014-01-06          5
-## 2014-01-07          4
-## 2014-01-08          1
-## 2014-01-09          3
+## 2014-01-07          2
+## 2014-01-08          4
+## 2014-01-09          1
 </code></pre>
 
   </article>
@@ -1763,13 +1758,13 @@ return.status &lt;- data.frame(cl$cluster)
 <div style='float:left;width:48%;'>
 <h3><code>關鍵字出現的次數</code></h3>
 
-<pre><code>##            士林 大同 大安 大樓 夯　 套房
-## 2014-06-24    0    0    0    0    0    0
-## 2014-06-24    0    0    0    0    0    0
-## 2014-06-23    0    0    0    0    0    0
-## 2014-06-20    0    0    0    0    0    0
-## 2014-06-20    0    0    0    0    0    0
-## 2014-06-19    0    0    0    0    0    0
+<pre><code>##            土地 均價 坪數 增2 增加 增近
+## 2014-06-24    0    0    0   0    0    0
+## 2014-06-24    0    0    0   0    0    0
+## 2014-06-23    0    0    0   0    0    0
+## 2014-06-20    0    0    0   0    0    0
+## 2014-06-20    0    0    0   0    0    0
+## 2014-06-19    0    1    0   0    0    0
 </code></pre>
 
 </div>
@@ -1777,12 +1772,12 @@ return.status &lt;- data.frame(cl$cluster)
 <h3><code>股市漲跌的狀態</code></h3>
 
 <pre><code>##            cl.cluster
-## 2014-01-02          1
-## 2014-01-03          3
+## 2014-01-02          4
+## 2014-01-03          1
 ## 2014-01-06          5
-## 2014-01-07          4
-## 2014-01-08          1
-## 2014-01-09          3
+## 2014-01-07          2
+## 2014-01-08          4
+## 2014-01-09          1
 </code></pre>
 
 </div>
@@ -1801,12 +1796,12 @@ return.status &lt;- data.frame(cl$cluster)
 <h3>原本的表格</h3>
 
 <pre><code>##            cl.cluster
-## 2014-01-02          1
-## 2014-01-03          3
+## 2014-01-02          4
+## 2014-01-03          1
 ## 2014-01-06          5
-## 2014-01-07          4
-## 2014-01-08          1
-## 2014-01-09          3
+## 2014-01-07          2
+## 2014-01-08          4
+## 2014-01-09          1
 </code></pre>
 
 </div>
@@ -1814,12 +1809,12 @@ return.status &lt;- data.frame(cl$cluster)
 <h3>希望的表格</h3>
 
 <pre><code>##   return_date 1 2 3 4 5
-## 1  2014-01-02 1 0 0 0 0
-## 2  2014-01-03 0 0 3 0 0
+## 1  2014-01-02 0 0 0 4 0
+## 2  2014-01-03 1 0 0 0 0
 ## 3  2014-01-06 0 0 0 0 5
-## 4  2014-01-07 0 0 0 4 0
-## 5  2014-01-08 1 0 0 0 0
-## 6  2014-01-09 0 0 3 0 0
+## 4  2014-01-07 0 2 0 0 0
+## 5  2014-01-08 0 0 0 4 0
+## 6  2014-01-09 1 0 0 0 0
 </code></pre>
 
 </div>
@@ -1839,12 +1834,12 @@ return.status &lt;- cbind(return.status, &quot;val&quot;=rep(1,127))
 </code></pre>
 
 <pre><code>##            return_date cl.cluster val
-## 2014-01-02  2014-01-02          1   1
-## 2014-01-03  2014-01-03          3   1
+## 2014-01-02  2014-01-02          4   1
+## 2014-01-03  2014-01-03          1   1
 ## 2014-01-06  2014-01-06          5   1
-## 2014-01-07  2014-01-07          4   1
-## 2014-01-08  2014-01-08          1   1
-## 2014-01-09  2014-01-09          3   1
+## 2014-01-07  2014-01-07          2   1
+## 2014-01-08  2014-01-08          4   1
+## 2014-01-09  2014-01-09          1   1
 </code></pre>
 
   </article>
@@ -1869,12 +1864,12 @@ return.status.xts &lt;- xts(return.status[,-1], as.POSIXct(return_date))
 </code></pre>
 
 <pre><code>##            X1 X2 X3 X4 X5
-## 2014-01-02  1  0  0  0  0
-## 2014-01-03  0  0  1  0  0
+## 2014-01-02  0  0  0  1  0
+## 2014-01-03  1  0  0  0  0
 ## 2014-01-06  0  0  0  0  1
-## 2014-01-07  0  0  0  1  0
-## 2014-01-08  1  0  0  0  0
-## 2014-01-09  0  0  1  0  0
+## 2014-01-07  0  1  0  0  0
+## 2014-01-08  0  0  0  1  0
+## 2014-01-09  1  0  0  0  0
 </code></pre>
 
   </article>
@@ -1891,12 +1886,12 @@ return.status.xts &lt;- xts(return.status[,-1], as.POSIXct(return_date))
 names(final_tbl) &lt;- c(test_words_2, names(return.status[,-1]))
 </code></pre>
 
-<pre><code>##            月實價登錄 桃園房價漲 ：豪宅交易 逾3.5% X1 X2 X3 X4 X5
-## 2014-01-02          0          0          0      0  1  0  0  0  0
+<pre><code>##            捷運松山線 月實價登錄 桃園房價漲 逾3.5% X1 X2 X3 X4 X5
+## 2014-01-02          0          0          0      0  0  0  0  1  0
 ## 2014-01-02          0          0          0      0  0  0  0  0  0
 ## 2014-01-02          0          0          0      0  0  0  0  0  0
 ## 2014-01-02          0          0          0      0  0  0  0  0  0
-## 2014-01-03          0          0          0      0  0  0  1  0  0
+## 2014-01-03          0          0          0      0  1  0  0  0  0
 ## 2014-01-03          0          0          0      0  0  0  0  0  0
 </code></pre>
 
@@ -1940,17 +1935,17 @@ words &lt;- names(score)
 head(data.frame(words), 10)
 </code></pre>
 
-<pre><code>##     words
-## 1      X1
-## 2      48
-## 3     減1
-## 4     2.4
-## 5    年減
-## 6    現身
-## 7    置產
-## 8  下半年
-## 9  不動產
-## 10   平均
+<pre><code>##       words
+## 1        X1
+## 2      標脫
+## 3      、新
+## 4       %最
+## 5      店租
+## 6      標售
+## 7    捷運宅
+## 8        28
+## 9      萬華
+## 10 新隆國宅
 </code></pre>
 
 </div>
@@ -1962,17 +1957,17 @@ words &lt;- names(score)
 head(data.frame(words), 10)
 </code></pre>
 
-<pre><code>##    words
-## 1     X4
-## 2   房貸
-## 3   所得
-## 4   打造
-## 5   招商
-## 6   推案
-## 7   最受
-## 8   網路
-## 9   重劃
-## 10  馬年
+<pre><code>##     words
+## 1      X4
+## 2      48
+## 3     減1
+## 4     2.4
+## 5    年減
+## 6    現身
+## 7    置產
+## 8    平均
+## 9  下半年
+## 10 不動產
 </code></pre>
 
 </div>
@@ -1993,17 +1988,17 @@ for(i in 1:5){
 }
 </code></pre>
 
-<pre><code>##       [,1]     [,2]    [,3]       [,4]   [,5]    
-##  [1,] &quot;X1&quot;     &quot;X2&quot;    &quot;X3&quot;       &quot;X4&quot;   &quot;X5&quot;    
-##  [2,] &quot;48&quot;     &quot;8萬&quot;   &quot;標脫&quot;     &quot;房貸&quot; &quot;台開決&quot;
-##  [3,] &quot;減1&quot;    &quot;每坪7&quot; &quot;店租&quot;     &quot;所得&quot; &quot;總銷&quot;  
-##  [4,] &quot;2.4&quot;    &quot;9.4&quot;   &quot;、新&quot;     &quot;打造&quot; &quot;0%&quot;    
-##  [5,] &quot;年減&quot;   &quot;40&quot;    &quot;%最&quot;      &quot;招商&quot; &quot;0億&quot;   
-##  [6,] &quot;現身&quot;   &quot;9%&quot;    &quot;標售&quot;     &quot;推案&quot; &quot;29&quot;    
-##  [7,] &quot;置產&quot;   &quot;中和&quot;  &quot;捷運宅&quot;   &quot;最受&quot; &quot;3大&quot;   
-##  [8,] &quot;下半年&quot; &quot;以上&quot;  &quot;28&quot;       &quot;網路&quot; &quot;5坪&quot;   
-##  [9,] &quot;不動產&quot; &quot;億　&quot;  &quot;萬華&quot;     &quot;重劃&quot; &quot;5都&quot;   
-## [10,] &quot; 平均&quot;  &quot;可以&quot;  &quot;新隆國宅&quot; &quot;馬年&quot; &quot;65&quot;
+<pre><code>##       [,1]       [,2]   [,3]    [,4]     [,5]    
+##  [1,] &quot;X1&quot;       &quot;X2&quot;   &quot;X3&quot;    &quot;X4&quot;     &quot;X5&quot;    
+##  [2,] &quot;標脫&quot;     &quot;房貸&quot; &quot;8萬&quot;   &quot;48&quot;     &quot;台開決&quot;
+##  [3,] &quot;、新&quot;     &quot;所得&quot; &quot;每坪7&quot; &quot;減1&quot;    &quot;總銷&quot;  
+##  [4,] &quot;%最&quot;      &quot;打造&quot; &quot;9.4&quot;   &quot;2.4&quot;    &quot; 仍&quot;   
+##  [5,] &quot;店租&quot;     &quot;招商&quot; &quot;40&quot;    &quot;年減&quot;   &quot; 全&quot;   
+##  [6,] &quot;標售&quot;     &quot;推案&quot; &quot;9%&quot;    &quot;現身&quot;   &quot; 將&quot;   
+##  [7,] &quot;捷運宅&quot;   &quot;最受&quot; &quot;中和&quot;  &quot;置產&quot;   &quot; 應&quot;   
+##  [8,] &quot;28&quot;       &quot;網路&quot; &quot;以上&quot;  &quot; 平均&quot;  &quot;　新&quot;  
+##  [9,] &quot;萬華&quot;     &quot;重劃&quot; &quot;億　&quot;  &quot;下半年&quot; &quot;、新&quot;  
+## [10,] &quot;新隆國宅&quot; &quot;馬年&quot; &quot;可以&quot;  &quot;不動產&quot; &quot;：台&quot;
 </code></pre>
 
   </article>

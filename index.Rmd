@@ -262,7 +262,7 @@ str(Cl_info)
 ### 將資料讀入
 
 
-```{r}
+```
 library(DSC2014Tutorial)
 Cl_info = read.table(file=ETL_file('cl_info_other.csv'),header=T,sep=",",stringsAsFactors=F)
 Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
