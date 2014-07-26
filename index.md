@@ -195,10 +195,11 @@ slides("ETL")
 
 ## 學習，實作，觀察 STEP1
 
+--- 
 
---- .quote
+##  `ETL` 第一步
 
-<q> 好! 開始動手做吧!</q>
+<img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
 
 ---
 
@@ -514,6 +515,14 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 <q>讓我們來練習抓下一個資料`GDP`</q>
 
+
+##  `ETL` 第二步
+
+<img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
+
+
+
+
 --- 
 
 ## 開始收集資料(GDP)
@@ -663,6 +672,13 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 --- .dark .segue
 
 ## 學習，實作，觀察 STEP3
+
+
+##  `ETL` 第三步
+
+<img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
+
+
 
 
 ---
@@ -1557,6 +1573,14 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 --- .dark .segue
 
 ## 學習，實作，觀察 STEP4
+
+
+
+##  `ETL` 最後一步
+
+<img src = './resources/figures/R_ETL_ETL_2.png' height="350px"></img>
+
+
 
 
 ---
