@@ -1,7 +1,7 @@
 ---
 title       : ETL on R
 subtitle    : 
-author      : 陳嘉葳, 林鉦育 (aha)
+author      : Cheng Yu Lin (aha) and Jia Wei Chen (jiawei)
 job         : 
 license     : by-sa
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -633,230 +633,888 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 
 ## 學習，實作，觀察 STEP3
 
----
-
-
 
 ---
 
-## 讀入資料
-
-### 避免`BIG5`呈現`亂碼`
-
-```r
-f <- file("~/Desktop/news.txt", encoding="utf-8")
-news <- readLines(f)
-```
-
-```
-## Warning: cannot open file '/Users/aha/Desktop/news.txt': No such file or
-## directory
-```
-
-```
-## Error: cannot open the connection
-```
-
-
----
-
-## 抽出新聞內的時間與標題
-
-### 時間
+## 匯入套件
 
 
 ```r
-dates <- str_extract(news, "\\d{4}-\\d{2}-\\d{2}")
-```
-
-```
-## Error: could not find function "str_extract"
-```
-### 標題
-
-
-```r
-docs <- str_replace(news, "\\d{4}-\\d{2}-\\d{2}", "")
-```
-
-```
-## Error: could not find function "str_replace"
+require(RSelenium)
+require(stringr)
+require(xts)
+require(reshape2)
 ```
 
 ---
 
-## 合併表格
-
+## 打開 phantomjs
 
 ```r
-tbl <- cbind(dates, docs)
-```
 
-```
-## Error: object 'dates' not found
+pJS <- phantom()
+Sys.sleep(5) # give the binary a moment
+remDr <- remoteDriver(browserName = 'phantomjs')
+remDr$open()
+
 ```
 
 ---
 
-## 尋找`關鍵`資訊(1/2)
-
-
+## 開始抓 yahoo 新聞
 ```r
-up_word <- "漲|升|高|熱|增|飆"
-down_word <- "跌|降|低|冷|減|縮"
+title <- list()
+
+for(i in 1:10){
+  url <- sprintf('https://tw.news.yahoo.com/real-estate/archive/%d.html', i)
+  remDr$navigate(url)
+  doc <- remDr$findElements("xpath", "//ul/li/div/div/h4/a")
+  tmp <- sapply(doc, function(doc){
+    doc$getElementText()})
+  title <- append(title, tmp)
+} 
 ```
 
 ---
 
-## 尋找`關鍵`資訊(2/2)
+## 讀寫表格資料
+
+```r
+setwd('~/R_ETL/jiawei/)
+doc <- do.call(rbind, title)
+writeLines(doc, "news_yahoo.txt")
+news_yahoo <- readLines('news_yahoo.txt')
+```
+
+---
+
+## 匯入這次用的資料
+
+### [鉅亨網　房地產新聞](http://house.cnyes.com/News/tw_housenews/List.htm)
+
+```r
+setwd('~/R_ETL')
+hourse_news <- readLines('jiawei/news.txt') 
+```
 
 ```
-near_u_w <- str_extract(news, ".[漲|升|高|熱|增|飆].")
-near_u_w <- near_u_w[!is.na(near_u_w)]
+## Warning: incomplete final line found on 'jiawei/news.txt'
+```
+
+```r
+head(hourse_news)
 ```
 
 ```
-near_d_w <- str_extract(news, ".[跌|降|低|冷|減|縮].")
-near_d_w <- near_d_w[!is.na(near_d_w)]
+## [1] "2014-06-24富邦人壽信義區再插旗 A25案172億元奪標"                          
+## [2] "2014-06-24北市A25地上權案 富邦權利金172.88億元得標"                       
+## [3] "2014-06-23房市管制 央行將化明為暗"                                        
+## [4] "2014-06-20史上頭一遭!大直新地王 1坪212萬＃超越信義之星直逼帝寶 中山新天價"
+## [5] "2014-06-20大直帝景水花園實價首破200萬 北市3大豪宅板塊確立"                
+## [6] "2014-06-19樺福千金捷運宅標脫率89.4% 均價63萬元屬合理範圍"
+```
+
+---
+
+## 抓出 時間 與 文章
+
+ - [常規表示法| R 學習筆記](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CB4QFjAA&url=http%3A%2F%2Fstatlab.nchc.org.tw%2Frnotes%2F%3Fpage_id%3D171&ei=xWzSU9fGEIiB8gW91IKYCQ&usg=AFQjCNE71BgJhsypu4NhHxgpk3pDTOGZ9g&sig2=ie3biJghIW601YTFHbbZJg&bvm=bv.71667212,d.dGc)
+ - [正则表达式30分钟入门教程](http://deerchao.net/tutorials/regex/regex.htm)
+
+```r
+dates <- str_extract(hourse_news, "\\d{4}-\\d{2}-\\d{2}")
+titles <- str_replace(hourse_news, "\\d{4}-\\d{2}-\\d{2}", "")
+
+hourse_news <- cbind(dates, titles)
+```
+
+```
+##      dates        titles                                    
+## [1,] "2014-06-24" "富邦人壽信義區再插旗 A25案172億元奪標"   
+## [2,] "2014-06-24" "北市A25地上權案 富邦權利金172.88億元得標"
+## [3,] "2014-06-23" "房市管制 央行將化明為暗"
+```
+
+---
+
+## 有了新聞後，怎麼知道有哪些單字？
+
+> - 自己手動打？ex. 房價、北市,、捷運 ...
+
+> - 用程式從文章抓
+
+---
+
+## 有了新聞後，怎麼知道有哪些單字？
+
+- 自己手動打？ex. 房價、北市,、捷運 ...
+
+- 用程式從文章抓
+
+
+```r
+substr('富邦人壽信義區再插旗 A25案172億元奪標', 1, 4)
+```
+
+```
+## [1] "富邦人壽"
+```
+
+```r
+substr('富邦人壽信義區再插旗 A25案172億元奪標', 5, 7)
+```
+
+```
+## [1] "信義區"
+```
+
+
+---
+
+## N-Grame
+
+
+```r
+ngram <- function(sentence, n){
+  chunk <- c()
+  for(i in 1 : (nchar(sentence)-n+1)){
+    chunk <- append(chunk, substr(sentence, i, i+n-1))
+  }
+  return(chunk)
+}
+```
+
+```r
+ngram('富邦人壽信義區再插旗', 2)
+```
+
+```
+## [1] "富邦" "邦人" "人壽" "壽信" "信義" "義區" "區再" "再插" "插旗"
+```
+
+---
+
+## 把 N-Gram 詞彙匯聚在一起
+
+
+```r
+piece <- c()
+
+for(i in 1:length(hourse_news)){
+  piece <- append(piece, ngram(titles[i], 1))
+  piece <- append(piece, ngram(titles[i], 2))
+  piece <- append(piece, ngram(titles[i], 3))
+  piece <- append(piece, ngram(titles[i], 4))
+  piece <- append(piece, ngram(titles[i], 5))
+  piece <- append(piece, ngram(titles[i], 6))
+}
+```
+
+---
+
+## 清除符號 (只是列出來，並沒有要做)
+
+```r
+piece_clean <- str_replace_all(piece, punctuation, "")
+piece_clean <- str_replace_all(piece_clean, "[[:punct:]]", "")
+piece_clean <- str_replace_all(piece_clean, "[[:blank:]]", "")
+piece_clean <- str_replace_all(piece_clean, " ", "")
+
+```
+
+---
+
+## 如果想清除中文特殊符號 ...
+
+### 這是 utf-8 編碼
+
+
+```r
+punctuation <- "\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b"
+
+punctuation
+```
+
+```
+## [1] "。 ； ， ： “ ” （ ） 、 ？ 《 》"
+```
+
+---
+
+## 算 單字 出現次數
+
+
+```r
+piece_clean <- piece
+word_freq <- table(piece_clean)
+```
+
+```
+## piece_clean
+## 信義區   北市   房價   房市   上漲 
+##      8     81     38     33      2
 ```
 
 --- 
 
-## 對新聞`評分`
+## 分出 單字長度 區塊
+
+
+```r
+words_length <- 
+list(
+  "1" = names(word_freq[nchar(names(word_freq))==1]),
+  "2" = names(word_freq[nchar(names(word_freq))==2]),
+  "3" = names(word_freq[nchar(names(word_freq))==3]),
+  "4" = names(word_freq[nchar(names(word_freq))==4]),
+  "5" = names(word_freq[nchar(names(word_freq))==5]),
+  "6" = names(word_freq[nchar(names(word_freq))==6])
+)
+
+tail(words_length[["2"]])
+```
 
 ```
-u_index <- str_count(docs, up_word)
-up <- sum(u_index)
-```
-
-```
-d_index <- str_count(docs, down_word)
-down_index <- sum(d_index)
+## [1] "鼎建" "鼓勵" "齊揚" "、龍" "龍岡" "龍江"
 ```
 
 
 ---
 
-## 找有價值的新聞
+## 算出機率
+
+
+```r
+N <- sum(word_freq[words_length[['1']]])
+words_weight <- word_freq / N
+```
 
 ```
-up_news <- docs[u_index != 0]
-down_news <- docs[d_index != 0]
+## piece_clean
+##         龍江       龍江路     龍江路土   龍江路土地 龍江路土地由 
+##    0.0001481    0.0001481    0.0001481    0.0001481    0.0001481
 ```
 
 
 ---
 
-## 收尾(1/2) - 資料整理
-
-```
-t <- format(as.POSIXct(dates), "%Y-%m")
-u_news <- xts(u_index , as.POSIXct(dates))
-d_news <- xts(d_index , as.POSIXct(dates))
-news <- xts(cbind(u_index, d_index), as.POSIXct(dates))
-```
-
----
-
-## 收尾(2/2) - 資料整併
-
-```
-ep.months <- endpoints(news, "months", k=1)
-news.month <- period.apply(news, ep.months, FUN=colSums)
-index(news.month) <- as.POSIXct(format(index(news.month), "%Y-%m-01"))
-#indexFormat(news.month) <- "%Y-%m"
-```
-
---- .quote
-
-## 股市資料
+## 算出單字左右亂度
 
 
-營建股清單
-http://www.wantgoo.com/stock/classcont.aspx?id=32
-
----
-
-## quantmod
-
----
-
-## 資料下載
-
-```
-f = file('~/Downloads/stock.csv', encoding='utf-8')
+```r
+disorder <- function(word){
+  
+  BASE <- words_length[[as.character(nchar(word)+1)]]
+  
+  PATTEN1 <- paste("^", word, sep = '')
+  matchs1 <- grep(PATTEN1, BASE, value = TRUE)
+  pre <- mean(-log2(words_weight[matchs1]))
+  
+  PATTEN2 <- paste(word, "$", sep = '')
+  matchs2 <- grep(PATTEN2, BASE, value = TRUE)
+  post <- mean(-log2(words_weight[matchs2]))
+  
+  index <- is.na(c(pre, post))
+  condition <- any(index)
+  return(ifelse(condition, c(pre, post)[index], min(pre, post)))
+  
+}
 ```
 
 ---
 
-##  讀取資料
+## 挑出文章裡面的 單字
+
+### 先挑出單字長度 2~5 的 候選詞彙
+
+```r
+word_2_5 <- unlist(words_length[2:5])
 ```
+
+```
+##   2381   2347   2534   2590   2469   2405   2503   2887   2772   2548 
+## "下旬" "三季"  " 住" "候因" "享減" "不起" "以商" "區地"  "制 " "住輻" 
+##   2970   2192   2138   2670   2592 
+## "只租"   "55"  "3年" "億得" "值利"
+```
+
+--- &vcenter
+
+## 單字 出現次數分佈
+
+![plot of chunk unnamed-chunk-19](assets/fig/unnamed-chunk-19.png) 
+
+---
+
+## 算出 候選詞彙 左右兩側的混亂程度
+
+### 出現次數>2 的 候選詞彙 
+
+```r
+words <- names(which(word_freq[word_2_5] > 2))
+```
+
+### 把 候選詞彙 丟下去計算
+
+```r
+disorder_val <- sapply(words, disorder, USE.NAMES = FALSE)
+names(disorder_val) <- words
+```
+
+
+```
+##  [1] " 每坪"    "每坪衝"   " 豪宅"    "豪宅 "    "2013"     "6.6萬"   
+##  [7] "北市去年" "北市房價" "合宜住宅" "地上權案" "實價揭露" "房市交易"
+## [13] "新隆國宅" "臨沂帝國" "高房價 "
+```
+
+--- &vcenter
+## 單字的 混亂程度分佈
+
+![plot of chunk unnamed-chunk-23](assets/fig/unnamed-chunk-23.png) 
+
+---
+## 混亂程度
+
+### 兩側混亂程度高的字
+
+```
+##  [1] " 每坪"    "每坪衝"   " 豪宅"    "豪宅 "    "2013"     "6.6萬"   
+##  [7] "北市去年" "北市房價" "合宜住宅" "地上權案" "實價揭露" "房市交易"
+## [13] "新隆國宅" "臨沂帝國" "高房價 "
+```
+
+### 兩側混亂程度低的字
+
+```
+##  [1] "014"    "14-"    "014-"   "14-0"   "014-0"  "2014-"  "價登"  
+##  [8] "登錄"   "實價登" "地政"   "政士"   "上權"   "地上"   "坪1"   
+## [15] "士法"
+```
+
+---
+
+## 挑出 混亂程度>12 的單字
+
+### 根據前面的分佈圖來決定用 > 12 ...
+
+
+```r
+test_words <- names(which(disorder_val > 12))
+```
+
+```
+##  [1] "年漲15"     "店面交易"   "房價年漲"   "房價漲幅"   "房市交易"  
+##  [6] "房市量縮"   " 新北市"    "新隆國宅"   "每坪12"     "社會住宅"  
+## [11] "臨沂帝國"   "陸客效應"   "高房價 "    "25日前提"   " 張盛和：" 
+## [16] "捷運松山線" "月實價登錄" "桃園房價漲" "：豪宅交易" "逾3.5%"
+```
+
+---
+
+## 切單字
+
+
+```r
+segmentWord <- function(word){
+  n <- nchar(word)-1
+  seg <- lapply(1: n, function(i){
+    w1 <- substr(word, 1, i)
+    w2 <- substr(word,i+1, n+1)
+    c(w1,w2)
+  })
+  return(seg)
+}
+```
+
+---
+## 用法
+
+
+```r
+segmentWord('富邦人壽')
+```
+
+```
+## [[1]]
+## [1] "富"     "邦人壽"
+## 
+## [[2]]
+## [1] "富邦" "人壽"
+## 
+## [[3]]
+## [1] "富邦人" "壽"
+```
+
+
+---
+
+## 算單字的凝聚程度
+
+
+```r
+cohesion <- function(word){
+  seg <- segmentWord(word)
+  val <- sapply(seg, function(x){    
+    f_word <- word_freq[word]
+    f_x1 <- word_freq[x[1]]
+    f_x2 <- word_freq[x[2]]
+    mi <- log2(N) + log2(f_word) - log2(f_x1) - log2(f_x2)
+    return(mi)
+  }) 
+  return (min(val))
+}
+```
+
+---
+## 抓凝聚程度較高的字
+
+
+```r
+cohesion_val <- sapply(test_words, cohesion, USE.NAMES = FALSE)
+names(cohesion_val) <- test_words
+test_words_2 <- names(which(cohesion_val > 2))
+```
+
+---
+## 算出單字 每個時間點的 出現次數
+
+
+```r
+tmp <- lapply(test_words_2, function(word) str_count(titles, word))
+words_tbl <- do.call(cbind, tmp)
+colnames(words_tbl) <- test_words_2
+rownames(words_tbl) <- dates
+```
+
+```
+##            成　 最熱  文山 不動產 汐止 信義之星 9% 5都
+## 2014-06-24    0    0     0      0    0        0  0   0
+## 2014-06-24    0    0     0      0    0        0  0   0
+## 2014-06-23    0    0     0      0    0        0  0   0
+## 2014-06-20    0    0     0      0    0        1  0   0
+## 2014-06-20    0    0     0      0    0        0  0   0
+## 2014-06-19    0    0     0      0    0        0  0   0
+```
+
+
+---
+## 轉換成 xts格式
+
+
+```r
+words_tbl_xts <- xts(words_tbl, as.POSIXct(dates))
+```
+
+### 可以選取時間
+
+
+```r
+words_tbl_xts["2014-01-18/2014-01-20", 100:110]
+```
+
+```
+##            士林 大同 大安 大樓 夯　 套房 好宅 子」  將 小坪 居住
+## 2014-01-19    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    0    0
+```
+
+--- 
+
+## 對時間區間做運算
+
+### 1~2月 每個禮拜的出現次數做加總
+
+```r
+ep.weeks <- endpoints(words_tbl_xts, "weeks", k=1)
+count.weeks <- period.apply(words_tbl_xts, ep.weeks, FUN=colSums)
+count.weeks["2014-01/2014-02", 100:110]
+```
+
+```
+##            士林 大同 大安 大樓 夯　 套房 好宅 子」  將 小坪 居住
+## 2014-01-06    0    1    0    0    0    0    0    0   0    0    0
+## 2014-01-10    0    0    0    0    0    0    0    0   0    0    0
+## 2014-01-20    0    0    0    0    0    0    0    0   0    1    0
+## 2014-01-27    0    0    0    0    2    0    0    0   0    0    0
+## 2014-01-28    0    0    1    0    0    0    0    0   0    0    1
+## 2014-02-07    0    0    1    0    0    0    0    0   0    0    0
+## 2014-02-17    1    0    0    0    0    0    0    1   0    0    0
+## 2014-02-24    1    0    1    0    0    2    0    1   0    1    0
+```
+
+---
+
+## 下載營建股 股票指數
+
+### [營建股清單](http://www.wantgoo.com/stock/classcont.aspx?id=32)
+
+```r
+library('quantmod')
+f = file('~/stock.csv', encoding='utf-8')
 stock <- read.csv(f, stringsAsFactors=FALSE)
+
 stock_no <- stock[,1]
 stock_name <- stock[,2]
 stock_code <- paste(stock_no, '.TW', sep='')
 ```
 
----
+--- 
 
-## 下載
+## 開始下載
 
-```
+```r
 getSymbols(stock_code, env=mystocks, from="2014-01-01", to="2014-07-02")
-```
-
----
-
-## 合併
-```
 mystocks <- do.call(cbind,eapply(mystocks, Cl))
-
-```
-指定欄位名稱
-```
 names(mystocks) <- stock_name
+saveRDS(mystocks, "mystocks.rds")
 ```
 
 
 ---
+## 算出每支股票的 平均漲跌
 
-## 資料整理
 
-```
-stock_mean <- apply(mystocks, 1, mean)
+```r
+mystocks <- readRDS('jiawei/mystocks.rds')
 mystocks.return <- diff(mystocks, 1) / mystocks
-mystocks.return <- mystocks.return[-1,]
+```
 
-ep.months <- endpoints(mystocks.return, "months", k=1)
-stock.month <- period.apply(mystocks.return, ep.months, FUN=colMeans)
-indexFormat(stock.month) <- "%Y-%m"
+```
+##               華友聯      名軒      寶徠      潤隆      國建
+## 2014-01-01        NA        NA        NA        NA        NA
+## 2014-01-02  0.004545  0.005310 -0.008333 -0.006390 -0.001631
+## 2014-01-03 -0.013825 -0.005338  0.012346 -0.006431 -0.003273
+## 2014-01-06 -0.004630 -0.008977 -0.021008 -0.054237 -0.006590
+## 2014-01-07  0.000000  0.003578  0.004184  0.018303  0.017799
+## 2014-01-08  0.022624  0.001786 -0.012712  0.003317  0.006431
+```
 
-stock.final <- xts(rowMeans(stock.month), order.by=index(stock.month))
-index(stock.final) <- as.POSIXct(format(index(stock.final), "%Y-%m-01"))
-#indexFormat(stock.final) <- "%Y-%m"
+---
+## 全部平均來看 ...
+
+```r
+mystocks.return_all <- apply(mystocks.return[-1,], 1, mean)
+```
+![plot of chunk unnamed-chunk-40](assets/fig/unnamed-chunk-40.png) 
+
+
+---
+
+## 找出股票漲跌的五個狀態
+
+### 漲多,、漲少,、不變,、跌少,、跌多
+### 利用 kmeans 來判斷
+
+
+```r
+cl <- kmeans(mystocks.return_all, 5)
+return.status <- data.frame(cl$cluster)
+```
+
+```
+##            cl.cluster
+## 2014-01-02          1
+## 2014-01-03          3
+## 2014-01-06          5
+## 2014-01-07          4
+## 2014-01-08          1
+## 2014-01-09          3
+```
+
+
+--- &twocol
+
+## 如果想知道其中的 `相關性` ...
+
+*** =left
+### `關鍵字出現的次數`
+
+```
+##            士林 大同 大安 大樓 夯　 套房
+## 2014-06-24    0    0    0    0    0    0
+## 2014-06-24    0    0    0    0    0    0
+## 2014-06-23    0    0    0    0    0    0
+## 2014-06-20    0    0    0    0    0    0
+## 2014-06-20    0    0    0    0    0    0
+## 2014-06-19    0    0    0    0    0    0
+```
+
+*** =right
+### `股市漲跌的狀態`
+
+```
+##            cl.cluster
+## 2014-01-02          1
+## 2014-01-03          3
+## 2014-01-06          5
+## 2014-01-07          4
+## 2014-01-08          1
+## 2014-01-09          3
+```
+
+
+
+--- &twocol
+
+## 如果可以把`5個漲跌狀態`變成欄位 ...
+
+*** =left
+### 原本的表格
+
+```
+##            cl.cluster
+## 2014-01-02          1
+## 2014-01-03          3
+## 2014-01-06          5
+## 2014-01-07          4
+## 2014-01-08          1
+## 2014-01-09          3
+```
+
+*** =right
+### 希望的表格
+
+
+```
+##   return_date 1 2 3 4 5
+## 1  2014-01-02 1 0 0 0 0
+## 2  2014-01-03 0 0 3 0 0
+## 3  2014-01-06 0 0 0 0 5
+## 4  2014-01-07 0 0 0 4 0
+## 5  2014-01-08 1 0 0 0 0
+## 6  2014-01-09 0 0 3 0 0
 ```
 
 
 ---
 
-## 資料整併
-
+##  整理出需要的欄位狀態
 
 
 ```r
-final_tbl <- merge.xts(stock.final, news.month)
+return_date <- rownames(return.status)
+return.status <- cbind(return_date, "status"=return.status)
+return.status <- cbind(return.status, "val"=rep(1,127))
 ```
 
 ```
-## Error: could not find function "merge.xts"
+##            return_date cl.cluster val
+## 2014-01-02  2014-01-02          1   1
+## 2014-01-03  2014-01-03          3   1
+## 2014-01-06  2014-01-06          5   1
+## 2014-01-07  2014-01-07          4   1
+## 2014-01-08  2014-01-08          1   1
+## 2014-01-09  2014-01-09          3   1
+```
+
+
+
+---
+
+## 欄位旋轉
+
+### 將`漲跌狀態`旋轉到欄位
+
+```r
+return.status <- dcast(return.status, return_date  ~ cl.cluster, fill = 0)
+```
+
+### 轉換成`xts`格式
+
+```r
+return.status <- data.frame(return.status,stringsAsFactors=FALSE)
+return.status.xts <- xts(return.status[,-1], as.POSIXct(return_date))
+```
+
+```
+##            X1 X2 X3 X4 X5
+## 2014-01-02  1  0  0  0  0
+## 2014-01-03  0  0  1  0  0
+## 2014-01-06  0  0  0  0  1
+## 2014-01-07  0  0  0  1  0
+## 2014-01-08  1  0  0  0  0
+## 2014-01-09  0  0  1  0  0
+```
+
+
+
+---
+
+## 把`關鍵字`和`股票漲跌`依據`時間`做合併
+
+
+```r
+final_tbl <- merge.xts(words_tbl_xts, return.status.xts, fill=0)
+names(final_tbl) <- c(test_words_2, names(return.status[,-1]))
+```
+
+```
+##            月實價登錄 桃園房價漲 ：豪宅交易 逾3.5% X1 X2 X3 X4 X5
+## 2014-01-02          0          0          0      0  1  0  0  0  0
+## 2014-01-02          0          0          0      0  0  0  0  0  0
+## 2014-01-02          0          0          0      0  0  0  0  0  0
+## 2014-01-02          0          0          0      0  0  0  0  0  0
+## 2014-01-03          0          0          0      0  0  0  1  0  0
+## 2014-01-03          0          0          0      0  0  0  0  0  0
+```
+
+---
+
+## 算 彼此之間的相關度
+
+### 計算 `共變異矩陣`
+
+```r
+tbl_cov <- cov(final_tbl)
+```
+
+### 計算 `曼哈頓距離`
+
+```r
+d <- dist(t(final_tbl),  method = "manhattan")
+d2 <- as.matrix(d) 
+```
+
+--- &twocol
+
+## 和`漲跌狀態`有關的`關鍵字`
+
+*** =left
+
+### 和`X1狀態`較接近的關鍵字
+
+```r
+score <- sort(d2[,'X1'])
+words <- names(score)
+head(data.frame(words), 10)
+```
+
+```
+##     words
+## 1      X1
+## 2      48
+## 3     減1
+## 4     2.4
+## 5    年減
+## 6    現身
+## 7    置產
+## 8  下半年
+## 9  不動產
+## 10   平均
+```
+
+*** =right
+### 和`X4狀態`較接近的關鍵字
+
+```r
+score <- sort(d2[,'X4'])
+words <- names(score)
+head(data.frame(words), 10)
+```
+
+```
+##    words
+## 1     X4
+## 2   房貸
+## 3   所得
+## 4   打造
+## 5   招商
+## 6   推案
+## 7   最受
+## 8   網路
+## 9   重劃
+## 10  馬年
+```
+
+---
+## 整理一下 ...
+
+```r
+kw <- list()
+for(i in 1:5){
+  col <- sprintf("X%s", i)
+  kw <- cbind(kw, names(head(sort(d2[,col]), 10)))
+}
+```
+
+```
+##       [,1]     [,2]    [,3]       [,4]   [,5]    
+##  [1,] "X1"     "X2"    "X3"       "X4"   "X5"    
+##  [2,] "48"     "8萬"   "標脫"     "房貸" "台開決"
+##  [3,] "減1"    "每坪7" "店租"     "所得" "總銷"  
+##  [4,] "2.4"    "9.4"   "、新"     "打造" "0%"    
+##  [5,] "年減"   "40"    "%最"      "招商" "0億"   
+##  [6,] "現身"   "9%"    "標售"     "推案" "29"    
+##  [7,] "置產"   "中和"  "捷運宅"   "最受" "3大"   
+##  [8,] "下半年" "以上"  "28"       "網路" "5坪"   
+##  [9,] "不動產" "億　"  "萬華"     "重劃" "5都"   
+## [10,] " 平均"  "可以"  "新隆國宅" "馬年" "65"
+```
+
+---
+## 漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (1/2)
+
+
+```r
+index <- str_extract(titles, "房貸|所得")
+titles[!is.na(index)]
+```
+
+```
+## [1] "大同、萬華、北投、淡水、板橋房租房貸差距不大 買比租划算"                     
+## [2] "北市買房要不吃不喝15年 所得逾6成都拿去繳房貸"                                
+## [3] "彭淮南點名3大因素推高房價 再次提醒注意房貸利率風險"                          
+## [4] "財長：豪宅交易設算所得比率 仍未定2014-01-08財長：豪宅交易設算所得比率 仍未定"
+```
+
+---
+## 漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (2/2)
+
+```r
+index <- str_extract(titles, "店租|標脫")
+titles[!is.na(index)]
+```
+
+```
+## [1] "樺福千金捷運宅標脫率89.4% 均價63萬元屬合理範圍"      
+## [2] "捷運宅標售傳捷報 臨沂帝國5戶順利標脫"                
+## [3] "「國美商隱」標脫率7成 單價最高衝上141.5萬"           
+## [4] "中山堂旁200坪商四土地 總價14.1億元標脫 溢價率10%"    
+## [5] "東區巷內小店租金嚇嚇叫 近5坪月租高達11.25萬元"       
+## [6] "北市最貴店租「新名人巷」、每坪上萬　內湖店面租賃最熱"
+## [7] "店面熱 北市去年店租1247萬元 內湖占比28%奪冠"
+```
+
+--- 
+## 一些後續應用 
+
+### 既然已經整理出表格了, 就可以...
+
+### 拿去跑各種奇奇怪怪的迴歸分析 / 機器學習
+
+### 做降維(mds, pca, svd ...)，然後視覺化
+
+### 以上請期待下一輪 R tutorail
+
+
+---
+##  降維視覺化的小範例
+
+```r
+fit <- cmdscale(d2, eig = TRUE, k=2)
+x <- fit$points[,1]
+y <- fit$points[,2]
 ```
 
 ```r
-final_tbl_diff <- merge.xts(stock.final, news.month_diff)
-```
-
-```
-## Error: could not find function "merge.xts"
+plot(x, y, xlab="Coordinate 1", ylab="Coordinate 2", type = "n")
+text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 ```
 
 
@@ -1141,13 +1799,8 @@ inner_join(x,y,by="c1")
 ```
 
 ```
-##   c1 c2.x c2.y
-## 1  1    A    A
-## 2  1    B    A
-## 3  2    C    B
-## 4  2    C    C
-## 5  3    D    D
-## 6  4    E    E
+## Error: no applicable method for 'inner_join' applied to an object of class
+## "c('double', 'numeric')"
 ```
 
 *** =right
@@ -1168,9 +1821,8 @@ anti_join(x,y,by="c1")
 ```
 
 ```
-##   c1 c2
-## 1  5  F
-## 2  5  G
+## Error: no applicable method for 'anti_join' applied to an object of class
+## "c('double', 'numeric')"
 ```
 
 *** =right
@@ -1181,9 +1833,8 @@ anti_join(y,x,by="c1")
 ```
 
 ```
-##   c1 c2
-## 1  6  F
-## 2  6  G
+## Error: no applicable method for 'anti_join' applied to an object of class
+## "c('double', 'numeric')"
 ```
 
 
@@ -1200,12 +1851,8 @@ semi_join(x,y,by="c1")
 ```
 
 ```
-##   c1 c2
-## 1  1  A
-## 2  1  B
-## 3  2  C
-## 4  3  D
-## 5  4  E
+## Error: no applicable method for 'semi_join' applied to an object of class
+## "c('double', 'numeric')"
 ```
 
 *** =right
@@ -1217,12 +1864,8 @@ semi_join(y,x,by="c1")
 ```
 
 ```
-##   c1 c2
-## 1  1  A
-## 2  2  B
-## 3  2  C
-## 4  3  D
-## 5  4  E
+## Error: no applicable method for 'semi_join' applied to an object of class
+## "c('double', 'numeric')"
 ```
 
 *** =pnotes
