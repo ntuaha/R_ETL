@@ -99,6 +99,20 @@ mode        : selfcontained # {standalone, draft}
  3. 股市
   - Yahoo Stock API
    
+
+--- &vcenter
+
+<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
+
+
+
+--- .quote
+
+<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
+<img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
+   
+   
+   
 --- .quote 
 
 <q> 等等 先安裝幾個建議的套件</q>
@@ -131,17 +145,6 @@ slides("ETL")
 - `quantmod` 可以處理股市資料
 - `stringr` 字串相關處理
 
-
---- &vcenter
-
-<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
-
-
-
---- .quote
-
-<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
-<img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
 
 
 --- 
