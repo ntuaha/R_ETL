@@ -1796,7 +1796,8 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 ### 接下來先從各類join開始說明
 先`建立資料集`
 
-```
+
+```r
 x=data.frame(c1 = c(1,1,2,3,4,5,5),
              c2 = c('A','B','C','D','E','F','G'))
 y=data.frame(c1 = c(1,2,2,3,4,6,6),
@@ -1835,8 +1836,13 @@ inner_join(x,y,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'inner_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
 ```
 
 *** =right
