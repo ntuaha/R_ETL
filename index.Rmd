@@ -111,6 +111,7 @@ mode        : selfcontained # {standalone, draft}
 <q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
 <img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
    
+   
 --- .quote 
 
 adfaf
@@ -136,6 +137,7 @@ install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'sour
 ```r
 slides("ETL")
 ```
+
 
 --- .quote
 
