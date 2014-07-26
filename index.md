@@ -205,9 +205,10 @@ slides("ETL")
 
 ### 房貸餘額,直接下載現成的csv檔案
 
-> - 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
-> - 你應該會看見`cl_info_other.csv`
-> - 讀入它!
+- 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
+- 你應該會看見`cl_info_other.csv`
+- 讀入它!
+
 
 或是
 
