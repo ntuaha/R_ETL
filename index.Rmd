@@ -118,7 +118,6 @@ mode        : selfcontained # {standalone, draft}
 <q> 等等 先安裝幾個建議的套件</q>
 
 - `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
-- 請腦補把wush想成上刑台的`海賊王`
 
 ```r
 deps <- available.packages("http://54.92.61.128/R")[1,"Depends"]
