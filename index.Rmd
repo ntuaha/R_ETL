@@ -99,7 +99,38 @@ mode        : selfcontained # {standalone, draft}
  3. 股市
   - Yahoo Stock API
    
-   
+--- .quote 
+
+<q> 等等 先安裝幾個建議的套件</q>
+
+- `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
+- 請腦補把wush想成上刑台的`海賊王`
+
+```r
+deps <- available.packages("http://54.92.61.128/R")[1,"Depends"]
+pkgs <- strsplit(gsub("\\s", "", deps), ",")[[1]]
+for(pkg in pkgs) {
+  install.packages(pkg)
+}
+install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'source')
+```
+
+安裝之後, 輸入以下指令就可以打開投影片:
+
+```r
+slides("ETL")
+```
+
+--- .quote
+
+<q> 我們ETL會用到的有 </q>
+
+- `dplyr` 可用類似SQL語法操作data frome
+- `xts` 處理時間格式好用的套件
+- `gdata` 可以處理Excel 2007以上的文件
+- `quantmod` 可以處理股市資料
+- `stringr` 字串相關處理
+
 
 --- &vcenter
 
@@ -155,34 +186,6 @@ mode        : selfcontained # {standalone, draft}
 
 ## 學習，實作，觀察 STEP1
 
---- .quote 
-
-<q> 等等 先安裝幾個建議的套件</q>
-
-- `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
-
-```r
-deps <- available.packages("http://54.92.61.128/R")[1,"Depends"]
-pkgs <- strsplit(gsub("\\s", "", deps), ",")[[1]]
-for(pkg in pkgs) {
-  install.packages(pkg)
-}
-install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'source')
-```
-
-安裝之後, 輸入以下指令就可以打開投影片:
-
-```r
-slides("ETL")
-```
-
---- .quote
-
-<q> 我們ETL會用到的有 </q>
-
-- `dplyr` 可用類似SQL語法操作data frome
-- `xts` 處理時間格式好用的套件
-- `gdata` 可以處理Excel 2007以上的文件
 
 --- .quote
 
@@ -206,7 +209,7 @@ slides("ETL")
 ### 房貸餘額,直接下載現成的csv檔案
 
 - 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
-- 你應該會看見`cl_info_other.csv`
+- 應該會看見`cl_info_other.csv`
 - 讀入它!
 
 
