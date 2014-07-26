@@ -1886,14 +1886,10 @@ anti_join(y,x,by="c1")
 semi_join(x,y,by="c1")
 ```
 
-```
-## Error: no applicable method for 'semi_join' applied to an object of class
-## "c('double', 'numeric')"
-```
-
 *** =right
 
 ### `semi_join` 取出共有的鍵值,只留`y`的欄位
+
 
 ```r
 semi_join(y,x,by="c1")
