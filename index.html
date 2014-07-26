@@ -2520,9 +2520,17 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
+<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+</code></pre>
+
 </div>
   <div style='float:right;width:48%;'>
 <pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
 </code></pre>
 
 </div>
@@ -2542,6 +2550,10 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <h3><code>semi_join</code> 取出共有的鍵值,只留<code>x</code> 的欄位</h3>
 
 <pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;semi_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
 </code></pre>
 
 </div>
