@@ -1,7 +1,9 @@
 base
 bitops
+caTools
 devtools
 dplyr
+DSC2014Tutorial
 ggplot2
 RCurl
 reshape2
