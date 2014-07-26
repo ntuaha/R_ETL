@@ -1611,9 +1611,9 @@ inner_join(x,y,by="c1")
 ## 資料整理完成!
 
 ```
-GDP_part7 = select(mutate(GDP_part6 , 
+GDP_part6 = select(mutate(GDP_part5 , 
                    time = as.POSIXct(paste(year,'1','1',sep='-'))),time,GDP)
-t1 = left_join(GDP_part6,Cl_info_part7,by="time")
+t1 = left_join(GDP_part6,Cl_info_part4,by="time")
 t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 ```
 看一下資料 `View(t2)`

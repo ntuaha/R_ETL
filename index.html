@@ -2566,9 +2566,9 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
     <h2>資料整理完成!</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>GDP_part7 = select(mutate(GDP_part6 , 
+    <pre><code>GDP_part6 = select(mutate(GDP_part5 , 
                    time = as.POSIXct(paste(year,&#39;1&#39;,&#39;1&#39;,sep=&#39;-&#39;))),time,GDP)
-t1 = left_join(GDP_part6,Cl_info_part7,by=&quot;time&quot;)
+t1 = left_join(GDP_part6,Cl_info_part4,by=&quot;time&quot;)
 t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
 </code></pre>
 
