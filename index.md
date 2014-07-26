@@ -1829,14 +1829,8 @@ ljyx = left_join(y,x,by="c1") #以Y為主
 
 *** =left
 ### `inner_join` 取出共有的鍵值
-
 ```r
 inner_join(x,y,by="c1")
-```
-
-```
-## Error: no applicable method for 'inner_join' applied to an object of class
-## "c('double', 'numeric')"
 ```
 
 *** =right
