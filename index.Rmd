@@ -159,16 +159,30 @@ mode        : selfcontained # {standalone, draft}
 
 <q> 等等 先安裝幾個建議的套件</q>
 
+- `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
+
+```r
+deps <- available.packages("http://54.92.61.128/R")[1,"Depends"]
+pkgs <- strsplit(gsub("\\s", "", deps), ",")[[1]]
+for(pkg in pkgs) {
+  install.packages(pkg)
+}
+install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'source')
+```
+
+安裝之後, 輸入以下指令就可以打開投影片:
+
+```r
+slides("ETL")
+```
+
+--- .quote
+
+<q> 我們ETL會用到的有 </q>
+
 - `dplyr` 可用類似SQL語法操作data frome
 - `xts` 處理時間格式好用的套件
 - `gdata` 可以處理Excel 2007以上的文件
-
-```
-install.packages("dplyr")
-install.packages("xts")
-install.packages("gdata")
-```
-
 
 --- .quote
 
@@ -185,7 +199,6 @@ install.packages("gdata")
 <iframe src = 'https://survey.banking.gov.tw/statis/stmain.jsp?sys=100&funid=r100' height='400px'></iframe>
 
 
-
 ---
 
 ## 開始收集資料
@@ -195,6 +208,13 @@ install.packages("gdata")
 > - 直接到[https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv](https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv)下載檔案
 > - 你應該會看見`cl_info_other.csv`
 > - 讀入它!
+
+或是
+
+```r
+library(DSC2014Tutorial)
+ETL_file("cl_info_other.csv")
+```
 
 --- 
 
@@ -209,9 +229,6 @@ DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 - sep 指的是欄位分割用的符號,通常csv檔案格式是透過`,`做分割
 - stringsAsFactors 預設是`True`, 會讓讀入的字串都用Factor形態儲存，那麼資料就會轉為整數儲存與額外的對照表
 - header 預設是`False`，表示第一行是不是表格標頭，作為輸出的dataframe欄位名的colnames
-
-
-
 
 --- 
 
@@ -245,8 +262,8 @@ str(Cl_info)
 
 
 ```{r}
-library(dplyr)
-Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
+library(DSC2014Tutorial)
+Cl_info = read.table(file=ETL_file('cl_info_other.csv'),header=T,sep=",",stringsAsFactors=F)
 Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
@@ -506,6 +523,7 @@ select * from Cl_info order by mortage,data_dt desc ;
 8. 開啟後，**另存新檔成csv檔**
 9. 開回`RStudio` 開始處理資料
 
+或是`ETL_file("GDP.txt")`
 
 --- &vcenter
 
@@ -516,8 +534,9 @@ select * from Cl_info order by mortage,data_dt desc ;
 
 <q>答案</q>
 
-```
-GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
+```r
+library(DSC2014Tutorial)
+GDP = read.table(file=ETL_file("GDP.txt"),sep=",",stringsAsFactors=F,header=F)
 ```
 
 --- .quote
@@ -526,7 +545,7 @@ GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
 <q>答案</q>
 
 ```
-GDP = read.table(file='檔案位置',sep=",",stringsAsFactors=F,header=F)
+GDP = read.table(file=ETL_file("GDP.txt"),sep=",",stringsAsFactors=F,header=F)
 ```
 <br>
 
@@ -651,11 +670,7 @@ require(reshape2)
 
 ```r
 
-pJS <- phantom()
-Sys.sleep(5) # give the binary a moment
-remDr <- remoteDriver(browserName = 'phantomjs')
-remDr$open()
-
+２２
 ```
 
 ---
@@ -1029,9 +1044,11 @@ count.weeks["2014-01/2014-02", 100:110]
 
 ### [營建股清單](http://www.wantgoo.com/stock/classcont.aspx?id=32)
 
+或是用套件中的資料
+
 ```r
-library('quantmod')
-f = file('~/stock.csv', encoding='utf-8')
+library(DSC2014Tutorial)
+f = file(ETL_file("stock.csv"))# file('~/stock.csv', encoding='utf-8')
 stock <- read.csv(f, stringsAsFactors=FALSE)
 
 stock_no <- stock[,1]
@@ -1055,7 +1072,7 @@ saveRDS(mystocks, "mystocks.rds")
 ## 算出每支股票的 平均漲跌
 
 ```{r}
-mystocks <- readRDS('jiawei/mystocks.rds')
+mystocks <- readRDS(ETL_file("mystocks.rds"))#readRDS('jiawei/mystocks.rds')
 mystocks.return <- diff(mystocks, 1) / mystocks
 ```
 ```{r echo=FALSE}
