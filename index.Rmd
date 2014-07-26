@@ -115,7 +115,7 @@ mode        : selfcontained # {standalone, draft}
 
 --- 
 
-## 等等 先安裝幾個建議的套件
+## DSC的One Piece
 
 - `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
 
