@@ -1578,48 +1578,6 @@ inner_join(x,y,by="c1")
 
 <img src="./resources/figures/R_ETL_INNERJOIN.png" style="height:400px" ></img>
 
---- &twocol
-
-## dplyr 介紹 - anti_join (`補充`)
-
-### `anti_join` 取出`非共有`的鍵值
-
-*** =left
-
-```{r}
-anti_join(x,y,by="c1")
-```
-
-*** =right
-
-```{r}
-anti_join(y,x,by="c1")
-```
-
-
---- &twocol
-
-## dplyr 介紹 - semi_join (`補充`)
-
-與`left_join`的差別在，只要對應不到的鍵值就不出現
-*** =left
-### `semi_join` 取出共有的鍵值,只留`x` 的欄位
-
-```{r}
-semi_join(x,y,by="c1")
-```
-
-*** =right
-
-### `semi_join` 取出共有的鍵值,只留`y`的欄位
-
-```{r}
-semi_join(y,x,by="c1")
-```
-
-*** =pnotes
-
-<img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img>
 
 
 ---
@@ -1634,10 +1592,10 @@ semi_join(y,x,by="c1")
 ### 請問，這兩張表該怎麼結合比較好?用誰當第一參數?
 
 
-1. left_join Cl_Info_part7
-2. semi_join Cl_Info_part7
+1. left_join Cl_Info_part4
+2. semi_join Cl_Info_part4
 3. _left_join GDP_part5_
-4. _semi_join GDP_part5_
+4. _inner_join GDP_part5_
 5. 其他
 
 *** =image
