@@ -112,14 +112,12 @@ mode        : selfcontained # {standalone, draft}
 <img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
    
    
---- .quote 
 
-adfaf
 
    
---- .quote 
+--- 
 
-<q> 等等 先安裝幾個建議的套件</q>
+## 等等 先安裝幾個建議的套件
 
 - `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
 
@@ -139,9 +137,9 @@ slides("ETL")
 ```
 
 
---- .quote
+--- 
 
-<q> 我們ETL會用到的有 </q>
+## 我們ETL會用到的有 
 
 - `dplyr` 可用類似SQL語法操作data frome
 - `xts` 處理時間格式好用的套件
