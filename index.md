@@ -1851,26 +1851,14 @@ inner_join(x,y,by="c1")
 
 *** =left
 
-
 ```r
 anti_join(x,y,by="c1")
 ```
 
-```
-## Error: no applicable method for 'anti_join' applied to an object of class
-## "c('double', 'numeric')"
-```
-
 *** =right
-
 
 ```r
 anti_join(y,x,by="c1")
-```
-
-```
-## Error: no applicable method for 'anti_join' applied to an object of class
-## "c('double', 'numeric')"
 ```
 
 
@@ -1881,14 +1869,8 @@ anti_join(y,x,by="c1")
 與`left_join`的差別在，只要對應不到的鍵值就不出現
 *** =left
 ### `semi_join` 取出共有的鍵值,只留`x` 的欄位
-
 ```r
 semi_join(x,y,by="c1")
-```
-
-```
-## Error: no applicable method for 'semi_join' applied to an object of class
-## "c('double', 'numeric')"
 ```
 
 *** =right
