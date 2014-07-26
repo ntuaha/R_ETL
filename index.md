@@ -113,6 +113,27 @@ mode        : selfcontained # {standalone, draft}
    
    
 
+--- 
+
+## 等等 先安裝幾個建議的套件
+
+- `DSC2014Tutorial` R社群為了這次Tutorial製作的套件，所有的教材都在這了
+
+```
+deps <- available.packages("http://54.92.61.128/R")[1,"Depends"]
+pkgs <- strsplit(gsub("\\s", "", deps), ",")[[1]]
+for(pkg in pkgs) {
+  install.packages(pkg)
+}
+install.packages('DSC2014Tutorial', repo = 'http://54.92.61.128/R', type = 'source')
+```
+
+安裝之後, 輸入以下指令就可以打開投影片:
+
+```
+slides("ETL")
+```
+
 
 --- 
 
