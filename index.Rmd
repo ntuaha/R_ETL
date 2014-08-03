@@ -664,7 +664,7 @@ GDP_part2= mutate(GDP_part,GDP = as.numeric(gsub(",", "",GDP))*1000000)
 
 <img src = './resources/figures/R_ETL_GDP2.png' ></img>
 
---- 
+---
 
 ## 抽離年份與季
 
@@ -681,7 +681,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 <img src = './resources/figures/R_ETL_GDP3.png' ></img>
 
 
---
+---
 
 ## 練習時間
 
