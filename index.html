@@ -979,6 +979,14 @@ str(Cl_info_part)
 View(GDP_part)
 </code></pre>
 
+<p>另外一個簡單的例子</p>
+
+<pre><code>iris
+iris_part &lt;- iris[4:6,]
+rownames(iris_part) &lt;- c(&#39;a&#39;,&#39;c&#39;,&#39;d&#39;)
+View(iris_part)
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -1028,6 +1036,7 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 <h2>練習時間</h2>
 
 <ol>
+<li>去除頭尾不合理的資料列</li>
 <li>去除GDP的 <code>,</code> , 然後將它轉成數字</li>
 <li>將<code>year</code>,<code>season</code>抽離出來並轉成數字，同時最後資料只保留<code>GDP</code>,<code>year</code>,<code>season</code></li>
 </ol>

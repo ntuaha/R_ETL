@@ -638,6 +638,14 @@ rownames(GDP_part) = NULL
 View(GDP_part)
 ```
 
+另外一個簡單的例子
+
+```
+iris
+iris_part <- iris[4:6,]
+rownames(iris_part) <- c('a','c','d')
+View(iris_part)
+```
 
 
 --- 
@@ -677,8 +685,9 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 
 ## 練習時間
 
-1. 去除GDP的 `,` , 然後將它轉成數字
-2. 將`year`,`season`抽離出來並轉成數字，同時最後資料只保留`GDP`,`year`,`season`
+1. 去除頭尾不合理的資料列
+2. 去除GDP的 `,` , 然後將它轉成數字
+3. 將`year`,`season`抽離出來並轉成數字，同時最後資料只保留`GDP`,`year`,`season`
 
 
 
