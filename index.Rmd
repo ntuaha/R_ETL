@@ -1372,6 +1372,14 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 
 ---
 
+## 資料匯總
+
+將介紹 `group_by`, `summarize`
+<img src="./resources/figures/R_ETL_Fn2.png"></img>
+
+
+---
+
 ## 資料整併
 
 <img src="./resources/figures/R_ETL_PART4.png"></img>
@@ -1413,6 +1421,11 @@ select sum(mortgage_bal) as mortage_total_bal
 ---
 
 ## 練習-資料`彙總`(2/2)
+
+
+1.  將房貸餘額每個月的值算出來
+2.  將GDP每年的值算出來
+
 
 ```
 GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
