@@ -2840,19 +2840,25 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   </hgroup>
   <article data-timings="">
     <ol>
-<li>建立R Script
-<code>
-iris
+<li>建立R Script</li>
+</ol>
+
+<pre><code>iris
 iris_part &lt;- iris[4:6,]
 rownames(iris_part) &lt;- c(&#39;a&#39;,&#39;c&#39;,&#39;d&#39;)
-write.csv(iris_part,file=&quot;/Volumes/AhaStorage/TEMP/GG.csv&quot;)
-</code></li>
+write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
+</code></pre>
+
+<ol>
 <li><p>儲存到特定位置下  假定叫做Script.R</p></li>
-<li><p>在terminal執行</p>
+<li><p>在terminal執行</p></li>
+</ol>
 
 <pre><code>R CMD BATCH [該檔案儲存位置]/Script.R
-</code></pre></li>
-<li><p>可透過<code>crontab</code>定期執行</p></li>
+</code></pre>
+
+<ol>
+<li>可透過<code>crontab</code>定期執行</li>
 </ol>
 
   </article>

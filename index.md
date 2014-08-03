@@ -2068,15 +2068,20 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 ## 自動化
 
 1. 建立R Script
+
 ```
 iris
 iris_part <- iris[4:6,]
 rownames(iris_part) <- c('a','c','d')
-write.csv(iris_part,file="/Volumes/AhaStorage/TEMP/GG.csv")
+write.csv(iris_part,file="[想要的目錄]/GG.csv")
 ```
+
+
 2. 儲存到特定位置下  假定叫做Script.R
 
 3. 在terminal執行
+
+
 ```
 R CMD BATCH [該檔案儲存位置]/Script.R
 ```
