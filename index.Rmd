@@ -629,6 +629,17 @@ colnames(GDP_part) = c("time","GDP","GDP_yoy","GDP_2006","GDP_2006_yoy",
 
 <img src = './resources/figures/R_ETL_GDP_1.png' ></img>
 
+---
+
+## 去除rownames
+
+```
+rownames(GDP_part) = NULL
+View(GDP_part)
+```
+
+
+
 --- 
 
 ## 轉移文字格式
@@ -660,6 +671,15 @@ GDP_part4 = select(GDP_part3,year,season,GDP)
 2. 再次利用`as.numeric`, 將文字轉成數字
 
 <img src = './resources/figures/R_ETL_GDP3.png' ></img>
+
+
+--
+
+## 練習時間
+
+1. 去除GDP的 `,` , 然後將它轉成數字
+2. 將`year`,`season`抽離出來並轉成數字，同時最後資料只保留`GDP`,`year`,`season`
+
 
 
 --- .quote 
