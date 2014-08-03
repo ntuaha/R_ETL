@@ -2102,7 +2102,8 @@ library(RCurl)
 
 ```
 DF = read.table(sep=",", header=TRUE,            
-file= textConnection(getURL("https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv")))
+file= 
+textConnection(getURL("https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv")))
 ```
 
 
