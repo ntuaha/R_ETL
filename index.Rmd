@@ -1793,7 +1793,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 ## 自動化
 
-1. 建立R Script
+- 建立R Script
 
 ```
 iris
@@ -1803,16 +1803,15 @@ write.csv(iris_part,file="[想要的目錄]/GG.csv")
 ```
 
 
-2. 儲存到特定位置下  假定叫做Script.R
-
-3. 在terminal執行
+- 儲存到特定位置下  假定叫做Script.R
+- 在terminal執行
 
 
 ```
 R CMD BATCH [該檔案儲存位置]/Script.R
 ```
 
-4. 可透過`crontab`定期執行
+- 可透過`crontab`定期執行
 
 
 

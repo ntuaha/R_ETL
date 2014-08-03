@@ -2839,9 +2839,9 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     <h2>自動化</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
+    <ul>
 <li>建立R Script</li>
-</ol>
+</ul>
 
 <pre><code>iris
 iris_part &lt;- iris[4:6,]
@@ -2849,17 +2849,17 @@ rownames(iris_part) &lt;- c(&#39;a&#39;,&#39;c&#39;,&#39;d&#39;)
 write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
 </code></pre>
 
-<ol>
-<li><p>儲存到特定位置下  假定叫做Script.R</p></li>
-<li><p>在terminal執行</p></li>
-</ol>
+<ul>
+<li>儲存到特定位置下  假定叫做Script.R</li>
+<li>在terminal執行</li>
+</ul>
 
 <pre><code>R CMD BATCH [該檔案儲存位置]/Script.R
 </code></pre>
 
-<ol>
+<ul>
 <li>可透過<code>crontab</code>定期執行</li>
-</ol>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
