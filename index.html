@@ -2825,7 +2825,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
 <slide class="segue" id="slide-137" style="background:green; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>Excerises</h2>
+    <h2>額外延伸主題</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2836,36 +2836,30 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
 <slide class="" id="slide-138" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>資料處理練習</h2>
+    <h2>自動化</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>下載M1b M2 資料</li>
-<li>整合之前的資料</li>
-<li>比較房貸餘額與M1b的年增率相關性</li>
-<li>房價餘額與存款總額的比值變化</li>
-</ul>
+    <ol>
+<li>建立R Script
+<code>
+iris
+iris_part &lt;- iris[4:6,]
+rownames(iris_part) &lt;- c(&#39;a&#39;,&#39;c&#39;,&#39;d&#39;)
+write.csv(iris_part,file=&quot;/Volumes/AhaStorage/TEMP/GG.csv&quot;)
+</code></li>
+<li><p>儲存到特定位置下  假定叫做Script.R</p></li>
+<li><p>在terminal執行</p>
+
+<pre><code>R CMD BATCH [該檔案儲存位置]/Script.R
+</code></pre></li>
+<li><p>可透過<code>crontab</code>定期執行</p></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-139" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>函式運用練習</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>找<strong>2014.02</strong>房貸放款<code>數量最少</code>的銀行</li>
-<li>將GDP改用<code>億新台幣</code>呈現</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="segue" id="slide-140" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="segue" id="slide-139" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -2876,7 +2870,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-140" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -2898,7 +2892,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-142" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-141" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -3735,38 +3729,32 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=137 title='Excerises'>
+        data-slide=137 title='額外延伸主題'>
          137
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=138 title='資料處理練習'>
+        data-slide=138 title='自動化'>
          138
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='函式運用練習'>
+        data-slide=139 title='Speical'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Speical'>
+        data-slide=140 title='Topics'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Topics'>
+        data-slide=141 title='Reference'>
          141
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='Reference'>
-         142
       </a>
     </li>
   </ul>

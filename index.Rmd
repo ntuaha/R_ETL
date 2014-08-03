@@ -1787,23 +1787,30 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method="loess") +
 
 --- .segue bg:green
 
-## Excerises
+## 額外延伸主題
 
 ---
 
-## 資料處理練習
+## 自動化
 
-- 下載M1b M2 資料
-- 整合之前的資料
-- 比較房貸餘額與M1b的年增率相關性
-- 房價餘額與存款總額的比值變化
+1. 建立R Script
+```
+iris
+iris_part <- iris[4:6,]
+rownames(iris_part) <- c('a','c','d')
+write.csv(iris_part,file="/Volumes/AhaStorage/TEMP/GG.csv")
+```
+2. 儲存到特定位置下  假定叫做Script.R
 
----
+3. 在terminal執行
+```
+R CMD BATCH [該檔案儲存位置]/Script.R
+```
 
-## 函式運用練習
+4. 可透過`crontab`定期執行
 
-- 找**2014.02**房貸放款`數量最少`的銀行
-- 將GDP改用`億新台幣`呈現
+
+
 
 --- .segue bg:blue
 
