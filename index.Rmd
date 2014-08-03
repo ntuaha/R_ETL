@@ -1370,6 +1370,15 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 3. 透過`年份`將**房貸餘額**與**GDP**的表`結合`起來
 
 
+
+---
+
+## 資料整併流程
+
+<img src="./resources/figures/R_ETL_PART4.png"></img>
+
+
+
 ---
 
 ## 資料匯總
@@ -1378,11 +1387,6 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 <img src="./resources/figures/R_ETL_Fn2.png"></img>
 
 
----
-
-## 資料整併
-
-<img src="./resources/figures/R_ETL_PART4.png"></img>
 
 
 --- &twocol_dynamic w1:78% w2:18%
