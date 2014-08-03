@@ -1830,6 +1830,13 @@ eg6_2 = summarise(group_by(eg6_1,time),
 3. left_join 用來做`多對多` **水平**結合
 4. inner_join 用來做`多對多` **水平**結合
 
+> 看得懂在幹嘛嗎?
+
+
+---
+
+## 圖解`結合表格`
+
 
 <img src="./resources/figures/R_ETL_Fn3.png" width="100%"></img>
 
