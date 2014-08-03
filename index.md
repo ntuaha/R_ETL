@@ -1830,15 +1830,8 @@ eg6_2 = summarise(group_by(eg6_1,time),
 3. left_join 用來做`多對多` **水平**結合
 4. inner_join 用來做`多對多` **水平**結合
 
-前兩個很簡單,後面四個是如同`SQL`的join處理
 
-```
-left_join(x,y,by="c1")
-```
-對應
-```
-select x.*,y.*(扣除c1) from x left join y on x.c1=y.c1;
-````
+<img src="./resources/figures/R_ETL_Fn3.png" width="100%"></img>
 
 
 --- &twocol_dynamic w1:68% w2:28%
