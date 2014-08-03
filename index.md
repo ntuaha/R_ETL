@@ -1691,7 +1691,7 @@ select sum(mortgage_bal) as mortage_total_bal
 
 
 ```
-GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
+GDP_part5 = filter(summarise(group_by(GDP_part4,year),GDP=sum(GDP)),is.na(year)==F)        
 ```
 
 <img src="./resources/figures/R_ETL_SUMMARIZE.png"></img>
@@ -1955,10 +1955,13 @@ inner_join(x,y,by="c1")
 
 --- 
 
-## 資料整理完成!
+## 練習
+
+1. 將GDP與房貸餘額，透過1月的資訊整理起來
+
 
 ```
-GDP_part6 = select(mutate(GDP_part5 , 
+GDP_part6 = select(mutate(GDP_part5 ,                    
                    time = as.POSIXct(paste(year,'1','1',sep='-'))),time,GDP)
 t1 = left_join(GDP_part6,Cl_info_part4,by="time")
 t2 = filter(t1,is.na(mortage_total_bal)==FALSE)

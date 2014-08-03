@@ -2288,7 +2288,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
 <li> 將GDP每年的值算出來</li>
 </ol>
 
-<pre><code>GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))        
+<pre><code>GDP_part5 = filter(summarise(group_by(GDP_part4,year),GDP=sum(GDP)),is.na(year)==F)        
 </code></pre>
 
 <p><img src="./resources/figures/R_ETL_SUMMARIZE.png"></img></p>
@@ -2662,10 +2662,14 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <slide class="" id="slide-129" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>資料整理完成!</h2>
+    <h2>練習</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>GDP_part6 = select(mutate(GDP_part5 , 
+    <ol>
+<li>將GDP與房貸餘額，透過1月的資訊整理起來</li>
+</ol>
+
+<pre><code>GDP_part6 = select(mutate(GDP_part5 ,                    
                    time = as.POSIXct(paste(year,&#39;1&#39;,&#39;1&#39;,sep=&#39;-&#39;))),time,GDP)
 t1 = left_join(GDP_part6,Cl_info_part4,by=&quot;time&quot;)
 t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
@@ -3677,7 +3681,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=129 title='資料整理完成!'>
+        data-slide=129 title='練習'>
          129
       </a>
     </li>
