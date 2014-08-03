@@ -108,7 +108,6 @@ mode        : selfcontained # {standalone, draft}
 
 --- .quote
 
-<q>即便知道資料在哪，可是資料還是如同`一盤散沙`</q>
 <img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
    
    
@@ -119,11 +118,12 @@ mode        : selfcontained # {standalone, draft}
 
 ## 我們ETL會用到的有 
 
-- `dplyr` 可用類似SQL語法操作data frome
-- `xts` 處理時間格式好用的套件
-- `gdata` 可以處理Excel 2007以上的文件
-- `quantmod` 可以處理股市資料
-- `stringr` 字串相關處理
+- `dplyr` 可用`類似SQL方法`操作data frome
+- `sqldf` 在`Ｒ`上使用`SQL`指令
+- `xts` 處理`時間`格式好用的套件
+- `gdata` 可以處理`Excel 2007`以上的文件
+- `quantmod` 可以處理`股市`資料
+- `stringr` `字串`相關處理
 
 
 --- .quote
@@ -236,7 +236,7 @@ ETL_file("cl_info_other.csv")
 
 至少要記得的 `read.table`
 ```
-DF = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
+Cl_info = read.table(file='檔案路徑',sep=",",stringsAsFactors=F,header=T)
 ```
 - 輸出形態為`Data Frame`
 - file 就是指讀入的檔案路徑
@@ -266,6 +266,9 @@ str(Cl_info)
 
 <img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
 
+> `etl_dt` `data_dt` 是`文字`但應該是`時間`
+> `bank_code` 也是`文字`但應該是`factor`
+
 
 ---
 
@@ -280,7 +283,8 @@ library(DSC2014Tutorial)
 Cl_info = read.table(file=ETL_file('cl_info_other.csv'),header=T,sep=",",stringsAsFactors=F)
 Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
-View(Cl_info)
+View(Cl_info_part)
+str(Cl_info_part)
 ```
 
 <br/>
@@ -296,6 +300,13 @@ View(Cl_info)
 <q>看見資料了!但是剛剛處理過程中的`mutate`是什麼?</q>
 
 <q> 在`R`中用來做__資料清理__與__資料處理__好用的套件`dplyr`其中之一的函式<q>
+
+
+--- .quote
+
+<q> 接下來我們將介紹三個基本函式 </q>
+
+<img src = './resources/figures/R_ETL_Fn1.png' height="350px"></img>
 
 --- &twocol_dynamic w1:68% w2:28%
 
