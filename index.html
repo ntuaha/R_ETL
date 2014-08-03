@@ -246,8 +246,11 @@
 </article>
 <!-- Presenter Notes -->
 </slide>
-<slide class="quote" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>看看Raw Data</h2>
+  </hgroup>
   <article data-timings="">
     <p><img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img></p>
 
@@ -263,7 +266,6 @@
   <article data-timings="">
     <ul>
 <li><code>dplyr</code> 可用<code>類似SQL方法</code>操作data frome</li>
-<li><code>sqldf</code> 在<code>Ｒ</code>上使用<code>SQL</code>指令</li>
 <li><code>xts</code> 處理<code>時間</code>格式好用的套件</li>
 <li><code>gdata</code> 可以處理<code>Excel 2007</code>以上的文件</li>
 <li><code>quantmod</code> 可以處理<code>股市</code>資料</li>
@@ -490,8 +492,9 @@ str(Cl_info)
     <p><img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img></p>
 
 <blockquote>
-<p><code>etl_dt</code> <code>data_dt</code> 是<code>文字</code>但應該是<code>時間</code>
-<code>bank_code</code> 也是<code>文字</code>但應該是<code>factor</code></p>
+<p><code>etl_dt</code> <code>data_dt</code> 是<code>文字</code>但應該是<code>時間</code></p>
+
+<p><code>bank_code</code> 也是<code>文字</code>但應該是<code>factor</code></p>
 </blockquote>
 
   </article>
@@ -2931,7 +2934,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title=''>
+        data-slide=11 title='看看Raw Data'>
          11
       </a>
     </li>

@@ -106,7 +106,9 @@ mode        : selfcontained # {standalone, draft}
 
 
 
---- .quote
+--- 
+
+## 看看Raw Data
 
 <img src = './resources/figures/R_ETL_RAWDATA.png' height="350px"></img>
    
@@ -119,7 +121,6 @@ mode        : selfcontained # {standalone, draft}
 ## 我們ETL會用到的有 
 
 - `dplyr` 可用`類似SQL方法`操作data frome
-- `sqldf` 在`Ｒ`上使用`SQL`指令
 - `xts` 處理`時間`格式好用的套件
 - `gdata` 可以處理`Excel 2007`以上的文件
 - `quantmod` 可以處理`股市`資料
@@ -266,7 +267,10 @@ str(Cl_info)
 
 <img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
 
+
 > `etl_dt` `data_dt` 是`文字`但應該是`時間`
+
+
 > `bank_code` 也是`文字`但應該是`factor`
 
 
