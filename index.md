@@ -2087,6 +2087,23 @@ R CMD BATCH [該檔案儲存位置]/Script.R
 
 - 可透過`crontab`定期執行
 
+---
+
+## 從網路讀檔案
+
+- 安裝套件
+
+```
+install.packages("RCurl")
+library(RCurl)
+```
+
+- 讀檔案
+
+```
+DF = read.table(sep=",", header=TRUE,            
+file= textConnection(getURL("https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv")))
+```
 
 
 

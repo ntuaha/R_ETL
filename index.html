@@ -2865,7 +2865,33 @@ write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="segue" id="slide-139" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-139" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>從網路讀檔案</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>安裝套件</li>
+</ul>
+
+<pre><code>install.packages(&quot;RCurl&quot;)
+library(RCurl)
+</code></pre>
+
+<ul>
+<li>讀檔案</li>
+</ul>
+
+<pre><code>DF = read.table(sep=&quot;,&quot;, header=TRUE,            
+file= textConnection(getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_other.csv&quot;)))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-140" style="background:blue; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -2876,7 +2902,7 @@ write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-140" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-141" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -2898,7 +2924,7 @@ write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-142" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -3747,20 +3773,26 @@ write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='Speical'>
+        data-slide=139 title='從網路讀檔案'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Topics'>
+        data-slide=140 title='Speical'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Reference'>
+        data-slide=141 title='Topics'>
          141
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=142 title='Reference'>
+         142
       </a>
     </li>
   </ul>
