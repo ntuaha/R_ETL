@@ -268,10 +268,8 @@ str(Cl_info)
 <img src = './resources/figures/R_ETL_EXP1.png' height="350px"></img>
 
 
-> `etl_dt` `data_dt` 是`文字`但應該是`時間`
-
-
-> `bank_code` 也是`文字`但應該是`factor`
+- `etl_dt` `data_dt` 是`文字`但應該是`時間`
+- `bank_code` 也是`文字`但應該是`factor`
 
 
 ---
@@ -399,7 +397,7 @@ select * from Cl_info where mortgage>1000000;
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-增加`特徵`欄位(1/3)
+## 練習-增加`特徵`欄位(1/2)
 
 ### dplyr `mutate` 用來增加**非彙總**計算`欄位`
 
@@ -428,7 +426,7 @@ select mortgage_bal/1000000 as mortage from Cl_info;
 --- &twocol_dynamic w1:68% w2:28%
 
 
-## 練習-增加`特徵`欄位(2/3)
+## 練習-增加`特徵`欄位(2/2)
 
 ### dplyr `mutate` 用來增加**非彙總**計算`欄位`
 
@@ -453,13 +451,6 @@ select mmortgage_bal/1000000 as mortage from Cl_info;
 
 <img src = './resources/figures/R_ETL_DPLYR_MUTATE.png'></img>
 
----
-
-## 練習- 增加`特徵`欄位(3/3)
-
-```
-Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
-```
 
 
 --- &twocol_dynamic w1:68% w2:28%
@@ -518,6 +509,25 @@ select * from Cl_info order by mortage,data_dt desc ;
 *** =right
 
 <img src = './resources/figures/R_ETL_DPLYR_ARRANGE.png'></img>
+
+
+
+---
+
+## 練習時間
+
+1. 請幫忙從Cl_info_part找出`data_dt`,`bank_nm`,`mortgage_bal`
+2. 請幫忙從Cl_info_part挑選出`mortgage＿bal`大於1千萬的銀行資料
+3. 請幫忙排序Cl_info_part出`mortgage＿bal`由小到大，但資料時間`data_dt`從大到小
+4. 請執行下面程式碼，我們後續會利用`Cl_info_part2`
+
+
+```
+Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
+```
+
+
+
 
 
 
