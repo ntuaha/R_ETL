@@ -583,33 +583,12 @@ Cl_info_part2 = mutate(Cl_info_part,time= as.POSIXct(data_dt))
 <q>答案</q>
 
 ```r
-library(DSC2014Tutorial)
 GDP = read.table(file=ETL_file("GDP.txt"),sep=",",stringsAsFactors=F,header=F)
 ```
 
 --- .quote
-
-
-<q>答案</q>
-
-```
-GDP = read.table(file=ETL_file("GDP.txt"),sep=",",stringsAsFactors=F,header=F)
-```
-<br>
 
 <q>輸入`View(GDP)`觀察`GDP`會發現怎麼前後有很多列的資料是不要的</q>
-
-
---- .quote
-
-<q></q>
-<img src = './resources/figures/R_ETL_2.png' ></img>
-
-
-
---- .quote
-
-<q></q>
 <img src = './resources/figures/R_ETL_2.png' ></img>
 
 ### 好亂，我想`整理`好這個data frome
