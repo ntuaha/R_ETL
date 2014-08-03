@@ -1640,7 +1640,7 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 
 ---
 
-## 資料匯總
+## 資料彙總
 
 將介紹 `group_by`, `summarize`
 <img src="./resources/figures/R_ETL_Fn2.png"></img>
@@ -1714,7 +1714,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## mean
 
-### 請計算每月全體銀行餘額平均值
+### 請計算每月全體銀行餘額平均值(eg1)
 
 <img src="./resources/figures/R_ETL_MEAN.png"></img>
 
@@ -1723,7 +1723,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## n
 
-### 請計算每個月有多少家銀行有房貸餘額
+### 請計算每個月有多少家銀行有房貸餘額(eg2)
 
 <img src="./resources/figures/R_ETL_N.png"></img>
 
@@ -1733,7 +1733,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## n_distinct
 
-### 請計算每年有多少家銀行有房貸餘額
+### 請計算每年有多少家銀行有房貸餘額(eg3)
 
 
 <img src="./resources/figures/R_ETL_NDISTINCT.png"></img>
@@ -1742,7 +1742,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## max
 
-### 請計算每月單一銀行擁有的最多房貸餘額
+### 請計算每月單一銀行擁有的最多房貸餘額(eg4)
 
 
 <img src="./resources/figures/R_ETL_MAX.png"></img>
@@ -1753,7 +1753,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## first, last
 
-### 請計算每月房貸餘額排名第ㄧ的銀行
+### 請計算每月房貸餘額排名第ㄧ的銀行(eg5)
 
 <img src="./resources/figures/R_ETL_FIRST.png"></img>
 
@@ -1773,7 +1773,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ## nth
 
-### 請計算每月房貸餘額排名第2的銀行
+### 請計算每月房貸餘額排名第2的銀行 (eg6)
 
 <img src="./resources/figures/R_ETL_NTH.png"></img>
 
@@ -1785,7 +1785,7 @@ GDP_part5 = summarise(group_by(GDP_part4,year),GDP=sum(GDP))
 
 ```
 
-eg0 = mutate(Cl_info_part2,year = format(time,"%Y"))
+
 eg1 =  summarise(group_by(Cl_info_part2,time) , 
          mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
 

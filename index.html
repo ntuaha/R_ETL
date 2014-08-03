@@ -2218,7 +2218,7 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 <slide class="" id="slide-107" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>資料匯總</h2>
+    <h2>資料彙總</h2>
   </hgroup>
   <article data-timings="">
     <p>將介紹 <code>group_by</code>, <code>summarize</code>
@@ -2324,7 +2324,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>mean</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每月全體銀行餘額平均值</h3>
+    <h3>請計算每月全體銀行餘額平均值(eg1)</h3>
 
 <p><img src="./resources/figures/R_ETL_MEAN.png"></img></p>
 
@@ -2338,7 +2338,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>n</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每個月有多少家銀行有房貸餘額</h3>
+    <h3>請計算每個月有多少家銀行有房貸餘額(eg2)</h3>
 
 <p><img src="./resources/figures/R_ETL_N.png"></img></p>
 
@@ -2352,7 +2352,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>n_distinct</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每年有多少家銀行有房貸餘額</h3>
+    <h3>請計算每年有多少家銀行有房貸餘額(eg3)</h3>
 
 <p><img src="./resources/figures/R_ETL_NDISTINCT.png"></img></p>
 
@@ -2366,7 +2366,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>max</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每月單一銀行擁有的最多房貸餘額</h3>
+    <h3>請計算每月單一銀行擁有的最多房貸餘額(eg4)</h3>
 
 <p><img src="./resources/figures/R_ETL_MAX.png"></img></p>
 
@@ -2380,7 +2380,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>first, last</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每月房貸餘額排名第ㄧ的銀行</h3>
+    <h3>請計算每月房貸餘額排名第ㄧ的銀行(eg5)</h3>
 
 <p><img src="./resources/figures/R_ETL_FIRST.png"></img></p>
 
@@ -2410,7 +2410,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
     <h2>nth</h2>
   </hgroup>
   <article data-timings="">
-    <h3>請計算每月房貸餘額排名第2的銀行</h3>
+    <h3>請計算每月房貸餘額排名第2的銀行 (eg6)</h3>
 
 <p><img src="./resources/figures/R_ETL_NTH.png"></img></p>
 
@@ -2425,7 +2425,7 @@ Cl_info_part4 = summarise(Cl_info_part3,
   </hgroup>
   <article data-timings="">
     <pre><code>
-eg0 = mutate(Cl_info_part2,year = format(time,&quot;%Y&quot;))
+
 eg1 =  summarise(group_by(Cl_info_part2,time) , 
          mortage_mean_bal = mean(mortgage_bal, na.rm = TRUE))
 
@@ -3545,7 +3545,7 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=107 title='資料匯總'>
+        data-slide=107 title='資料彙總'>
          107
       </a>
     </li>
