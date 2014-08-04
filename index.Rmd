@@ -730,16 +730,26 @@ require(reshape2)
 
 ---
 
-## 打開 phantomjs
+## 先 check / 安裝 聯結 Selenium 的 driver
 
-```r
-
-２２
+```{r}
+checkForServer()
 ```
 
 ---
 
-## 開始抓 yahoo 新聞
+## 打開 瀏覽器
+
+```r
+startServer()
+remDr <- remoteDriver(browserName = "firefox") # mac 可用 safari
+
+remDr$open()
+```
+
+---
+
+## 抓 yahoo 新聞
 ```r
 title <- list()
 
@@ -755,21 +765,63 @@ for(i in 1:10){
 
 ---
 
-## 讀寫表格資料
+## 抓 yahoo 搜尋結果
+
+### 搜尋 房價 
+
+```r
+
+remDr$navigate("https://tw.yahoo.com/")
+webElem <- remDr$findElement(using = "id", "p")
+webElem$sendKeysToElement(list("房價", key = "enter"))
+```
+
+---
+
+## 抓搜尋結果
+
+```r
+search_title <- list()
+for(i in 1:10){
+  webElems <- remDr$findElements(using = "xpath", "//li/div/div/h3/a")
+  resHeaders <- unlist(lapply(webElems, function(x){x$getElementText()}))
+  
+  search_title <- append(search_title, resHeaders)
+  webElems <- remDr$findElement(using = "id", value = "pg-next")
+  webElems$clickElement()
+  
+}
+```
+
+---
+
+## 儲存 / 讀取 表格資料
 
 ```r
 setwd('~/R_ETL/jiawei/)
-doc <- do.call(rbind, title)
-writeLines(doc, "news_yahoo.txt")
+
+doc_1 <- do.call(rbind, title)
+doc_2 <- do.call(rbind, search_title)
+writeLines(doc_1, "news_yahoo.txt")
+writeLines(doc_2, "search_yahoo.txt")
 news_yahoo <- readLines('news_yahoo.txt')
+search_yahoo <- readLines('search_yahoo.txt')
 ```
+
+---
+
+## 優缺點
+
+> - 優：可以輕易上手，和使用瀏覽器經驗幾乎一樣
+> - 缺：速度慢，不適合抓大規模資料
+> - 可以搭配使用 [phantomjs](http://rpubs.com/johndharrison/RSelenium-headless) ，速度會比較快 
 
 ---
 
 ## 匯入這次用的資料
 
 ### [鉅亨網　房地產新聞](http://house.cnyes.com/News/tw_housenews/List.htm)
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 setwd('~/R_ETL')
 hourse_news <- readLines('jiawei/news.txt') 
 head(hourse_news)
@@ -797,7 +849,7 @@ head(hourse_news,3)
 
 > - 自己手動打？ex. 房價、北市,、捷運 ...
 
-> - 用程式從文章抓
+> - 用程式從文章抓 ??  
 
 ---
 
@@ -812,6 +864,22 @@ substr('富邦人壽信義區再插旗 A25案172億元奪標', 1, 4)
 substr('富邦人壽信義區再插旗 A25案172億元奪標', 5, 7)
 ```
 
+---
+
+## 等下要用到的工具 -> substr 
+
+```{r}
+sentence <- '富邦人壽信義區再插旗'
+
+n <- 3
+
+i <- 1
+substr(sentence, i, i+n-1)
+
+i <- 2
+substr(sentence, i, i+n-1)
+
+```
 
 ---
 
@@ -876,6 +944,8 @@ punctuation
 
 ## 算 單字 出現次數
 
+### 整理次數的好用工具 -> table 
+
 ```{r}
 piece_clean <- piece
 word_freq <- table(piece_clean)
@@ -887,6 +957,8 @@ word_freq[c('信義區', '北市', '房價', '房市', '上漲')]
 --- 
 
 ## 分出 單字長度 區塊
+
+### list 的key-value 資料結構是種好用的工具
 
 ```{r}
 words_length <- 
@@ -905,8 +977,27 @@ tail(words_length[["2"]])
 
 ---
 
+## 等下要用到工具
+
+### 單字長度 1 的內容
+```r
+words_length[['1']]
+```
+```{r echo=FALSE}
+tail(words_length[['1']])
+```
+### 這些字的出現次數
+```r
+word_freq[words_length[['1']]]
+```
+```{r echo=FALSE}
+tail(word_freq[words_length[['1']]])
+```
+
+---
 ## 算出機率
 
+### 把次數sum 起來當分母，算相對次數
 ```{r}
 N <- sum(word_freq[words_length[['1']]])
 words_weight <- word_freq / N
@@ -915,6 +1006,19 @@ words_weight <- word_freq / N
 tail(words_weight, 5)
 ```
 
+---
+
+## 等下要用的工具 paste, grep
+
+```{r}
+paste("富邦" ,"人壽", sep='')
+
+grep('富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+
+grep('^富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+
+grep('富邦$' , c('富邦金', '法人富邦', '台北富邦銀行'))
+```
 
 ---
 
@@ -939,6 +1043,22 @@ disorder <- function(word){
   
 }
 ```
+
+---
+## 可以先用簡單例子看一下上面的結果
+
+```{r}
+word <- '富邦'
+BASE <- words_length[[as.character(nchar(word)+1)]]
+```
+```{r echo=FALSE}
+tail(BASE)
+```
+```{r}
+PATTEN1 <- paste("^", word, sep = '')
+grep(PATTEN1, BASE, value = TRUE)
+```
+
 
 ---
 
@@ -1035,6 +1155,15 @@ segmentWord <- function(word){
 segmentWord('富邦人壽')
 ```
 
+---
+## 可以用這例子來理解
+
+```{r}
+word <- '富邦人壽'
+i = 1
+substr(word, 1, i)
+substr(word,i+1, n+1)
+```
 
 ---
 
@@ -1056,6 +1185,14 @@ cohesion <- function(word){
 ```
 
 ---
+## 用這例子來理解, 依序為 f_word, f_x1, f_x2
+```{r}
+word <- '富邦人壽'
+word_freq[word]    
+word_freq['富邦']  
+word_freq['人壽']  
+```
+---
 ## 抓凝聚程度較高的字
 
 ```{r}
@@ -1065,6 +1202,16 @@ test_words_2 <- names(which(cohesion_val > 2))
 ```
 
 ---
+
+## 等下要用到的工具 -> str_count
+```{r}
+fruit <- c("apple", "banana", "pear", "pineapple")
+str_count(fruit, "a")
+str_count(fruit, "p")
+```
+
+---
+
 ## 算出單字 每個時間點的 出現次數
 
 ```{r}
@@ -1202,7 +1349,8 @@ head(return.status)
 ### 希望的表格
 
 ```{r echo=FALSE, message=FALSE}
-head(dcast(return.status, return_date  ~ cl.cluster, fill = 0))
+date = row.names(return.status)
+head(dcast(return.status,  date ~ cl.cluster, fill = 0))
 ```
 
 
