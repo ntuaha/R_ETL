@@ -1,6 +1,5 @@
 base
 bitops
-devtools
 dplyr
 ggplot2
 RCurl
