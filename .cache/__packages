@@ -1,24 +1,13 @@
 base
 bitops
-<<<<<<< HEAD
-=======
-caTools
-Defaults
-devtools
->>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 dplyr
-DSC2014Tutorial
-gdata
 ggplot2
-quantmod
 RCurl
 reshape2
 RJSONIO
 RSelenium
 slidify
-slidifyLibraries
 stringr
-TTR
 XML
 xts
 zoo
