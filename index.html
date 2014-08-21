@@ -1266,16 +1266,13 @@ head(hourse_news)
 <slide class="" id="slide-66" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>抓出 時間 與 文章</h2>
+    <h2>練習題</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li><a href="http://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CB4QFjAA&amp;url=http%3A%2F%2Fstatlab.nchc.org.tw%2Frnotes%2F%3Fpage_id%3D171&amp;ei=xWzSU9fGEIiB8gW91IKYCQ&amp;usg=AFQjCNE71BgJhsypu4NhHxgpk3pDTOGZ9g&amp;sig2=ie3biJghIW601YTFHbbZJg&amp;bvm=bv.71667212,d.dGc">常規表示法| R 學習筆記</a></li>
-<li><a href="http://deerchao.net/tutorials/regex/regex.htm">正则表达式30分钟入门教程</a></li>
-</ul>
+    <p>請填入適當的 Patten</p>
 
-<pre><code class="r">dates &lt;- str_extract(hourse_news, &quot;\\d{4}-\\d{2}-\\d{2}&quot;)
-titles &lt;- str_replace(hourse_news, &quot;\\d{4}-\\d{2}-\\d{2}&quot;, &quot;&quot;)
+<pre><code class="r">dates &lt;- str_extract(hourse_news, ___)
+titles &lt;- str_replace(hourse_news, ___, ___)
 
 hourse_news &lt;- cbind(dates, titles)
 </code></pre>
@@ -1293,13 +1290,22 @@ hourse_news &lt;- cbind(dates, titles)
 <slide class="" id="slide-67" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>有了新聞後，怎麼知道有哪些單字？</h2>
+    <h2>清除符號 (只是列出來，並沒有要做)</h2>
   </hgroup>
   <article data-timings="">
+<<<<<<< HEAD
+    <pre><code class="r">piece_clean &lt;- str_replace_all(piece, punctuation, &quot;&quot;)
+piece_clean &lt;- str_replace_all(piece_clean, &quot;[[:punct:]]&quot;, &quot;&quot;)
+piece_clean &lt;- str_replace_all(piece_clean, &quot;[[:blank:]]&quot;, &quot;&quot;)
+piece_clean &lt;- str_replace_all(piece_clean, &quot; &quot;, &quot;&quot;)
+
+</code></pre>
+=======
     <ul class = "build incremental">
 <li><p>自己手動打？ex. 房價、北市,、捷運 ...</p></li>
 <li><p>用程式從文章抓 ??  </p></li>
 </ul>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
   </article>
   <!-- Presenter Notes -->
@@ -1308,15 +1314,41 @@ hourse_news &lt;- cbind(dates, titles)
 <slide class="" id="slide-68" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>有了新聞後，怎麼知道有哪些單字？</h2>
+    <h2>如果想清除中文特殊符號 ...</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li><p>自己手動打？ex. 房價、北市,、捷運 ...</p></li>
-<li><p>用程式從文章抓</p></li>
-</ul>
+    <h3>這是 utf-8 編碼</h3>
 
-<pre><code class="r">substr(&#39;富邦人壽信義區再插旗 A25案172億元奪標&#39;, 1, 4)
+<pre><code class="r">punctuation &lt;- &quot;\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b&quot;
+
+punctuation
+</code></pre>
+
+<pre><code>## [1] &quot;。 ； ， ： “ ” （ ） 、 ？ 《 》&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>ch2 字串處理</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>substr 用法</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">substr(&#39;富邦人壽信義區再插旗 A25案172億元奪標&#39;, 1, 4)
 </code></pre>
 
 <pre><code>## [1] &quot;富邦人壽&quot;
@@ -1332,6 +1364,9 @@ hourse_news &lt;- cbind(dates, titles)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-62" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-69" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1361,19 +1396,24 @@ substr(sentence, i, i+n-1)
 </slide>
 
 <slide class="" id="slide-70" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>N-Grame</h2>
+    <h2>練習題</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">ngram &lt;- function(sentence, n){
+    <h3>請填入適當指令，呈現出下面使用範例</h3>
+
+<pre><code class="r">ngram &lt;- function(sentence, n){
   chunk &lt;- c()
   for(i in 1 : (nchar(sentence)-n+1)){
-    chunk &lt;- append(chunk, substr(sentence, i, i+n-1))
+    chunk &lt;- append(chunk, substr(sentence, ___ , i+n-1))
   }
   return(chunk)
 }
 </code></pre>
+
+<h3>使用範例</h3>
 
 <pre><code class="r">ngram(&#39;富邦人壽信義區再插旗&#39;, 2)
 </code></pre>
@@ -1385,78 +1425,83 @@ substr(sentence, i, i+n-1)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-63" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-71" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>把 N-Gram 詞彙匯聚在一起</h2>
+    <h3>請填入適當指令，呈現出下面使用範例</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">piece &lt;- c()
-
-for(i in 1:length(hourse_news)){
-  piece &lt;- append(piece, ngram(titles[i], 1))
-  piece &lt;- append(piece, ngram(titles[i], 2))
-  piece &lt;- append(piece, ngram(titles[i], 3))
-  piece &lt;- append(piece, ngram(titles[i], 4))
-  piece &lt;- append(piece, ngram(titles[i], 5))
-  piece &lt;- append(piece, ngram(titles[i], 6))
+    <pre><code class="r">segmentWord &lt;- function(word){
+  n &lt;- nchar(word)-1
+  seg &lt;- lapply(1: n, function(i){
+    w1 &lt;- substr(word, 1, i)
+    w2 &lt;- substr(word, ___ , n+1)
+    c(w1,w2)
+  })
+  return(seg)
 }
 </code></pre>
 
+<pre><code class="r">segmentWord(&#39;富邦銀&#39;)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] &quot;富&quot;   &quot;邦銀&quot;
+## 
+## [[2]]
+## [1] &quot;富邦&quot; &quot;銀&quot;
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-64" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-72" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>清除符號 (只是列出來，並沒有要做)</h2>
+    <h2>應用</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">piece_clean &lt;- str_replace_all(piece, punctuation, &quot;&quot;)
-piece_clean &lt;- str_replace_all(piece_clean, &quot;[[:punct:]]&quot;, &quot;&quot;)
-piece_clean &lt;- str_replace_all(piece_clean, &quot;[[:blank:]]&quot;, &quot;&quot;)
-piece_clean &lt;- str_replace_all(piece_clean, &quot; &quot;, &quot;&quot;)
+    <h3>把字段長度1~6都列舉出來看看</h3>
 
+<pre><code class="r">piece &lt;- list()
+
+piece[[&#39;1&#39;]] &lt;- unlist(sapply(titles, ngram, 1, USE.NAMES = FALSE))
+piece[[&#39;2&#39;]] &lt;- unlist(sapply(titles, ngram, 2, USE.NAMES = FALSE))
+piece[[&#39;3&#39;]] &lt;- unlist(sapply(titles, ngram, 3, USE.NAMES = FALSE))
+piece[[&#39;4&#39;]] &lt;- unlist(sapply(titles, ngram, 4, USE.NAMES = FALSE))
+piece[[&#39;5&#39;]] &lt;- unlist(sapply(titles, ngram, 5, USE.NAMES = FALSE))
+piece[[&#39;6&#39;]] &lt;- unlist(sapply(titles, ngram, 6, USE.NAMES = FALSE))
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-65" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-73" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>如果想清除中文特殊符號 ...</h2>
+    <h2>應用</h2>
   </hgroup>
   <article data-timings="">
-    <h3>這是 utf-8 編碼</h3>
+    <h3>算 字段 出現次數</h3>
 
-<pre><code class="r">punctuation &lt;- &quot;\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b&quot;
-
-punctuation
+<pre><code class="r">words_freq &lt;- table(unlist(piece))
 </code></pre>
 
-<pre><code>## [1] &quot;。 ； ， ： “ ” （ ） 、 ？ 《 》&quot;
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
-  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>算 單字 出現次數</h2>
-  </hgroup>
-  <article data-timings="">
-    <h3>整理次數的好用工具 -&gt; table</h3>
-
-<pre><code class="r">piece_clean &lt;- piece
-word_freq &lt;- table(piece_clean)
-</code></pre>
-
-<pre><code>## piece_clean
+<pre><code>## 
 ## 信義區   北市   房價   房市   上漲 
 ##      8     81     38     33      2
 </code></pre>
@@ -1465,12 +1510,59 @@ word_freq &lt;- table(piece_clean)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
+<<<<<<< HEAD
+<slide class="" id="slide-66" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
+<slide class="" id="slide-74" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>分出 單字長度 區塊</h2>
+    <h2>算出機率</h2>
   </hgroup>
   <article data-timings="">
+<<<<<<< HEAD
+    <pre><code class="r">N &lt;- sum(words_freq[piece[[&#39;1&#39;]]])
+words_prob &lt;- words_freq / N
+=======
+    <h3>整理次數的好用工具 -&gt; table</h3>
+
+<pre><code class="r">piece_clean &lt;- piece
+word_freq &lt;- table(piece_clean)
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
+</code></pre>
+
+<pre><code>## 
+##         龍江       龍江路     龍江路土   龍江路土地 龍江路土地由 
+##    3.183e-06    3.183e-06    3.183e-06    3.183e-06    3.183e-06
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<<<<<<< HEAD
+<slide class="" id="slide-67" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
+<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>paste, grep 用法</h2>
+  </hgroup>
+  <article data-timings="">
+<<<<<<< HEAD
+    <pre><code class="r">paste(&quot;富邦&quot; ,&quot;人壽&quot;, sep=&#39;&#39;)
+</code></pre>
+
+<pre><code>## [1] &quot;富邦人壽&quot;
+</code></pre>
+
+<pre><code class="r">grep(&#39;富邦&#39; , c(&#39;富邦金&#39;, &#39;法人富邦&#39;, &#39;台北富邦銀行&#39;))
+</code></pre>
+
+<pre><code>## [1] 1 2 3
+</code></pre>
+=======
     <h3>list 的key-value 資料結構是種好用的工具</h3>
 
 <pre><code class="r">words_length &lt;- 
@@ -1482,17 +1574,31 @@ list(
   &quot;5&quot; = names(word_freq[nchar(names(word_freq))==5]),
   &quot;6&quot; = names(word_freq[nchar(names(word_freq))==6])
 )
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
-tail(words_length[[&quot;2&quot;]])
+<pre><code class="r">grep(&#39;^富邦&#39; , c(&#39;富邦金&#39;, &#39;法人富邦&#39;, &#39;台北富邦銀行&#39;))
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>## [1] 1
+</code></pre>
+
+<pre><code class="r">grep(&#39;富邦$&#39; , c(&#39;富邦金&#39;, &#39;法人富邦&#39;, &#39;台北富邦銀行&#39;))
+</code></pre>
+
+<pre><code>## [1] 2
+=======
 <pre><code>## [1] &quot;最新&quot; &quot;作品&quot; &quot;坐5&quot;  &quot;坐擁&quot; &quot;座排&quot; &quot;做半&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-68" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-76" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1522,11 +1628,25 @@ tail(words_length[[&quot;2&quot;]])
 </slide>
 
 <slide class="" id="slide-77" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
-    <h2>算出機率</h2>
+    <h2>練習題</h2>
   </hgroup>
   <article data-timings="">
+<<<<<<< HEAD
+    <pre><code class="r">word &lt;- &#39;信義區&#39;
+BASE &lt;- piece[[as.character(nchar(word)+1)]]
+
+PATTEN1 &lt;- paste(&quot;^&quot;, word, sep = &#39;&#39;)
+matchs1 &lt;- grep(PATTEN1, BASE, value = TRUE)
+pre &lt;- mean(-log2(words_prob[matchs1]))
+
+PATTEN2 &lt;- paste(word, &quot;$&quot;, sep = &#39;&#39;)
+matchs2 &lt;- grep(PATTEN2, BASE, value = TRUE)
+post &lt;- mean(-log2(words_prob[matchs2]))
+
+=======
     <h3>把次數sum 起來當分母，算相對次數</h3>
 
 <pre><code class="r">N &lt;- sum(word_freq[words_length[[&#39;1&#39;]]])
@@ -1536,12 +1656,16 @@ words_weight &lt;- word_freq / N
 <pre><code>## piece_clean
 ##         做半       做半套     做半套？   做半套？政 做半套？政院 
 ##    0.0001481    0.0001481    0.0001481    0.0001481    0.0001481
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-69" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-78" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1577,24 +1701,24 @@ words_weight &lt;- word_freq / N
 </slide>
 
 <slide class="" id="slide-79" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
-  <hgroup>
-    <h2>算出單字左右亂度</h2>
-  </hgroup>
   <article data-timings="">
     <pre><code class="r">disorder &lt;- function(word){
 
-  BASE &lt;- words_length[[as.character(nchar(word)+1)]]
+  BASE &lt;- piece[[as.character(nchar(word)+1)]]
 
   PATTEN1 &lt;- paste(&quot;^&quot;, word, sep = &#39;&#39;)
   matchs1 &lt;- grep(PATTEN1, BASE, value = TRUE)
-  pre &lt;- mean(-log2(words_weight[matchs1]))
+  freq1 &lt;- table(matchs1)  
+  pre &lt;- mean(-log2(freq1/sum(freq1)))
 
   PATTEN2 &lt;- paste(word, &quot;$&quot;, sep = &#39;&#39;)
   matchs2 &lt;- grep(PATTEN2, BASE, value = TRUE)
-  post &lt;- mean(-log2(words_weight[matchs2]))
+  freq2 &lt;- table(matchs2)  
+  post &lt;- mean(-log2(freq2/sum(freq2)))
 
-  index &lt;- is.na(c(pre, post))
+  index &lt;- !is.na(c(pre, post))
   condition &lt;- any(index)
   return(ifelse(condition, c(pre, post)[index], min(pre, post)))
 
@@ -1605,6 +1729,12 @@ words_weight &lt;- word_freq / N
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-70" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <article data-timings="">
+    
+=======
 <slide class="" id="slide-80" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1625,11 +1755,16 @@ grep(PATTEN1, BASE, value = TRUE)
 <pre><code>## [1] &quot;富邦權&quot; &quot;富邦人&quot;
 </code></pre>
 
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-71" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-81" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>挑出文章裡面的 單字</h2>
@@ -1637,39 +1772,58 @@ grep(PATTEN1, BASE, value = TRUE)
   <article data-timings="">
     <h3>先挑出單字長度 2~5 的 候選詞彙</h3>
 
-<pre><code class="r">word_2_5 &lt;- unlist(words_length[2:5])
+<pre><code class="r">word_2_5 &lt;- unique(unlist(piece[2:5]))
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##   2471   2407   2505   2891   2775   2550   2974   2193   2139   2672 
+## &quot;京東&quot; &quot;世貿&quot; &quot;以外&quot; &quot;區大&quot; &quot;則減&quot;  &quot; 何&quot;  &quot; 可&quot;   &quot;56&quot;  &quot;3店&quot; &quot;億收&quot; 
+##   2594   2162   2282   2670   2217 
+## &quot;偏愛&quot;   &quot;41&quot;   &quot;9.&quot; &quot;億得&quot;   &quot;6/&quot;
+=======
 <pre><code>##   2535   2592   2470   2406   2504   2889   2774   2549   2972   2192 
 ##  &quot;7大&quot;   &quot;IT&quot;  &quot;4坪&quot;  &quot;2公&quot;  &quot;5月&quot; &quot;出售&quot; &quot;不想&quot;   &quot;8%&quot; &quot;當家&quot; &quot;、高&quot; 
 ##   2138   2671   2593   2162   2281 
 ##  &quot; 未&quot; &quot;包租&quot;   &quot;KA&quot;  &quot; 整&quot; &quot;？北&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-72">
+=======
 <slide class="" id="slide-82">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   <h2>單字 出現次數分佈</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
+<<<<<<< HEAD
+<p><img src="assets/fig/unnamed-chunk-21.png" alt="plot of chunk unnamed-chunk-21"> </p>
+=======
 <p><img src="assets/fig/unnamed-chunk-26.png" alt="plot of chunk unnamed-chunk-26"> </p>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 </article>
 <!-- Presenter Notes -->
 </slide>
+<<<<<<< HEAD
+<slide class="" id="slide-73" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-83" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>算出 候選詞彙 左右兩側的混亂程度</h2>
   </hgroup>
   <article data-timings="">
-    <h3>出現次數&gt;2 的 候選詞彙</h3>
+    <h3>出現次數&gt;5 的 候選詞彙</h3>
 
-<pre><code class="r">words &lt;- names(which(word_freq[word_2_5] &gt; 2))
+<pre><code class="r">words &lt;- names(which(words_freq[word_2_5] &gt; 2))
 </code></pre>
 
 <h3>把 候選詞彙 丟下去計算</h3>
@@ -1678,27 +1832,45 @@ grep(PATTEN1, BASE, value = TRUE)
 names(disorder_val) &lt;- words
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##  [1] &quot;房市量縮&quot;   &quot; 新北市&quot;    &quot;新隆國宅&quot;   &quot;義計畫區&quot;   &quot;臨沂帝國&quot;  
+##  [6] &quot;高房價 &quot;    &quot;25日前提&quot;   &quot;4-01-&quot;      &quot;4-03-&quot;      &quot;4-05-&quot;     
+## [11] &quot;信義計畫區&quot; &quot;實價登錄 &quot;  &quot;年完成募集&quot; &quot;政士法覆議&quot; &quot;逾3.5%&quot;
+=======
 <pre><code>##  [1] &quot;台北市&quot;   &quot;下半年&quot;   &quot;增2成&quot;    &quot;中山、&quot;   &quot;2013&quot;     &quot;6.6萬&quot;   
 ##  [7] &quot;北市房價&quot; &quot;北市去年&quot; &quot;地上權案&quot; &quot;房市交易&quot; &quot;高房價 &quot;  &quot;合宜住宅&quot;
 ## [13] &quot;臨沂帝國&quot; &quot;實價揭露&quot; &quot;新隆國宅&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-74">
+=======
 <slide class="" id="slide-84">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   <h2>單字的 混亂程度分佈</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
+<<<<<<< HEAD
+<p><img src="assets/fig/unnamed-chunk-25.png" alt="plot of chunk unnamed-chunk-25"> </p>
+=======
 <p><img src="assets/fig/unnamed-chunk-30.png" alt="plot of chunk unnamed-chunk-30"> </p>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 </article>
 <!-- Presenter Notes -->
 </slide>
+<<<<<<< HEAD
+<slide class="" id="slide-75" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-85" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>混亂程度</h2>
@@ -1706,23 +1878,39 @@ names(disorder_val) &lt;- words
   <article data-timings="">
     <h3>兩側混亂程度高的字</h3>
 
+<<<<<<< HEAD
+<pre><code>##  [1] &quot;房市量縮&quot;   &quot; 新北市&quot;    &quot;新隆國宅&quot;   &quot;義計畫區&quot;   &quot;臨沂帝國&quot;  
+##  [6] &quot;高房價 &quot;    &quot;25日前提&quot;   &quot;4-01-&quot;      &quot;4-03-&quot;      &quot;4-05-&quot;     
+## [11] &quot;信義計畫區&quot; &quot;實價登錄 &quot;  &quot;年完成募集&quot; &quot;政士法覆議&quot; &quot;逾3.5%&quot;
+=======
 <pre><code>##  [1] &quot;台北市&quot;   &quot;下半年&quot;   &quot;增2成&quot;    &quot;中山、&quot;   &quot;2013&quot;     &quot;6.6萬&quot;   
 ##  [7] &quot;北市房價&quot; &quot;北市去年&quot; &quot;地上權案&quot; &quot;房市交易&quot; &quot;高房價 &quot;  &quot;合宜住宅&quot;
 ## [13] &quot;臨沂帝國&quot; &quot;實價揭露&quot; &quot;新隆國宅&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 <h3>兩側混亂程度低的字</h3>
 
+<<<<<<< HEAD
+<pre><code>##  [1] &quot;14-&quot;        &quot;014-&quot;       &quot;2014-&quot;      &quot;價登&quot;       &quot;實價登&quot;    
+##  [6] &quot;地政&quot;       &quot;地上&quot;       &quot;201&quot;        &quot; 信&quot;        &quot;法覆&quot;      
+## [11] &quot;士法覆&quot;     &quot;政士法覆&quot;   &quot;地政士法覆&quot; &quot;　北&quot;       &quot;張盛&quot;
+=======
 <pre><code>##  [1] &quot;014&quot;    &quot;14-&quot;    &quot;014-&quot;   &quot;14-0&quot;   &quot;014-0&quot;  &quot;2014-&quot;  &quot;登錄&quot;  
 ##  [8] &quot;價登&quot;   &quot;實價登&quot; &quot;地政&quot;   &quot;政士&quot;   &quot;地上&quot;   &quot;上權&quot;   &quot;坪1&quot;   
 ## [15] &quot;士法&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-76" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-86" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>挑出 混亂程度&gt;12 的單字</h2>
@@ -1730,6 +1918,15 @@ names(disorder_val) &lt;- words
   <article data-timings="">
     <h3>根據前面的分佈圖來決定用 &gt; 12 ...</h3>
 
+<<<<<<< HEAD
+<pre><code class="r">test_words &lt;- names(which(disorder_val &gt; 1))
+</code></pre>
+
+<pre><code>##  [1] &quot;高房價 &quot;    &quot;25日前提&quot;   &quot;4-01-&quot;      &quot;4-02-&quot;      &quot;4-03-&quot;     
+##  [6] &quot;4-04-&quot;      &quot;4-05-&quot;      &quot;信義計畫區&quot; &quot;坪180萬&quot;    &quot;宅價格指數&quot;
+## [11] &quot;實價登錄 &quot;  &quot;年完成募集&quot; &quot; 張盛和：&quot;  &quot;捷運松山線&quot; &quot;政士法覆議&quot;
+## [16] &quot;月實價登錄&quot; &quot;桃園房價漲&quot; &quot;：豪宅交易&quot; &quot;逾3.5%&quot;     &quot;面租賃需求&quot;
+=======
 <pre><code class="r">test_words &lt;- names(which(disorder_val &gt; 12))
 </code></pre>
 
@@ -1781,12 +1978,16 @@ names(disorder_val) &lt;- words
 ## 
 ## [[3]]
 ## [1] &quot;富邦人&quot; &quot;壽&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-77" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-89" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1812,6 +2013,7 @@ substr(word, 1, i)
 </slide>
 
 <slide class="" id="slide-90" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>算單字的凝聚程度</h2>
@@ -1820,9 +2022,9 @@ substr(word, 1, i)
     <pre><code class="r">cohesion &lt;- function(word){
   seg &lt;- segmentWord(word)
   val &lt;- sapply(seg, function(x){    
-    f_word &lt;- word_freq[word]
-    f_x1 &lt;- word_freq[x[1]]
-    f_x2 &lt;- word_freq[x[2]]
+    f_word &lt;- words_freq[word]
+    f_x1 &lt;- words_freq[x[1]]
+    f_x2 &lt;- words_freq[x[2]]
     mi &lt;- log2(N) + log2(f_word) - log2(f_x1) - log2(f_x2)
     return(mi)
   }) 
@@ -1834,7 +2036,11 @@ substr(word, 1, i)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-78" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-91" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>用這例子來理解, 依序為 f_word, f_x1, f_x2</h2>
@@ -1875,6 +2081,9 @@ test_words_2 &lt;- names(which(cohesion_val &gt; 2))
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-79" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-92" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -1899,6 +2108,7 @@ str_count(fruit, &quot;a&quot;)
 </slide>
 
 <slide class="" id="slide-93" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>算出單字 每個時間點的 出現次數</h2>
@@ -1910,6 +2120,15 @@ colnames(words_tbl) &lt;- test_words_2
 rownames(words_tbl) &lt;- dates
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##            　新 樂觀 29 0億 9. -1 14 標售
+## 2014-06-24    0    0  0   0  0  0  0    0
+## 2014-06-24    0    0  0   0  0  0  0    0
+## 2014-06-23    0    0  0   0  0  0  0    0
+## 2014-06-20    0    0  0   0  0  0  0    0
+## 2014-06-20    0    0  0   0  0  0  0    0
+## 2014-06-19    0    0  0   0  1  0  0    0
+=======
 <pre><code>##            租金 9. 17% 調查： 29 -1 第4 、台
 ## 2014-06-24    0  0   0      0  0  0   0    0
 ## 2014-06-24    0  0   0      0  0  0   0    0
@@ -1917,13 +2136,18 @@ rownames(words_tbl) &lt;- dates
 ## 2014-06-20    0  0   0      0  0  0   0    0
 ## 2014-06-20    0  0   0      0  0  0   0    0
 ## 2014-06-19    0  1   0      0  0  0   0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-80" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-94" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>轉換成 xts格式</h2>
@@ -1937,6 +2161,16 @@ rownames(words_tbl) &lt;- dates
 <pre><code class="r">words_tbl_xts[&quot;2014-01-18/2014-01-20&quot;, 100:110]
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##            今年  仍 以上 仲： 住宅 侈稅 價  價6 價差 價最 價格
+## 2014-01-19    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+=======
 <pre><code>##            公園 共識 購屋 關  夯　 豪宅 好宅 換屋 價差 價高 價最
 ## 2014-01-19    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
@@ -1945,13 +2179,18 @@ rownames(words_tbl) &lt;- dates
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-81" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-95" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>對時間區間做運算</h2>
@@ -1964,6 +2203,17 @@ count.weeks &lt;- period.apply(words_tbl_xts, ep.weeks, FUN=colSums)
 count.weeks[&quot;2014-01/2014-02&quot;, 100:110]
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##            今年  仍 以上 仲： 住宅 侈稅 價  價6 價差 價最 價格
+## 2014-01-06    1   0    0    0    0    0   0   0    0    0    0
+## 2014-01-10    1   2    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-27    1   0    0    0    0    0   0   0    0    0    0
+## 2014-01-28    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-07    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-17    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-24    1   0    0    0    1    0   0   1    0    0    0
+=======
 <pre><code>##            公園 共識 購屋 關  夯　 豪宅 好宅 換屋 價差 價高 價最
 ## 2014-01-06    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-10    0    0    0   0    0    2    0    0    0    0    0
@@ -1973,13 +2223,18 @@ count.weeks[&quot;2014-01/2014-02&quot;, 100:110]
 ## 2014-02-07    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-02-17    1    0    3   0    0    3    0    0    0    1    0
 ## 2014-02-24    0    0    2   0    0    1    0    0    0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-82" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-96" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>下載營建股 股票指數</h2>
@@ -2002,7 +2257,11 @@ stock_code &lt;- paste(stock_no, &#39;.TW&#39;, sep=&#39;&#39;)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-83" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-97" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>開始下載</h2>
@@ -2018,7 +2277,11 @@ saveRDS(mystocks, &quot;mystocks.rds&quot;)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-84" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-98" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>算出每支股票的 平均漲跌</h2>
@@ -2041,7 +2304,11 @@ mystocks.return &lt;- diff(mystocks, 1) / mystocks
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-85" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-99" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>全部平均來看 ...</h2>
@@ -2056,7 +2323,11 @@ mystocks.return &lt;- diff(mystocks, 1) / mystocks
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-86" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-100" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>找出股票漲跌的五個狀態</h2>
@@ -2071,19 +2342,32 @@ return.status &lt;- data.frame(cl$cluster)
 </code></pre>
 
 <pre><code>##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-87" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-101" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>如果想知道其中的 <code>相關性</code> ...</h2>
@@ -2093,6 +2377,15 @@ return.status &lt;- data.frame(cl$cluster)
 <div style='float:left;width:48%;'>
 <h3><code>關鍵字出現的次數</code></h3>
 
+<<<<<<< HEAD
+<pre><code>##            今年  仍 以上 仲： 住宅 侈稅
+## 2014-06-24    0   0    0    0    0    0
+## 2014-06-24    0   0    0    0    0    0
+## 2014-06-23    0   0    0    0    0    0
+## 2014-06-20    0   0    0    0    0    0
+## 2014-06-20    0   0    0    0    0    0
+## 2014-06-19    0   0    0    0    0    0
+=======
 <pre><code>##            公園 共識 購屋 關  夯　 豪宅
 ## 2014-06-24    0    0    0   0    0    0
 ## 2014-06-24    0    0    0   0    0    0
@@ -2100,6 +2393,7 @@ return.status &lt;- data.frame(cl$cluster)
 ## 2014-06-20    0    0    0   0    0    0
 ## 2014-06-20    0    0    0   0    0    1
 ## 2014-06-19    0    0    0   0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
@@ -2107,12 +2401,21 @@ return.status &lt;- data.frame(cl$cluster)
 <h3><code>股市漲跌的狀態</code></h3>
 
 <pre><code>##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
@@ -2120,7 +2423,11 @@ return.status &lt;- data.frame(cl$cluster)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-88" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-102" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>如果可以把<code>5個漲跌狀態</code>變成欄位 ...</h2>
@@ -2131,18 +2438,30 @@ return.status &lt;- data.frame(cl$cluster)
 <h3>原本的表格</h3>
 
 <pre><code>##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
   <div style='float:right;width:48%;'>
 <h3>希望的表格</h3>
 
+<<<<<<< HEAD
+<pre><code>## Error: object &#39;return_date&#39; not found
+=======
 <pre><code>##         date 1 2 3 4 5
 ## 1 2014-01-02 0 0 0 4 0
 ## 2 2014-01-03 0 2 0 0 0
@@ -2150,6 +2469,7 @@ return.status &lt;- data.frame(cl$cluster)
 ## 4 2014-01-07 0 0 3 0 0
 ## 5 2014-01-08 0 0 0 4 0
 ## 6 2014-01-09 0 2 0 0 0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
@@ -2157,7 +2477,11 @@ return.status &lt;- data.frame(cl$cluster)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-89" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-103" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>整理出需要的欄位狀態</h2>
@@ -2169,19 +2493,32 @@ return.status &lt;- cbind(return.status, &quot;val&quot;=rep(1,127))
 </code></pre>
 
 <pre><code>##            return_date cl.cluster val
+<<<<<<< HEAD
+## 2014-01-02  2014-01-02          3   1
+## 2014-01-03  2014-01-03          1   1
+## 2014-01-06  2014-01-06          2   1
+## 2014-01-07  2014-01-07          4   1
+## 2014-01-08  2014-01-08          3   1
+## 2014-01-09  2014-01-09          1   1
+=======
 ## 2014-01-02  2014-01-02          4   1
 ## 2014-01-03  2014-01-03          2   1
 ## 2014-01-06  2014-01-06          5   1
 ## 2014-01-07  2014-01-07          3   1
 ## 2014-01-08  2014-01-08          4   1
 ## 2014-01-09  2014-01-09          2   1
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-90" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-104" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>欄位旋轉</h2>
@@ -2199,19 +2536,32 @@ return.status.xts &lt;- xts(return.status[,-1], as.POSIXct(return_date))
 </code></pre>
 
 <pre><code>##            X1 X2 X3 X4 X5
+<<<<<<< HEAD
+## 2014-01-02  0  0  1  0  0
+## 2014-01-03  1  0  0  0  0
+## 2014-01-06  0  1  0  0  0
+## 2014-01-07  0  0  0  1  0
+## 2014-01-08  0  0  1  0  0
+## 2014-01-09  1  0  0  0  0
+=======
 ## 2014-01-02  0  0  0  1  0
 ## 2014-01-03  0  1  0  0  0
 ## 2014-01-06  0  0  0  0  1
 ## 2014-01-07  0  0  1  0  0
 ## 2014-01-08  0  0  0  1  0
 ## 2014-01-09  0  1  0  0  0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-91" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-105" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>把<code>關鍵字</code>和<code>股票漲跌</code>依據<code>時間</code>做合併</h2>
@@ -2221,12 +2571,21 @@ return.status.xts &lt;- xts(return.status[,-1], as.POSIXct(return_date))
 names(final_tbl) &lt;- c(test_words_2, names(return.status[,-1]))
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##            桃園房價漲 ：豪宅交易 逾3.5% 面租賃需求 X1 X2 X3 X4 X5
+## 2014-01-02          0          0      0          0  0  0  1  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-03          0          0      0          0  1  0  0  0  0
+=======
 <pre><code>##            捷運松山線 桃園房價漲 逾3.5% 月實價登錄 X1 X2 X3 X4 X5
 ## 2014-01-02          0          0      0          0  0  0  0  1  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-03          0          0      0          0  0  1  0  0  0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ## 2014-01-03          0          0      0          0  0  0  0  0  0
 </code></pre>
 
@@ -2234,7 +2593,11 @@ names(final_tbl) &lt;- c(test_words_2, names(return.status[,-1]))
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-92" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-106" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>算 彼此之間的相關度</h2>
@@ -2255,7 +2618,11 @@ d2 &lt;- as.matrix(d)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-93" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-107" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>和<code>漲跌狀態</code>有關的<code>關鍵字</code></h2>
@@ -2270,6 +2637,19 @@ words &lt;- names(score)
 head(data.frame(words), 10)
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##     words
+## 1      X1
+## 2    標脫
+## 3     大 
+## 4    店租
+## 5    、新
+## 6     %最
+## 7    標售
+## 8    運宅
+## 9  捷運宅
+## 10     21
+=======
 <pre><code>##    words
 ## 1     X1
 ## 2    8萬
@@ -2281,6 +2661,7 @@ head(data.frame(words), 10)
 ## 8   換屋
 ## 9   可以
 ## 10  市最
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
@@ -2292,6 +2673,19 @@ words &lt;- names(score)
 head(data.frame(words), 10)
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##    words
+## 1     X4
+## 2      5
+## 3   房貸
+## 4   所得
+## 5   打造
+## 6   招商
+## 7   推案
+## 8     最
+## 9   最受
+## 10  網路
+=======
 <pre><code>##     words
 ## 1      X4
 ## 2      48
@@ -2303,6 +2697,7 @@ head(data.frame(words), 10)
 ## 8    平均
 ## 9  不動產
 ## 10 財長：
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
 </div>
@@ -2310,7 +2705,11 @@ head(data.frame(words), 10)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-94" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-108" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>整理一下 ...</h2>
@@ -2323,6 +2722,19 @@ for(i in 1:5){
 }
 </code></pre>
 
+<<<<<<< HEAD
+<pre><code>##       [,1]     [,2]     [,3]   [,4]   [,5]   
+##  [1,] &quot;X1&quot;     &quot;X2&quot;     &quot;X3&quot;   &quot;X4&quot;   &quot;X5&quot;   
+##  [2,] &quot;標脫&quot;   &quot;開決&quot;   &quot;48&quot;   &quot; 5&quot;   &quot;8萬&quot;  
+##  [3,] &quot;大 &quot;    &quot;台開決&quot; &quot;減1&quot;  &quot;房貸&quot; &quot;坪7&quot;  
+##  [4,] &quot;店租&quot;   &quot;24&quot;     &quot;2.4&quot;  &quot;所得&quot; &quot;新 &quot;  
+##  [5,] &quot;、新&quot;   &quot;總銷&quot;   &quot;35&quot;   &quot;打造&quot; &quot;每坪7&quot;
+##  [6,] &quot;%最&quot;    &quot;0%&quot;     &quot;動產&quot; &quot;招商&quot; &quot;9.4&quot;  
+##  [7,] &quot;標售&quot;   &quot;0億&quot;    &quot;年減&quot; &quot;推案&quot; &quot;2-&quot;   
+##  [8,] &quot;運宅&quot;   &quot;1-&quot;     &quot;房 &quot;  &quot; 最&quot;  &quot;40&quot;   
+##  [9,] &quot;捷運宅&quot; &quot;2-&quot;     &quot;現身&quot; &quot;最受&quot; &quot;52&quot;   
+## [10,] &quot;21&quot;     &quot;29&quot;     &quot;置產&quot; &quot;網路&quot; &quot;72&quot;
+=======
 <pre><code>##       [,1]    [,2]       [,3]   [,4]     [,5]    
 ##  [1,] &quot;X1&quot;    &quot;X2&quot;       &quot;X3&quot;   &quot;X4&quot;     &quot;X5&quot;    
 ##  [2,] &quot;8萬&quot;   &quot;標脫&quot;     &quot;打造&quot; &quot;48&quot;     &quot;台開決&quot;
@@ -2334,13 +2746,18 @@ for(i in 1:5){
 ##  [8,] &quot;換屋&quot;  &quot;28&quot;       &quot;網路&quot; &quot; 平均&quot;  &quot; 應&quot;   
 ##  [9,] &quot;可以&quot;  &quot;萬華&quot;     &quot;招商&quot; &quot;不動產&quot; &quot;、新&quot;  
 ## [10,] &quot;市最&quot;  &quot;新隆國宅&quot; &quot;重劃&quot; &quot;財長：&quot; &quot;：台&quot;
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-95" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-109" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (1/2)</h2>
@@ -2360,7 +2777,11 @@ titles[!is.na(index)]
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-96" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-110" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (2/2)</h2>
@@ -2383,7 +2804,11 @@ titles[!is.na(index)]
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-97" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-111" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>一些後續應用</h2>
@@ -2401,7 +2826,11 @@ titles[!is.na(index)]
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-98" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-112" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>降維視覺化的小範例</h2>
@@ -2420,7 +2849,11 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="dark segue" id="slide-99" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="dark segue" id="slide-113" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>學習，實作，觀察 STEP4</h2>
@@ -2431,6 +2864,9 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-100" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-114" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -2444,6 +2880,7 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 </slide>
 
 <slide class="" id="slide-115" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料整併</h2>
@@ -2461,7 +2898,11 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-101" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-116" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>資料整併流程</h2>
@@ -2473,6 +2914,9 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-102" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-117" style="background:; background-repeat:no-repeat; background-position:center; ">
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
@@ -2487,6 +2931,7 @@ text(x, y, labels = row.names(t(final_tbl)), cex=.7)
 </slide>
 
 <slide class="" id="slide-118" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習-資料<code>彙總</code>(1/2)</h2>
@@ -2524,7 +2969,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-103">
+=======
 <slide class="" id="slide-119">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
 <hgroup>
   
@@ -2535,7 +2984,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
 </article>
 <!-- Presenter Notes -->
 </slide>
+<<<<<<< HEAD
+<slide class="" id="slide-104" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-120" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習-資料<code>彙總</code>(2/2)</h2>
@@ -2555,7 +3008,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-105" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-121" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>彙總函數 summarise</h2>
@@ -2576,7 +3033,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-106" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-122" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>mean</h2>
@@ -2590,7 +3051,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-107" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-123" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>n</h2>
@@ -2604,7 +3069,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-108" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-124" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>n_distinct</h2>
@@ -2618,7 +3087,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-109" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-125" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>max</h2>
@@ -2632,7 +3105,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-110" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-126" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>first, last</h2>
@@ -2646,7 +3123,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-111" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-127" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>複雜一點的函數</h2>
@@ -2662,7 +3143,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-112" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-128" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>nth</h2>
@@ -2676,7 +3161,11 @@ Cl_info_part4 = summarise(Cl_info_part3,
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-113" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-129" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習題目- 解答(1/2)</h2>
@@ -2699,7 +3188,11 @@ eg3_3 = summarise(group_by(eg3_2,year),count = n_distinct(bank_nm))
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-114" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-130" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習題目- 解答(2/2)</h2>
@@ -2721,7 +3214,11 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="segue" id="slide-115" style="background:red; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="segue" id="slide-131" style="background:red; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來比較難，真的!!!!</h2>
@@ -2732,7 +3229,11 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-116" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-132" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>結合表格</h2>
@@ -2765,7 +3266,11 @@ eg6_2 = summarise(group_by(eg6_1,time),
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-117" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-134" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>join講解前資料準備</h2>
@@ -2791,7 +3296,11 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-118" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-135" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>join講解前資料準備</h2>
@@ -2820,7 +3329,11 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-119" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-136" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - left_join</h2>
@@ -2840,7 +3353,11 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-120" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-137" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>dplyr 介紹 - inner_join</h2>
@@ -2871,7 +3388,81 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-121" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - anti_join (<code>補充</code>)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><code>anti_join</code> 取出<code>非共有</code>的鍵值</h3>
+
+<div style='float:left;width:48%;'>
+<pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-122" style="background:; background-repeat:no-repeat; background-position:center; ">
+  <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
+  <hgroup>
+    <h2>dplyr 介紹 - semi_join (<code>補充</code>)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>與<code>left_join</code>的差別在，只要對應不到的鍵值就不出現</p>
+
+<div style='float:left;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值,只留<code>x</code> 的欄位</h3>
+
+<pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;semi_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+</code></pre>
+
+</div>
+  <div style='float:right;width:48%;'>
+<h3><code>semi_join</code> 取出共有的鍵值,只留<code>y</code>的欄位</h3>
+
+<pre><code class="r">semi_join(y,x,by=&quot;c1&quot;)
+</code></pre>
+
+<pre><code>## Error: no applicable method for &#39;semi_join&#39; applied to an object of class
+## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><img src="./resources/figures/R_ETL_x.png" style="height:400px" ></img></p>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="" id="slide-123" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-138" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>實際問題 - 練習題</h2>
@@ -2885,7 +3476,11 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-124" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-139" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h3>請問，這兩張表該怎麼結合比較好?用誰當第一參數?</h3>
@@ -2923,7 +3518,11 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-125" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-140" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>練習</h2>
@@ -2947,7 +3546,11 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="segue" id="slide-126" style="background:indigo; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="segue" id="slide-141" style="background:indigo; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>最後一里路</h2>
@@ -2958,7 +3561,11 @@ t2 = filter(t1,is.na(mortage_total_bal)==FALSE)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-127" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-142" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(1/3) - 畫圖</h2>
@@ -2986,7 +3593,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-128" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-143" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(2/3) - 解釋</h2>
@@ -3019,7 +3630,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-129" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-144" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>接下來我們應該做(3/3) - 報告</h2>
@@ -3043,7 +3658,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="segue" id="slide-130" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="segue" id="slide-145" style="background:orange; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Review</h2>
@@ -3054,7 +3673,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-131" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-146" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>我們做了什麼?</h2>
@@ -3080,7 +3703,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="segue" id="slide-132" style="background:green; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="segue" id="slide-147" style="background:green; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>額外延伸主題</h2>
@@ -3091,7 +3718,11 @@ ggplot(see1, aes(time, ratio))+geom_smooth(method=&quot;loess&quot;) +
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-133" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-148" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>自動化</h2>
@@ -3123,7 +3754,11 @@ write.csv(iris_part,file=&quot;[想要的目錄]/GG.csv&quot;)
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-134" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-149" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>從網路讀檔案</h2>
@@ -3151,7 +3786,11 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="segue" id="slide-135" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="segue" id="slide-150" style="background:blue; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Speical</h2>
@@ -3162,7 +3801,11 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-136" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-151" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Topics</h2>
@@ -3184,7 +3827,11 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
   <!-- Presenter Notes -->
 </slide>
 
+<<<<<<< HEAD
+<slide class="" id="slide-137" style="background:; background-repeat:no-repeat; background-position:center; ">
+=======
 <slide class="" id="slide-152" style="background:; background-repeat:no-repeat; background-position:center; ">
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   <img src="assets/img/Taiwan-R-logo.png" class="logo fit100" />
   <hgroup>
     <h2>Reference</h2>
@@ -3541,55 +4188,91 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=57 title='練習題'>
+=======
         data-slide=57 title='匯入套件'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          57
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=58 title='清除符號 (只是列出來，並沒有要做)'>
+=======
         data-slide=58 title='先 check / 安裝 聯結 Selenium 的 driver'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          58
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=59 title='如果想清除中文特殊符號 ...'>
+=======
         data-slide=59 title='打開 瀏覽器'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          59
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=60 title='ch2 字串處理'>
+=======
         data-slide=60 title='抓 yahoo 新聞'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=61 title='substr 用法'>
+=======
         data-slide=61 title='抓 yahoo 搜尋結果'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=62 title='練習題'>
+=======
         data-slide=62 title='抓搜尋結果'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          62
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=63 title='請填入適當指令，呈現出下面使用範例'>
+=======
         data-slide=63 title='儲存 / 讀取 表格資料'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          63
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=64 title='應用'>
+=======
         data-slide=64 title='優缺點'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          64
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=65 title='應用'>
+=======
         data-slide=65 title='匯入這次用的資料'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          65
       </a>
     </li>
@@ -3601,199 +4284,331 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=67 title='paste, grep 用法'>
+=======
         data-slide=67 title='有了新聞後，怎麼知道有哪些單字？'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          67
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=68 title='練習題'>
+=======
         data-slide=68 title='有了新聞後，怎麼知道有哪些單字？'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          68
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=69 title=''>
+=======
         data-slide=69 title='等下要用到的工具 -&gt; substr'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          69
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=70 title=''>
+=======
         data-slide=70 title='N-Grame'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          70
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=71 title='挑出文章裡面的 單字'>
+=======
         data-slide=71 title='把 N-Gram 詞彙匯聚在一起'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=72 title='單字 出現次數分佈'>
+=======
         data-slide=72 title='清除符號 (只是列出來，並沒有要做)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=73 title='算出 候選詞彙 左右兩側的混亂程度'>
+=======
         data-slide=73 title='如果想清除中文特殊符號 ...'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          73
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=74 title='單字的 混亂程度分佈'>
+=======
         data-slide=74 title='算 單字 出現次數'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          74
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=75 title='混亂程度'>
+=======
         data-slide=75 title='分出 單字長度 區塊'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          75
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=76 title='挑出 混亂程度&gt;12 的單字'>
+=======
         data-slide=76 title='等下要用到工具'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          76
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=77 title='算單字的凝聚程度'>
+=======
         data-slide=77 title='算出機率'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          77
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=78 title='抓凝聚程度較高的字'>
+=======
         data-slide=78 title='等下要用的工具 paste, grep'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          78
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=79 title='算出單字 每個時間點的 出現次數'>
+=======
         data-slide=79 title='算出單字左右亂度'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          79
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=80 title='轉換成 xts格式'>
+=======
         data-slide=80 title='可以先用簡單例子看一下上面的結果'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          80
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=81 title='對時間區間做運算'>
+=======
         data-slide=81 title='挑出文章裡面的 單字'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          81
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=82 title='下載營建股 股票指數'>
+=======
         data-slide=82 title='單字 出現次數分佈'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          82
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=83 title='開始下載'>
+=======
         data-slide=83 title='算出 候選詞彙 左右兩側的混亂程度'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          83
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=84 title='算出每支股票的 平均漲跌'>
+=======
         data-slide=84 title='單字的 混亂程度分佈'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          84
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=85 title='全部平均來看 ...'>
+=======
         data-slide=85 title='混亂程度'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          85
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=86 title='找出股票漲跌的五個狀態'>
+=======
         data-slide=86 title='挑出 混亂程度&gt;12 的單字'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          86
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=87 title='如果想知道其中的 <code>相關性</code> ...'>
+=======
         data-slide=87 title='切單字'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          87
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=88 title='如果可以把<code>5個漲跌狀態</code>變成欄位 ...'>
+=======
         data-slide=88 title='用法'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          88
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=89 title='整理出需要的欄位狀態'>
+=======
         data-slide=89 title='可以用這例子來理解'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          89
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=90 title='欄位旋轉'>
+=======
         data-slide=90 title='算單字的凝聚程度'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          90
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=91 title='把<code>關鍵字</code>和<code>股票漲跌</code>依據<code>時間</code>做合併'>
+=======
         data-slide=91 title='用這例子來理解, 依序為 f_word, f_x1, f_x2'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          91
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=92 title='算 彼此之間的相關度'>
+=======
         data-slide=92 title='等下要用到的工具 -&gt; str_count'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          92
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=93 title='和<code>漲跌狀態</code>有關的<code>關鍵字</code>'>
+=======
         data-slide=93 title='算出單字 每個時間點的 出現次數'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          93
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=94 title='整理一下 ...'>
+=======
         data-slide=94 title='轉換成 xts格式'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          94
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=95 title='漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (1/2)'>
+=======
         data-slide=95 title='對時間區間做運算'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          95
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=96 title='漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (2/2)'>
+=======
         data-slide=96 title='下載營建股 股票指數'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          96
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=97 title='一些後續應用'>
+=======
         data-slide=97 title='開始下載'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          97
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=98 title='降維視覺化的小範例'>
+=======
         data-slide=98 title='算出每支股票的 平均漲跌'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          98
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=99 title='學習，實作，觀察 STEP4'>
+=======
         data-slide=99 title='全部平均來看 ...'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          99
       </a>
     </li>
@@ -3805,97 +4620,161 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=101 title='資料整併'>
+=======
         data-slide=101 title='如果想知道其中的 <code>相關性</code> ...'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=102 title='練習-資料<code>彙總</code>(1/2)'>
+=======
         data-slide=102 title='如果可以把<code>5個漲跌狀態</code>變成欄位 ...'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=103 title=''>
+=======
         data-slide=103 title='整理出需要的欄位狀態'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=104 title='練習-資料<code>彙總</code>(2/2)'>
+=======
         data-slide=104 title='欄位旋轉'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=105 title='彙總函數 summarise'>
+=======
         data-slide=105 title='把<code>關鍵字</code>和<code>股票漲跌</code>依據<code>時間</code>做合併'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=106 title='mean'>
+=======
         data-slide=106 title='算 彼此之間的相關度'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          106
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=107 title='n'>
+=======
         data-slide=107 title='和<code>漲跌狀態</code>有關的<code>關鍵字</code>'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          107
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=108 title='n_distinct'>
+=======
         data-slide=108 title='整理一下 ...'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          108
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=109 title='max'>
+=======
         data-slide=109 title='漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (1/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          109
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=110 title='first, last'>
+=======
         data-slide=110 title='漲跌狀態對應的關鍵字, 出現在哪些新聞標題？ (2/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          110
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=111 title='複雜一點的函數'>
+=======
         data-slide=111 title='一些後續應用'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          111
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=112 title='nth'>
+=======
         data-slide=112 title='降維視覺化的小範例'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          112
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=113 title='練習題目- 解答(1/2)'>
+=======
         data-slide=113 title='學習，實作，觀察 STEP4'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          113
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=114 title='練習題目- 解答(2/2)'>
+=======
         data-slide=114 title='ETL <code>最後一步</code>'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          114
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=115 title='接下來比較難，真的!!!!'>
+=======
         data-slide=115 title='資料整併'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          115
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=116 title='結合表格'>
+=======
         data-slide=116 title='資料整併流程'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          116
       </a>
     </li>
@@ -3907,120 +4786,202 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=118 title='join講解前資料準備'>
+=======
         data-slide=118 title='練習-資料<code>彙總</code>(1/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          118
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=119 title='dplyr 介紹 - left_join'>
+=======
         data-slide=119 title=''>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          119
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=120 title='dplyr 介紹 - inner_join'>
+=======
         data-slide=120 title='練習-資料<code>彙總</code>(2/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          120
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=121 title='dplyr 介紹 - anti_join (<code>補充</code>)'>
+=======
         data-slide=121 title='彙總函數 summarise'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          121
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=122 title='dplyr 介紹 - semi_join (<code>補充</code>)'>
+=======
         data-slide=122 title='mean'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          122
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=123 title='實際問題 - 練習題'>
+=======
         data-slide=123 title='n'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          123
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=124 title='請問，這兩張表該怎麼結合比較好?用誰當第一參數?'>
+=======
         data-slide=124 title='n_distinct'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=125 title='資料整理完成!'>
+=======
         data-slide=125 title='max'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=126 title='最後一里路'>
+=======
         data-slide=126 title='first, last'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=127 title='接下來我們應該做(1/3) - 畫圖'>
+=======
         data-slide=127 title='複雜一點的函數'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=128 title='接下來我們應該做(2/3) - 解釋'>
+=======
         data-slide=128 title='nth'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          128
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=129 title='接下來我們應該做(3/3) - 報告'>
+=======
         data-slide=129 title='練習題目- 解答(1/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          129
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=130 title='Review'>
+=======
         data-slide=130 title='練習題目- 解答(2/2)'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          130
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=131 title='我們做了什麼?'>
+=======
         data-slide=131 title='接下來比較難，真的!!!!'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          131
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=132 title='Excerises'>
+=======
         data-slide=132 title='結合表格'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=133 title='資料處理練習'>
+=======
         data-slide=133 title='圖解<code>結合表格</code>'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=134 title='函式運用練習'>
+=======
         data-slide=134 title='join講解前資料準備'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=135 title='Speical'>
+=======
         data-slide=135 title='join講解前資料準備'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          135
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=136 title='Topics'>
+=======
         data-slide=136 title='dplyr 介紹 - left_join'>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
          136
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
+        data-slide=137 title='Reference'>
+         137
+      </a>
+    </li>
+=======
         data-slide=137 title='dplyr 介紹 - inner_join'>
          137
       </a>
@@ -4115,6 +5076,7 @@ getURL(&quot;https://raw.githubusercontent.com/ntuaha/TWFS/master/db/cl_info_oth
          152
       </a>
     </li>
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
   </ul>
   </div>  <!--[if IE]>
     <script 

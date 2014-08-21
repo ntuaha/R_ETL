@@ -829,11 +829,18 @@ head(hourse_news)
 
 ---
 
-## 抓出 時間 與 文章
+## 練習題
 
- - [常規表示法| R 學習筆記](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CB4QFjAA&url=http%3A%2F%2Fstatlab.nchc.org.tw%2Frnotes%2F%3Fpage_id%3D171&ei=xWzSU9fGEIiB8gW91IKYCQ&usg=AFQjCNE71BgJhsypu4NhHxgpk3pDTOGZ9g&sig2=ie3biJghIW601YTFHbbZJg&bvm=bv.71667212,d.dGc)
- - [正则表达式30分钟入门教程](http://deerchao.net/tutorials/regex/regex.htm)
-```{r}
+請填入適當的 Patten
+
+```r
+dates <- str_extract(hourse_news, ___)
+titles <- str_replace(hourse_news, ___, ___)
+
+hourse_news <- cbind(dates, titles)
+```
+
+```{r echo=FALSE}
 dates <- str_extract(hourse_news, "\\d{4}-\\d{2}-\\d{2}")
 titles <- str_replace(hourse_news, "\\d{4}-\\d{2}-\\d{2}", "")
 
@@ -845,19 +852,41 @@ head(hourse_news,3)
 
 ---
 
-## 有了新聞後，怎麼知道有哪些單字？
+## 清除符號 (只是列出來，並沒有要做)
 
-> - 自己手動打？ex. 房價、北市,、捷運 ...
+```r
+piece_clean <- str_replace_all(piece, punctuation, "")
+piece_clean <- str_replace_all(piece_clean, "[[:punct:]]", "")
+piece_clean <- str_replace_all(piece_clean, "[[:blank:]]", "")
+piece_clean <- str_replace_all(piece_clean, " ", "")
 
+<<<<<<< HEAD
+```
+=======
 > - 用程式從文章抓 ??  
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 ---
 
-## 有了新聞後，怎麼知道有哪些單字？
+## 如果想清除中文特殊符號 ...
 
-- 自己手動打？ex. 房價、北市,、捷運 ...
+### 這是 utf-8 編碼
 
-- 用程式從文章抓
+```{r}
+punctuation <- "\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b"
+
+punctuation
+```
+
+
+---
+
+## ch2 字串處理
+
+
+---
+
+## substr 用法
 
 ```{r}
 substr('富邦人壽信義區再插旗 A25案172億元奪標', 1, 4)
@@ -883,9 +912,19 @@ substr(sentence, i, i+n-1)
 
 ---
 
-## N-Grame
+## 練習題
 
-```{r}
+### 請填入適當指令，呈現出下面使用範例
+```r
+ngram <- function(sentence, n){
+  chunk <- c()
+  for(i in 1 : (nchar(sentence)-n+1)){
+    chunk <- append(chunk, substr(sentence, ___ , i+n-1))
+  }
+  return(chunk)
+}
+```
+```{r echo=FALSE}
 ngram <- function(sentence, n){
   chunk <- c()
   for(i in 1 : (nchar(sentence)-n+1)){
@@ -894,89 +933,114 @@ ngram <- function(sentence, n){
   return(chunk)
 }
 ```
+### 使用範例
 ```{r}
 ngram('富邦人壽信義區再插旗', 2)
 ```
 
----
-
-## 把 N-Gram 詞彙匯聚在一起
-
-```{r}
-piece <- c()
-
-for(i in 1:length(hourse_news)){
-  piece <- append(piece, ngram(titles[i], 1))
-  piece <- append(piece, ngram(titles[i], 2))
-  piece <- append(piece, ngram(titles[i], 3))
-  piece <- append(piece, ngram(titles[i], 4))
-  piece <- append(piece, ngram(titles[i], 5))
-  piece <- append(piece, ngram(titles[i], 6))
-}
-
-```
 
 ---
 
-## 清除符號 (只是列出來，並沒有要做)
-
+### 請填入適當指令，呈現出下面使用範例
 ```r
-piece_clean <- str_replace_all(piece, punctuation, "")
-piece_clean <- str_replace_all(piece_clean, "[[:punct:]]", "")
-piece_clean <- str_replace_all(piece_clean, "[[:blank:]]", "")
-piece_clean <- str_replace_all(piece_clean, " ", "")
-
+segmentWord <- function(word){
+  n <- nchar(word)-1
+  seg <- lapply(1: n, function(i){
+    w1 <- substr(word, 1, i)
+    w2 <- substr(word, ___ , n+1)
+    c(w1,w2)
+  })
+  return(seg)
+}
 ```
 
----
-
-## 如果想清除中文特殊符號 ...
-
-### 這是 utf-8 編碼
+```{r echo=FALSE}
+segmentWord <- function(word){
+  n <- nchar(word)-1
+  seg <- lapply(1: n, function(i){
+    w1 <- substr(word, 1, i)
+    w2 <- substr(word,i+1, n+1)
+    c(w1,w2)
+  })
+  return(seg)
+}
+```
 
 ```{r}
-punctuation <- "\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b"
+segmentWord('富邦銀')
+```
 
-punctuation
+
+---
+## 應用
+### 把字段長度1~6都列舉出來看看 
+```{r}
+piece <- list()
+
+piece[['1']] <- unlist(sapply(titles, ngram, 1, USE.NAMES = FALSE))
+piece[['2']] <- unlist(sapply(titles, ngram, 2, USE.NAMES = FALSE))
+piece[['3']] <- unlist(sapply(titles, ngram, 3, USE.NAMES = FALSE))
+piece[['4']] <- unlist(sapply(titles, ngram, 4, USE.NAMES = FALSE))
+piece[['5']] <- unlist(sapply(titles, ngram, 5, USE.NAMES = FALSE))
+piece[['6']] <- unlist(sapply(titles, ngram, 6, USE.NAMES = FALSE))
+
+```
+
+---
+## 應用
+### 算 字段 出現次數
+
+```{r}
+words_freq <- table(unlist(piece))
+```
+```{r echo=FALSE}
+words_freq[c('信義區', '北市', '房價', '房市', '上漲')]
 ```
 
 ---
 
-## 算 單字 出現次數
+## 算出機率
 
 ### 整理次數的好用工具 -> table 
 
 ```{r}
-piece_clean <- piece
-word_freq <- table(piece_clean)
+N <- sum(words_freq[piece[['1']]])
+words_prob <- words_freq / N
 ```
 ```{r echo=FALSE}
-word_freq[c('信義區', '北市', '房價', '房市', '上漲')]
+tail(words_prob, 5)
 ```
 
---- 
-
-## 分出 單字長度 區塊
+---
+## paste, grep 用法
 
 ### list 的key-value 資料結構是種好用的工具
 
 ```{r}
-words_length <- 
-list(
-  "1" = names(word_freq[nchar(names(word_freq))==1]),
-  "2" = names(word_freq[nchar(names(word_freq))==2]),
-  "3" = names(word_freq[nchar(names(word_freq))==3]),
-  "4" = names(word_freq[nchar(names(word_freq))==4]),
-  "5" = names(word_freq[nchar(names(word_freq))==5]),
-  "6" = names(word_freq[nchar(names(word_freq))==6])
-)
-
-tail(words_length[["2"]])
+paste("富邦" ,"人壽", sep='')
+grep('富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+grep('^富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+grep('富邦$' , c('富邦金', '法人富邦', '台北富邦銀行'))
 ```
-
 
 ---
 
+<<<<<<< HEAD
+## 練習題
+
+```r
+word <- '信義區'
+BASE <- piece[[as.character(nchar(word)+1)]]
+  
+PATTEN1 <- paste("^", word, sep = '')
+matchs1 <- grep(PATTEN1, BASE, value = TRUE)
+pre <- mean(-log2(words_prob[matchs1]))
+  
+PATTEN2 <- paste(word, "$", sep = '')
+matchs2 <- grep(PATTEN2, BASE, value = TRUE)
+post <- mean(-log2(words_prob[matchs2]))
+
+=======
 ## 等下要用到工具
 
 ### 單字長度 1 的內容
@@ -1018,31 +1082,37 @@ grep('富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
 grep('^富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
 
 grep('富邦$' , c('富邦金', '法人富邦', '台北富邦銀行'))
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ---
 
-## 算出單字左右亂度
-
-```{r}
+```{r }
 disorder <- function(word){
   
-  BASE <- words_length[[as.character(nchar(word)+1)]]
+  BASE <- piece[[as.character(nchar(word)+1)]]
   
   PATTEN1 <- paste("^", word, sep = '')
   matchs1 <- grep(PATTEN1, BASE, value = TRUE)
-  pre <- mean(-log2(words_weight[matchs1]))
+  freq1 <- table(matchs1)  
+  pre <- mean(-log2(freq1/sum(freq1)))
   
   PATTEN2 <- paste(word, "$", sep = '')
   matchs2 <- grep(PATTEN2, BASE, value = TRUE)
-  post <- mean(-log2(words_weight[matchs2]))
+  freq2 <- table(matchs2)  
+  post <- mean(-log2(freq2/sum(freq2)))
   
-  index <- is.na(c(pre, post))
+  index <- !is.na(c(pre, post))
   condition <- any(index)
   return(ifelse(condition, c(pre, post)[index], min(pre, post)))
   
 }
 ```
+
+
+---
+
+
 
 ---
 ## 可以先用簡單例子看一下上面的結果
@@ -1066,7 +1136,7 @@ grep(PATTEN1, BASE, value = TRUE)
 
 ### 先挑出單字長度 2~5 的 候選詞彙
 ```{r}
-word_2_5 <- unlist(words_length[2:5])
+word_2_5 <- unique(unlist(piece[2:5]))
 ```
 ```{r echo=FALSE}
 word_2_5[sample(1000,15)]
@@ -1077,16 +1147,16 @@ word_2_5[sample(1000,15)]
 ## 單字 出現次數分佈
 
 ```{r echo=FALSE, message=FALSE}
-plot(word_freq[word_2_5], xlab = 'index', ylab = 'count')
+plot(words_freq[word_2_5], xlab = 'index', ylab = 'count')
 ```
 
 ---
 
 ## 算出 候選詞彙 左右兩側的混亂程度
 
-### 出現次數>2 的 候選詞彙 
+### 出現次數>5 的 候選詞彙 
 ```{r}
-words <- names(which(word_freq[word_2_5] > 2))
+words <- names(which(words_freq[word_2_5] > 2))
 ```
 
 ### 把 候選詞彙 丟下去計算
@@ -1126,34 +1196,12 @@ head(names(sort(disorder_val)), 15)
 ### 根據前面的分佈圖來決定用 > 12 ...
 
 ```{r}
-test_words <- names(which(disorder_val > 12))
+test_words <- names(which(disorder_val > 1))
 ```
 ```{r echo=FALSE}
 tail(test_words, 20)
 ```
 
----
-
-## 切單字
-
-```{r}
-segmentWord <- function(word){
-  n <- nchar(word)-1
-  seg <- lapply(1: n, function(i){
-    w1 <- substr(word, 1, i)
-    w2 <- substr(word,i+1, n+1)
-    c(w1,w2)
-  })
-  return(seg)
-}
-```
-
----
-## 用法
-
-```{r}
-segmentWord('富邦人壽')
-```
 
 ---
 ## 可以用這例子來理解
@@ -1173,9 +1221,9 @@ substr(word,i+1, n+1)
 cohesion <- function(word){
   seg <- segmentWord(word)
   val <- sapply(seg, function(x){    
-    f_word <- word_freq[word]
-    f_x1 <- word_freq[x[1]]
-    f_x2 <- word_freq[x[2]]
+    f_word <- words_freq[word]
+    f_x1 <- words_freq[x[1]]
+    f_x2 <- words_freq[x[2]]
     mi <- log2(N) + log2(f_word) - log2(f_x1) - log2(f_x2)
     return(mi)
   }) 

@@ -840,17 +840,18 @@ head(hourse_news)
 
 ---
 
-## 抓出 時間 與 文章
+## 練習題
 
- - [常規表示法| R 學習筆記](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CB4QFjAA&url=http%3A%2F%2Fstatlab.nchc.org.tw%2Frnotes%2F%3Fpage_id%3D171&ei=xWzSU9fGEIiB8gW91IKYCQ&usg=AFQjCNE71BgJhsypu4NhHxgpk3pDTOGZ9g&sig2=ie3biJghIW601YTFHbbZJg&bvm=bv.71667212,d.dGc)
- - [正则表达式30分钟入门教程](http://deerchao.net/tutorials/regex/regex.htm)
+請填入適當的 Patten
 
 ```r
-dates <- str_extract(hourse_news, "\\d{4}-\\d{2}-\\d{2}")
-titles <- str_replace(hourse_news, "\\d{4}-\\d{2}-\\d{2}", "")
+dates <- str_extract(hourse_news, ___)
+titles <- str_replace(hourse_news, ___, ___)
 
 hourse_news <- cbind(dates, titles)
 ```
+
+
 
 ```
 ##      dates        titles                                    
@@ -861,19 +862,46 @@ hourse_news <- cbind(dates, titles)
 
 ---
 
-## 有了新聞後，怎麼知道有哪些單字？
+## 清除符號 (只是列出來，並沒有要做)
 
-> - 自己手動打？ex. 房價、北市,、捷運 ...
+```r
+piece_clean <- str_replace_all(piece, punctuation, "")
+piece_clean <- str_replace_all(piece_clean, "[[:punct:]]", "")
+piece_clean <- str_replace_all(piece_clean, "[[:blank:]]", "")
+piece_clean <- str_replace_all(piece_clean, " ", "")
 
+<<<<<<< HEAD
+```
+=======
 > - 用程式從文章抓 ??  
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 ---
 
-## 有了新聞後，怎麼知道有哪些單字？
+## 如果想清除中文特殊符號 ...
 
-- 自己手動打？ex. 房價、北市,、捷運 ...
+### 這是 utf-8 編碼
 
-- 用程式從文章抓
+
+```r
+punctuation <- "\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b"
+
+punctuation
+```
+
+```
+## [1] "。 ； ， ： “ ” （ ） 、 ？ 《 》"
+```
+
+
+---
+
+## ch2 字串處理
+
+
+---
+
+## substr 用法
 
 
 ```r
@@ -921,18 +949,20 @@ substr(sentence, i, i+n-1)
 
 ---
 
-## N-Grame
+## 練習題
 
-
+### 請填入適當指令，呈現出下面使用範例
 ```r
 ngram <- function(sentence, n){
   chunk <- c()
   for(i in 1 : (nchar(sentence)-n+1)){
-    chunk <- append(chunk, substr(sentence, i, i+n-1))
+    chunk <- append(chunk, substr(sentence, ___ , i+n-1))
   }
   return(chunk)
 }
 ```
+
+### 使用範例
 
 ```r
 ngram('富邦人壽信義區再插旗', 2)
@@ -942,99 +972,121 @@ ngram('富邦人壽信義區再插旗', 2)
 ## [1] "富邦" "邦人" "人壽" "壽信" "信義" "義區" "區再" "再插" "插旗"
 ```
 
+
 ---
 
-## 把 N-Gram 詞彙匯聚在一起
-
-
+### 請填入適當指令，呈現出下面使用範例
 ```r
-piece <- c()
-
-for(i in 1:length(hourse_news)){
-  piece <- append(piece, ngram(titles[i], 1))
-  piece <- append(piece, ngram(titles[i], 2))
-  piece <- append(piece, ngram(titles[i], 3))
-  piece <- append(piece, ngram(titles[i], 4))
-  piece <- append(piece, ngram(titles[i], 5))
-  piece <- append(piece, ngram(titles[i], 6))
+segmentWord <- function(word){
+  n <- nchar(word)-1
+  seg <- lapply(1: n, function(i){
+    w1 <- substr(word, 1, i)
+    w2 <- substr(word, ___ , n+1)
+    c(w1,w2)
+  })
+  return(seg)
 }
 ```
 
----
 
-## 清除符號 (只是列出來，並沒有要做)
-
-```r
-piece_clean <- str_replace_all(piece, punctuation, "")
-piece_clean <- str_replace_all(piece_clean, "[[:punct:]]", "")
-piece_clean <- str_replace_all(piece_clean, "[[:blank:]]", "")
-piece_clean <- str_replace_all(piece_clean, " ", "")
-
-```
-
----
-
-## 如果想清除中文特殊符號 ...
-
-### 這是 utf-8 編碼
 
 
 ```r
-punctuation <- "\u3002 \uff1b \uff0c \uff1a \u201c \u201d \uff08 \uff09 \u3001 \uff1f \u300a \u300b"
-
-punctuation
+segmentWord('富邦銀')
 ```
 
 ```
-## [1] "。 ； ， ： “ ” （ ） 、 ？ 《 》"
+## [[1]]
+## [1] "富"   "邦銀"
+## 
+## [[2]]
+## [1] "富邦" "銀"
+```
+
+
+---
+## 應用
+### 把字段長度1~6都列舉出來看看 
+
+```r
+piece <- list()
+
+piece[['1']] <- unlist(sapply(titles, ngram, 1, USE.NAMES = FALSE))
+piece[['2']] <- unlist(sapply(titles, ngram, 2, USE.NAMES = FALSE))
+piece[['3']] <- unlist(sapply(titles, ngram, 3, USE.NAMES = FALSE))
+piece[['4']] <- unlist(sapply(titles, ngram, 4, USE.NAMES = FALSE))
+piece[['5']] <- unlist(sapply(titles, ngram, 5, USE.NAMES = FALSE))
+piece[['6']] <- unlist(sapply(titles, ngram, 6, USE.NAMES = FALSE))
+```
+
+---
+## 應用
+### 算 字段 出現次數
+
+
+```r
+words_freq <- table(unlist(piece))
+```
+
+```
+## 
+## 信義區   北市   房價   房市   上漲 
+##      8     81     38     33      2
 ```
 
 ---
 
-## 算 單字 出現次數
+## 算出機率
 
 ### 整理次數的好用工具 -> table 
 
 
 ```r
-piece_clean <- piece
-word_freq <- table(piece_clean)
+N <- sum(words_freq[piece[['1']]])
+words_prob <- words_freq / N
 ```
 
 ```
-## piece_clean
-## 信義區   北市   房價   房市   上漲 
-##      8     81     38     33      2
+## 
+##         龍江       龍江路     龍江路土   龍江路土地 龍江路土地由 
+##    3.183e-06    3.183e-06    3.183e-06    3.183e-06    3.183e-06
 ```
 
---- 
-
-## 分出 單字長度 區塊
+---
+## paste, grep 用法
 
 ### list 的key-value 資料結構是種好用的工具
 
 
 ```r
-words_length <- 
-list(
-  "1" = names(word_freq[nchar(names(word_freq))==1]),
-  "2" = names(word_freq[nchar(names(word_freq))==2]),
-  "3" = names(word_freq[nchar(names(word_freq))==3]),
-  "4" = names(word_freq[nchar(names(word_freq))==4]),
-  "5" = names(word_freq[nchar(names(word_freq))==5]),
-  "6" = names(word_freq[nchar(names(word_freq))==6])
-)
-
-tail(words_length[["2"]])
+paste("富邦" ,"人壽", sep='')
 ```
 
 ```
+<<<<<<< HEAD
+## [1] "富邦人壽"
+=======
 ## [1] "最新" "作品" "坐5"  "坐擁" "座排" "做半"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
+```r
+grep('富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+```
 
----
+```
+## [1] 1 2 3
+```
 
+<<<<<<< HEAD
+```r
+grep('^富邦' , c('富邦金', '法人富邦', '台北富邦銀行'))
+```
+
+```
+## [1] 1
+```
+=======
 ## 等下要用到工具
 
 ### 單字長度 1 的內容
@@ -1060,13 +1112,18 @@ word_freq[words_length[['1']]]
 ## 算出機率
 
 ### 把次數sum 起來當分母，算相對次數
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 ```r
-N <- sum(word_freq[words_length[['1']]])
-words_weight <- word_freq / N
+grep('富邦$' , c('富邦金', '法人富邦', '台北富邦銀行'))
 ```
 
 ```
+<<<<<<< HEAD
+## [1] 2
+```
+
+=======
 ## piece_clean
 ##         做半       做半套     做半套？   做半套？政 做半套？政院 
 ##    0.0001481    0.0001481    0.0001481    0.0001481    0.0001481
@@ -1109,30 +1166,54 @@ grep('富邦$' , c('富邦金', '法人富邦', '台北富邦銀行'))
 ## [1] 2
 ```
 
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ---
 
-## 算出單字左右亂度
+## 練習題
+
+```r
+word <- '信義區'
+BASE <- piece[[as.character(nchar(word)+1)]]
+  
+PATTEN1 <- paste("^", word, sep = '')
+matchs1 <- grep(PATTEN1, BASE, value = TRUE)
+pre <- mean(-log2(words_prob[matchs1]))
+  
+PATTEN2 <- paste(word, "$", sep = '')
+matchs2 <- grep(PATTEN2, BASE, value = TRUE)
+post <- mean(-log2(words_prob[matchs2]))
+
+```
+
+---
 
 
 ```r
 disorder <- function(word){
   
-  BASE <- words_length[[as.character(nchar(word)+1)]]
+  BASE <- piece[[as.character(nchar(word)+1)]]
   
   PATTEN1 <- paste("^", word, sep = '')
   matchs1 <- grep(PATTEN1, BASE, value = TRUE)
-  pre <- mean(-log2(words_weight[matchs1]))
+  freq1 <- table(matchs1)  
+  pre <- mean(-log2(freq1/sum(freq1)))
   
   PATTEN2 <- paste(word, "$", sep = '')
   matchs2 <- grep(PATTEN2, BASE, value = TRUE)
-  post <- mean(-log2(words_weight[matchs2]))
+  freq2 <- table(matchs2)  
+  post <- mean(-log2(freq2/sum(freq2)))
   
-  index <- is.na(c(pre, post))
+  index <- !is.na(c(pre, post))
   condition <- any(index)
   return(ifelse(condition, c(pre, post)[index], min(pre, post)))
   
 }
 ```
+
+
+---
+
+
 
 ---
 ## 可以先用簡單例子看一下上面的結果
@@ -1164,30 +1245,41 @@ grep(PATTEN1, BASE, value = TRUE)
 ### 先挑出單字長度 2~5 的 候選詞彙
 
 ```r
-word_2_5 <- unlist(words_length[2:5])
+word_2_5 <- unique(unlist(piece[2:5]))
 ```
 
 ```
+<<<<<<< HEAD
+##   2471   2407   2505   2891   2775   2550   2974   2193   2139   2672 
+## "京東" "世貿" "以外" "區大" "則減"  " 何"  " 可"   "56"  "3店" "億收" 
+##   2594   2162   2282   2670   2217 
+## "偏愛"   "41"   "9." "億得"   "6/"
+=======
 ##   2535   2592   2470   2406   2504   2889   2774   2549   2972   2192 
 ##  "7大"   "IT"  "4坪"  "2公"  "5月" "出售" "不想"   "8%" "當家" "、高" 
 ##   2138   2671   2593   2162   2281 
 ##  " 未" "包租"   "KA"  " 整" "？北"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 --- &vcenter
 
 ## 單字 出現次數分佈
 
+<<<<<<< HEAD
+![plot of chunk unnamed-chunk-21](assets/fig/unnamed-chunk-21.png) 
+=======
 ![plot of chunk unnamed-chunk-26](assets/fig/unnamed-chunk-26.png) 
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 ---
 
 ## 算出 候選詞彙 左右兩側的混亂程度
 
-### 出現次數>2 的 候選詞彙 
+### 出現次數>5 的 候選詞彙 
 
 ```r
-words <- names(which(word_freq[word_2_5] > 2))
+words <- names(which(words_freq[word_2_5] > 2))
 ```
 
 ### 把 候選詞彙 丟下去計算
@@ -1199,15 +1291,25 @@ names(disorder_val) <- words
 
 
 ```
+<<<<<<< HEAD
+##  [1] "房市量縮"   " 新北市"    "新隆國宅"   "義計畫區"   "臨沂帝國"  
+##  [6] "高房價 "    "25日前提"   "4-01-"      "4-03-"      "4-05-"     
+## [11] "信義計畫區" "實價登錄 "  "年完成募集" "政士法覆議" "逾3.5%"
+=======
 ##  [1] "台北市"   "下半年"   "增2成"    "中山、"   "2013"     "6.6萬"   
 ##  [7] "北市房價" "北市去年" "地上權案" "房市交易" "高房價 "  "合宜住宅"
 ## [13] "臨沂帝國" "實價揭露" "新隆國宅"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 --- &vcenter
 ## 單字的 混亂程度分佈
 
+<<<<<<< HEAD
+![plot of chunk unnamed-chunk-25](assets/fig/unnamed-chunk-25.png) 
+=======
 ![plot of chunk unnamed-chunk-30](assets/fig/unnamed-chunk-30.png) 
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 
 ---
 ## 混亂程度
@@ -1215,17 +1317,29 @@ names(disorder_val) <- words
 ### 兩側混亂程度高的字
 
 ```
+<<<<<<< HEAD
+##  [1] "房市量縮"   " 新北市"    "新隆國宅"   "義計畫區"   "臨沂帝國"  
+##  [6] "高房價 "    "25日前提"   "4-01-"      "4-03-"      "4-05-"     
+## [11] "信義計畫區" "實價登錄 "  "年完成募集" "政士法覆議" "逾3.5%"
+=======
 ##  [1] "台北市"   "下半年"   "增2成"    "中山、"   "2013"     "6.6萬"   
 ##  [7] "北市房價" "北市去年" "地上權案" "房市交易" "高房價 "  "合宜住宅"
 ## [13] "臨沂帝國" "實價揭露" "新隆國宅"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ### 兩側混亂程度低的字
 
 ```
+<<<<<<< HEAD
+##  [1] "14-"        "014-"       "2014-"      "價登"       "實價登"    
+##  [6] "地政"       "地上"       "201"        " 信"        "法覆"      
+## [11] "士法覆"     "政士法覆"   "地政士法覆" "　北"       "張盛"
+=======
 ##  [1] "014"    "14-"    "014-"   "14-0"   "014-0"  "2014-"  "登錄"  
 ##  [8] "價登"   "實價登" "地政"   "政士"   "地上"   "上權"   "坪1"   
 ## [15] "士法"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ---
@@ -1236,6 +1350,9 @@ names(disorder_val) <- words
 
 
 ```r
+<<<<<<< HEAD
+test_words <- names(which(disorder_val > 1))
+=======
 test_words <- names(which(disorder_val > 12))
 ```
 
@@ -1244,43 +1361,16 @@ test_words <- names(which(disorder_val > 12))
 ##  [6] "商用大樓"   "社會住宅"   "實價登錄"   "實價揭露"   "新隆國宅"  
 ## [11] "信義之星"   "中山區最"   "住宅價格"   " 張盛和："  "：豪宅交易"
 ## [16] "25日前提"   "捷運松山線" "桃園房價漲" "逾3.5%"     "月實價登錄"
-```
-
----
-
-## 切單字
-
-
-```r
-segmentWord <- function(word){
-  n <- nchar(word)-1
-  seg <- lapply(1: n, function(i){
-    w1 <- substr(word, 1, i)
-    w2 <- substr(word,i+1, n+1)
-    c(w1,w2)
-  })
-  return(seg)
-}
-```
-
----
-## 用法
-
-
-```r
-segmentWord('富邦人壽')
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ```
-## [[1]]
-## [1] "富"     "邦人壽"
-## 
-## [[2]]
-## [1] "富邦" "人壽"
-## 
-## [[3]]
-## [1] "富邦人" "壽"
+##  [1] "高房價 "    "25日前提"   "4-01-"      "4-02-"      "4-03-"     
+##  [6] "4-04-"      "4-05-"      "信義計畫區" "坪180萬"    "宅價格指數"
+## [11] "實價登錄 "  "年完成募集" " 張盛和："  "捷運松山線" "政士法覆議"
+## [16] "月實價登錄" "桃園房價漲" "：豪宅交易" "逾3.5%"     "面租賃需求"
 ```
+
 
 ---
 ## 可以用這例子來理解
@@ -1313,9 +1403,9 @@ substr(word,i+1, n+1)
 cohesion <- function(word){
   seg <- segmentWord(word)
   val <- sapply(seg, function(x){    
-    f_word <- word_freq[word]
-    f_x1 <- word_freq[x[1]]
-    f_x2 <- word_freq[x[2]]
+    f_word <- words_freq[word]
+    f_x1 <- words_freq[x[1]]
+    f_x2 <- words_freq[x[2]]
     mi <- log2(N) + log2(f_word) - log2(f_x1) - log2(f_x2)
     return(mi)
   }) 
@@ -1397,6 +1487,15 @@ rownames(words_tbl) <- dates
 ```
 
 ```
+<<<<<<< HEAD
+##            　新 樂觀 29 0億 9. -1 14 標售
+## 2014-06-24    0    0  0   0  0  0  0    0
+## 2014-06-24    0    0  0   0  0  0  0    0
+## 2014-06-23    0    0  0   0  0  0  0    0
+## 2014-06-20    0    0  0   0  0  0  0    0
+## 2014-06-20    0    0  0   0  0  0  0    0
+## 2014-06-19    0    0  0   0  1  0  0    0
+=======
 ##            租金 9. 17% 調查： 29 -1 第4 、台
 ## 2014-06-24    0  0   0      0  0  0   0    0
 ## 2014-06-24    0  0   0      0  0  0   0    0
@@ -1404,6 +1503,7 @@ rownames(words_tbl) <- dates
 ## 2014-06-20    0  0   0      0  0  0   0    0
 ## 2014-06-20    0  0   0      0  0  0   0    0
 ## 2014-06-19    0  1   0      0  0  0   0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1423,6 +1523,16 @@ words_tbl_xts["2014-01-18/2014-01-20", 100:110]
 ```
 
 ```
+<<<<<<< HEAD
+##            今年  仍 以上 仲： 住宅 侈稅 價  價6 價差 價最 價格
+## 2014-01-19    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+=======
 ##            公園 共識 購屋 關  夯　 豪宅 好宅 換屋 價差 價高 價最
 ## 2014-01-19    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
@@ -1431,6 +1541,7 @@ words_tbl_xts["2014-01-18/2014-01-20", 100:110]
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-20    0    0    0   0    0    0    0    0    0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 --- 
@@ -1446,6 +1557,17 @@ count.weeks["2014-01/2014-02", 100:110]
 ```
 
 ```
+<<<<<<< HEAD
+##            今年  仍 以上 仲： 住宅 侈稅 價  價6 價差 價最 價格
+## 2014-01-06    1   0    0    0    0    0   0   0    0    0    0
+## 2014-01-10    1   2    0    0    0    0   0   0    0    0    0
+## 2014-01-20    0   0    0    0    0    0   0   0    0    0    0
+## 2014-01-27    1   0    0    0    0    0   0   0    0    0    0
+## 2014-01-28    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-07    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-17    0   0    0    0    0    0   0   0    0    0    0
+## 2014-02-24    1   0    0    0    1    0   0   1    0    0    0
+=======
 ##            公園 共識 購屋 關  夯　 豪宅 好宅 換屋 價差 價高 價最
 ## 2014-01-06    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-01-10    0    0    0   0    0    2    0    0    0    0    0
@@ -1455,6 +1577,7 @@ count.weeks["2014-01/2014-02", 100:110]
 ## 2014-02-07    0    0    0   0    0    0    0    0    0    0    0
 ## 2014-02-17    1    0    3   0    0    3    0    0    0    1    0
 ## 2014-02-24    0    0    2   0    0    1    0    0    0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ---
@@ -1530,12 +1653,21 @@ return.status <- data.frame(cl$cluster)
 
 ```
 ##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1547,6 +1679,15 @@ return.status <- data.frame(cl$cluster)
 ### `關鍵字出現的次數`
 
 ```
+<<<<<<< HEAD
+##            今年  仍 以上 仲： 住宅 侈稅
+## 2014-06-24    0   0    0    0    0    0
+## 2014-06-24    0   0    0    0    0    0
+## 2014-06-23    0   0    0    0    0    0
+## 2014-06-20    0   0    0    0    0    0
+## 2014-06-20    0   0    0    0    0    0
+## 2014-06-19    0   0    0    0    0    0
+=======
 ##            公園 共識 購屋 關  夯　 豪宅
 ## 2014-06-24    0    0    0   0    0    0
 ## 2014-06-24    0    0    0   0    0    0
@@ -1554,6 +1695,7 @@ return.status <- data.frame(cl$cluster)
 ## 2014-06-20    0    0    0   0    0    0
 ## 2014-06-20    0    0    0   0    0    1
 ## 2014-06-19    0    0    0   0    0    0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 *** =right
@@ -1561,12 +1703,21 @@ return.status <- data.frame(cl$cluster)
 
 ```
 ##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1580,12 +1731,21 @@ return.status <- data.frame(cl$cluster)
 
 ```
 ##            cl.cluster
+<<<<<<< HEAD
+## 2014-01-02          3
+## 2014-01-03          1
+## 2014-01-06          2
+## 2014-01-07          4
+## 2014-01-08          3
+## 2014-01-09          1
+=======
 ## 2014-01-02          4
 ## 2014-01-03          2
 ## 2014-01-06          5
 ## 2014-01-07          3
 ## 2014-01-08          4
 ## 2014-01-09          2
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 *** =right
@@ -1593,6 +1753,9 @@ return.status <- data.frame(cl$cluster)
 
 
 ```
+<<<<<<< HEAD
+## Error: object 'return_date' not found
+=======
 ##         date 1 2 3 4 5
 ## 1 2014-01-02 0 0 0 4 0
 ## 2 2014-01-03 0 2 0 0 0
@@ -1600,6 +1763,7 @@ return.status <- data.frame(cl$cluster)
 ## 4 2014-01-07 0 0 3 0 0
 ## 5 2014-01-08 0 0 0 4 0
 ## 6 2014-01-09 0 2 0 0 0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1616,12 +1780,21 @@ return.status <- cbind(return.status, "val"=rep(1,127))
 
 ```
 ##            return_date cl.cluster val
+<<<<<<< HEAD
+## 2014-01-02  2014-01-02          3   1
+## 2014-01-03  2014-01-03          1   1
+## 2014-01-06  2014-01-06          2   1
+## 2014-01-07  2014-01-07          4   1
+## 2014-01-08  2014-01-08          3   1
+## 2014-01-09  2014-01-09          1   1
+=======
 ## 2014-01-02  2014-01-02          4   1
 ## 2014-01-03  2014-01-03          2   1
 ## 2014-01-06  2014-01-06          5   1
 ## 2014-01-07  2014-01-07          3   1
 ## 2014-01-08  2014-01-08          4   1
 ## 2014-01-09  2014-01-09          2   1
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1645,12 +1818,21 @@ return.status.xts <- xts(return.status[,-1], as.POSIXct(return_date))
 
 ```
 ##            X1 X2 X3 X4 X5
+<<<<<<< HEAD
+## 2014-01-02  0  0  1  0  0
+## 2014-01-03  1  0  0  0  0
+## 2014-01-06  0  1  0  0  0
+## 2014-01-07  0  0  0  1  0
+## 2014-01-08  0  0  1  0  0
+## 2014-01-09  1  0  0  0  0
+=======
 ## 2014-01-02  0  0  0  1  0
 ## 2014-01-03  0  1  0  0  0
 ## 2014-01-06  0  0  0  0  1
 ## 2014-01-07  0  0  1  0  0
 ## 2014-01-08  0  0  0  1  0
 ## 2014-01-09  0  1  0  0  0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 
@@ -1666,12 +1848,21 @@ names(final_tbl) <- c(test_words_2, names(return.status[,-1]))
 ```
 
 ```
+<<<<<<< HEAD
+##            桃園房價漲 ：豪宅交易 逾3.5% 面租賃需求 X1 X2 X3 X4 X5
+## 2014-01-02          0          0      0          0  0  0  1  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-02          0          0      0          0  0  0  0  0  0
+## 2014-01-03          0          0      0          0  1  0  0  0  0
+=======
 ##            捷運松山線 桃園房價漲 逾3.5% 月實價登錄 X1 X2 X3 X4 X5
 ## 2014-01-02          0          0      0          0  0  0  0  1  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-02          0          0      0          0  0  0  0  0  0
 ## 2014-01-03          0          0      0          0  0  1  0  0  0
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ## 2014-01-03          0          0      0          0  0  0  0  0  0
 ```
 
@@ -1707,6 +1898,19 @@ head(data.frame(words), 10)
 ```
 
 ```
+<<<<<<< HEAD
+##     words
+## 1      X1
+## 2    標脫
+## 3     大 
+## 4    店租
+## 5    、新
+## 6     %最
+## 7    標售
+## 8    運宅
+## 9  捷運宅
+## 10     21
+=======
 ##    words
 ## 1     X1
 ## 2    8萬
@@ -1718,6 +1922,7 @@ head(data.frame(words), 10)
 ## 8   換屋
 ## 9   可以
 ## 10  市最
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 *** =right
@@ -1730,6 +1935,19 @@ head(data.frame(words), 10)
 ```
 
 ```
+<<<<<<< HEAD
+##    words
+## 1     X4
+## 2      5
+## 3   房貸
+## 4   所得
+## 5   打造
+## 6   招商
+## 7   推案
+## 8     最
+## 9   最受
+## 10  網路
+=======
 ##     words
 ## 1      X4
 ## 2      48
@@ -1741,6 +1959,7 @@ head(data.frame(words), 10)
 ## 8    平均
 ## 9  不動產
 ## 10 財長：
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ---
@@ -1755,6 +1974,19 @@ for(i in 1:5){
 ```
 
 ```
+<<<<<<< HEAD
+##       [,1]     [,2]     [,3]   [,4]   [,5]   
+##  [1,] "X1"     "X2"     "X3"   "X4"   "X5"   
+##  [2,] "標脫"   "開決"   "48"   " 5"   "8萬"  
+##  [3,] "大 "    "台開決" "減1"  "房貸" "坪7"  
+##  [4,] "店租"   "24"     "2.4"  "所得" "新 "  
+##  [5,] "、新"   "總銷"   "35"   "打造" "每坪7"
+##  [6,] "%最"    "0%"     "動產" "招商" "9.4"  
+##  [7,] "標售"   "0億"    "年減" "推案" "2-"   
+##  [8,] "運宅"   "1-"     "房 "  " 最"  "40"   
+##  [9,] "捷運宅" "2-"     "現身" "最受" "52"   
+## [10,] "21"     "29"     "置產" "網路" "72"
+=======
 ##       [,1]    [,2]       [,3]   [,4]     [,5]    
 ##  [1,] "X1"    "X2"       "X3"   "X4"     "X5"    
 ##  [2,] "8萬"   "標脫"     "打造" "48"     "台開決"
@@ -1766,6 +1998,7 @@ for(i in 1:5){
 ##  [8,] "換屋"  "28"       "網路" " 平均"  " 應"   
 ##  [9,] "可以"  "萬華"     "招商" "不動產" "、新"  
 ## [10,] "市最"  "新隆國宅" "重劃" "財長：" "：台"
+>>>>>>> d0ca289b045d964f7f6fc36cfee83c8934c2c512
 ```
 
 ---
