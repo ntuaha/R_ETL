@@ -61,7 +61,9 @@ stock_no <- stock[,1]
 stock_name <- stock[,2]
 stock_code <- paste(stock_no, '.TW', sep='')
 
-getSymbols(stock_code, env=mystocks, from="2014-01-01", to="2014-07-02")
+mystocks <- new.env(hash=TRUE)
+
+getSymbols(stock_code, env=mystocks, from="2014-06-01", to="2014-07-02")
 mystocks <- do.call(cbind,eapply(mystocks, Cl))
 names(mystocks) <- stock_name
 
