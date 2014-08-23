@@ -65,20 +65,58 @@ require(reshape2)
 3. text
 
 ```r
-<a href = "www.stat.berkeley.edu">
-  Statistics Website
+<a href = "www.meetup.com/Taiwan-R">
+  Taiwan R User Group Website
 </a>
 ```
 
 ```r
 nodename : a
-attribute : href with value "www.stat.berkeley.edu"
-text: "Statistics Website"
+attribute : href with value "www.meetup.com/Taiwan-R"
+text: "Taiwan R User Group Website"
 ```
 
+---
+## xpath 常用到的操作
+
+- / finds the root node
+
+- // selects from anywhere in the tree
+
+- . selects current node
+
+- .. selects parent of current node
+
+- @ selects attributes
 
 ---
+## 如果想抓 a 的話
 
+### we can use:
+
+```r
+"/../body/div/a" or "//a"
+```
+
+<img src = './resources/figures/dom.png' ></img>
+
+---
+## 如果指定 a 的 attribute 或 text
+```r
+If we had '<a href = "www.meetup.com/Taiwan-R">stats</a>'
+```
+xpath 可以用 ...
+```r
+"//a[@href = ’www.meetup.com/Taiwan-R’]" or "//a[text() = ’stats’]"
+```
+```r
+nodename : a
+attribute : href with value "www.meetup.com/Taiwan-R"
+text: "Taiwan R User Group Website"
+```
+
+---
+  
 ## 打開 phantomjs
 
 ```r
