@@ -459,25 +459,7 @@ str(Cl_info)
     <h3>將資料讀入</h3>
 
 <pre><code class="r">library(dplyr)
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;
-## 
-## The following objects are masked from &#39;package:xts&#39;:
-## 
-##     first, last
-## 
-## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-## 
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
-<pre><code class="r">Cl_info = read.table(file=&#39;./cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
+Cl_info = read.table(file=&#39;./cl_info_other.csv&#39;,header=T,sep=&quot;,&quot;,stringsAsFactors=F)
 Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
 View(Cl_info)
@@ -1658,9 +1640,9 @@ matchs2 &lt;- grep( __ , __ , value = TRUE)
 <pre><code class="r">words_2_5 &lt;- unique(unlist(piece[ ___ ]))
 </code></pre>
 
-<pre><code>##  [1] &quot;護區、陽&quot;   &quot;產實價&quot;     &quot;約、東京貴&quot; &quot;購族青&quot;     &quot;下會期&quot;    
-##  [6] &quot;淡水最&quot;     &quot;一LLG「&quot;    &quot;航空城國&quot;   &quot;度增98%&quot;    &quot;宅新高價&quot;  
-## [11] &quot;減17&quot;       &quot;吃不喝2&quot;    &quot;03&quot;         &quot;、2個人&quot;    &quot;-22北&quot;
+<pre><code>##  [1] &quot;持新北&quot;     &quot;真的&quot;       &quot;一堆保&quot;     &quot;意願增房&quot;   &quot;買頂樓想&quot;  
+##  [6] &quot;花與陸客&quot;   &quot;市保&quot;       &quot;住宅有&quot;     &quot;標售&quot;       &quot;3-1&quot;       
+## [11] &quot;市交易月減&quot; &quot;地招商&quot;     &quot;北市交易量&quot; &quot;去年不動產&quot; &quot;案在雙&quot;
 </code></pre>
 
   </article>
@@ -1688,13 +1670,13 @@ matchs2 &lt;- grep( __ , __ , value = TRUE)
 practice &gt; 12
 </code></pre>
 
-<pre><code>##  [1] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE
+<pre><code>##  [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
 </code></pre>
 
 <pre><code class="r">which(practice &gt; 12)
 </code></pre>
 
-<pre><code>## [1] 4 6 8 9
+<pre><code>## [1] 1 3 4 7
 </code></pre>
 
   </article>
@@ -1933,13 +1915,13 @@ words_tbl &lt;- do.call(cbind, tmp)
 colnames(words_tbl) &lt;- dis_words
 </code></pre>
 
-<pre><code>##      直逼 半年 土地 豪宅 ：豪宅交易 每坪衝 最高 雙北
-## [1,]    0    0    0    0          0      0    0    0
-## [2,]    0    0    0    0          0      0    0    0
-## [3,]    0    0    0    0          0      0    0    0
-## [4,]    1    0    0    0          0      0    0    0
-## [5,]    0    0    0    1          0      0    0    0
-## [6,]    0    0    0    0          0      0    0    0
+<pre><code>##      園房價 張盛和： 預計 通車 地政士 .5% 破千 價格
+## [1,]      0        0    0    0      0   0    0    0
+## [2,]      0        0    0    0      0   0    0    0
+## [3,]      0        0    0    0      0   0    0    0
+## [4,]      0        0    0    0      0   0    0    0
+## [5,]      0        0    0    0      0   0    0    0
+## [6,]      0        0    0    0      0   0    0    0
 </code></pre>
 
   </article>
@@ -1963,12 +1945,12 @@ xts(x,y)
 ## [2,]    2    4
 </code></pre>
 
-<pre><code>## [1] &quot;2014-08-22&quot; &quot;2014-08-23&quot;
+<pre><code>## [1] &quot;2014-08-24&quot; &quot;2014-08-25&quot;
 </code></pre>
 
 <pre><code>##            [,1] [,2]
-## 2014-08-22    1    3
-## 2014-08-23    2    4
+## 2014-08-24    1    3
+## 2014-08-25    2    4
 </code></pre>
 
   </article>
@@ -2186,7 +2168,7 @@ mystocks.return &lt;- diff(mystocks, 1) / mystocks
 </code></pre>
 
 <pre><code>## 2014-01-02 2014-01-03 2014-01-06 2014-01-07 2014-01-08 
-##          4          3          2          1          4
+##          4          2          1          3          4
 </code></pre>
 
   </article>
@@ -2210,8 +2192,8 @@ for(i in 1:5){
 s1 &lt;- sort(s1)
 </code></pre>
 
-<pre><code>##          2          3          5          4          1 
-## -0.0224974 -0.0059691 -0.0028658  0.0006223  0.0070185
+<pre><code>##          1          2          4          5          3 
+## -0.0224974 -0.0049706 -0.0005121  0.0035959  0.0092449
 </code></pre>
 
   </article>
@@ -2235,11 +2217,11 @@ return.status &lt;- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluste
 </code></pre>
 
 <pre><code>##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 </code></pre>
 
@@ -2296,11 +2278,11 @@ return.status &lt;- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluste
 <h3><code>股市漲跌的狀態</code></h3>
 
 <pre><code>##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 </code></pre>
 
@@ -2320,11 +2302,11 @@ return.status &lt;- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluste
 <h3>原本的表格</h3>
 
 <pre><code>##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 </code></pre>
 
@@ -2333,11 +2315,11 @@ return.status &lt;- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluste
 <h3>希望的表格</h3>
 
 <pre><code>##   return_date 不變 漲多 漲少 跌多 跌少
-## 1  2014-01-02    0    0    1    0    0
+## 1  2014-01-02    1    0    0    0    0
 ## 2  2014-01-03    0    0    0    0    1
 ## 3  2014-01-06    0    0    0    1    0
 ## 4  2014-01-07    0    1    0    0    0
-## 5  2014-01-08    0    0    1    0    0
+## 5  2014-01-08    1    0    0    0    0
 ## 6  2014-01-09    0    0    0    0    1
 </code></pre>
 
@@ -2414,11 +2396,11 @@ return.status &lt;- dcast(return.status, ___  ~ ___ , fill = 0)
 </code></pre>
 
 <pre><code>##   return_date 不變 漲多 漲少 跌多 跌少
-## 1  2014-01-02    0    0    1    0    0
+## 1  2014-01-02    1    0    0    0    0
 ## 2  2014-01-03    0    0    0    0    1
 ## 3  2014-01-06    0    0    0    1    0
 ## 4  2014-01-07    0    1    0    0    0
-## 5  2014-01-08    0    0    1    0    0
+## 5  2014-01-08    1    0    0    0    0
 ## 6  2014-01-09    0    0    0    0    1
 </code></pre>
 
@@ -2436,11 +2418,11 @@ return.status &lt;- dcast(return.status, ___  ~ ___ , fill = 0)
 </code></pre>
 
 <pre><code>##            不變 漲多 漲少 跌多 跌少
-## 2014-01-02    0    0    1    0    0
+## 2014-01-02    1    0    0    0    0
 ## 2014-01-03    0    0    0    0    1
 ## 2014-01-06    0    0    0    1    0
 ## 2014-01-07    0    1    0    0    0
-## 2014-01-08    0    0    1    0    0
+## 2014-01-08    1    0    0    0    0
 ## 2014-01-09    0    0    0    0    1
 </code></pre>
 
@@ -2461,13 +2443,13 @@ merge.xts(x,y)
 </code></pre>
 
 <pre><code>##             x  y
-## 2014-08-22 NA  1
-## 2014-08-23 NA  2
-## 2014-08-24  3  3
-## 2014-08-25  4  4
-## 2014-08-26  5  5
-## 2014-08-27  6 NA
-## 2014-08-28  7 NA
+## 2014-08-24 NA  1
+## 2014-08-25 NA  2
+## 2014-08-26  3  3
+## 2014-08-27  4  4
+## 2014-08-28  5  5
+## 2014-08-29  6 NA
+## 2014-08-30  7 NA
 </code></pre>
 
   </article>
@@ -2487,7 +2469,7 @@ names(final_tbl) &lt;- c(dis_words, names(return.status[,-1]))
 </code></pre>
 
 <pre><code>##            信義計畫區 ：豪宅交易 25日前提 不變 漲多 漲少 跌多 跌少
-## 2014-01-02          0          0        0    0    0    1    0    0
+## 2014-01-02          0          0        0    1    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
@@ -2557,17 +2539,17 @@ words &lt;- names(score)
 head(data.frame(words), 10)
 </code></pre>
 
-<pre><code>##    words
-## 1   漲多
-## 2   增加
-## 3   換屋
-## 4   可以
-## 5   重劃
-## 6   所得
-## 7   網路
-## 8   最受
-## 9   點閱
-## 10  推案
+<pre><code>##       words
+## 1      漲多
+## 2      重劃
+## 3      所得
+## 4      網路
+## 5      最受
+## 6      點閱
+## 7      推案
+## 8    下半年
+## 9  房價漲幅
+## 10     春節
 </code></pre>
 
 </div>
@@ -2587,17 +2569,17 @@ for(col in c(&#39;跌多&#39;,&#39;跌少&#39;,&#39;不變&#39;,&#39;漲少&#39;
 }
 </code></pre>
 
-<pre><code>##       [,1]   [,2]       [,3]   [,4]       [,5]  
-##  [1,] &quot;跌多&quot; &quot;跌少&quot;     &quot;不變&quot; &quot;漲少&quot;     &quot;漲多&quot;
-##  [2,] &quot;總銷&quot; &quot;新隆國宅&quot; &quot;標售&quot; &quot;下半年&quot;   &quot;增加&quot;
-##  [3,] &quot;直逼&quot; &quot;直逼&quot;     &quot;標脫&quot; &quot;不動產&quot;   &quot;換屋&quot;
-##  [4,] &quot;公園&quot; &quot;買賣&quot;     &quot;售屋&quot; &quot;合宜住宅&quot; &quot;可以&quot;
-##  [5,] &quot;招標&quot; &quot;增近&quot;     &quot;熱門&quot; &quot;漲逾&quot;     &quot;重劃&quot;
-##  [6,] &quot;漲逾&quot; &quot;空屋&quot;     &quot;招標&quot; &quot;現身&quot;     &quot;所得&quot;
-##  [7,] &quot;商圈&quot; &quot;可以&quot;     &quot;商圈&quot; &quot;增近&quot;     &quot;網路&quot;
-##  [8,] &quot;標售&quot; &quot;雙張&quot;     &quot;現身&quot; &quot;財長&quot;     &quot;最受&quot;
-##  [9,] &quot;增加&quot; &quot;不到5&quot;    &quot;中和&quot; &quot;汐止&quot;     &quot;點閱&quot;
-## [10,] &quot;現身&quot; &quot;信義之星&quot; &quot;占比&quot; &quot;子」&quot;     &quot;推案&quot;
+<pre><code>##       [,1]   [,2]       [,3]       [,4]   [,5]      
+##  [1,] &quot;跌多&quot; &quot;跌少&quot;     &quot;不變&quot;     &quot;漲少&quot; &quot;漲多&quot;    
+##  [2,] &quot;總銷&quot; &quot;標脫&quot;     &quot;現身&quot;     &quot;9.4&quot;  &quot;重劃&quot;    
+##  [3,] &quot;直逼&quot; &quot;標售&quot;     &quot;置產&quot;     &quot;增加&quot; &quot;所得&quot;    
+##  [4,] &quot;公園&quot; &quot;萬華&quot;     &quot;下半年&quot;   &quot;增近&quot; &quot;網路&quot;    
+##  [5,] &quot;招標&quot; &quot;新隆國宅&quot; &quot;不動產&quot;   &quot;中和&quot; &quot;最受&quot;    
+##  [6,] &quot;漲逾&quot; &quot;直逼&quot;     &quot;打炒房&quot;   &quot;換屋&quot; &quot;點閱&quot;    
+##  [7,] &quot;商圈&quot; &quot;招標&quot;     &quot;售屋&quot;     &quot;可以&quot; &quot;推案&quot;    
+##  [8,] &quot;標售&quot; &quot;買賣&quot;     &quot;房地產&quot;   &quot;網路&quot; &quot;下半年&quot;  
+##  [9,] &quot;增加&quot; &quot;增近&quot;     &quot;合宜住宅&quot; &quot;A25&quot;  &quot;房價漲幅&quot;
+## [10,] &quot;現身&quot; &quot;中和&quot;     &quot;漲逾&quot;     &quot;79.&quot;  &quot;春節&quot;
 </code></pre>
 
   </article>
@@ -3054,7 +3036,7 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 
 <p>先<code>建立資料集</code></p>
 
-<pre><code>x=data.frame(c1 = c(1,1,2,3,4,5,5),
+<pre><code class="r">x=data.frame(c1 = c(1,1,2,3,4,5,5),
              c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
 y=data.frame(c1 = c(1,2,2,3,4,6,6),
              c2 = c(&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;))
@@ -3104,8 +3086,13 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">inner_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
-<pre><code>## Error: no applicable method for &#39;inner_join&#39; applied to an object of class
-## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+<pre><code>##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
 </code></pre>
 
 </div>
@@ -3129,8 +3116,9 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">anti_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
-<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
-## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+<pre><code>##   c1 c2
+## 1  5  F
+## 2  5  G
 </code></pre>
 
 </div>
@@ -3138,8 +3126,9 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">anti_join(y,x,by=&quot;c1&quot;)
 </code></pre>
 
-<pre><code>## Error: no applicable method for &#39;anti_join&#39; applied to an object of class
-## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+<pre><code>##   c1 c2
+## 1  6  F
+## 2  6  G
 </code></pre>
 
 </div>
@@ -3161,8 +3150,12 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">semi_join(x,y,by=&quot;c1&quot;)
 </code></pre>
 
-<pre><code>## Error: no applicable method for &#39;semi_join&#39; applied to an object of class
-## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
 </code></pre>
 
 </div>
@@ -3172,8 +3165,12 @@ ljyx = left_join(y,x,by=&quot;c1&quot;) #以Y為主
 <pre><code class="r">semi_join(y,x,by=&quot;c1&quot;)
 </code></pre>
 
-<pre><code>## Error: no applicable method for &#39;semi_join&#39; applied to an object of class
-## &quot;c(&#39;double&#39;, &#39;numeric&#39;)&quot;
+<pre><code>##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
 </code></pre>
 
 </div>

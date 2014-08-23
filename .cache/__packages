@@ -1,6 +1,7 @@
 base
 bitops
 dplyr
+gdata
 ggplot2
 RCurl
 reshape2

@@ -11,6 +11,7 @@ ext_widgets : {rCharts: libraries/nvd3}
 widgets     : [mathjax, quiz, bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 
+
 --- &twocol_dynamic w1:30% w2:66%
 ## 故事的起源
 *** =left
@@ -248,26 +249,6 @@ str(Cl_info)
 
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:xts':
-## 
-##     first, last
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 Cl_info = read.table(file='./cl_info_other.csv',header=T,sep=",",stringsAsFactors=F)
 Cl_info_part = mutate(Cl_info,data_dt = as.POSIXct(data_dt),
                  bank_code = as.factor(bank_code),etl_dt = as.POSIXct(etl_dt))
@@ -1183,9 +1164,9 @@ words_2_5 <- unique(unlist(piece[ ___ ]))
 
 
 ```
-##  [1] "護區、陽"   "產實價"     "約、東京貴" "購族青"     "下會期"    
-##  [6] "淡水最"     "一LLG「"    "航空城國"   "度增98%"    "宅新高價"  
-## [11] "減17"       "吃不喝2"    "03"         "、2個人"    "-22北"
+##  [1] "持新北"     "真的"       "一堆保"     "意願增房"   "買頂樓想"  
+##  [6] "花與陸客"   "市保"       "住宅有"     "標售"       "3-1"       
+## [11] "市交易月減" "地招商"     "北市交易量" "去年不動產" "案在雙"
 ```
 
 --- &vcenter
@@ -1203,7 +1184,7 @@ practice > 12
 ```
 
 ```
-##  [1] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE
+##  [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
 ```
 
 ```r
@@ -1211,7 +1192,7 @@ which(practice > 12)
 ```
 
 ```
-## [1] 4 6 8 9
+## [1] 1 3 4 7
 ```
 
 ---
@@ -1392,13 +1373,13 @@ colnames(words_tbl) <- dis_words
 
 
 ```
-##      直逼 半年 土地 豪宅 ：豪宅交易 每坪衝 最高 雙北
-## [1,]    0    0    0    0          0      0    0    0
-## [2,]    0    0    0    0          0      0    0    0
-## [3,]    0    0    0    0          0      0    0    0
-## [4,]    1    0    0    0          0      0    0    0
-## [5,]    0    0    0    1          0      0    0    0
-## [6,]    0    0    0    0          0      0    0    0
+##      園房價 張盛和： 預計 通車 地政士 .5% 破千 價格
+## [1,]      0        0    0    0      0   0    0    0
+## [2,]      0        0    0    0      0   0    0    0
+## [3,]      0        0    0    0      0   0    0    0
+## [4,]      0        0    0    0      0   0    0    0
+## [5,]      0        0    0    0      0   0    0    0
+## [6,]      0        0    0    0      0   0    0    0
 ```
 
 ---
@@ -1418,13 +1399,13 @@ xts(x,y)
 ```
 
 ```
-## [1] "2014-08-22" "2014-08-23"
+## [1] "2014-08-24" "2014-08-25"
 ```
 
 ```
 ##            [,1] [,2]
-## 2014-08-22    1    3
-## 2014-08-23    2    4
+## 2014-08-24    1    3
+## 2014-08-25    2    4
 ```
 
 ---
@@ -1584,7 +1565,7 @@ cl <- kmeans(mystocks.return_all, 5)
 
 ```
 ## 2014-01-02 2014-01-03 2014-01-06 2014-01-07 2014-01-08 
-##          4          3          2          1          4
+##          4          2          1          3          4
 ```
 
 
@@ -1604,8 +1585,8 @@ s1 <- sort(s1)
 ```
 
 ```
-##          2          3          5          4          1 
-## -0.0224974 -0.0059691 -0.0028658  0.0006223  0.0070185
+##          1          2          4          5          3 
+## -0.0224974 -0.0049706 -0.0005121  0.0035959  0.0092449
 ```
 
 ---
@@ -1625,11 +1606,11 @@ return.status <- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluster))
 
 ```
 ##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 ```
 
@@ -1664,11 +1645,11 @@ return.status <- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluster))
 
 ```
 ##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 ```
 
@@ -1683,11 +1664,11 @@ return.status <- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluster))
 
 ```
 ##   cluster count
-## 1    漲少     1
+## 1    不變     1
 ## 2    跌少     1
 ## 3    跌多     1
 ## 4    漲多     1
-## 5    漲少     1
+## 5    不變     1
 ## 6    跌少     1
 ```
 
@@ -1697,11 +1678,11 @@ return.status <- data.frame(cluster=cl$cluster, count=rep(1, length(cl$cluster))
 
 ```
 ##   return_date 不變 漲多 漲少 跌多 跌少
-## 1  2014-01-02    0    0    1    0    0
+## 1  2014-01-02    1    0    0    0    0
 ## 2  2014-01-03    0    0    0    0    1
 ## 3  2014-01-06    0    0    0    1    0
 ## 4  2014-01-07    0    1    0    0    0
-## 5  2014-01-08    0    0    1    0    0
+## 5  2014-01-08    1    0    0    0    0
 ## 6  2014-01-09    0    0    0    0    1
 ```
 
@@ -1768,11 +1749,11 @@ return.status <- dcast(return.status, ___  ~ ___ , fill = 0)
 
 ```
 ##   return_date 不變 漲多 漲少 跌多 跌少
-## 1  2014-01-02    0    0    1    0    0
+## 1  2014-01-02    1    0    0    0    0
 ## 2  2014-01-03    0    0    0    0    1
 ## 3  2014-01-06    0    0    0    1    0
 ## 4  2014-01-07    0    1    0    0    0
-## 5  2014-01-08    0    0    1    0    0
+## 5  2014-01-08    1    0    0    0    0
 ## 6  2014-01-09    0    0    0    0    1
 ```
 
@@ -1786,11 +1767,11 @@ return.status.xts <- xts(return.status[,-1], as.POSIXct(return_date))
 
 ```
 ##            不變 漲多 漲少 跌多 跌少
-## 2014-01-02    0    0    1    0    0
+## 2014-01-02    1    0    0    0    0
 ## 2014-01-03    0    0    0    0    1
 ## 2014-01-06    0    0    0    1    0
 ## 2014-01-07    0    1    0    0    0
-## 2014-01-08    0    0    1    0    0
+## 2014-01-08    1    0    0    0    0
 ## 2014-01-09    0    0    0    0    1
 ```
 
@@ -1807,13 +1788,13 @@ merge.xts(x,y)
 
 ```
 ##             x  y
-## 2014-08-22 NA  1
-## 2014-08-23 NA  2
-## 2014-08-24  3  3
-## 2014-08-25  4  4
-## 2014-08-26  5  5
-## 2014-08-27  6 NA
-## 2014-08-28  7 NA
+## 2014-08-24 NA  1
+## 2014-08-25 NA  2
+## 2014-08-26  3  3
+## 2014-08-27  4  4
+## 2014-08-28  5  5
+## 2014-08-29  6 NA
+## 2014-08-30  7 NA
 ```
 
 ---
@@ -1828,7 +1809,7 @@ names(final_tbl) <- c(dis_words, names(return.status[,-1]))
 
 ```
 ##            信義計畫區 ：豪宅交易 25日前提 不變 漲多 漲少 跌多 跌少
-## 2014-01-02          0          0        0    0    0    1    0    0
+## 2014-01-02          0          0        0    1    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
 ## 2014-01-02          0          0        0    0    0    0    0    0
@@ -1891,17 +1872,17 @@ head(data.frame(words), 10)
 ```
 
 ```
-##    words
-## 1   漲多
-## 2   增加
-## 3   換屋
-## 4   可以
-## 5   重劃
-## 6   所得
-## 7   網路
-## 8   最受
-## 9   點閱
-## 10  推案
+##       words
+## 1      漲多
+## 2      重劃
+## 3      所得
+## 4      網路
+## 5      最受
+## 6      點閱
+## 7      推案
+## 8    下半年
+## 9  房價漲幅
+## 10     春節
 ```
 
 ---
@@ -1915,17 +1896,17 @@ for(col in c('跌多','跌少','不變','漲少','漲多')){
 ```
 
 ```
-##       [,1]   [,2]       [,3]   [,4]       [,5]  
-##  [1,] "跌多" "跌少"     "不變" "漲少"     "漲多"
-##  [2,] "總銷" "新隆國宅" "標售" "下半年"   "增加"
-##  [3,] "直逼" "直逼"     "標脫" "不動產"   "換屋"
-##  [4,] "公園" "買賣"     "售屋" "合宜住宅" "可以"
-##  [5,] "招標" "增近"     "熱門" "漲逾"     "重劃"
-##  [6,] "漲逾" "空屋"     "招標" "現身"     "所得"
-##  [7,] "商圈" "可以"     "商圈" "增近"     "網路"
-##  [8,] "標售" "雙張"     "現身" "財長"     "最受"
-##  [9,] "增加" "不到5"    "中和" "汐止"     "點閱"
-## [10,] "現身" "信義之星" "占比" "子」"     "推案"
+##       [,1]   [,2]       [,3]       [,4]   [,5]      
+##  [1,] "跌多" "跌少"     "不變"     "漲少" "漲多"    
+##  [2,] "總銷" "標脫"     "現身"     "9.4"  "重劃"    
+##  [3,] "直逼" "標售"     "置產"     "增加" "所得"    
+##  [4,] "公園" "萬華"     "下半年"   "增近" "網路"    
+##  [5,] "招標" "新隆國宅" "不動產"   "中和" "最受"    
+##  [6,] "漲逾" "直逼"     "打炒房"   "換屋" "點閱"    
+##  [7,] "商圈" "招標"     "售屋"     "可以" "推案"    
+##  [8,] "標售" "買賣"     "房地產"   "網路" "下半年"  
+##  [9,] "增加" "增近"     "合宜住宅" "A25"  "房價漲幅"
+## [10,] "現身" "中和"     "漲逾"     "79."  "春節"
 ```
 
 ---
@@ -2250,7 +2231,8 @@ y=data.frame(c1 = c(1,2,2,3,4,6,6),
 ### 接下來先從各類join開始說明
 先`建立資料集`
 
-```
+
+```r
 x=data.frame(c1 = c(1,1,2,3,4,5,5),
              c2 = c('A','B','C','D','E','F','G'))
 y=data.frame(c1 = c(1,2,2,3,4,6,6),
@@ -2289,8 +2271,13 @@ inner_join(x,y,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'inner_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2.x c2.y
+## 1  1    A    A
+## 2  1    B    A
+## 3  2    C    B
+## 4  2    C    C
+## 5  3    D    D
+## 6  4    E    E
 ```
 
 *** =right
@@ -2311,8 +2298,9 @@ anti_join(x,y,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'anti_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2
+## 1  5  F
+## 2  5  G
 ```
 
 *** =right
@@ -2323,8 +2311,9 @@ anti_join(y,x,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'anti_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2
+## 1  6  F
+## 2  6  G
 ```
 
 
@@ -2341,8 +2330,12 @@ semi_join(x,y,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'semi_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2
+## 1  1  A
+## 2  1  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
 ```
 
 *** =right
@@ -2354,8 +2347,12 @@ semi_join(y,x,by="c1")
 ```
 
 ```
-## Error: no applicable method for 'semi_join' applied to an object of class
-## "c('double', 'numeric')"
+##   c1 c2
+## 1  1  A
+## 2  2  B
+## 3  2  C
+## 4  3  D
+## 5  4  E
 ```
 
 *** =pnotes
